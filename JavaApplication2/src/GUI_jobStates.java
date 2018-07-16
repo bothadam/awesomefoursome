@@ -48,7 +48,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        job_cb_selectClient = new javax.swing.JComboBox<String>();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
@@ -102,7 +102,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jSpinner13 = new javax.swing.JSpinner();
         jButton29 = new javax.swing.JButton();
         jScrollPane14 = new javax.swing.JScrollPane();
-        jList12 = new javax.swing.JList<>();
+        jList12 = new javax.swing.JList<String>();
         activeState_butRemove5 = new javax.swing.JButton();
         activeState_butAdd16 = new javax.swing.JButton();
         activeState_butRemove14 = new javax.swing.JButton();
@@ -115,19 +115,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jButton31 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
         jScrollPane15 = new javax.swing.JScrollPane();
-        jList13 = new javax.swing.JList<>();
+        jList13 = new javax.swing.JList<String>();
         activeState_butRemove15 = new javax.swing.JButton();
         activeState_butAdd20 = new javax.swing.JButton();
         activeState_butRemove16 = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        jList14 = new javax.swing.JList<>();
+        jList14 = new javax.swing.JList<String>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
         jButton33 = new javax.swing.JButton();
         jButton34 = new javax.swing.JButton();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<String>();
         jLabel60 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
         jSpinner14 = new javax.swing.JSpinner();
@@ -188,7 +188,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jSpinner11 = new javax.swing.JSpinner();
         jButton14 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList8 = new javax.swing.JList<>();
+        jList8 = new javax.swing.JList<String>();
         activeState_butRemove4 = new javax.swing.JButton();
         activeState_butChange4 = new javax.swing.JButton();
         activeState_butAdd7 = new javax.swing.JButton();
@@ -202,14 +202,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jList10 = new javax.swing.JList<>();
+        jList10 = new javax.swing.JList<String>();
         activeState_butRemove9 = new javax.swing.JButton();
         activeState_butChange7 = new javax.swing.JButton();
         activeState_butAdd18 = new javax.swing.JButton();
         activeState_butRemove13 = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jList11 = new javax.swing.JList<>();
+        jList11 = new javax.swing.JList<String>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -488,7 +488,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                             .addComponent(jLabel49)
                             .addComponent(jLabel2))
                         .addGap(28, 28, 28)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         butCreateJob4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -507,8 +507,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel18.setText("Comments");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -529,7 +529,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(butCreateJob1)))
                 .addGap(29, 29, 29))
@@ -538,9 +538,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butCreateJob1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butCreateJob1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
@@ -553,7 +553,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jobStatesTabPane.addTab("Job", jPanel1);
@@ -853,10 +853,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList12.setModel(new javax.swing.AbstractListModel<String>() {
+        jList12.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane14.setViewportView(jList12);
 
@@ -961,10 +961,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList13.setModel(new javax.swing.AbstractListModel<String>() {
+        jList13.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane15.setViewportView(jList13);
 
@@ -1014,10 +1014,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jTabbedPane3.addTab("Overheads", jPanel36);
 
         jList14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList14.setModel(new javax.swing.AbstractListModel<String>() {
+        jList14.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Stefan (450)", "Andre (400)", "Simeon (440)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane16.setViewportView(jList14);
 
@@ -1035,7 +1035,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jButton34.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jButton34.setText("Cancel");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
 
         jLabel60.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel60.setText("Rate:");
@@ -1199,18 +1199,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(activeState_butAdd22)
-                    .addComponent(activeState_butAdd23)
-                    .addComponent(jButton20)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton22)
                         .addComponent(jButton23)
                         .addComponent(jButton21)
-                        .addComponent(jButton19)))
+                        .addComponent(jButton19))
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(activeState_butAdd22)
+                        .addComponent(activeState_butAdd23)
+                        .addComponent(jButton20)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(jLabel24)
@@ -1515,10 +1516,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList8.setModel(new javax.swing.AbstractListModel<String>() {
+        jList8.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane6.setViewportView(jList8);
 
@@ -1564,7 +1565,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(activeState_butRemove4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(activeState_butRemove12)
-                        .addGap(0, 2, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -1628,10 +1629,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList10.setModel(new javax.swing.AbstractListModel<String>() {
+        jList10.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane12.setViewportView(jList10);
 
@@ -1679,17 +1680,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(activeState_butRemove9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(activeState_butRemove13)
-                        .addGap(0, 2, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         jTabbedPane2.addTab("Overheads", jPanel29);
 
         jList11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList11.setModel(new javax.swing.AbstractListModel<String>() {
+        jList11.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane13.setViewportView(jList11);
 
@@ -2070,21 +2071,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jSeparator3)
-                        .addContainerGap())
+                    .addComponent(jSeparator3)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(jRadioButton1)
-                .addGap(22, 22, 22)
-                .addComponent(jRadioButton4)
-                .addGap(22, 22, 22)
-                .addComponent(jRadioButton3)
-                .addGap(22, 22, 22)
-                .addComponent(jRadioButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButton1)
+                        .addGap(22, 22, 22)
+                        .addComponent(jRadioButton4)
+                        .addGap(22, 22, 22)
+                        .addComponent(jRadioButton3)
+                        .addGap(22, 22, 22)
+                        .addComponent(jRadioButton2)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -2540,7 +2539,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JFormattedTextField jFormattedTextField6;
@@ -2768,5 +2766,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTabbedPane jobStatesTabPane;
+    private javax.swing.JComboBox<String> job_cb_selectClient;
     // End of variables declaration//GEN-END:variables
 }
