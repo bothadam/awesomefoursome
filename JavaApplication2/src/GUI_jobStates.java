@@ -48,7 +48,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
-        job_cb_selectClient = new javax.swing.JComboBox<String>();
+        job_cb_selectClient = new javax.swing.JComboBox<>();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
@@ -102,7 +102,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jSpinner13 = new javax.swing.JSpinner();
         jButton29 = new javax.swing.JButton();
         jScrollPane14 = new javax.swing.JScrollPane();
-        jList12 = new javax.swing.JList<String>();
+        jList12 = new javax.swing.JList<>();
         activeState_butRemove5 = new javax.swing.JButton();
         activeState_butAdd16 = new javax.swing.JButton();
         activeState_butRemove14 = new javax.swing.JButton();
@@ -115,19 +115,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jButton31 = new javax.swing.JButton();
         jButton32 = new javax.swing.JButton();
         jScrollPane15 = new javax.swing.JScrollPane();
-        jList13 = new javax.swing.JList<String>();
+        jList13 = new javax.swing.JList<>();
         activeState_butRemove15 = new javax.swing.JButton();
         activeState_butAdd20 = new javax.swing.JButton();
         activeState_butRemove16 = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        jList14 = new javax.swing.JList<String>();
+        jList14 = new javax.swing.JList<>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
         jButton33 = new javax.swing.JButton();
         jButton34 = new javax.swing.JButton();
-        jComboBox4 = new javax.swing.JComboBox<String>();
+        jComboBox4 = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
         jSpinner14 = new javax.swing.JSpinner();
@@ -188,7 +188,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jSpinner11 = new javax.swing.JSpinner();
         jButton14 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList8 = new javax.swing.JList<String>();
+        jList8 = new javax.swing.JList<>();
         activeState_butRemove4 = new javax.swing.JButton();
         activeState_butChange4 = new javax.swing.JButton();
         activeState_butAdd7 = new javax.swing.JButton();
@@ -202,14 +202,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jList10 = new javax.swing.JList<String>();
+        jList10 = new javax.swing.JList<>();
         activeState_butRemove9 = new javax.swing.JButton();
         activeState_butChange7 = new javax.swing.JButton();
         activeState_butAdd18 = new javax.swing.JButton();
         activeState_butRemove13 = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jList11 = new javax.swing.JList<String>();
+        jList11 = new javax.swing.JList<>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -508,7 +508,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel18.setText("Comments");
 
         job_cb_selectClient.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -853,10 +853,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList12.setModel(new javax.swing.AbstractListModel() {
+        jList12.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane14.setViewportView(jList12);
 
@@ -961,10 +961,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList13.setModel(new javax.swing.AbstractListModel() {
+        jList13.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane15.setViewportView(jList13);
 
@@ -1014,10 +1014,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jTabbedPane3.addTab("Overheads", jPanel36);
 
         jList14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList14.setModel(new javax.swing.AbstractListModel() {
+        jList14.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Stefan (450)", "Andre (400)", "Simeon (440)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane16.setViewportView(jList14);
 
@@ -1035,7 +1035,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jButton34.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jButton34.setText("Cancel");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
 
         jLabel60.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel60.setText("Rate:");
@@ -1516,10 +1516,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList8.setModel(new javax.swing.AbstractListModel() {
+        jList8.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane6.setViewportView(jList8);
 
@@ -1629,10 +1629,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         jList10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList10.setModel(new javax.swing.AbstractListModel() {
+        jList10.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane12.setViewportView(jList10);
 
@@ -1687,10 +1687,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jTabbedPane2.addTab("Overheads", jPanel29);
 
         jList11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList11.setModel(new javax.swing.AbstractListModel() {
+        jList11.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane13.setViewportView(jList11);
 
@@ -2076,7 +2076,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addGap(javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE)
                         .addComponent(jRadioButton1)
                         .addGap(22, 22, 22)
                         .addComponent(jRadioButton4)
