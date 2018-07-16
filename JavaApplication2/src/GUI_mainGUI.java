@@ -100,6 +100,37 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jPanel10 = new javax.swing.JPanel();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jTextField12 = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        jButton17 = new javax.swing.JButton();
+        jTextField14 = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        jTextField16 = new javax.swing.JTextField();
+        jLabel44 = new javax.swing.JLabel();
+        jTextField17 = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jLabel46 = new javax.swing.JLabel();
+        jTextField19 = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        jTextField20 = new javax.swing.JTextField();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jLabel50 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         scheduling_scheduledJobsTable = new javax.swing.JTable();
@@ -143,37 +174,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         scheduling_comboxWorkers = new javax.swing.JComboBox<>();
         scheduling_butRemoveSchedule1 = new javax.swing.JButton();
         scheduling_butCreateSchedule = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jPanel10 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jTextField12 = new javax.swing.JTextField();
-        jLabel40 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jLabel41 = new javax.swing.JLabel();
-        jButton17 = new javax.swing.JButton();
-        jTextField14 = new javax.swing.JTextField();
-        jLabel42 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
-        jLabel44 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jLabel46 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
-        jLabel49 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jLabel50 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        jLabel39 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -752,387 +753,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Jobs", jPanel1);
 
-        scheduling_scheduledJobsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"J0001", "Install New Fence", "James", "jk001abc1", "12 Jan 2018", "15 Jan 2018", "Yes"},
-                {"J0002", "Install Water Tank", "Simon", "sl001abc1", "15 Jan 2018", "17 Jan 2018", "Yes"},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Job Code", "Job Title", "Client Name", "Schedule Code", "Starting Date", "Finishing Date", "Clashing Dates"
-            }
-        ));
-        jScrollPane1.setViewportView(scheduling_scheduledJobsTable);
-
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel13.setText("Scheduled Jobs");
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        scheduling_jobsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(scheduling_jobsList);
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        scheduling_dateSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"12 January 2018"}));
-        scheduling_dateSpinner.setEnabled(false);
-
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel2.setText("Date");
-
-        jLabel17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel17.setText("Time");
-
-        scheduling_timeSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"08:30 AM"}));
-        scheduling_timeSpinner.setEnabled(false);
-
-        jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel18.setText("Hours");
-
-        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(4, null, null, 1));
-        scheduling_hoursSpinner.setEnabled(false);
-
-        scheduling_datesList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        scheduling_datesList.setEnabled(false);
-        jScrollPane5.setViewportView(scheduling_datesList);
-
-        scheduling_butAddDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butAddDate.setText("Add");
-        scheduling_butAddDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butAddDate.setEnabled(false);
-        scheduling_butAddDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butAddDateActionPerformed(evt);
-            }
-        });
-
-        scheduling_butRemoveDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butRemoveDate.setText("Remove");
-        scheduling_butRemoveDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butRemoveDate.setEnabled(false);
-        scheduling_butRemoveDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butRemoveDateActionPerformed(evt);
-            }
-        });
-
-        jLabel19.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel19.setText("Working Days");
-
-        jLabel20.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel20.setText("Working Hours");
-
-        jLabel21.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel21.setText("17");
-
-        jLabel22.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel22.setText("4");
-
-        scheduling_butAcceptSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butAcceptSchedule.setText("Accept");
-        scheduling_butAcceptSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butAcceptSchedule.setEnabled(false);
-        scheduling_butAcceptSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butAcceptScheduleActionPerformed(evt);
-            }
-        });
-
-        scheduling_butCancelSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butCancelSchedule.setText("Cancel");
-        scheduling_butCancelSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butCancelSchedule.setEnabled(false);
-        scheduling_butCancelSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butCancelScheduleActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(scheduling_butRemoveDate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(scheduling_butAddDate))
-                    .addComponent(scheduling_timeSpinner)
-                    .addComponent(scheduling_dateSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(scheduling_butCancelSchedule)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scheduling_butAcceptSchedule)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel22)
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_timeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel18)
-                                    .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_butAddDate)
-                                    .addComponent(scheduling_butRemoveDate))
-                                .addGap(0, 32, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_butAcceptSchedule)
-                                    .addComponent(scheduling_butCancelSchedule)))))
-                    .addComponent(jScrollPane5))
-                .addContainerGap())
-        );
-
-        jLabel35.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel35.setText("Selected Job:");
-
-        jLabel36.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel36.setText("(Job ID)");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel36))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        jLabel15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel15.setText("Selected Job:");
-
-        jLabel16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel16.setText("(Job ID)");
-
-        scheduling_scheduledDatesList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(scheduling_scheduledDatesList);
-
-        scheduling_butRemoveSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butRemoveSchedule.setText("Remove Schedule");
-        scheduling_butRemoveSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butRemoveSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butRemoveScheduleActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel23.setText("Scheduled Dates");
-
-        scheduling_workersList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Adam", "Thomas", "Steven", "Andrew" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane6.setViewportView(scheduling_workersList);
-
-        jLabel24.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel24.setText("Scheduled Workers");
-
-        scheduling_butManageSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butManageSchedule.setText("Manage Schedule");
-        scheduling_butManageSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butManageSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butManageScheduleActionPerformed(evt);
-            }
-        });
-
-        jLabel25.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel25.setText("(Schedule ID )");
-
-        jLabel26.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel26.setText("Selected Schedule:");
-
-        scheduling_butMinus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butMinus.setText("+");
-
-        scheduling_butPlus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butPlus.setText("-");
-
-        scheduling_comboxWorkers.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_comboxWorkers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
-
-        scheduling_butRemoveSchedule1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butRemoveSchedule1.setText("View Clash");
-        scheduling_butRemoveSchedule1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butRemoveSchedule1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butRemoveSchedule1ActionPerformed(evt);
-            }
-        });
-
-        scheduling_butCreateSchedule.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        scheduling_butCreateSchedule.setText("Create a Schedule");
-        scheduling_butCreateSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butCreateSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butCreateScheduleActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel8Layout.createSequentialGroup()
-                                    .addGap(11, 11, 11)
-                                    .addComponent(jLabel13)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(scheduling_butRemoveSchedule1))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                                    .addComponent(jLabel15)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(46, 46, 46)
-                                    .addComponent(jLabel26)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel25)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                                    .addComponent(scheduling_butRemoveSchedule)))
-                            .addGap(21, 21, 21)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                    .addComponent(scheduling_comboxWorkers, 0, 137, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(scheduling_butPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(scheduling_butMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane6)
-                                .addComponent(jLabel23)
-                                .addComponent(jLabel24)
-                                .addComponent(scheduling_butManageSchedule)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(scheduling_butCreateSchedule))
-                .addGap(0, 8, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(scheduling_butCreateSchedule)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel23)
-                    .addComponent(scheduling_butRemoveSchedule1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scheduling_butManageSchedule)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(scheduling_butRemoveSchedule)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel25)
-                    .addComponent(scheduling_comboxWorkers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scheduling_butPlus)
-                    .addComponent(scheduling_butMinus))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Scheduling", jPanel8);
-
         jButton13.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jButton13.setText("New Staff");
         jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1373,6 +993,397 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Staff", jPanel6);
+
+        jPanel8.setEnabled(false);
+
+        scheduling_scheduledJobsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"J0001", "Install New Fence", "James", "jk001abc1", "12 Jan 2018", "15 Jan 2018", "Yes"},
+                {"J0002", "Install Water Tank", "Simon", "sl001abc1", "15 Jan 2018", "17 Jan 2018", "Yes"},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Job Code", "Job Title", "Client Name", "Schedule Code", "Starting Date", "Finishing Date", "Clashing Dates"
+            }
+        ));
+        jScrollPane1.setViewportView(scheduling_scheduledJobsTable);
+
+        jLabel13.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel13.setText("Scheduled Jobs");
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        scheduling_jobsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(scheduling_jobsList);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        scheduling_dateSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"12 January 2018"}));
+        scheduling_dateSpinner.setEnabled(false);
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel2.setText("Date");
+
+        jLabel17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel17.setText("Time");
+
+        scheduling_timeSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"08:30 AM"}));
+        scheduling_timeSpinner.setEnabled(false);
+
+        jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel18.setText("Hours");
+
+        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(4, null, null, 1));
+        scheduling_hoursSpinner.setEnabled(false);
+
+        scheduling_datesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        scheduling_datesList.setEnabled(false);
+        jScrollPane5.setViewportView(scheduling_datesList);
+
+        scheduling_butAddDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butAddDate.setText("Add");
+        scheduling_butAddDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butAddDate.setEnabled(false);
+        scheduling_butAddDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butAddDateActionPerformed(evt);
+            }
+        });
+
+        scheduling_butRemoveDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butRemoveDate.setText("Remove");
+        scheduling_butRemoveDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butRemoveDate.setEnabled(false);
+        scheduling_butRemoveDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butRemoveDateActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel19.setText("Working Days");
+
+        jLabel20.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel20.setText("Working Hours");
+
+        jLabel21.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel21.setText("17");
+
+        jLabel22.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel22.setText("4");
+
+        scheduling_butAcceptSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butAcceptSchedule.setText("Accept");
+        scheduling_butAcceptSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butAcceptSchedule.setEnabled(false);
+        scheduling_butAcceptSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butAcceptScheduleActionPerformed(evt);
+            }
+        });
+
+        scheduling_butCancelSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butCancelSchedule.setText("Cancel");
+        scheduling_butCancelSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butCancelSchedule.setEnabled(false);
+        scheduling_butCancelSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butCancelScheduleActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(scheduling_butRemoveDate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(scheduling_butAddDate))
+                    .addComponent(scheduling_timeSpinner)
+                    .addComponent(scheduling_dateSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel22)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(scheduling_butCancelSchedule)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scheduling_butAcceptSchedule)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel22)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel21))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(scheduling_dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(scheduling_timeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17))
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel18)
+                                    .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(scheduling_butAddDate)
+                                    .addComponent(scheduling_butRemoveDate))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(scheduling_butAcceptSchedule)
+                                    .addComponent(scheduling_butCancelSchedule)))))
+                    .addComponent(jScrollPane5))
+                .addContainerGap())
+        );
+
+        jLabel35.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel35.setText("Selected Job:");
+
+        jLabel36.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel36.setText("(Job ID)");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel36))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jLabel15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel15.setText("Selected Job:");
+
+        jLabel16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel16.setText("(Job ID)");
+
+        scheduling_scheduledDatesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(scheduling_scheduledDatesList);
+
+        scheduling_butRemoveSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butRemoveSchedule.setText("Remove Schedule");
+        scheduling_butRemoveSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butRemoveSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butRemoveScheduleActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel23.setText("Scheduled Dates");
+
+        scheduling_workersList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Adam", "Thomas", "Steven", "Andrew" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane6.setViewportView(scheduling_workersList);
+
+        jLabel24.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel24.setText("Scheduled Workers");
+
+        scheduling_butManageSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butManageSchedule.setText("Manage Schedule");
+        scheduling_butManageSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butManageSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butManageScheduleActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel25.setText("(Schedule ID )");
+
+        jLabel26.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel26.setText("Selected Schedule:");
+
+        scheduling_butMinus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butMinus.setText("+");
+
+        scheduling_butPlus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butPlus.setText("-");
+
+        scheduling_comboxWorkers.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_comboxWorkers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
+
+        scheduling_butRemoveSchedule1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        scheduling_butRemoveSchedule1.setText("View Clash");
+        scheduling_butRemoveSchedule1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butRemoveSchedule1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butRemoveSchedule1ActionPerformed(evt);
+            }
+        });
+
+        scheduling_butCreateSchedule.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        scheduling_butCreateSchedule.setText("Create a Schedule");
+        scheduling_butCreateSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scheduling_butCreateSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduling_butCreateScheduleActionPerformed(evt);
+            }
+        });
+
+        jLabel39.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel39.setText("LOS MY UIT");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addGap(11, 11, 11)
+                                    .addComponent(jLabel13)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(scheduling_butRemoveSchedule1))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(jLabel26)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel25)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                                    .addComponent(scheduling_butRemoveSchedule)))
+                            .addGap(21, 21, 21)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                    .addComponent(scheduling_comboxWorkers, 0, 137, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(scheduling_butPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(scheduling_butMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane6)
+                                .addComponent(jLabel23)
+                                .addComponent(jLabel24)
+                                .addComponent(scheduling_butManageSchedule)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(scheduling_butCreateSchedule)
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 8, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(scheduling_butCreateSchedule)
+                    .addComponent(jLabel39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel23)
+                    .addComponent(scheduling_butRemoveSchedule1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scheduling_butManageSchedule)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(scheduling_butRemoveSchedule)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel25)
+                    .addComponent(scheduling_comboxWorkers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scheduling_butPlus)
+                    .addComponent(scheduling_butMinus))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Scheduling", jPanel8);
 
         jButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton1.setText("Close");
@@ -1656,6 +1667,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
