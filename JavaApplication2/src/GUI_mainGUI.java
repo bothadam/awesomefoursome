@@ -1,6 +1,7 @@
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 
@@ -36,108 +37,108 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        mainTabs = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        client_table_clients = new javax.swing.JTable();
         client_but_newClient = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        client_but_done = new javax.swing.JButton();
+        client_but_cancel = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        client_tf_ID = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        client_tf_address = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        client_but_insertAdr = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        jTextField7 = new javax.swing.JTextField();
+        client_tf_email = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        client_tf_nr = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        client_tf_fname = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        client_tf_lname = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel29 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
-        jTextField11 = new javax.swing.JTextField();
+        client_l_clientCode = new javax.swing.JLabel();
+        client_but_manageClient = new javax.swing.JButton();
+        client_tf_searchInput = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        client_li_jobs = new javax.swing.JList<>();
         jLabel14 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        client_but_manageJob = new javax.swing.JButton();
+        client_but_search = new javax.swing.JButton();
+        client_combo_searchVia = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
+        jobs_rb_all = new javax.swing.JRadioButton();
+        jobs_rb_open = new javax.swing.JRadioButton();
+        jobs_rb_QIP = new javax.swing.JRadioButton();
+        jobs_rb_QAcc = new javax.swing.JRadioButton();
+        jobs_rb_QRej = new javax.swing.JRadioButton();
+        jobs_rb_WIP = new javax.swing.JRadioButton();
+        jobs_rb_pPend = new javax.swing.JRadioButton();
+        jobs_rb_pRec = new javax.swing.JRadioButton();
+        jobs_rb_closed = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jobs_table_jobs = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jobs_tf_fname = new javax.swing.JTextField();
+        jobs_tf_lname = new javax.swing.JTextField();
+        jobs_tf_nr = new javax.swing.JTextField();
+        jobs_tf_email = new javax.swing.JTextField();
+        jobs_l_clientCode = new javax.swing.JLabel();
+        jobs_but_removeRecord = new javax.swing.JButton();
+        jobs_but_newJob = new javax.swing.JButton();
+        jobs_but_manageJob = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        staff_but_newStaff = new javax.swing.JButton();
+        staff_but_manageStaff = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        staff_table_staff = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jTextField12 = new javax.swing.JTextField();
+        staff_but_done = new javax.swing.JButton();
+        staff_but_cancel = new javax.swing.JButton();
+        staff_tf_ID = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        staff_tf_address = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        jButton17 = new javax.swing.JButton();
-        jTextField14 = new javax.swing.JTextField();
+        staff_but_insertAddress = new javax.swing.JButton();
+        staff_tf_email = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
+        staff_tf_skillsetInput = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
+        staff_tf_lname = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
+        staff_l_staffCode = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        staff_list_skillset = new javax.swing.JList<>();
         jLabel46 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
+        staff_tf_fname = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
+        staff_tf_nr = new javax.swing.JTextField();
+        staff_but_minus = new javax.swing.JButton();
+        staff_but_plus = new javax.swing.JButton();
         jLabel50 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        staff_spin_rate = new javax.swing.JSpinner();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        scheduling_scheduledJobsTable = new javax.swing.JTable();
+        schedule_table_shcedules = new javax.swing.JTable();
         jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        scheduling_jobsList = new javax.swing.JList<>();
+        schedule_list_openJobs = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
         scheduling_dateSpinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
@@ -146,48 +147,48 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         scheduling_hoursSpinner = new javax.swing.JSpinner();
         jScrollPane5 = new javax.swing.JScrollPane();
-        scheduling_datesList = new javax.swing.JList<>();
-        scheduling_butAddDate = new javax.swing.JButton();
-        scheduling_butRemoveDate = new javax.swing.JButton();
+        schedule_list_dates = new javax.swing.JList<>();
+        schedule_but_add = new javax.swing.JButton();
+        schedule_but_remove = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        scheduling_butAcceptSchedule = new javax.swing.JButton();
-        scheduling_butCancelSchedule = new javax.swing.JButton();
+        schedule_but_accept = new javax.swing.JButton();
+        schedule_but_cancel = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        schedule_l_jobID = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        scheduling_scheduledDatesList = new javax.swing.JList<>();
-        scheduling_butRemoveSchedule = new javax.swing.JButton();
+        schedule_list_scheduledDates = new javax.swing.JList<>();
+        schedule_but_removeSchedule = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        scheduling_workersList = new javax.swing.JList<>();
+        schedule_list_workers = new javax.swing.JList<>();
         jLabel24 = new javax.swing.JLabel();
-        scheduling_butManageSchedule = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
+        schedule_but_manageSchedule = new javax.swing.JButton();
+        schedule_l_scheduleCode = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        scheduling_butMinus = new javax.swing.JButton();
-        scheduling_butPlus = new javax.swing.JButton();
-        scheduling_comboxWorkers = new javax.swing.JComboBox<>();
-        scheduling_butRemoveSchedule1 = new javax.swing.JButton();
-        scheduling_butCreateSchedule = new javax.swing.JButton();
+        schedule_but_plus = new javax.swing.JButton();
+        schedule_but_minus = new javax.swing.JButton();
+        schedule_combo_selectWorker = new javax.swing.JComboBox<>();
+        schedule_but_viewClash = new javax.swing.JButton();
+        schedule_but_createSchedule = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        but_close = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        client_l_dateToday = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        client_l_user = new javax.swing.JLabel();
+        but_save = new javax.swing.JButton();
+        menuBar = new javax.swing.JMenuBar();
+        menu_file = new javax.swing.JMenu();
+        menu_file_save = new javax.swing.JMenuItem();
+        menu_file_close = new javax.swing.JMenuItem();
+        menu_user = new javax.swing.JMenu();
+        menu_user_login = new javax.swing.JMenuItem();
+        menu_user_logout = new javax.swing.JMenuItem();
 
         jMenu5.setText("File");
         jMenuBar2.add(jMenu5);
@@ -199,12 +200,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1200, 800));
 
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTabbedPane1.setToolTipText("");
-        jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jTabbedPane1.setName(""); // NOI18N
+        mainTabs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        mainTabs.setToolTipText("");
+        mainTabs.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        mainTabs.setName(""); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        client_table_clients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -215,7 +216,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane7.setViewportView(jTable2);
+        jScrollPane7.setViewportView(client_table_clients);
 
         client_but_newClient.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         client_but_newClient.setText("New Client");
@@ -228,44 +229,63 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton2.setText("Done");
+        client_but_done.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        client_but_done.setText("Done");
+        client_but_done.setEnabled(false);
+        client_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                client_but_doneActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton4.setText("Cancel");
+        client_but_cancel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        client_but_cancel.setText("Cancel");
+        client_but_cancel.setEnabled(false);
+        client_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                client_but_cancelActionPerformed(evt);
+            }
+        });
 
         jLabel30.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel30.setText("Mandatory To Accept Quote");
 
-        jTextField9.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_ID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_ID.setEnabled(false);
 
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel33.setText("ID");
 
-        jTextField10.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_address.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_address.setEnabled(false);
 
         jLabel34.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel34.setText("Billing Address");
 
-        jButton6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton6.setText("Insert Address");
+        client_but_insertAdr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_but_insertAdr.setText("Insert Address");
+        client_but_insertAdr.setEnabled(false);
 
-        jTextField7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_email.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_email.setEnabled(false);
 
         jLabel31.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel31.setText("Email Address");
 
-        jTextField8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_nr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_nr.setEnabled(false);
 
         jLabel32.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel32.setText("Contact No.");
 
-        jTextField5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_fname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_fname.setEnabled(false);
 
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel12.setText("First Name");
 
-        jTextField6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_lname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_lname.setEnabled(false);
 
         jLabel28.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel28.setText("Last Name");
@@ -276,8 +296,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel37.setText("Client Code:");
 
-        jLabel38.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel38.setText("(Code)");
+        client_l_clientCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_l_clientCode.setText("(Code)");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -290,16 +310,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(client_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel30)
                             .addComponent(jLabel34)
                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(client_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(client_but_insertAdr)
+                            .addComponent(client_tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -313,23 +333,23 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                             .addGroup(jPanel9Layout.createSequentialGroup()
                                                 .addComponent(jLabel37)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(client_l_clientCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel12)
-                                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(client_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jLabel28)
-                                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(client_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel9Layout.createSequentialGroup()
                                                 .addGap(36, 36, 36)
                                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel31)
-                                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(client_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                                 .addGap(100, 100, 100)
-                                                .addComponent(jButton4)
+                                                .addComponent(client_but_cancel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addComponent(client_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(16, 16, 16))
         );
@@ -345,11 +365,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(client_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(client_tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel29)
@@ -360,75 +380,75 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(client_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel28)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(client_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel32)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(client_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel31)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(client_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4)
+                            .addComponent(client_but_done)
+                            .addComponent(client_but_cancel)
                             .addComponent(jLabel37)
-                            .addComponent(jLabel38))
+                            .addComponent(client_l_clientCode))
                         .addContainerGap())
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
+                        .addComponent(client_but_insertAdr)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        jButton12.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jButton12.setText("Manage Client");
-        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        client_but_manageClient.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        client_but_manageClient.setText("Manage Client");
+        client_but_manageClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        client_but_manageClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                client_but_manageClientActionPerformed(evt);
             }
         });
 
-        jTextField11.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_searchInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        client_li_jobs.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane8.setViewportView(jList1);
+        jScrollPane8.setViewportView(client_li_jobs);
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel14.setText("Jobs");
 
-        jButton7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton7.setText("Manage Job");
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        client_but_manageJob.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_but_manageJob.setText("Manage Job");
+        client_but_manageJob.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        client_but_manageJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                client_but_manageJobActionPerformed(evt);
             }
         });
 
-        jButton8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton8.setText("Search");
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        client_but_search.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_but_search.setText("Search");
+        client_but_search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        client_but_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                client_but_searchActionPerformed(evt);
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Surname", "ID" }));
+        client_combo_searchVia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Surname", "ID" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -442,20 +462,20 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(client_but_newClient, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton12)
+                                .addComponent(client_but_manageClient)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(client_combo_searchVia, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(client_tf_searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton8))
+                                .addComponent(client_but_search))
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel14)
                                 .addGap(48, 48, 48)
-                                .addComponent(jButton7)
+                                .addComponent(client_but_manageJob)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -470,13 +490,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(client_but_newClient)
-                        .addComponent(jButton12))
-                    .addComponent(jButton7)
+                        .addComponent(client_but_manageClient))
+                    .addComponent(client_but_manageJob)
                     .addComponent(jLabel14)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton8)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(client_tf_searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(client_but_search)
+                        .addComponent(client_combo_searchVia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -486,48 +506,48 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
-        jTabbedPane1.addTab("Clients", jPanel2);
+        mainTabs.addTab("Clients", jPanel2);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("View");
 
-        viewButGroup.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton1.setText("All");
+        viewButGroup.add(jobs_rb_all);
+        jobs_rb_all.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_all.setText("All");
 
-        viewButGroup.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton4.setText("Open");
+        viewButGroup.add(jobs_rb_open);
+        jobs_rb_open.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_open.setText("Open");
 
-        viewButGroup.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton3.setText("Quote I.P.");
+        viewButGroup.add(jobs_rb_QIP);
+        jobs_rb_QIP.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_QIP.setText("Quote I.P.");
 
-        viewButGroup.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton2.setText("Quote Acc.");
+        viewButGroup.add(jobs_rb_QAcc);
+        jobs_rb_QAcc.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_QAcc.setText("Quote Acc.");
 
-        viewButGroup.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton5.setText("Quote Rej.");
+        viewButGroup.add(jobs_rb_QRej);
+        jobs_rb_QRej.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_QRej.setText("Quote Rej.");
 
-        viewButGroup.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton6.setText("Work I.P.");
+        viewButGroup.add(jobs_rb_WIP);
+        jobs_rb_WIP.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_WIP.setText("Work I.P.");
 
-        viewButGroup.add(jRadioButton7);
-        jRadioButton7.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton7.setText("P. Pending");
+        viewButGroup.add(jobs_rb_pPend);
+        jobs_rb_pPend.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_pPend.setText("P. Pending");
 
-        viewButGroup.add(jRadioButton8);
-        jRadioButton8.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton8.setText("P. Recieved");
+        viewButGroup.add(jobs_rb_pRec);
+        jobs_rb_pRec.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_pRec.setText("P. Recieved");
 
-        viewButGroup.add(jRadioButton9);
-        jRadioButton9.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jRadioButton9.setText("Closed");
+        viewButGroup.add(jobs_rb_closed);
+        jobs_rb_closed.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_rb_closed.setText("Closed");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -542,23 +562,23 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(jobs_rb_all)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jRadioButton4)
+                                .addComponent(jobs_rb_open)
                                 .addGap(30, 30, 30)
-                                .addComponent(jRadioButton3)
+                                .addComponent(jobs_rb_QIP)
                                 .addGap(30, 30, 30)
-                                .addComponent(jRadioButton2)
+                                .addComponent(jobs_rb_QAcc)
                                 .addGap(30, 30, 30)
-                                .addComponent(jRadioButton5)
+                                .addComponent(jobs_rb_QRej)
                                 .addGap(30, 30, 30)
-                                .addComponent(jRadioButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jobs_rb_WIP, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
-                                .addComponent(jRadioButton7)
+                                .addComponent(jobs_rb_pPend)
                                 .addGap(30, 30, 30)
-                                .addComponent(jRadioButton8)
+                                .addComponent(jobs_rb_pRec)
                                 .addGap(30, 30, 30)
-                                .addComponent(jRadioButton9))
+                                .addComponent(jobs_rb_closed))
                             .addComponent(jSeparator1))
                         .addContainerGap())))
         );
@@ -571,20 +591,20 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton8)
-                    .addComponent(jRadioButton9))
+                    .addComponent(jobs_rb_all)
+                    .addComponent(jobs_rb_open)
+                    .addComponent(jobs_rb_QIP)
+                    .addComponent(jobs_rb_QAcc)
+                    .addComponent(jobs_rb_QRej)
+                    .addComponent(jobs_rb_WIP)
+                    .addComponent(jobs_rb_pPend)
+                    .addComponent(jobs_rb_pRec)
+                    .addComponent(jobs_rb_closed))
                 .addContainerGap())
         );
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jobs_table_jobs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jobs_table_jobs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"J0001", "New Wooden Fence", "Active"},
                 {"J0002", "Repaint Wall Blue", "Quoted"},
@@ -595,17 +615,17 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 "Job ID", "Job Title", "Satus"
             }
         ));
-        jTable1.setFillsViewportHeight(true);
-        jTable1.setRowHeight(35);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jTable1.setShowVerticalLines(false);
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(100);
+        jobs_table_jobs.setFillsViewportHeight(true);
+        jobs_table_jobs.setRowHeight(35);
+        jobs_table_jobs.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jobs_table_jobs.setShowVerticalLines(false);
+        jScrollPane2.setViewportView(jobs_table_jobs);
+        if (jobs_table_jobs.getColumnModel().getColumnCount() > 0) {
+            jobs_table_jobs.getColumnModel().getColumn(0).setMinWidth(100);
+            jobs_table_jobs.getColumnModel().getColumn(0).setMaxWidth(100);
+            jobs_table_jobs.getColumnModel().getColumn(1).setResizable(false);
+            jobs_table_jobs.getColumnModel().getColumn(2).setMinWidth(100);
+            jobs_table_jobs.getColumnModel().getColumn(2).setMaxWidth(100);
         }
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -625,24 +645,24 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel11.setText("Last Name");
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField1.setText("James");
-        jTextField1.setEnabled(false);
+        jobs_tf_fname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jobs_tf_fname.setText("James");
+        jobs_tf_fname.setEnabled(false);
 
-        jTextField2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField2.setText("Kotze");
-        jTextField2.setEnabled(false);
+        jobs_tf_lname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jobs_tf_lname.setText("Kotze");
+        jobs_tf_lname.setEnabled(false);
 
-        jTextField3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField3.setText("0820718754");
-        jTextField3.setEnabled(false);
+        jobs_tf_nr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jobs_tf_nr.setText("0820718754");
+        jobs_tf_nr.setEnabled(false);
 
-        jTextField4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField4.setText("jamesMkotze@gmail.com");
-        jTextField4.setEnabled(false);
+        jobs_tf_email.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jobs_tf_email.setText("jamesMkotze@gmail.com");
+        jobs_tf_email.setEnabled(false);
 
-        jLabel27.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel27.setText("(ID Here)");
+        jobs_l_clientCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jobs_l_clientCode.setText("(client Code Here)");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -655,20 +675,20 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jobs_l_clientCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jobs_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jobs_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jobs_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jobs_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -682,37 +702,37 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jobs_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jobs_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jobs_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jobs_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel27))
+                    .addComponent(jobs_l_clientCode))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jButton3.setBackground(new java.awt.Color(230, 219, 219));
-        jButton3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton3.setText("Remove Record");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jobs_but_removeRecord.setBackground(new java.awt.Color(230, 219, 219));
+        jobs_but_removeRecord.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jobs_but_removeRecord.setText("Remove Record");
+        jobs_but_removeRecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton9.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jButton9.setText("New Job");
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jobs_but_newJob.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jobs_but_newJob.setText("New Job");
+        jobs_but_newJob.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jobs_but_newJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jobs_but_newJobActionPerformed(evt);
             }
         });
 
-        jButton10.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jButton10.setText("Manage Job");
-        jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jobs_but_manageJob.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jobs_but_manageJob.setText("Manage Job");
+        jobs_but_manageJob.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jobs_but_manageJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jobs_but_manageJobActionPerformed(evt);
             }
         });
 
@@ -724,11 +744,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jobs_but_newJob, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jobs_but_manageJob, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jobs_but_removeRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -739,9 +759,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton3)
-                    .addComponent(jButton10))
+                    .addComponent(jobs_but_newJob)
+                    .addComponent(jobs_but_removeRecord)
+                    .addComponent(jobs_but_manageJob))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -751,27 +771,27 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Jobs", jPanel1);
+        mainTabs.addTab("Jobs", jPanel1);
 
-        jButton13.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jButton13.setText("New Staff");
-        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        staff_but_newStaff.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        staff_but_newStaff.setText("New Staff");
+        staff_but_newStaff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        staff_but_newStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                staff_but_newStaffActionPerformed(evt);
             }
         });
 
-        jButton14.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jButton14.setText("Manage Staff");
-        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        staff_but_manageStaff.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        staff_but_manageStaff.setText("Manage Staff");
+        staff_but_manageStaff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        staff_but_manageStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                staff_but_manageStaffActionPerformed(evt);
             }
         });
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        staff_table_staff.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -782,40 +802,50 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane9.setViewportView(jTable3);
+        jScrollPane9.setViewportView(staff_table_staff);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton15.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton15.setText("Done");
+        staff_but_done.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        staff_but_done.setText("Done");
+        staff_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staff_but_doneActionPerformed(evt);
+            }
+        });
 
-        jButton16.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton16.setText("Cancel");
+        staff_but_cancel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        staff_but_cancel.setText("Cancel");
+        staff_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staff_but_cancelActionPerformed(evt);
+            }
+        });
 
-        jTextField12.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_tf_ID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jLabel40.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel40.setText("ID");
 
-        jTextField13.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_tf_address.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jLabel41.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel41.setText("Billing Address");
 
-        jButton17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton17.setText("Insert Address");
+        staff_but_insertAddress.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_but_insertAddress.setText("Insert Address");
 
-        jTextField14.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_tf_email.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jLabel42.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel42.setText("Email Address");
 
-        jTextField16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_tf_skillsetInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jLabel44.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel44.setText("First Name");
 
-        jTextField17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_tf_lname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jLabel45.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel45.setText("Last Name");
@@ -823,31 +853,36 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel47.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel47.setText("Staff Code:");
 
-        jLabel48.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel48.setText("(Code)");
+        staff_l_staffCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_l_staffCode.setText("(Code)");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        staff_list_skillset.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane10.setViewportView(jList2);
+        jScrollPane10.setViewportView(staff_list_skillset);
 
         jLabel46.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel46.setText("Skillset");
 
-        jTextField19.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_tf_fname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jLabel49.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel49.setText("Contact No.");
 
-        jTextField20.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        staff_tf_nr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jButton18.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton18.setText("-");
+        staff_but_minus.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        staff_but_minus.setText("-");
 
-        jButton19.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton19.setText("+");
+        staff_but_plus.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        staff_but_plus.setText("+");
+        staff_but_plus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staff_but_plusActionPerformed(evt);
+            }
+        });
 
         jLabel50.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel50.setText("Rate:");
@@ -863,14 +898,14 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel46)
                             .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                            .addComponent(jTextField16))
+                            .addComponent(staff_tf_skillsetInput))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(staff_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel44)
-                                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(staff_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel10Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel49)))
@@ -878,35 +913,35 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel50)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(staff_spin_rate, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(128, 128, 128)))
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(staff_l_staffCode, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10))
                             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(staff_tf_lname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel45)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(staff_tf_email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel42))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel41)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staff_tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton17, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(staff_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staff_but_insertAddress, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(staff_but_minus, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton19)
+                        .addComponent(staff_but_plus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton16)
+                        .addComponent(staff_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(staff_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -922,9 +957,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(staff_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staff_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staff_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
@@ -933,33 +968,33 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel49))
                                 .addGap(28, 28, 28))
                             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(staff_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(staff_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel41)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addComponent(staff_tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(staff_but_insertAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton15)
-                            .addComponent(jButton16))
+                            .addComponent(staff_but_done)
+                            .addComponent(staff_but_cancel))
                         .addContainerGap())
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staff_tf_skillsetInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel50)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(staff_spin_rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel47)
-                            .addComponent(jLabel48))
+                            .addComponent(staff_l_staffCode))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton19)
-                            .addComponent(jButton18))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(staff_but_plus)
+                            .addComponent(staff_but_minus))
+                        .addGap(0, 22, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -971,9 +1006,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane9)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(staff_but_newStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(staff_but_manageStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -983,8 +1018,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14))
+                    .addComponent(staff_but_newStaff)
+                    .addComponent(staff_but_manageStaff))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -992,11 +1027,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Staff", jPanel6);
+        mainTabs.addTab("Staff", jPanel6);
 
         jPanel8.setEnabled(false);
 
-        scheduling_scheduledJobsTable.setModel(new javax.swing.table.DefaultTableModel(
+        schedule_table_shcedules.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"J0001", "Install New Fence", "James", "jk001abc1", "12 Jan 2018", "15 Jan 2018", "Yes"},
                 {"J0002", "Install Water Tank", "Simon", "sl001abc1", "15 Jan 2018", "17 Jan 2018", "Yes"},
@@ -1007,19 +1042,19 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 "Job Code", "Job Title", "Client Name", "Schedule Code", "Starting Date", "Finishing Date", "Clashing Dates"
             }
         ));
-        jScrollPane1.setViewportView(scheduling_scheduledJobsTable);
+        jScrollPane1.setViewportView(schedule_table_shcedules);
 
         jLabel13.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel13.setText("Scheduled Jobs");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        scheduling_jobsList.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(scheduling_jobsList);
+        jScrollPane3.setViewportView(schedule_list_openJobs);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1041,31 +1076,31 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(4, null, null, 1));
         scheduling_hoursSpinner.setEnabled(false);
 
-        scheduling_datesList.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_dates.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        scheduling_datesList.setEnabled(false);
-        jScrollPane5.setViewportView(scheduling_datesList);
+        schedule_list_dates.setEnabled(false);
+        jScrollPane5.setViewportView(schedule_list_dates);
 
-        scheduling_butAddDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butAddDate.setText("Add");
-        scheduling_butAddDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butAddDate.setEnabled(false);
-        scheduling_butAddDate.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_add.setText("Add");
+        schedule_but_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_add.setEnabled(false);
+        schedule_but_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butAddDateActionPerformed(evt);
+                schedule_but_addActionPerformed(evt);
             }
         });
 
-        scheduling_butRemoveDate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butRemoveDate.setText("Remove");
-        scheduling_butRemoveDate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butRemoveDate.setEnabled(false);
-        scheduling_butRemoveDate.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_remove.setText("Remove");
+        schedule_but_remove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_remove.setEnabled(false);
+        schedule_but_remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butRemoveDateActionPerformed(evt);
+                schedule_but_removeActionPerformed(evt);
             }
         });
 
@@ -1081,23 +1116,23 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel22.setText("4");
 
-        scheduling_butAcceptSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butAcceptSchedule.setText("Accept");
-        scheduling_butAcceptSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butAcceptSchedule.setEnabled(false);
-        scheduling_butAcceptSchedule.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_accept.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_accept.setText("Accept");
+        schedule_but_accept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_accept.setEnabled(false);
+        schedule_but_accept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butAcceptScheduleActionPerformed(evt);
+                schedule_but_acceptActionPerformed(evt);
             }
         });
 
-        scheduling_butCancelSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butCancelSchedule.setText("Cancel");
-        scheduling_butCancelSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butCancelSchedule.setEnabled(false);
-        scheduling_butCancelSchedule.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_cancel.setText("Cancel");
+        schedule_but_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_cancel.setEnabled(false);
+        schedule_but_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butCancelScheduleActionPerformed(evt);
+                schedule_but_cancelActionPerformed(evt);
             }
         });
 
@@ -1114,9 +1149,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(scheduling_butRemoveDate)
+                        .addComponent(schedule_but_remove)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(scheduling_butAddDate))
+                        .addComponent(schedule_but_add))
                     .addComponent(scheduling_timeSpinner)
                     .addComponent(scheduling_dateSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                     .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1132,9 +1167,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addComponent(jLabel22)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(scheduling_butCancelSchedule)
+                        .addComponent(schedule_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scheduling_butAcceptSchedule)))
+                        .addComponent(schedule_but_accept)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1166,16 +1201,17 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel18)
                                     .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_butAddDate)
-                                    .addComponent(scheduling_butRemoveDate))
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_butAcceptSchedule)
-                                    .addComponent(scheduling_butCancelSchedule)))))
+                                    .addComponent(schedule_but_accept)
+                                    .addComponent(schedule_but_cancel)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(schedule_but_remove)
+                                    .addComponent(schedule_but_add))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jScrollPane5))
                 .addContainerGap())
         );
@@ -1222,77 +1258,77 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel15.setText("Selected Job:");
 
-        jLabel16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel16.setText("(Job ID)");
+        schedule_l_jobID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_l_jobID.setText("(Job ID)");
 
-        scheduling_scheduledDatesList.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane4.setViewportView(scheduling_scheduledDatesList);
+        jScrollPane4.setViewportView(schedule_list_scheduledDates);
 
-        scheduling_butRemoveSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butRemoveSchedule.setText("Remove Schedule");
-        scheduling_butRemoveSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butRemoveSchedule.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_removeSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_removeSchedule.setText("Remove Schedule");
+        schedule_but_removeSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_removeSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butRemoveScheduleActionPerformed(evt);
+                schedule_but_removeScheduleActionPerformed(evt);
             }
         });
 
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel23.setText("Scheduled Dates");
 
-        scheduling_workersList.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_workers.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Adam", "Thomas", "Steven", "Andrew" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane6.setViewportView(scheduling_workersList);
+        jScrollPane6.setViewportView(schedule_list_workers);
 
         jLabel24.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel24.setText("Scheduled Workers");
 
-        scheduling_butManageSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butManageSchedule.setText("Manage Schedule");
-        scheduling_butManageSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butManageSchedule.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_manageSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_manageSchedule.setText("Manage Schedule");
+        schedule_but_manageSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_manageSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butManageScheduleActionPerformed(evt);
+                schedule_but_manageScheduleActionPerformed(evt);
             }
         });
 
-        jLabel25.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel25.setText("(Schedule ID )");
+        schedule_l_scheduleCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_l_scheduleCode.setText("(Schedule ID )");
 
         jLabel26.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel26.setText("Selected Schedule:");
 
-        scheduling_butMinus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butMinus.setText("+");
+        schedule_but_plus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_plus.setText("+");
 
-        scheduling_butPlus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butPlus.setText("-");
+        schedule_but_minus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_minus.setText("-");
 
-        scheduling_comboxWorkers.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_comboxWorkers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
+        schedule_combo_selectWorker.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
 
-        scheduling_butRemoveSchedule1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        scheduling_butRemoveSchedule1.setText("View Clash");
-        scheduling_butRemoveSchedule1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butRemoveSchedule1.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_viewClash.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        schedule_but_viewClash.setText("View Clash");
+        schedule_but_viewClash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_viewClash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butRemoveSchedule1ActionPerformed(evt);
+                schedule_but_viewClashActionPerformed(evt);
             }
         });
 
-        scheduling_butCreateSchedule.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        scheduling_butCreateSchedule.setText("Create a Schedule");
-        scheduling_butCreateSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        scheduling_butCreateSchedule.addActionListener(new java.awt.event.ActionListener() {
+        schedule_but_createSchedule.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        schedule_but_createSchedule.setText("Create a Schedule");
+        schedule_but_createSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        schedule_but_createSchedule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scheduling_butCreateScheduleActionPerformed(evt);
+                schedule_but_createScheduleActionPerformed(evt);
             }
         });
 
@@ -1314,33 +1350,33 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                     .addGap(11, 11, 11)
                                     .addComponent(jLabel13)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(scheduling_butRemoveSchedule1))
+                                    .addComponent(schedule_but_viewClash))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
                                     .addComponent(jLabel15)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(schedule_l_jobID, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(46, 46, 46)
                                     .addComponent(jLabel26)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel25)
+                                    .addComponent(schedule_l_scheduleCode)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                                    .addComponent(scheduling_butRemoveSchedule)))
+                                    .addComponent(schedule_but_removeSchedule)))
                             .addGap(21, 21, 21)
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                    .addComponent(scheduling_comboxWorkers, 0, 137, Short.MAX_VALUE)
+                                    .addComponent(schedule_combo_selectWorker, 0, 137, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(scheduling_butPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(schedule_but_minus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(scheduling_butMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(schedule_but_plus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane6)
                                 .addComponent(jLabel23)
                                 .addComponent(jLabel24)
-                                .addComponent(scheduling_butManageSchedule)
+                                .addComponent(schedule_but_manageSchedule)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(scheduling_butCreateSchedule)
+                        .addComponent(schedule_but_createSchedule)
                         .addGap(185, 185, 185)
                         .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 8, Short.MAX_VALUE))
@@ -1350,7 +1386,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(scheduling_butCreateSchedule)
+                    .addComponent(schedule_but_createSchedule)
                     .addComponent(jLabel39))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1358,13 +1394,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel23)
-                    .addComponent(scheduling_butRemoveSchedule1))
+                    .addComponent(schedule_but_viewClash))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scheduling_butManageSchedule)
+                        .addComponent(schedule_but_manageSchedule)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1373,91 +1409,101 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(scheduling_butRemoveSchedule)
+                    .addComponent(schedule_l_jobID)
+                    .addComponent(schedule_but_removeSchedule)
                     .addComponent(jLabel26)
-                    .addComponent(jLabel25)
-                    .addComponent(scheduling_comboxWorkers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scheduling_butPlus)
-                    .addComponent(scheduling_butMinus))
+                    .addComponent(schedule_l_scheduleCode)
+                    .addComponent(schedule_combo_selectWorker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(schedule_but_minus)
+                    .addComponent(schedule_but_plus))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Scheduling", jPanel8);
+        mainTabs.addTab("Scheduling", jPanel8);
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton1.setText("Close");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        but_close.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        but_close.setText("Close");
+        but_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        but_close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                but_closeActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel3.setText("Date");
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel4.setText("(Display Date)");
+        client_l_dateToday.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        client_l_dateToday.setText("(Display Date)");
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel5.setText("User");
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel6.setText("(Display User)");
+        client_l_user.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        client_l_user.setText("(Display User)");
 
-        jButton5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton5.setText("Save");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        but_save.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        but_save.setText("Save");
+        but_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        but_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                but_saveActionPerformed(evt);
             }
         });
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        menuBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jMenu7.setText("File");
+        menu_file.setText("File");
 
-        jMenuItem7.setText("Save");
-        jMenu7.add(jMenuItem7);
+        menu_file_save.setText("Save");
+        menu_file_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_file_saveActionPerformed(evt);
+            }
+        });
+        menu_file.add(menu_file_save);
 
-        jMenuItem6.setText("Close");
-        jMenu7.add(jMenuItem6);
+        menu_file_close.setText("Close");
+        menu_file_close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_file_closeActionPerformed(evt);
+            }
+        });
+        menu_file.add(menu_file_close);
 
-        jMenuBar1.add(jMenu7);
+        menuBar.add(menu_file);
 
-        jMenu1.setText("User");
-        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        menu_user.setText("User");
+        menu_user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jMenuItem1.setText("Login");
-        jMenu1.add(jMenuItem1);
+        menu_user_login.setText("Login");
+        menu_user.add(menu_user_login);
 
-        jMenuItem2.setText("Logout");
-        jMenu1.add(jMenuItem2);
+        menu_user_logout.setText("Logout");
+        menu_user.add(menu_user_logout);
 
-        jMenuBar1.add(jMenu1);
+        menuBar.add(menu_user);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(mainTabs)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(client_l_dateToday)
                 .addGap(123, 123, 123)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
+                .addComponent(client_l_user)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but_save, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(but_close, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1466,117 +1512,256 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4)
+                    .addComponent(client_l_dateToday)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jButton1)
-                    .addComponent(jButton5))
+                    .addComponent(client_l_user)
+                    .addComponent(but_close)
+                    .addComponent(but_save))
                 .addGap(21, 21, 21)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(mainTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 759, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void initComponentsCustom() {
-
+        disablePanels();
     }
 
     //methods
-    private void enableSchedulePanel(boolean a) {
-        scheduling_butAddDate.setEnabled(a);
-        scheduling_butRemoveDate.setEnabled(a);
-        scheduling_butAcceptSchedule.setEnabled(a);
-        scheduling_butCancelSchedule.setEnabled(a);
+    private boolean isValidString(String a){
+        //do test to see if string is valid
+        
+        return true;
+    }
+    
+    private void doSave(){
+        //after save.. display message
+        JOptionPane.showMessageDialog(rootPane, "Work Saved");
+    }
+    
+    private void doClose(){
+        System.exit(0);
+    }
+    
+    private void disablePanels(){
+        enablePanel_Schedule(false);
+        enablePanel_Client(false);
+        enablePanel_Staff(false);
+        mainTabs.setEnabledAt(3, false);
+    }
+    
+    private void enablePanel_Schedule(boolean a) {
+        schedule_but_add.setEnabled(a);
+        schedule_but_remove.setEnabled(a);
+        schedule_but_accept.setEnabled(a);
+        schedule_but_cancel.setEnabled(a);
         scheduling_dateSpinner.setEnabled(a);
         scheduling_timeSpinner.setEnabled(a);
         scheduling_hoursSpinner.setEnabled(a);
-        scheduling_datesList.setEnabled(a);
+        schedule_list_dates.setEnabled(a);
 
-        scheduling_comboxWorkers.setEnabled(!a);
-        scheduling_butPlus.setEnabled(!a);
-        scheduling_butMinus.setEnabled(!a);
-        scheduling_butManageSchedule.setEnabled(!a);
-        scheduling_butRemoveSchedule.setEnabled(!a);
-        scheduling_jobsList.setEnabled(!a);
-        scheduling_scheduledDatesList.setEnabled(!a);
-        scheduling_workersList.setEnabled(!a);
-        scheduling_butCreateSchedule.setEnabled(!a);
-        scheduling_scheduledJobsTable.setEnabled(!a);
+        schedule_combo_selectWorker.setEnabled(!a);
+        schedule_but_minus.setEnabled(!a);
+        schedule_but_plus.setEnabled(!a);
+        schedule_but_manageSchedule.setEnabled(!a);
+        schedule_but_removeSchedule.setEnabled(!a);
+        schedule_list_openJobs.setEnabled(!a);
+        schedule_list_scheduledDates.setEnabled(!a);
+        schedule_list_workers.setEnabled(!a);
+        schedule_but_createSchedule.setEnabled(!a);
+        schedule_table_shcedules.setEnabled(!a);
     }
 
+    private void enablePanel_Client(boolean a){
+        client_but_cancel.setEnabled(a);
+        client_but_done.setEnabled(a);
+        client_but_insertAdr.setEnabled(a);
+        client_tf_ID.setEnabled(a);
+        client_tf_address.setEnabled(a);
+        client_tf_email.setEnabled(a);
+        client_tf_fname.setEnabled(a);
+        client_tf_lname.setEnabled(a);
+        client_tf_nr.setEnabled(a);
+        
+        client_but_manageClient.setEnabled(!a);
+        client_but_manageJob.setEnabled(!a);
+        client_but_newClient.setEnabled(!a);
+        client_but_search.setEnabled(!a);
+        client_combo_searchVia.setEnabled(!a);
+        client_tf_searchInput.setEnabled(!a);
+        client_li_jobs.setEnabled(!a);
+        client_table_clients.setEnabled(!a);
+        
+        but_save.setEnabled(!a);
+        but_close.setEnabled(!a);
+        mainTabs.setEnabledAt(0, !a);
+        mainTabs.setEnabledAt(1, !a);
+        mainTabs.setEnabledAt(2, !a);
+        menu_file.setEnabled(!a);
+        menu_user.setEnabled(!a);
+    }
+    
+    private void enablePanel_Staff(boolean a){
+        staff_but_insertAddress.setEnabled(a);
+        staff_but_minus.setEnabled(a);
+        staff_but_plus.setEnabled(a);
+        staff_but_cancel.setEnabled(a);
+        staff_but_done.setEnabled(a);
+        staff_list_skillset.setEnabled(a);
+        staff_spin_rate.setEnabled(a);
+        staff_tf_ID.setEnabled(a);
+        staff_tf_address.setEnabled(a);
+        staff_tf_email.setEnabled(a);
+        staff_tf_fname.setEnabled(a);
+        staff_tf_lname.setEnabled(a);
+        staff_tf_nr.setEnabled(a);
+        staff_tf_skillsetInput.setEnabled(a);
+        
+        staff_but_manageStaff.setEnabled(!a);
+        staff_but_newStaff.setEnabled(!a);
+        staff_table_staff.setEnabled(!a);
+        
+        but_save.setEnabled(!a);
+        but_close.setEnabled(!a);
+        mainTabs.setEnabledAt(0, !a);
+        mainTabs.setEnabledAt(1, !a);
+        mainTabs.setEnabledAt(2, !a);
+        menu_file.setEnabled(!a);
+        menu_user.setEnabled(!a);
+    }
+    
+    private void clearPanel_Staff(){
+        staff_tf_ID.setText("");
+        staff_tf_address.setText("");
+        staff_tf_email.setText("");
+        staff_tf_fname.setText("");
+        staff_tf_lname.setText("");
+        staff_tf_nr.setText("");
+        staff_tf_skillsetInput.setText("");
+        staff_list_skillset.removeAll();
+        staff_spin_rate.setValue(0);
+    }
+    
+    private void clearPanel_Client(){
+        client_tf_ID.setText("");
+        client_tf_address.setText("");
+        client_tf_email.setText("");
+        client_tf_fname.setText("");
+        client_tf_lname.setText("");
+        client_tf_nr.setText("");
+    }
+    
     //action performed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
+        doClose();
+    }//GEN-LAST:event_but_closeActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
+    }//GEN-LAST:event_jobs_but_newJobActionPerformed
 
-    private void scheduling_butAddDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butAddDateActionPerformed
+    private void schedule_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_addActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_scheduling_butAddDateActionPerformed
+    }//GEN-LAST:event_schedule_but_addActionPerformed
 
-    private void scheduling_butRemoveDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butRemoveDateActionPerformed
+    private void schedule_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_removeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_scheduling_butRemoveDateActionPerformed
+    }//GEN-LAST:event_schedule_but_removeActionPerformed
 
-    private void scheduling_butAcceptScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butAcceptScheduleActionPerformed
-        enableSchedulePanel(false);
-    }//GEN-LAST:event_scheduling_butAcceptScheduleActionPerformed
+    private void schedule_but_acceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_acceptActionPerformed
+        enablePanel_Schedule(false);
+    }//GEN-LAST:event_schedule_but_acceptActionPerformed
 
-    private void scheduling_butCancelScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butCancelScheduleActionPerformed
-        enableSchedulePanel(false);
-    }//GEN-LAST:event_scheduling_butCancelScheduleActionPerformed
+    private void schedule_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_cancelActionPerformed
+        enablePanel_Schedule(false);
+    }//GEN-LAST:event_schedule_but_cancelActionPerformed
 
-    private void scheduling_butRemoveScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butRemoveScheduleActionPerformed
+    private void schedule_but_removeScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_removeScheduleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_scheduling_butRemoveScheduleActionPerformed
+    }//GEN-LAST:event_schedule_but_removeScheduleActionPerformed
 
-    private void scheduling_butManageScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butManageScheduleActionPerformed
+    private void schedule_but_manageScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_manageScheduleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_scheduling_butManageScheduleActionPerformed
+    }//GEN-LAST:event_schedule_but_manageScheduleActionPerformed
 
-    private void scheduling_butRemoveSchedule1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butRemoveSchedule1ActionPerformed
+    private void schedule_but_viewClashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_viewClashActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_scheduling_butRemoveSchedule1ActionPerformed
+    }//GEN-LAST:event_schedule_but_viewClashActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jobs_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_manageJobActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
-        // TODO add your handling code here:
+        enablePanel_Client(true);
     }//GEN-LAST:event_client_but_newClientActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void but_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_saveActionPerformed
+        doSave();
+    }//GEN-LAST:event_but_saveActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    private void client_but_manageClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageClientActionPerformed
+        enablePanel_Client(true);
+    }//GEN-LAST:event_client_but_manageClientActionPerformed
 
-    private void scheduling_butCreateScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduling_butCreateScheduleActionPerformed
-        enableSchedulePanel(true);
-    }//GEN-LAST:event_scheduling_butCreateScheduleActionPerformed
+    private void schedule_but_createScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_createScheduleActionPerformed
+        enablePanel_Schedule(true);
+    }//GEN-LAST:event_schedule_but_createScheduleActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void client_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageJobActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_client_but_manageJobActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void client_but_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_searchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_client_but_searchActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void staff_but_newStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_newStaffActionPerformed
+        enablePanel_Staff(true);
+    }//GEN-LAST:event_staff_but_newStaffActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    private void staff_but_manageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_manageStaffActionPerformed
+        enablePanel_Staff(true);
+    }//GEN-LAST:event_staff_but_manageStaffActionPerformed
+
+    private void client_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_cancelActionPerformed
+        enablePanel_Client(false);
+        clearPanel_Client();
+    }//GEN-LAST:event_client_but_cancelActionPerformed
+
+    private void client_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_doneActionPerformed
+        enablePanel_Client(false);
+        clearPanel_Client();
+    }//GEN-LAST:event_client_but_doneActionPerformed
+
+    private void menu_file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_file_saveActionPerformed
+        doSave();
+    }//GEN-LAST:event_menu_file_saveActionPerformed
+
+    private void menu_file_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_file_closeActionPerformed
+        doClose();
+    }//GEN-LAST:event_menu_file_closeActionPerformed
+
+    private void staff_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_cancelActionPerformed
+        enablePanel_Staff(false);
+        clearPanel_Staff();
+    }//GEN-LAST:event_staff_but_cancelActionPerformed
+
+    private void staff_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_doneActionPerformed
+        enablePanel_Staff(false);
+        clearPanel_Staff();
+    }//GEN-LAST:event_staff_but_doneActionPerformed
+
+    private void staff_but_plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_plusActionPerformed
+        try {
+            String input = staff_tf_skillsetInput.getText();
+            if (isValidString(input)) {
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_staff_but_plusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1615,26 +1800,28 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton but_close;
+    private javax.swing.JButton but_save;
+    private javax.swing.JButton client_but_cancel;
+    private javax.swing.JButton client_but_done;
+    private javax.swing.JButton client_but_insertAdr;
+    private javax.swing.JButton client_but_manageClient;
+    private javax.swing.JButton client_but_manageJob;
     private javax.swing.JButton client_but_newClient;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton client_but_search;
+    private javax.swing.JComboBox<String> client_combo_searchVia;
+    private javax.swing.JLabel client_l_clientCode;
+    private javax.swing.JLabel client_l_dateToday;
+    private javax.swing.JLabel client_l_user;
+    private javax.swing.JList<String> client_li_jobs;
+    private javax.swing.JTable client_table_clients;
+    private javax.swing.JTextField client_tf_ID;
+    private javax.swing.JTextField client_tf_address;
+    private javax.swing.JTextField client_tf_email;
+    private javax.swing.JTextField client_tf_fname;
+    private javax.swing.JTextField client_tf_lname;
+    private javax.swing.JTextField client_tf_nr;
+    private javax.swing.JTextField client_tf_searchInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1642,7 +1829,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -1652,9 +1838,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -1666,9 +1850,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -1676,26 +1858,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -1706,15 +1877,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1728,48 +1890,71 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JButton scheduling_butAcceptSchedule;
-    private javax.swing.JButton scheduling_butAddDate;
-    private javax.swing.JButton scheduling_butCancelSchedule;
-    private javax.swing.JButton scheduling_butCreateSchedule;
-    private javax.swing.JButton scheduling_butManageSchedule;
-    private javax.swing.JButton scheduling_butMinus;
-    private javax.swing.JButton scheduling_butPlus;
-    private javax.swing.JButton scheduling_butRemoveDate;
-    private javax.swing.JButton scheduling_butRemoveSchedule;
-    private javax.swing.JButton scheduling_butRemoveSchedule1;
-    private javax.swing.JComboBox<String> scheduling_comboxWorkers;
+    private javax.swing.JButton jobs_but_manageJob;
+    private javax.swing.JButton jobs_but_newJob;
+    private javax.swing.JButton jobs_but_removeRecord;
+    private javax.swing.JLabel jobs_l_clientCode;
+    private javax.swing.JRadioButton jobs_rb_QAcc;
+    private javax.swing.JRadioButton jobs_rb_QIP;
+    private javax.swing.JRadioButton jobs_rb_QRej;
+    private javax.swing.JRadioButton jobs_rb_WIP;
+    private javax.swing.JRadioButton jobs_rb_all;
+    private javax.swing.JRadioButton jobs_rb_closed;
+    private javax.swing.JRadioButton jobs_rb_open;
+    private javax.swing.JRadioButton jobs_rb_pPend;
+    private javax.swing.JRadioButton jobs_rb_pRec;
+    private javax.swing.JTable jobs_table_jobs;
+    private javax.swing.JTextField jobs_tf_email;
+    private javax.swing.JTextField jobs_tf_fname;
+    private javax.swing.JTextField jobs_tf_lname;
+    private javax.swing.JTextField jobs_tf_nr;
+    private javax.swing.JTabbedPane mainTabs;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menu_file;
+    private javax.swing.JMenuItem menu_file_close;
+    private javax.swing.JMenuItem menu_file_save;
+    private javax.swing.JMenu menu_user;
+    private javax.swing.JMenuItem menu_user_login;
+    private javax.swing.JMenuItem menu_user_logout;
+    private javax.swing.JButton schedule_but_accept;
+    private javax.swing.JButton schedule_but_add;
+    private javax.swing.JButton schedule_but_cancel;
+    private javax.swing.JButton schedule_but_createSchedule;
+    private javax.swing.JButton schedule_but_manageSchedule;
+    private javax.swing.JButton schedule_but_minus;
+    private javax.swing.JButton schedule_but_plus;
+    private javax.swing.JButton schedule_but_remove;
+    private javax.swing.JButton schedule_but_removeSchedule;
+    private javax.swing.JButton schedule_but_viewClash;
+    private javax.swing.JComboBox<String> schedule_combo_selectWorker;
+    private javax.swing.JLabel schedule_l_jobID;
+    private javax.swing.JLabel schedule_l_scheduleCode;
+    private javax.swing.JList<String> schedule_list_dates;
+    private javax.swing.JList<String> schedule_list_openJobs;
+    private javax.swing.JList<String> schedule_list_scheduledDates;
+    private javax.swing.JList<String> schedule_list_workers;
+    private javax.swing.JTable schedule_table_shcedules;
     private javax.swing.JSpinner scheduling_dateSpinner;
-    private javax.swing.JList<String> scheduling_datesList;
     private javax.swing.JSpinner scheduling_hoursSpinner;
-    private javax.swing.JList<String> scheduling_jobsList;
-    private javax.swing.JList<String> scheduling_scheduledDatesList;
-    private javax.swing.JTable scheduling_scheduledJobsTable;
     private javax.swing.JSpinner scheduling_timeSpinner;
-    private javax.swing.JList<String> scheduling_workersList;
+    private javax.swing.JButton staff_but_cancel;
+    private javax.swing.JButton staff_but_done;
+    private javax.swing.JButton staff_but_insertAddress;
+    private javax.swing.JButton staff_but_manageStaff;
+    private javax.swing.JButton staff_but_minus;
+    private javax.swing.JButton staff_but_newStaff;
+    private javax.swing.JButton staff_but_plus;
+    private javax.swing.JLabel staff_l_staffCode;
+    private javax.swing.JList<String> staff_list_skillset;
+    private javax.swing.JSpinner staff_spin_rate;
+    private javax.swing.JTable staff_table_staff;
+    private javax.swing.JTextField staff_tf_ID;
+    private javax.swing.JTextField staff_tf_address;
+    private javax.swing.JTextField staff_tf_email;
+    private javax.swing.JTextField staff_tf_fname;
+    private javax.swing.JTextField staff_tf_lname;
+    private javax.swing.JTextField staff_tf_nr;
+    private javax.swing.JTextField staff_tf_skillsetInput;
     private javax.swing.ButtonGroup viewButGroup;
     // End of variables declaration//GEN-END:variables
 
