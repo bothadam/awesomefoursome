@@ -1,7 +1,6 @@
 
 import javax.swing.JOptionPane;
 
-
 public class GUI_jobStates extends javax.swing.JFrame {
 
     public GUI_jobStates() {
@@ -33,8 +32,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_spin_date = new javax.swing.JSpinner();
         jLabel19 = new javax.swing.JLabel();
         job_but_done = new javax.swing.JButton();
+        job_but_cancel = new javax.swing.JButton();
         job_but_createJob = new javax.swing.JButton();
-        butCreateJob1 = new javax.swing.JButton();
+        job_but_createQuote = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         job_tf_fname = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -316,18 +316,15 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel12.setText("Job Title");
 
         job_tf_title.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        job_tf_title.setText("Install Wood Fence");
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel5.setText("Job Specification");
 
         job_ta_specification.setColumns(20);
         job_ta_specification.setRows(5);
-        job_ta_specification.setText("Install a new small wooden fence\nAproximately 12m x 10m");
         jScrollPane3.setViewportView(job_ta_specification);
 
         job_tf_siteLocation.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        job_tf_siteLocation.setText("12 mountainview crescent Durbanville");
         job_tf_siteLocation.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -349,6 +346,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
+        job_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_but_cancel.setText("Cancel");
+        job_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                job_but_cancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -362,6 +367,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(job_but_insertAdr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(job_but_cancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(job_but_done))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,7 +405,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(job_tf_siteLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(job_but_insertAdr)
-                    .addComponent(job_but_done))
+                    .addComponent(job_but_done)
+                    .addComponent(job_but_cancel))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -410,39 +418,35 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        butCreateJob1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        butCreateJob1.setText("Create Quote");
-        butCreateJob1.addActionListener(new java.awt.event.ActionListener() {
+        job_but_createQuote.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        job_but_createQuote.setText("Create Quote");
+        job_but_createQuote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butCreateJob1ActionPerformed(evt);
+                job_but_createQuoteActionPerformed(evt);
             }
         });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         job_tf_fname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        job_tf_fname.setText("James");
         job_tf_fname.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("First Name");
 
         job_tf_lname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        job_tf_lname.setText("Kotze");
         job_tf_lname.setEnabled(false);
 
         jLabel49.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel49.setText("Last Name");
 
         job_tf_contactNr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        job_tf_contactNr.setText("0820745213");
         job_tf_contactNr.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Contact Number");
 
         job_tf_email.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        job_tf_email.setText("jamesMkotze@gmail.com");
         job_tf_email.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -504,7 +508,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
-        jTextArea4.setText("Install a new small wooden fence\nAproximately 12m x 10m");
         jScrollPane4.setViewportView(jTextArea4);
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -535,7 +538,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(butCreateJob1)))
+                        .addComponent(job_but_createQuote)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -544,7 +547,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butCreateJob1))
+                    .addComponent(job_but_createQuote))
                 .addGap(13, 13, 13)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
@@ -2432,33 +2435,118 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //initialize GUI components
-    private void initComponentsCustom(){
+    private void initComponentsCustom() {
+        disableAllPanels();
     }
-    
+
     //Methods
-    private void generateJobID(){
+    private void generateJobID() {
         JOptionPane.showMessageDialog(rootPane, "The Job ID is: (display Job ID here)");
     }
 
-    
-    
-    
-    //action performed listeners
-    
-    private void job_but_createJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createJobActionPerformed
+    private void disableAllPanels() {
+        enablePanelJob(false);
+        enablePanelQuoteLabour(false);
+        enablePanelQuoteMat(false);
+        enablePanelQuoteOver(false);
+        enablePanelWorkMat(false);
+        enablePanelWorkOver(false);
+    }
+
+    private void enablePanelJob(boolean a) {
+        job_tf_title.setEnabled(a);
+        job_but_done.setEnabled(a);
+        job_but_cancel.setEnabled(a);
+        job_but_insertAdr.setEnabled(a);
+        job_spin_date.setEnabled(a);
+        job_ta_specification.setEnabled(a);
+
+        job_cb_selectClient.setEnabled(!a);
+        job_but_changeDetails.setEnabled(!a);
+        job_but_createJob.setEnabled(!a);
+        job_but_createQuote.setEnabled(!a);
+
+        but_close.setEnabled(!a);
+        but_saveClose.setEnabled(!a);
+        jobStatesTabPane.setEnabledAt(1, !a);
+        jobStatesTabPane.setEnabledAt(2, !a);
+        jobStatesTabPane.setEnabledAt(3, !a);
+    }
+
+    private void enablePanelQuoteMain(boolean a) {
+        quote_but_create.setEnabled(!a);
+        quote_but_delete.setEnabled(!a);
+        quote_but_jobDesc.setEnabled(!a);
+        quote_but_next.setEnabled(!a);
+        quote_but_prev.setEnabled(!a);
+        quote_but_rej.setEnabled(!a);
+        quote_but_acc.setEnabled(!a);
+
         
+        quote_spin_cont_mat.setEnabled(!a);
+        quote_spin_cont_over.setEnabled(!a);
+        quote_spin_cont_labour.setEnabled(!a);
+        quote_cb_cont_mat.setEnabled(!a);
+        quote_cb_cont_over.setEnabled(!a);
+        quote_cb_cont_labour.setEnabled(!a);
+        quote_spin_charge_mat.setEnabled(!a);
+        quote_spin_charge_over.setEnabled(!a);
+        quote_spin_charge_labour.setEnabled(!a);
+        quote_cb_charge_mat.setEnabled(!a);
+        quote_cb_charge_over.setEnabled(!a);
+        quote_cb_charge_labour.setEnabled(!a);
+        quote_tf_chFee_mat.setEnabled(!a);
+        quote_tf_chFee_over.setEnabled(!a);
+        quote_tf_chFee_labour.setEnabled(!a);
+        quote_tf_finalCharges.setEnabled(!a);
+        
+        but_close.setEnabled(!a);
+        but_saveClose.setEnabled(!a);
+        jobStatesTabPane.setEnabledAt(1, !a);
+        jobStatesTabPane.setEnabledAt(2, !a);
+        jobStatesTabPane.setEnabledAt(3, !a);
+    }
+
+    
+    
+    private void enablePanelQuoteMat(boolean a) {
+        
+        
+    }
+
+    private void enablePanelQuoteOver(boolean a) {
+
+    }
+
+    private void enablePanelQuoteLabour(boolean a) {
+
+    }
+
+    private void enablePanelWorkMat(boolean a) {
+
+    }
+
+    private void enablePanelWorkOver(boolean a) {
+
+    }
+
+    //action performed listeners
+
+    private void job_but_createJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createJobActionPerformed
+        enablePanelJob(true);
     }//GEN-LAST:event_job_but_createJobActionPerformed
 
-    private void butCreateJob1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCreateJob1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_butCreateJob1ActionPerformed
+    private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
+
+    }//GEN-LAST:event_job_but_createQuoteActionPerformed
 
     private void job_but_changeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_changeDetailsActionPerformed
-        // TODO add your handling code here:
+        enablePanelJob(true);
     }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
         generateJobID();
+        enablePanelJob(false);
     }//GEN-LAST:event_job_but_doneActionPerformed
 
     private void but_saveCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_saveCloseActionPerformed
@@ -2468,6 +2556,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_but_closeActionPerformed
+
+    private void job_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_cancelActionPerformed
+        enablePanelJob(false);
+    }//GEN-LAST:event_job_but_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2506,7 +2598,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton butCreateJob1;
     private javax.swing.JButton but_close;
     private javax.swing.JButton but_saveClose;
     private javax.swing.JButton final_but_managePay;
@@ -2660,8 +2751,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTabbedPane jobStatesTabPane;
+    private javax.swing.JButton job_but_cancel;
     private javax.swing.JButton job_but_changeDetails;
     private javax.swing.JButton job_but_createJob;
+    private javax.swing.JButton job_but_createQuote;
     private javax.swing.JButton job_but_done;
     private javax.swing.JButton job_but_insertAdr;
     private javax.swing.JComboBox<String> job_cb_selectClient;
