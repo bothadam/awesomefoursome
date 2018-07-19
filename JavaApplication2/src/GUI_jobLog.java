@@ -59,13 +59,23 @@ public class GUI_jobLog extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jobLog_butSubmitChange.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jobLog_butSubmitChange.setText("Save and Close");
+        jobLog_butSubmitChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobLog_butSubmitChangeActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -292,6 +302,14 @@ public class GUI_jobLog extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jobLog_butSubmitChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobLog_butSubmitChangeActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jobLog_butSubmitChangeActionPerformed
 
     /**
      * @param args the command line arguments

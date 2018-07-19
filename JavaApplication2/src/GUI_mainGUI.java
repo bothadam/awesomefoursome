@@ -1529,28 +1529,46 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     //methods
-    private boolean isValidString(String a){
+    private String generateNewJobID() {
+        //generate a new job ID as a string to parse through to the GUIjobStates pane
+        //so that it can "manage" the newly created Job
+        return "";
+    }
+
+    private String getSelectedJobID() {
+        //identify the job ID that is currently selected in the list/the table as a string to parse through to the GUIjobStates pane
+        //so that it can "manage" the newly created Job
+        return "";
+    }
+
+    private void manageJob(String selectedJobID) {
+        GUI_jobStates jobStatesGUI = new GUI_jobStates(selectedJobID);
+        jobStatesGUI.setVisible(true);
+    }
+
+    private boolean isValidString(String a) {
         //do test to see if string is valid
-        
+
         return true;
     }
-    
-    private void doSave(){
+
+    private void doSave() {
         //after save.. display message
         JOptionPane.showMessageDialog(rootPane, "Work Saved");
     }
-    
-    private void doClose(){
+
+    private void doClose() {
         System.exit(0);
     }
-    
-    private void disablePanels(){
+
+    private void disablePanels() {
         enablePanel_Schedule(false);
         enablePanel_Client(false);
         enablePanel_Staff(false);
+        //disable scheduling panel
         mainTabs.setEnabledAt(3, false);
     }
-    
+
     private void enablePanel_Schedule(boolean a) {
         schedule_but_add.setEnabled(a);
         schedule_but_remove.setEnabled(a);
@@ -1573,7 +1591,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         schedule_table_shcedules.setEnabled(!a);
     }
 
-    private void enablePanel_Client(boolean a){
+    private void enablePanel_Client(boolean a) {
         client_but_cancel.setEnabled(a);
         client_but_done.setEnabled(a);
         client_but_insertAdr.setEnabled(a);
@@ -1583,7 +1601,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_fname.setEnabled(a);
         client_tf_lname.setEnabled(a);
         client_tf_nr.setEnabled(a);
-        
+
         client_but_manageClient.setEnabled(!a);
         client_but_manageJob.setEnabled(!a);
         client_but_newClient.setEnabled(!a);
@@ -1592,7 +1610,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_searchInput.setEnabled(!a);
         client_li_jobs.setEnabled(!a);
         client_table_clients.setEnabled(!a);
-        
+
         but_save.setEnabled(!a);
         but_close.setEnabled(!a);
         mainTabs.setEnabledAt(0, !a);
@@ -1601,8 +1619,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         menu_file.setEnabled(!a);
         menu_user.setEnabled(!a);
     }
-    
-    private void enablePanel_Staff(boolean a){
+
+    private void enablePanel_Staff(boolean a) {
         staff_but_insertAddress.setEnabled(a);
         staff_but_minus.setEnabled(a);
         staff_but_plus.setEnabled(a);
@@ -1617,11 +1635,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_tf_lname.setEnabled(a);
         staff_tf_nr.setEnabled(a);
         staff_tf_skillsetInput.setEnabled(a);
-        
+
         staff_but_manageStaff.setEnabled(!a);
         staff_but_newStaff.setEnabled(!a);
         staff_table_staff.setEnabled(!a);
-        
+
         but_save.setEnabled(!a);
         but_close.setEnabled(!a);
         mainTabs.setEnabledAt(0, !a);
@@ -1630,8 +1648,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         menu_file.setEnabled(!a);
         menu_user.setEnabled(!a);
     }
-    
-    private void clearPanel_Staff(){
+
+    private void clearPanel_Staff() {
         staff_tf_ID.setText("");
         staff_tf_address.setText("");
         staff_tf_email.setText("");
@@ -1642,8 +1660,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_list_skillset.removeAll();
         staff_spin_rate.setValue(0);
     }
-    
-    private void clearPanel_Client(){
+
+    private void clearPanel_Client() {
         client_tf_ID.setText("");
         client_tf_address.setText("");
         client_tf_email.setText("");
@@ -1651,7 +1669,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_lname.setText("");
         client_tf_nr.setText("");
     }
-    
+
     //action performed
 
     private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
@@ -1659,6 +1677,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_but_closeActionPerformed
 
     private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
+        String newJobID = generateNewJobID();
+        GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
+        jobStatesGUI.setVisible(true);
     }//GEN-LAST:event_jobs_but_newJobActionPerformed
 
     private void schedule_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_addActionPerformed
@@ -1690,7 +1711,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_schedule_but_viewClashActionPerformed
 
     private void jobs_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_manageJobActionPerformed
-        // TODO add your handling code here:
+        String selectedJobID = getSelectedJobID();
+        manageJob(selectedJobID);
     }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
@@ -1710,7 +1732,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_schedule_but_createScheduleActionPerformed
 
     private void client_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageJobActionPerformed
-        // TODO add your handling code here:
+        String selectedJobID = getSelectedJobID();
+        manageJob(selectedJobID);
     }//GEN-LAST:event_client_but_manageJobActionPerformed
 
     private void client_but_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_searchActionPerformed
@@ -1757,7 +1780,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             String input = staff_tf_skillsetInput.getText();
             if (isValidString(input)) {
-                
+
             }
         } catch (Exception e) {
         }

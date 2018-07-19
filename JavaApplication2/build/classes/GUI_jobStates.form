@@ -15,7 +15,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -38,8 +38,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="but_close" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="but_saveClose" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
@@ -57,10 +55,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jobStatesTabPane" min="-2" pref="638" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="but_saveClose" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="but_close" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="but_saveClose" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -552,7 +547,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel24" max="32767" attributes="0"/>
-                          <Component id="jTabbedPane3" alignment="1" max="32767" attributes="0"/>
+                          <Component id="quote_TabPane" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -602,7 +597,7 @@
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTabbedPane3" min="-2" max="-2" attributes="0"/>
+                      <Component id="quote_TabPane" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="35" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1019,6 +1014,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Create"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_but_createActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="quote_but_prev">
               <Properties>
@@ -1043,8 +1041,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Job Description"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_but_jobDescActionPerformed"/>
+              </Events>
             </Component>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
+            <Container class="javax.swing.JTabbedPane" name="quote_TabPane">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1213,6 +1214,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Done"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_mat_but_doneActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JSpinner" name="quote_mat_spin_count">
                           <Properties>
@@ -1226,6 +1230,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Cancel"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_mat_but_cancelActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1261,6 +1268,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Change"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_mat_but_changeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="quote_mat_but_add">
                       <Properties>
@@ -1269,6 +1279,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Add"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_mat_but_addActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="quote_mat_but_remove">
                       <Properties>
@@ -1426,6 +1439,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Done"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_over_but_doneActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="quote_over_but_cancel">
                           <Properties>
@@ -1434,6 +1450,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Cancel"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_over_but_cancelActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1470,6 +1489,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Change"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_over_but_changeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="quote_over_but_add">
                       <Properties>
@@ -1478,6 +1500,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Add"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_over_but_addActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="quote_over_but_remove">
                       <Properties>
@@ -1656,6 +1681,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Done"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_labour_but_doneActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="quote_labour_but_cancel">
                           <Properties>
@@ -1664,6 +1692,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Cancel"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_labour_but_cancelActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="quote_labour_combo_workers">
                           <Properties>
@@ -1716,6 +1747,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Change"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_labour_but_changeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="quote_labour_but_add">
                       <Properties>
@@ -1724,6 +1758,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Add"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_labour_but_addActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1763,6 +1800,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Accept"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_but_accActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="quote_but_rej">
               <Properties>
@@ -1774,6 +1814,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reject"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_but_rejActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="quote_but_delete">
               <Properties>
@@ -1816,7 +1859,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTabbedPane2" max="32767" attributes="0"/>
+                          <Component id="work_TabPane" max="32767" attributes="0"/>
                           <Component id="jPanel27" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jLabel95" min="-2" max="-2" attributes="0"/>
@@ -1837,7 +1880,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="work_but_finaliseJob" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTabbedPane2" min="-2" max="-2" attributes="0"/>
+                      <Component id="work_TabPane" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="jLabel95" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -2275,7 +2318,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
+            <Container class="javax.swing.JTabbedPane" name="work_TabPane">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -2442,6 +2485,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Done"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_mat_but_doneActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JSpinner" name="work_mat_spin_count">
                         </Component>
@@ -2452,6 +2498,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Cancel"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_mat_but_cancelActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2487,6 +2536,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Change"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_mat_but_changeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="work_mat_but_fromQ">
                       <Properties>
@@ -2503,6 +2555,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Add"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_mat_but_addActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="work_mat_but_remove">
                       <Properties>
@@ -2658,6 +2713,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Done"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_over_but_doneActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="work_over_but_cancel">
                           <Properties>
@@ -2666,6 +2724,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Cancel"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_over_but_cancelActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2702,6 +2763,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Change"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_over_but_changeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="work_over_but_fromQ">
                       <Properties>
@@ -2718,6 +2782,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Add"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_over_but_addActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="work_over_but_remove">
                       <Properties>
@@ -2887,8 +2954,14 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JSpinner" name="work_labour_spin_hours">
+                          <Properties>
+                            <Property name="enabled" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="work_labour_tf_worker">
+                          <Properties>
+                            <Property name="enabled" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2899,6 +2972,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Job Logs"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_labour_but_logsActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -2919,6 +2995,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Finalise Job"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_but_finaliseJobActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -3170,6 +3249,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sign Off Job"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="final_but_signOffActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel136">
               <Properties>
@@ -3962,7 +4044,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Quote Accepted"/>
+                <Property name="text" type="java.lang.String" value="Quote Pending"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_jobState">
@@ -3986,17 +4068,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="but_saveCloseActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="but_close">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Verdana" size="18" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Close"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="but_closeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

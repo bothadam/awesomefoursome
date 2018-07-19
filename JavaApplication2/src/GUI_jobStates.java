@@ -3,9 +3,16 @@ import javax.swing.JOptionPane;
 
 public class GUI_jobStates extends javax.swing.JFrame {
 
-    public GUI_jobStates() {
+    private String currentJobID = "";
+    
+    public GUI_jobStates(String passedThroughIDOfJob) {
+        currentJobID = passedThroughIDOfJob;
         initComponents();
         initComponentsCustom();
+    }
+
+    private GUI_jobStates() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -90,7 +97,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_but_prev = new javax.swing.JButton();
         quote_but_next = new javax.swing.JButton();
         quote_but_jobDesc = new javax.swing.JButton();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        quote_TabPane = new javax.swing.JTabbedPane();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
@@ -176,7 +183,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        work_TabPane = new javax.swing.JTabbedPane();
         jPanel18 = new javax.swing.JPanel();
         jPanel28 = new javax.swing.JPanel();
         jLabel90 = new javax.swing.JLabel();
@@ -299,13 +306,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         l_quoteState = new javax.swing.JLabel();
         l_jobState = new javax.swing.JLabel();
         but_saveClose = new javax.swing.JButton();
-        but_close = new javax.swing.JButton();
 
         jLabel137.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel137.setForeground(new java.awt.Color(255, 51, 0));
         jLabel137.setText("!");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jobStatesTabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jobStatesTabPane.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -785,6 +791,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_but_create.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         quote_but_create.setText("Create");
+        quote_but_create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_createActionPerformed(evt);
+            }
+        });
 
         quote_but_prev.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         quote_but_prev.setText("Previous");
@@ -794,9 +805,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_but_jobDesc.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         quote_but_jobDesc.setText("Job Description");
+        quote_but_jobDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_jobDescActionPerformed(evt);
+            }
+        });
 
-        jTabbedPane3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTabbedPane3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        quote_TabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        quote_TabPane.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jPanel35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -816,11 +832,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_mat_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_mat_but_done.setText("Done");
+        quote_mat_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_doneActionPerformed(evt);
+            }
+        });
 
         quote_mat_spin_count.setEnabled(false);
 
         quote_mat_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_mat_but_cancel.setText("Cancel");
+        quote_mat_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -874,9 +900,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_mat_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_mat_but_change.setText("Change");
+        quote_mat_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_changeActionPerformed(evt);
+            }
+        });
 
         quote_mat_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_mat_but_add.setText("Add");
+        quote_mat_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_addActionPerformed(evt);
+            }
+        });
 
         quote_mat_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_mat_but_remove.setText("Remove");
@@ -915,7 +951,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Materials", jPanel34);
+        quote_TabPane.addTab("Materials", jPanel34);
 
         jPanel37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -932,9 +968,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_over_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_over_but_done.setText("Done");
+        quote_over_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_doneActionPerformed(evt);
+            }
+        });
 
         quote_over_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_over_but_cancel.setText("Cancel");
+        quote_over_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -985,9 +1031,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_over_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_over_but_change.setText("Change");
+        quote_over_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_changeActionPerformed(evt);
+            }
+        });
 
         quote_over_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_over_but_add.setText("Add");
+        quote_over_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_addActionPerformed(evt);
+            }
+        });
 
         quote_over_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_over_but_remove.setText("Remove");
@@ -1026,7 +1082,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Overheads", jPanel36);
+        quote_TabPane.addTab("Overheads", jPanel36);
 
         quote_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         quote_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
@@ -1046,9 +1102,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_labour_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_labour_but_done.setText("Done");
+        quote_labour_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_doneActionPerformed(evt);
+            }
+        });
 
         quote_labour_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_labour_but_cancel.setText("Cancel");
+        quote_labour_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_cancelActionPerformed(evt);
+            }
+        });
 
         quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
 
@@ -1109,9 +1175,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_labour_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_labour_but_change.setText("Change");
+        quote_labour_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_changeActionPerformed(evt);
+            }
+        });
 
         quote_labour_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_labour_but_add.setText("Add");
+        quote_labour_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_addActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
@@ -1147,7 +1223,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Labour", jPanel38);
+        quote_TabPane.addTab("Labour", jPanel38);
 
         jLabel24.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel24.setText("(Quote Date Here)");
@@ -1161,10 +1237,20 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_but_acc.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         quote_but_acc.setForeground(new java.awt.Color(0, 102, 0));
         quote_but_acc.setText("Accept");
+        quote_but_acc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_accActionPerformed(evt);
+            }
+        });
 
         quote_but_rej.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         quote_but_rej.setForeground(new java.awt.Color(102, 51, 0));
         quote_but_rej.setText("Reject");
+        quote_but_rej.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_rejActionPerformed(evt);
+            }
+        });
 
         quote_but_delete.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         quote_but_delete.setText("Delete");
@@ -1183,7 +1269,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(quote_TabPane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1225,7 +1311,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(quote_but_create)
                         .addComponent(quote_but_delete)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(quote_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
@@ -1466,8 +1552,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jTabbedPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTabbedPane2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        work_TabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        work_TabPane.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jPanel28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1484,9 +1570,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_mat_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_done.setText("Done");
+        work_mat_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_doneActionPerformed(evt);
+            }
+        });
 
         work_mat_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_cancel.setText("Cancel");
+        work_mat_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -1540,12 +1636,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_mat_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_change.setText("Change");
+        work_mat_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_changeActionPerformed(evt);
+            }
+        });
 
         work_mat_but_fromQ.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_fromQ.setText("From Quote");
 
         work_mat_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_add.setText("Add");
+        work_mat_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_addActionPerformed(evt);
+            }
+        });
 
         work_mat_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_remove.setText("Remove");
@@ -1586,7 +1692,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Materials", jPanel18);
+        work_TabPane.addTab("Materials", jPanel18);
 
         jPanel30.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1600,9 +1706,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_over_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_over_but_done.setText("Done");
+        work_over_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_doneActionPerformed(evt);
+            }
+        });
 
         work_over_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_over_but_cancel.setText("Cancel");
+        work_over_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -1653,12 +1769,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_over_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_over_but_change.setText("Change");
+        work_over_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_changeActionPerformed(evt);
+            }
+        });
 
         work_over_but_fromQ.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_over_but_fromQ.setText("From Quote");
 
         work_over_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_over_but_add.setText("Add");
+        work_over_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_addActionPerformed(evt);
+            }
+        });
 
         work_over_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_over_but_remove.setText("Remove");
@@ -1699,7 +1825,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Overheads", jPanel29);
+        work_TabPane.addTab("Overheads", jPanel29);
 
         work_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         work_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
@@ -1722,6 +1848,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_labour_l_rate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_labour_l_rate.setText("(Hourly Rate)");
+
+        work_labour_spin_hours.setEnabled(false);
+
+        work_labour_tf_worker.setEnabled(false);
 
         javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
         jPanel33.setLayout(jPanel33Layout);
@@ -1763,6 +1893,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_labour_but_logs.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_labour_but_logs.setText("Job Logs");
+        work_labour_but_logs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_labour_but_logsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -1791,13 +1926,18 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Labour", jPanel31);
+        work_TabPane.addTab("Labour", jPanel31);
 
         jLabel95.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel95.setText("Cost Summary");
 
         work_but_finaliseJob.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         work_but_finaliseJob.setText("Finalise Job");
+        work_but_finaliseJob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_but_finaliseJobActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1806,7 +1946,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane2)
+                    .addComponent(work_TabPane)
                     .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel95)
@@ -1822,7 +1962,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(work_but_finaliseJob)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(work_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel95)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1897,6 +2037,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         final_but_signOff.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         final_but_signOff.setText("Sign Off Job");
+        final_but_signOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                final_but_signOffActionPerformed(evt);
+            }
+        });
 
         jLabel136.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel136.setText("Quote");
@@ -2298,7 +2443,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         l_totalQuote.setText("Unquoted");
 
         l_quoteState.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        l_quoteState.setText("Quote Accepted");
+        l_quoteState.setText("Quote Pending");
 
         l_jobState.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         l_jobState.setText("Job Open");
@@ -2395,22 +2540,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        but_close.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        but_close.setText("Close");
-        but_close.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but_closeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(but_close)
-                .addGap(32, 32, 32)
                 .addComponent(but_saveClose)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
@@ -2424,9 +2559,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jobStatesTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(but_saveClose)
-                    .addComponent(but_close))
+                .addComponent(but_saveClose)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2440,10 +2573,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     //Methods
-    private void generateJobID() {
-        JOptionPane.showMessageDialog(rootPane, "The Job ID is: (display Job ID here)");
-    }
-
     private void disableAllPanels() {
         enablePanelJob(false);
         enablePanelQuoteLabour(false);
@@ -2451,6 +2580,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enablePanelQuoteOver(false);
         enablePanelWorkMat(false);
         enablePanelWorkOver(false);
+        enableQuoteComponents(false);
+    }
+
+    private void disableAllButJobsTab(boolean a) {
+        jobStatesTabPane.setEnabledAt(0, a);
+        jobStatesTabPane.setEnabledAt(1, !a);
+        jobStatesTabPane.setEnabledAt(2, !a);
+        jobStatesTabPane.setEnabledAt(3, !a);
+    }
+
+    private void disableAllTabs(boolean a) {
+        jobStatesTabPane.setEnabledAt(0, a);
+        jobStatesTabPane.setEnabledAt(1, a);
+        jobStatesTabPane.setEnabledAt(2, a);
+        jobStatesTabPane.setEnabledAt(3, a);
     }
 
     private void enablePanelJob(boolean a) {
@@ -2466,14 +2610,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_but_createJob.setEnabled(!a);
         job_but_createQuote.setEnabled(!a);
 
-        but_close.setEnabled(!a);
         but_saveClose.setEnabled(!a);
-        jobStatesTabPane.setEnabledAt(1, !a);
-        jobStatesTabPane.setEnabledAt(2, !a);
-        jobStatesTabPane.setEnabledAt(3, !a);
+        disableAllTabs(!a);
+    }
+
+    private void enablePanelJob_noDate(boolean a) {
+        enablePanelJob(a);
+        job_spin_date.setEnabled(!a);
     }
 
     private void enablePanelQuoteMain(boolean a) {
+        //top buttons
         quote_but_create.setEnabled(!a);
         quote_but_delete.setEnabled(!a);
         quote_but_jobDesc.setEnabled(!a);
@@ -2482,7 +2629,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_but_rej.setEnabled(!a);
         quote_but_acc.setEnabled(!a);
 
-        
+        //summary panel
         quote_spin_cont_mat.setEnabled(!a);
         quote_spin_cont_over.setEnabled(!a);
         quote_spin_cont_labour.setEnabled(!a);
@@ -2499,35 +2646,149 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_chFee_over.setEnabled(!a);
         quote_tf_chFee_labour.setEnabled(!a);
         quote_tf_finalCharges.setEnabled(!a);
-        
-        but_close.setEnabled(!a);
+
         but_saveClose.setEnabled(!a);
-        jobStatesTabPane.setEnabledAt(1, !a);
-        jobStatesTabPane.setEnabledAt(2, !a);
-        jobStatesTabPane.setEnabledAt(3, !a);
+        disableAllTabs(!a);
+        quote_TabPane.setEnabledAt(0, !a);
+        quote_TabPane.setEnabledAt(1, !a);
+        quote_TabPane.setEnabledAt(2, !a);
     }
 
-    
-    
     private void enablePanelQuoteMat(boolean a) {
-        
-        
+        quote_mat_but_add.setEnabled(!a);
+        quote_mat_but_remove.setEnabled(!a);
+        quote_mat_but_change.setEnabled(!a);
+        quote_mat_li_materials.setEnabled(!a);
+        enablePanelQuoteMain(a);
+
+        quote_mat_tf_item.setEnabled(a);
+        quote_mat_tf_cost.setEnabled(a);
+        quote_mat_spin_count.setEnabled(a);
+        quote_mat_but_cancel.setEnabled(a);
+        quote_mat_but_done.setEnabled(a);
+
     }
 
     private void enablePanelQuoteOver(boolean a) {
+        quote_over_but_add.setEnabled(!a);
+        quote_over_but_remove.setEnabled(!a);
+        quote_over_but_change.setEnabled(!a);
+        quote_over_li_overheads.setEnabled(!a);
+        enablePanelQuoteMain(a);
 
+        quote_over_tf_total.setEnabled(a);
+        quote_over_tf_overhead.setEnabled(a);
+        quote_over_but_cancel.setEnabled(a);
+        quote_over_but_done.setEnabled(a);
     }
 
     private void enablePanelQuoteLabour(boolean a) {
+        quote_labour_but_add.setEnabled(!a);
+        quote_labour_but_remove.setEnabled(!a);
+        quote_labour_but_change.setEnabled(!a);
+        quote_labour_li_labour.setEnabled(!a);
+        enablePanelQuoteMain(a);
 
+        quote_labour_spin_hours.setEnabled(a);
+        quote_labour_combo_workers.setEnabled(a);
+        quote_labour_but_cancel.setEnabled(a);
+        quote_labour_but_done.setEnabled(a);
+    }
+
+    private void enableQuoteComponents(boolean a) {
+        //materials pane
+        quote_TabPane.setEnabledAt(0, a);
+        //materials pane components
+        quote_mat_but_add.setEnabled(a);
+        quote_mat_but_remove.setEnabled(a);
+        quote_mat_but_change.setEnabled(a);
+        quote_mat_li_materials.setEnabled(a);
+        quote_mat_tf_item.setEnabled(a);
+        quote_mat_tf_cost.setEnabled(a);
+        quote_mat_spin_count.setEnabled(a);
+        quote_mat_but_cancel.setEnabled(a);
+        quote_mat_but_done.setEnabled(a);
+
+        //overheads pane
+        quote_TabPane.setEnabledAt(1, a);
+        //overheads pane components
+        quote_over_but_add.setEnabled(a);
+        quote_over_but_remove.setEnabled(a);
+        quote_over_but_change.setEnabled(a);
+        quote_over_li_overheads.setEnabled(a);
+        quote_over_tf_total.setEnabled(a);
+        quote_over_tf_overhead.setEnabled(a);
+        quote_over_but_cancel.setEnabled(a);
+        quote_over_but_done.setEnabled(a);
+
+        //labour pane
+        quote_TabPane.setEnabledAt(2, a);
+        //labour pane components
+        quote_labour_but_add.setEnabled(a);
+        quote_labour_but_remove.setEnabled(a);
+        quote_labour_but_change.setEnabled(a);
+        quote_labour_li_labour.setEnabled(a);
+        quote_labour_spin_hours.setEnabled(a);
+        quote_labour_combo_workers.setEnabled(a);
+        quote_labour_but_cancel.setEnabled(a);
+        quote_labour_but_done.setEnabled(a);
+
+        //quote summary components 
+        quote_spin_cont_mat.setEnabled(a);
+        quote_spin_cont_over.setEnabled(a);
+        quote_spin_cont_labour.setEnabled(a);
+        quote_cb_cont_mat.setEnabled(a);
+        quote_cb_cont_over.setEnabled(a);
+        quote_cb_cont_labour.setEnabled(a);
+        quote_spin_charge_mat.setEnabled(a);
+        quote_spin_charge_over.setEnabled(a);
+        quote_spin_charge_labour.setEnabled(a);
+        quote_cb_charge_mat.setEnabled(a);
+        quote_cb_charge_over.setEnabled(a);
+        quote_cb_charge_labour.setEnabled(a);
+        quote_tf_chFee_mat.setEnabled(a);
+        quote_tf_chFee_over.setEnabled(a);
+        quote_tf_chFee_labour.setEnabled(a);
+        quote_tf_finalCharges.setEnabled(a);
+
+    }
+
+    private void enablePanelWorkMain(boolean a) {
+        disableAllTabs(!a);
+        work_but_finaliseJob.setEnabled(!a);
+        but_saveClose.setEnabled(!a);
+        work_TabPane.setEnabledAt(0, !a);
+        work_TabPane.setEnabledAt(1, !a);
+        work_TabPane.setEnabledAt(2, !a);
     }
 
     private void enablePanelWorkMat(boolean a) {
+        enablePanelWorkMain(a);
+        work_mat_but_add.setEnabled(!a);
+        work_mat_but_fromQ.setEnabled(!a);
+        work_mat_but_change.setEnabled(!a);
+        work_mat_but_remove.setEnabled(!a);
+        work_mat_li_materials.setEnabled(!a);
 
+        work_mat_tf_item.setEnabled(a);
+        work_mat_tf_cost.setEnabled(a);
+        work_mat_spin_count.setEnabled(a);
+        work_mat_but_done.setEnabled(a);
+        work_mat_but_cancel.setEnabled(a);
     }
 
     private void enablePanelWorkOver(boolean a) {
+        enablePanelWorkMain(a);
+        work_over_but_add.setEnabled(!a);
+        work_over_but_fromQ.setEnabled(!a);
+        work_over_but_change.setEnabled(!a);
+        work_over_but_remove.setEnabled(!a);
+        work_over_li_overheads.setEnabled(!a);
 
+        work_over_tf_cost.setEnabled(a);
+        work_over_tf_overhead.setEnabled(a);
+        work_over_but_done.setEnabled(a);
+        work_over_but_cancel.setEnabled(a);
     }
 
     //action performed listeners
@@ -2537,29 +2798,143 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_createJobActionPerformed
 
     private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
-
+        jobStatesTabPane.setSelectedIndex(1);
     }//GEN-LAST:event_job_but_createQuoteActionPerformed
 
     private void job_but_changeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_changeDetailsActionPerformed
-        enablePanelJob(true);
+        enablePanelJob_noDate(true);
     }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
-        generateJobID();
         enablePanelJob(false);
     }//GEN-LAST:event_job_but_doneActionPerformed
 
     private void but_saveCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_saveCloseActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_but_saveCloseActionPerformed
-
-    private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_but_closeActionPerformed
 
     private void job_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_cancelActionPerformed
         enablePanelJob(false);
     }//GEN-LAST:event_job_but_cancelActionPerformed
+
+    private void quote_mat_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_addActionPerformed
+        enablePanelQuoteMat(true);
+    }//GEN-LAST:event_quote_mat_but_addActionPerformed
+
+    private void quote_mat_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_cancelActionPerformed
+        enablePanelQuoteMat(false);
+    }//GEN-LAST:event_quote_mat_but_cancelActionPerformed
+
+    private void quote_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_doneActionPerformed
+        enablePanelQuoteMat(false);
+    }//GEN-LAST:event_quote_mat_but_doneActionPerformed
+
+    private void quote_mat_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_changeActionPerformed
+        enablePanelQuoteMat(true);
+    }//GEN-LAST:event_quote_mat_but_changeActionPerformed
+
+    private void quote_over_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_addActionPerformed
+        enablePanelQuoteOver(true);
+    }//GEN-LAST:event_quote_over_but_addActionPerformed
+
+    private void quote_over_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_changeActionPerformed
+        enablePanelQuoteOver(true);
+    }//GEN-LAST:event_quote_over_but_changeActionPerformed
+
+    private void quote_over_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_cancelActionPerformed
+        enablePanelQuoteOver(false);
+    }//GEN-LAST:event_quote_over_but_cancelActionPerformed
+
+    private void quote_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_doneActionPerformed
+        enablePanelQuoteOver(false);
+    }//GEN-LAST:event_quote_over_but_doneActionPerformed
+
+    private void quote_labour_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_addActionPerformed
+        enablePanelQuoteLabour(true);
+    }//GEN-LAST:event_quote_labour_but_addActionPerformed
+
+    private void quote_labour_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_changeActionPerformed
+        enablePanelQuoteLabour(true);
+    }//GEN-LAST:event_quote_labour_but_changeActionPerformed
+
+    private void quote_labour_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_cancelActionPerformed
+        enablePanelQuoteLabour(false);
+    }//GEN-LAST:event_quote_labour_but_cancelActionPerformed
+
+    private void quote_labour_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_doneActionPerformed
+        enablePanelQuoteLabour(false);
+    }//GEN-LAST:event_quote_labour_but_doneActionPerformed
+
+    private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
+        enableQuoteComponents(true);
+        enablePanelQuoteLabour(false);
+        enablePanelQuoteMat(false);
+        enablePanelQuoteOver(false);
+        l_quoteState.setText("Quote Pending");
+    }//GEN-LAST:event_quote_but_createActionPerformed
+
+    private void quote_but_rejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_rejActionPerformed
+        enableQuoteComponents(false);
+        l_quoteState.setText("Quote Rejected");
+    }//GEN-LAST:event_quote_but_rejActionPerformed
+
+    private void quote_but_accActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_accActionPerformed
+        enableQuoteComponents(false);
+        jobStatesTabPane.setSelectedIndex(2);
+        l_quoteState.setText("Quote Accepted");
+    }//GEN-LAST:event_quote_but_accActionPerformed
+
+    private void quote_but_jobDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_jobDescActionPerformed
+        GUI_JobDescription jobDescGUI = new GUI_JobDescription();
+        jobDescGUI.setVisible(true);
+    }//GEN-LAST:event_quote_but_jobDescActionPerformed
+
+    private void work_mat_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_addActionPerformed
+        enablePanelWorkMat(true);
+    }//GEN-LAST:event_work_mat_but_addActionPerformed
+
+    private void work_mat_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_cancelActionPerformed
+        enablePanelWorkMat(false);
+    }//GEN-LAST:event_work_mat_but_cancelActionPerformed
+
+    private void work_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_doneActionPerformed
+        enablePanelWorkMat(false);
+    }//GEN-LAST:event_work_mat_but_doneActionPerformed
+
+    private void work_mat_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_changeActionPerformed
+        enablePanelWorkMat(true);
+    }//GEN-LAST:event_work_mat_but_changeActionPerformed
+
+    private void work_over_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_addActionPerformed
+        enablePanelWorkOver(true);
+    }//GEN-LAST:event_work_over_but_addActionPerformed
+
+    private void work_over_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_changeActionPerformed
+        enablePanelWorkOver(true);
+    }//GEN-LAST:event_work_over_but_changeActionPerformed
+
+    private void work_labour_but_logsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_labour_but_logsActionPerformed
+        GUI_jobLog jobLogsGUI = new GUI_jobLog();
+        jobLogsGUI.setVisible(true);
+    }//GEN-LAST:event_work_labour_but_logsActionPerformed
+
+    private void work_over_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_cancelActionPerformed
+        enablePanelWorkOver(false);
+    }//GEN-LAST:event_work_over_but_cancelActionPerformed
+
+    private void work_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_doneActionPerformed
+        enablePanelWorkOver(false);
+    }//GEN-LAST:event_work_over_but_doneActionPerformed
+
+    private void work_but_finaliseJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_but_finaliseJobActionPerformed
+        jobStatesTabPane.setSelectedIndex(3);
+        l_quoteState.setText("Payment Pending");
+    }//GEN-LAST:event_work_but_finaliseJobActionPerformed
+
+    private void final_but_signOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_signOffActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "This Job is now closed");
+        this.dispose();
+    }//GEN-LAST:event_final_but_signOffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2598,7 +2973,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton but_close;
     private javax.swing.JButton but_saveClose;
     private javax.swing.JButton final_but_managePay;
     private javax.swing.JButton final_but_signOff;
@@ -2747,8 +3121,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTabbedPane jobStatesTabPane;
     private javax.swing.JButton job_but_cancel;
@@ -2779,6 +3151,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel l_quoteState;
     private javax.swing.JLabel l_siteLocation;
     private javax.swing.JLabel l_totalQuote;
+    private javax.swing.JTabbedPane quote_TabPane;
     private javax.swing.JButton quote_but_acc;
     private javax.swing.JButton quote_but_create;
     private javax.swing.JButton quote_but_delete;
@@ -2836,6 +3209,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTextField quote_tf_final_mat;
     private javax.swing.JTextField quote_tf_final_over;
     private javax.swing.JTextField quote_tf_total;
+    private javax.swing.JTabbedPane work_TabPane;
     private javax.swing.JButton work_but_finaliseJob;
     private javax.swing.JButton work_labour_but_logs;
     private javax.swing.JLabel work_labour_l_rate;
