@@ -4,6 +4,7 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+import java.sql.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,13 +16,15 @@ import javax.swing.SpinnerDateModel;
  * @author james
  */
 public class GUI_mainGUI extends javax.swing.JFrame {
-
+Connection conn;
     /**
      * Creates new form mainGUI
      */
     public GUI_mainGUI() {
         initComponents();
         initComponentsCustom();
+        connection();
+        getClients();
     }
 
     /**
@@ -1980,5 +1983,37 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField staff_tf_skillsetInput;
     private javax.swing.ButtonGroup viewButGroup;
     // End of variables declaration//GEN-END:variables
+
+    private void connection() {
+        try {
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://C:/__tmp/test/zzz.accdb", "", "");
+        } catch (Exception e) {
+            System.out.println("Database connection error" + e);
+        }
+
+        /*
+         Connection conn=DriverManager.getConnection(
+         "jdbc:ucanaccess://C:/__tmp/test/zzz.accdb");
+         Statement s = conn.createStatement();
+         ResultSet rs = s.executeQuery("SELECT [LastName] FROM [Clients]");
+         while (rs.next()) {
+         System.out.println(rs.getString(1));
+         }
+        
+         */
+    }
+
+    private void getClients() {
+        try {
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("SELECT [*] FROM [Clients]");
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Problem in getClients" + e);
+        }
+    }
 
 }
