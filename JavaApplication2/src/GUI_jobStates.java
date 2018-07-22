@@ -1,12 +1,18 @@
 
 import javax.swing.JOptionPane;
 
-
 public class GUI_jobStates extends javax.swing.JFrame {
 
-    public GUI_jobStates() {
+    private String currentJobID = "";
+    
+    public GUI_jobStates(String passedThroughIDOfJob) {
+        currentJobID = passedThroughIDOfJob;
         initComponents();
         initComponentsCustom();
+    }
+
+    private GUI_jobStates() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -23,123 +29,124 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        job_tf_title = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jTextField4 = new javax.swing.JTextField();
+        job_ta_specification = new javax.swing.JTextArea();
+        job_tf_siteLocation = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        job_but_insertAdr = new javax.swing.JButton();
+        job_spin_date = new javax.swing.JSpinner();
         jLabel19 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        butCreateJob = new javax.swing.JButton();
-        butCreateJob1 = new javax.swing.JButton();
+        job_but_done = new javax.swing.JButton();
+        job_but_cancel = new javax.swing.JButton();
+        job_but_createJob = new javax.swing.JButton();
+        job_but_createQuote = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        job_tf_fname = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        job_tf_lname = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        job_tf_contactNr = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        job_tf_email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        butCreateJob4 = new javax.swing.JButton();
+        job_but_changeDetails = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        job_cb_selectClient = new javax.swing.JComboBox<>();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        jSpinner5 = new javax.swing.JSpinner();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jSpinner6 = new javax.swing.JSpinner();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jSpinner7 = new javax.swing.JSpinner();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jSpinner8 = new javax.swing.JSpinner();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jSpinner9 = new javax.swing.JSpinner();
-        jSpinner10 = new javax.swing.JSpinner();
-        jCheckBox6 = new javax.swing.JCheckBox();
+        quote_spin_cont_mat = new javax.swing.JSpinner();
+        quote_cb_cont_mat = new javax.swing.JCheckBox();
+        quote_spin_cont_over = new javax.swing.JSpinner();
+        quote_cb_cont_over = new javax.swing.JCheckBox();
+        quote_spin_cont_labour = new javax.swing.JSpinner();
+        quote_cb_cont_labour = new javax.swing.JCheckBox();
+        quote_tf_cost_mat = new javax.swing.JTextField();
+        quote_tf_cost_over = new javax.swing.JTextField();
+        quote_tf_cost_labour = new javax.swing.JTextField();
+        quote_spin_charge_mat = new javax.swing.JSpinner();
+        quote_cb_charge_over = new javax.swing.JCheckBox();
+        quote_spin_charge_over = new javax.swing.JSpinner();
+        quote_spin_charge_labour = new javax.swing.JSpinner();
+        quote_cb_charge_labour = new javax.swing.JCheckBox();
         jLabel69 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
+        quote_tf_chFee_labour = new javax.swing.JTextField();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        quote_tf_final_over = new javax.swing.JTextField();
+        quote_tf_final_labour = new javax.swing.JTextField();
+        quote_tf_cost_subtotal = new javax.swing.JTextField();
         jLabel81 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        quote_tf_total = new javax.swing.JTextField();
         jLabel82 = new javax.swing.JLabel();
         jLabel83 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jButton20 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        quote_tf_final_mat = new javax.swing.JTextField();
+        quote_cb_charge_mat = new javax.swing.JCheckBox();
+        quote_tf_chFee_over = new javax.swing.JTextField();
+        quote_tf_chFee_mat = new javax.swing.JTextField();
+        quote_tf_finalCharges = new javax.swing.JTextField();
+        quote_but_create = new javax.swing.JButton();
+        quote_but_prev = new javax.swing.JButton();
+        quote_but_next = new javax.swing.JButton();
+        quote_but_jobDesc = new javax.swing.JButton();
+        quote_TabPane = new javax.swing.JTabbedPane();
         jPanel34 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
-        jTextField30 = new javax.swing.JTextField();
+        quote_mat_tf_item = new javax.swing.JTextField();
         jLabel115 = new javax.swing.JLabel();
         jLabel116 = new javax.swing.JLabel();
-        jFormattedTextField7 = new javax.swing.JFormattedTextField();
-        jButton4 = new javax.swing.JButton();
-        jSpinner13 = new javax.swing.JSpinner();
-        jButton29 = new javax.swing.JButton();
+        quote_mat_tf_cost = new javax.swing.JFormattedTextField();
+        quote_mat_but_done = new javax.swing.JButton();
+        quote_mat_spin_count = new javax.swing.JSpinner();
+        quote_mat_but_cancel = new javax.swing.JButton();
         jScrollPane14 = new javax.swing.JScrollPane();
-        jList12 = new javax.swing.JList<>();
-        activeState_butRemove5 = new javax.swing.JButton();
-        activeState_butAdd16 = new javax.swing.JButton();
-        activeState_butRemove14 = new javax.swing.JButton();
+        quote_mat_li_materials = new javax.swing.JList<>();
+        quote_mat_but_change = new javax.swing.JButton();
+        quote_mat_but_add = new javax.swing.JButton();
+        quote_mat_but_remove = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         jLabel117 = new javax.swing.JLabel();
-        jTextField43 = new javax.swing.JTextField();
+        quote_over_tf_overhead = new javax.swing.JTextField();
         jLabel118 = new javax.swing.JLabel();
-        jFormattedTextField8 = new javax.swing.JFormattedTextField();
-        jButton31 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
+        quote_over_tf_total = new javax.swing.JFormattedTextField();
+        quote_over_but_done = new javax.swing.JButton();
+        quote_over_but_cancel = new javax.swing.JButton();
         jScrollPane15 = new javax.swing.JScrollPane();
-        jList13 = new javax.swing.JList<>();
-        activeState_butRemove15 = new javax.swing.JButton();
-        activeState_butAdd20 = new javax.swing.JButton();
-        activeState_butRemove16 = new javax.swing.JButton();
+        quote_over_li_overheads = new javax.swing.JList<>();
+        quote_over_but_change = new javax.swing.JButton();
+        quote_over_but_add = new javax.swing.JButton();
+        quote_over_but_remove = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        jList14 = new javax.swing.JList<>();
+        quote_labour_li_labour = new javax.swing.JList<>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
-        jButton33 = new javax.swing.JButton();
-        jButton34 = new javax.swing.JButton();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        quote_labour_but_done = new javax.swing.JButton();
+        quote_labour_but_cancel = new javax.swing.JButton();
+        quote_labour_combo_workers = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
-        jLabel121 = new javax.swing.JLabel();
-        jSpinner14 = new javax.swing.JSpinner();
-        activeState_butRemove17 = new javax.swing.JButton();
-        activeState_butRemove18 = new javax.swing.JButton();
-        activeState_butAdd21 = new javax.swing.JButton();
+        quote_labour_l_rate = new javax.swing.JLabel();
+        quote_labour_spin_hours = new javax.swing.JSpinner();
+        quote_labour_but_remove = new javax.swing.JButton();
+        quote_labour_but_change = new javax.swing.JButton();
+        quote_labour_but_add = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        activeState_butAdd22 = new javax.swing.JButton();
-        activeState_butAdd23 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
+        quote_but_acc = new javax.swing.JButton();
+        quote_but_rej = new javax.swing.JButton();
+        quote_but_delete = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -147,27 +154,27 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel68 = new javax.swing.JLabel();
         jLabel88 = new javax.swing.JLabel();
         jLabel89 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField25 = new javax.swing.JTextField();
-        jTextField29 = new javax.swing.JTextField();
+        work_tf_PCost_mat = new javax.swing.JTextField();
+        work_tf_PCost_over = new javax.swing.JTextField();
+        work_tf_PCost_labour = new javax.swing.JTextField();
+        work_tf_PCost_total = new javax.swing.JTextField();
         jLabel97 = new javax.swing.JLabel();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField40 = new javax.swing.JTextField();
-        jTextField41 = new javax.swing.JTextField();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jTextField31 = new javax.swing.JTextField();
-        jTextField42 = new javax.swing.JTextField();
-        jProgressBar7 = new javax.swing.JProgressBar();
-        jProgressBar8 = new javax.swing.JProgressBar();
-        jProgressBar9 = new javax.swing.JProgressBar();
-        jProgressBar5 = new javax.swing.JProgressBar();
-        jProgressBar6 = new javax.swing.JProgressBar();
-        jProgressBar10 = new javax.swing.JProgressBar();
-        jProgressBar4 = new javax.swing.JProgressBar();
+        work_tf_ACost_mat = new javax.swing.JTextField();
+        work_tf_ACost_over = new javax.swing.JTextField();
+        work_tf_ACost_labour = new javax.swing.JTextField();
+        work_tf_Quote_mat = new javax.swing.JTextField();
+        work_tf_Quote_over = new javax.swing.JTextField();
+        work_tf_Quote_labour = new javax.swing.JTextField();
+        work_proBar_primary_mat = new javax.swing.JProgressBar();
+        work_tf_ACost_total = new javax.swing.JTextField();
+        work_tf_Quote_total = new javax.swing.JTextField();
+        work_proBar_primary_over = new javax.swing.JProgressBar();
+        work_proBar_primary_labour = new javax.swing.JProgressBar();
+        work_proBar_primary_total = new javax.swing.JProgressBar();
+        work_proBar_secondary_over = new javax.swing.JProgressBar();
+        work_proBar_secondary_labour = new javax.swing.JProgressBar();
+        work_proBar_secondary_total = new javax.swing.JProgressBar();
+        work_proBar_secondary_mat = new javax.swing.JProgressBar();
         jLabel94 = new javax.swing.JLabel();
         jLabel96 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
@@ -176,133 +183,135 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        work_TabPane = new javax.swing.JTabbedPane();
         jPanel18 = new javax.swing.JPanel();
         jPanel28 = new javax.swing.JPanel();
         jLabel90 = new javax.swing.JLabel();
-        jTextField27 = new javax.swing.JTextField();
+        work_mat_tf_item = new javax.swing.JTextField();
         jLabel91 = new javax.swing.JLabel();
         jLabel92 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
-        jButton3 = new javax.swing.JButton();
-        jSpinner11 = new javax.swing.JSpinner();
-        jButton14 = new javax.swing.JButton();
+        work_mat_tf_cost = new javax.swing.JFormattedTextField();
+        work_mat_but_done = new javax.swing.JButton();
+        work_mat_spin_count = new javax.swing.JSpinner();
+        work_mat_but_cancel = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jList8 = new javax.swing.JList<>();
-        activeState_butRemove4 = new javax.swing.JButton();
-        activeState_butChange4 = new javax.swing.JButton();
-        activeState_butAdd7 = new javax.swing.JButton();
-        activeState_butRemove12 = new javax.swing.JButton();
+        work_mat_li_materials = new javax.swing.JList<>();
+        work_mat_but_change = new javax.swing.JButton();
+        work_mat_but_fromQ = new javax.swing.JButton();
+        work_mat_but_add = new javax.swing.JButton();
+        work_mat_but_remove = new javax.swing.JButton();
         jPanel29 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jLabel99 = new javax.swing.JLabel();
-        jTextField28 = new javax.swing.JTextField();
+        work_over_tf_overhead = new javax.swing.JTextField();
         jLabel100 = new javax.swing.JLabel();
-        jFormattedTextField6 = new javax.swing.JFormattedTextField();
-        jButton11 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        work_over_tf_cost = new javax.swing.JFormattedTextField();
+        work_over_but_done = new javax.swing.JButton();
+        work_over_but_cancel = new javax.swing.JButton();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jList10 = new javax.swing.JList<>();
-        activeState_butRemove9 = new javax.swing.JButton();
-        activeState_butChange7 = new javax.swing.JButton();
-        activeState_butAdd18 = new javax.swing.JButton();
-        activeState_butRemove13 = new javax.swing.JButton();
+        work_over_li_overheads = new javax.swing.JList<>();
+        work_over_but_change = new javax.swing.JButton();
+        work_over_but_fromQ = new javax.swing.JButton();
+        work_over_but_add = new javax.swing.JButton();
+        work_over_but_remove = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        jList11 = new javax.swing.JList<>();
+        work_labour_li_labour = new javax.swing.JList<>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
-        jLabel111 = new javax.swing.JLabel();
-        jSpinner12 = new javax.swing.JSpinner();
-        jTextField35 = new javax.swing.JTextField();
-        jButton16 = new javax.swing.JButton();
+        work_labour_l_rate = new javax.swing.JLabel();
+        work_labour_spin_hours = new javax.swing.JSpinner();
+        work_labour_tf_worker = new javax.swing.JTextField();
+        work_labour_but_logs = new javax.swing.JButton();
         jLabel95 = new javax.swing.JLabel();
-        butCreateJob5 = new javax.swing.JButton();
+        work_but_finaliseJob = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jPanel40 = new javax.swing.JPanel();
-        jLabel70 = new javax.swing.JLabel();
-        jLabel125 = new javax.swing.JLabel();
-        jLabel126 = new javax.swing.JLabel();
-        jTextField44 = new javax.swing.JTextField();
-        jTextField45 = new javax.swing.JTextField();
-        jTextField46 = new javax.swing.JTextField();
-        jLabel127 = new javax.swing.JLabel();
-        jLabel128 = new javax.swing.JLabel();
-        jTextField47 = new javax.swing.JTextField();
-        jLabel129 = new javax.swing.JLabel();
-        jTextField48 = new javax.swing.JTextField();
-        jTextField49 = new javax.swing.JTextField();
-        jLabel130 = new javax.swing.JLabel();
-        jTextField50 = new javax.swing.JTextField();
-        jLabel131 = new javax.swing.JLabel();
-        jTextField51 = new javax.swing.JTextField();
-        jTextField52 = new javax.swing.JTextField();
-        jTextField53 = new javax.swing.JTextField();
-        jProgressBar2 = new javax.swing.JProgressBar();
-        jProgressBar11 = new javax.swing.JProgressBar();
-        jTextField54 = new javax.swing.JTextField();
-        jTextField55 = new javax.swing.JTextField();
-        jProgressBar12 = new javax.swing.JProgressBar();
-        jProgressBar13 = new javax.swing.JProgressBar();
-        jProgressBar14 = new javax.swing.JProgressBar();
-        jProgressBar15 = new javax.swing.JProgressBar();
-        jProgressBar16 = new javax.swing.JProgressBar();
-        jProgressBar17 = new javax.swing.JProgressBar();
-        jLabel132 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        final_table_costs = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        butCreateJob7 = new javax.swing.JButton();
+        final_rb_all = new javax.swing.JRadioButton();
+        final_rb_mat = new javax.swing.JRadioButton();
+        final_rb_over = new javax.swing.JRadioButton();
+        final_rb_lab = new javax.swing.JRadioButton();
+        final_but_signOff = new javax.swing.JButton();
         jLabel136 = new javax.swing.JLabel();
-        jTextField56 = new javax.swing.JTextField();
-        jTextField60 = new javax.swing.JTextField();
+        final_tf_quote = new javax.swing.JTextField();
+        final_tf_rec = new javax.swing.JTextField();
         jLabel138 = new javax.swing.JLabel();
-        jTextField61 = new javax.swing.JTextField();
+        final_tf_outst = new javax.swing.JTextField();
         jLabel139 = new javax.swing.JLabel();
-        jButton17 = new javax.swing.JButton();
+        final_but_managePay = new javax.swing.JButton();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel71 = new javax.swing.JLabel();
+        jLabel103 = new javax.swing.JLabel();
+        jLabel104 = new javax.swing.JLabel();
+        final_tf_PCost_mat = new javax.swing.JTextField();
+        final_tf_PCost_over = new javax.swing.JTextField();
+        final_tf_PCost_labour = new javax.swing.JTextField();
+        final_tf_PCost_total = new javax.swing.JTextField();
+        jLabel105 = new javax.swing.JLabel();
+        final_tf_ACost_mat = new javax.swing.JTextField();
+        final_tf_ACost_over = new javax.swing.JTextField();
+        final_tf_ACost_labour = new javax.swing.JTextField();
+        final_tf_Quote_mat = new javax.swing.JTextField();
+        final_tf_Quote_over = new javax.swing.JTextField();
+        final_tf_Quote_labour = new javax.swing.JTextField();
+        final_proBar_primary_mat = new javax.swing.JProgressBar();
+        final_tf_ACost_total = new javax.swing.JTextField();
+        final_tf_Quote_total = new javax.swing.JTextField();
+        final_proBar_primary_over = new javax.swing.JProgressBar();
+        final_proBar_primary_labour = new javax.swing.JProgressBar();
+        final_proBar_primary_total = new javax.swing.JProgressBar();
+        final_proBar_secondary_over = new javax.swing.JProgressBar();
+        final_proBar_secondary_labour = new javax.swing.JProgressBar();
+        final_proBar_secondary_total = new javax.swing.JProgressBar();
+        final_proBar_secondary_mat = new javax.swing.JProgressBar();
+        jLabel106 = new javax.swing.JLabel();
+        jLabel107 = new javax.swing.JLabel();
+        jLabel108 = new javax.swing.JLabel();
+        jLabel109 = new javax.swing.JLabel();
+        jLabel111 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        l_email = new javax.swing.JLabel();
+        l_contactNr = new javax.swing.JLabel();
+        l_clientFullname = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
+        l_clientCode = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        l_siteLocation = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        l_jobTitle = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        l_currentCost = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
+        l_jobID = new javax.swing.JLabel();
+        l_plannedCost = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
+        l_quoteID = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel143 = new javax.swing.JLabel();
-        jLabel109 = new javax.swing.JLabel();
-        butCreateJob3 = new javax.swing.JButton();
-        butCreateJob6 = new javax.swing.JButton();
+        l_totalQuote = new javax.swing.JLabel();
+        l_quoteState = new javax.swing.JLabel();
+        l_jobState = new javax.swing.JLabel();
+        but_saveClose = new javax.swing.JButton();
 
         jLabel137.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel137.setForeground(new java.awt.Color(255, 51, 0));
         jLabel137.setText("!");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jobStatesTabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jobStatesTabPane.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
@@ -312,37 +321,42 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel12.setText("Job Title");
 
-        jTextField5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField5.setText("Install Wood Fence");
+        job_tf_title.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel5.setText("Job Specification");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("Install a new small wooden fence\nAproximately 12m x 10m");
-        jScrollPane3.setViewportView(jTextArea3);
+        job_ta_specification.setColumns(20);
+        job_ta_specification.setRows(5);
+        jScrollPane3.setViewportView(job_ta_specification);
 
-        jTextField4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField4.setText("12 mountainview crescent Durbanville");
-        jTextField4.setEnabled(false);
+        job_tf_siteLocation.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_tf_siteLocation.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel4.setText("Site Location");
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton1.setText("Insert Address");
+        job_but_insertAdr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_but_insertAdr.setText("Insert Address");
 
-        jSpinner1.setModel(new javax.swing.SpinnerDateModel());
+        job_spin_date.setModel(new javax.swing.SpinnerDateModel());
 
         jLabel19.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel19.setText("Date");
 
-        jButton2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton2.setText("Create");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        job_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_but_done.setText("Done");
+        job_but_done.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                job_but_doneActionPerformed(evt);
+            }
+        });
+
+        job_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_but_cancel.setText("Cancel");
+        job_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                job_but_cancelActionPerformed(evt);
             }
         });
 
@@ -355,14 +369,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(job_tf_siteLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(job_but_insertAdr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(job_but_cancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(job_but_done))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(job_tf_title, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel12)
                             .addComponent(jLabel4))
@@ -371,7 +387,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                             .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jSpinner1))))
+                            .addComponent(job_spin_date))))
                 .addGap(16, 16, 16))
         );
         jPanel13Layout.setVerticalGroup(
@@ -383,8 +399,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(job_tf_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(job_spin_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -393,54 +409,51 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(job_tf_siteLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(job_but_insertAdr)
+                    .addComponent(job_but_done)
+                    .addComponent(job_but_cancel))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        butCreateJob.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        butCreateJob.setText("Create Job");
-        butCreateJob.addActionListener(new java.awt.event.ActionListener() {
+        job_but_createJob.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        job_but_createJob.setText("Create Job");
+        job_but_createJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butCreateJobActionPerformed(evt);
+                job_but_createJobActionPerformed(evt);
             }
         });
 
-        butCreateJob1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        butCreateJob1.setText("Create Quote");
-        butCreateJob1.addActionListener(new java.awt.event.ActionListener() {
+        job_but_createQuote.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        job_but_createQuote.setText("Create Quote");
+        job_but_createQuote.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butCreateJob1ActionPerformed(evt);
+                job_but_createQuoteActionPerformed(evt);
             }
         });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField1.setText("James");
-        jTextField1.setEnabled(false);
+        job_tf_fname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_tf_fname.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("First Name");
 
-        jTextField8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField8.setText("Kotze");
-        jTextField8.setEnabled(false);
+        job_tf_lname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_tf_lname.setEnabled(false);
 
         jLabel49.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel49.setText("Last Name");
 
-        jTextField3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField3.setText("0820745213");
-        jTextField3.setEnabled(false);
+        job_tf_contactNr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_tf_contactNr.setEnabled(false);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Contact Number");
 
-        jTextField2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField2.setText("jamesMkotze@gmail.com");
-        jTextField2.setEnabled(false);
+        job_tf_email.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_tf_email.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel3.setText("Contact Email");
@@ -453,19 +466,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                    .addComponent(job_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel49)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(job_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(job_tf_contactNr, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(job_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -473,87 +486,87 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(job_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(job_tf_contactNr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(job_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(job_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel49)
                             .addComponent(jLabel2))
                         .addGap(28, 28, 28)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        butCreateJob4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        butCreateJob4.setText("Change Details");
-        butCreateJob4.addActionListener(new java.awt.event.ActionListener() {
+        job_but_changeDetails.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        job_but_changeDetails.setText("Change Details");
+        job_but_changeDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butCreateJob4ActionPerformed(evt);
+                job_but_changeDetailsActionPerformed(evt);
             }
         });
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
-        jTextArea4.setText("Install a new small wooden fence\nAproximately 12m x 10m");
         jScrollPane4.setViewportView(jTextArea4);
 
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel18.setText("Comments");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(butCreateJob, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(butCreateJob4)
-                            .addGap(583, 583, 583))
-                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 26, Short.MAX_VALUE)
+                        .addComponent(job_but_createJob, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(job_but_changeDetails)
+                        .addGap(610, 610, 610))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(butCreateJob1)))
-                .addGap(29, 29, 29))
+                        .addComponent(job_but_createQuote)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butCreateJob1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(job_but_createQuote))
+                .addGap(13, 13, 13)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butCreateJob)
-                    .addComponent(butCreateJob4))
+                    .addComponent(job_but_createJob)
+                    .addComponent(job_but_changeDetails))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jobStatesTabPane.addTab("Job", jPanel1);
@@ -569,23 +582,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel64.setText("Materials:");
 
-        jSpinner5.setEnabled(false);
+        quote_spin_cont_mat.setEnabled(false);
 
-        jSpinner6.setEnabled(false);
+        quote_spin_cont_over.setEnabled(false);
 
-        jSpinner7.setEnabled(false);
+        quote_spin_cont_labour.setEnabled(false);
 
-        jTextField13.setEnabled(false);
+        quote_tf_cost_mat.setEnabled(false);
 
-        jTextField14.setEnabled(false);
+        quote_tf_cost_over.setEnabled(false);
 
-        jTextField15.setEnabled(false);
+        quote_tf_cost_labour.setEnabled(false);
 
-        jSpinner8.setEnabled(false);
+        quote_spin_charge_mat.setEnabled(false);
 
-        jSpinner9.setEnabled(false);
+        quote_spin_charge_over.setEnabled(false);
 
-        jSpinner10.setEnabled(false);
+        quote_spin_charge_labour.setEnabled(false);
 
         jLabel69.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel69.setText("Contingency %");
@@ -602,16 +615,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel80.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel80.setText("Cost");
 
-        jTextField20.setEnabled(false);
+        quote_tf_final_over.setEnabled(false);
 
-        jTextField21.setEnabled(false);
+        quote_tf_final_labour.setEnabled(false);
 
-        jTextField9.setEnabled(false);
+        quote_tf_cost_subtotal.setEnabled(false);
 
         jLabel81.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel81.setText("Total");
 
-        jTextField10.setEnabled(false);
+        quote_tf_total.setEnabled(false);
 
         jLabel82.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel82.setText("Final Charges:");
@@ -619,7 +632,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel83.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel83.setText("Subtotal");
 
-        jTextField23.setEnabled(false);
+        quote_tf_final_mat.setEnabled(false);
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -636,46 +649,46 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel80)
                     .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(quote_tf_cost_subtotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                        .addComponent(quote_tf_cost_labour, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(quote_tf_cost_over, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(quote_tf_cost_mat, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quote_spin_cont_over, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(quote_spin_cont_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3)))
+                            .addComponent(quote_cb_cont_over)
+                            .addComponent(quote_cb_cont_labour)))
                     .addGroup(jPanel24Layout.createSequentialGroup()
-                        .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quote_spin_cont_mat, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1))
+                        .addComponent(quote_cb_cont_mat))
                     .addComponent(jLabel69))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSpinner9)
-                            .addComponent(jSpinner10)
-                            .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quote_spin_charge_over)
+                            .addComponent(quote_spin_charge_labour)
+                            .addComponent(quote_spin_charge_mat, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jCheckBox8)
-                            .addComponent(jCheckBox6)))
+                            .addComponent(quote_cb_charge_over)
+                            .addComponent(quote_cb_charge_mat)
+                            .addComponent(quote_cb_charge_labour)))
                     .addComponent(jLabel77))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel78)
-                            .addComponent(jTextField22)
-                            .addComponent(jTextField19)
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quote_tf_chFee_mat)
+                            .addComponent(quote_tf_chFee_over)
+                            .addComponent(quote_tf_chFee_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
                         .addComponent(jLabel81)
@@ -683,14 +696,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel79)
                     .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField23)
-                        .addComponent(jTextField20)
-                        .addComponent(jTextField21)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quote_tf_final_mat)
+                        .addComponent(quote_tf_final_over)
+                        .addComponent(quote_tf_final_labour)
+                        .addComponent(quote_tf_total, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel24Layout.createSequentialGroup()
                             .addComponent(jLabel82)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField24))))
+                            .addComponent(quote_tf_finalCharges))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
@@ -708,93 +721,105 @@ public class GUI_jobStates extends javax.swing.JFrame {
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel24Layout.createSequentialGroup()
                                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox1)
-                                            .addComponent(jSpinner5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(quote_cb_cont_mat)
+                                            .addComponent(quote_spin_cont_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jCheckBox2))
+                                            .addComponent(quote_spin_cont_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(quote_cb_cont_over))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jCheckBox3)))
+                                            .addComponent(quote_spin_cont_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(quote_cb_cont_labour)))
                                     .addGroup(jPanel24Layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
                                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox8)
-                                            .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(quote_cb_charge_mat)
+                                            .addComponent(quote_spin_charge_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(16, 16, 16)
                                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jCheckBox5))
+                                            .addComponent(quote_spin_charge_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(quote_cb_charge_over))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jSpinner10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jCheckBox6)))))
+                                            .addComponent(quote_spin_charge_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(quote_tf_chFee_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(quote_cb_charge_labour)))))
                             .addGroup(jPanel24Layout.createSequentialGroup()
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel79)
                                     .addComponent(jLabel78))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(quote_tf_final_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quote_tf_chFee_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(quote_tf_final_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quote_tf_chFee_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(quote_tf_final_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(quote_tf_finalCharges, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel82))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel81)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(quote_tf_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addComponent(jLabel80)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel64)
                             .addGroup(jPanel24Layout.createSequentialGroup()
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(quote_tf_cost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19)
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quote_tf_cost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel65))
                                 .addGap(19, 19, 19)
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quote_tf_cost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel66))
                                 .addGap(19, 19, 19)
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(quote_tf_cost_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel83))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton20.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton20.setText("Create");
+        quote_but_create.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        quote_but_create.setText("Create");
+        quote_but_create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_createActionPerformed(evt);
+            }
+        });
 
-        jButton22.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton22.setText("Previous");
+        quote_but_prev.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        quote_but_prev.setText("Previous");
 
-        jButton23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton23.setText("Next");
+        quote_but_next.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        quote_but_next.setText("Next");
 
-        jButton19.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton19.setText("Job Description");
+        quote_but_jobDesc.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        quote_but_jobDesc.setText("Job Description");
+        quote_but_jobDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_jobDescActionPerformed(evt);
+            }
+        });
 
-        jTabbedPane3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTabbedPane3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        quote_TabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        quote_TabPane.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jPanel35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel114.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel114.setText("Item");
+
+        quote_mat_tf_item.setEnabled(false);
 
         jLabel115.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel115.setText("Cost Per Item");
@@ -802,13 +827,26 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel116.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel116.setText("Count");
 
-        jFormattedTextField7.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        quote_mat_tf_cost.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        quote_mat_tf_cost.setEnabled(false);
 
-        jButton4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton4.setText("Done");
+        quote_mat_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_mat_but_done.setText("Done");
+        quote_mat_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_doneActionPerformed(evt);
+            }
+        });
 
-        jButton29.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton29.setText("Cancel");
+        quote_mat_spin_count.setEnabled(false);
+
+        quote_mat_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_mat_but_cancel.setText("Cancel");
+        quote_mat_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -823,13 +861,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel35Layout.createSequentialGroup()
-                        .addComponent(jSpinner13, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quote_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton29)
+                        .addComponent(quote_mat_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
-                    .addComponent(jFormattedTextField7)
-                    .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(quote_mat_but_done))
+                    .addComponent(quote_mat_tf_cost)
+                    .addComponent(quote_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
@@ -838,36 +876,46 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel114)
-                    .addComponent(jTextField30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel115)
-                    .addComponent(jFormattedTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_mat_tf_cost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel116)
-                    .addComponent(jButton4)
-                    .addComponent(jSpinner13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton29))
+                    .addComponent(quote_mat_but_done)
+                    .addComponent(quote_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quote_mat_but_cancel))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        jList12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList12.setModel(new javax.swing.AbstractListModel<String>() {
+        quote_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quote_mat_li_materials.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane14.setViewportView(jList12);
+        jScrollPane14.setViewportView(quote_mat_li_materials);
 
-        activeState_butRemove5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove5.setText("Change");
+        quote_mat_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_mat_but_change.setText("Change");
+        quote_mat_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_changeActionPerformed(evt);
+            }
+        });
 
-        activeState_butAdd16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butAdd16.setText("Add");
+        quote_mat_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_mat_but_add.setText("Add");
+        quote_mat_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_but_addActionPerformed(evt);
+            }
+        });
 
-        activeState_butRemove14.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove14.setText("Remove");
+        quote_mat_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_mat_but_remove.setText("Remove");
 
         javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
         jPanel34.setLayout(jPanel34Layout);
@@ -878,9 +926,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(activeState_butRemove5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butAdd16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butRemove14, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_mat_but_change, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quote_mat_but_add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quote_mat_but_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -894,32 +942,45 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jPanel35, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel34Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(activeState_butAdd16)
+                        .addComponent(quote_mat_but_add)
                         .addGap(18, 18, 18)
-                        .addComponent(activeState_butRemove5)
+                        .addComponent(quote_mat_but_change)
                         .addGap(18, 18, 18)
-                        .addComponent(activeState_butRemove14)
+                        .addComponent(quote_mat_but_remove)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Materials", jPanel34);
+        quote_TabPane.addTab("Materials", jPanel34);
 
         jPanel37.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel117.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel117.setText("Overhead");
 
+        quote_over_tf_overhead.setEnabled(false);
+
         jLabel118.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel118.setText("Total Cost");
 
-        jFormattedTextField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        quote_over_tf_total.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        quote_over_tf_total.setEnabled(false);
 
-        jButton31.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton31.setText("Done");
+        quote_over_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_over_but_done.setText("Done");
+        quote_over_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_doneActionPerformed(evt);
+            }
+        });
 
-        jButton32.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton32.setText("Cancel");
+        quote_over_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_over_but_cancel.setText("Cancel");
+        quote_over_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -929,17 +990,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
-                        .addComponent(jButton32)
+                        .addComponent(quote_over_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton31))
+                        .addComponent(quote_over_but_done))
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel117)
                             .addComponent(jLabel118))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField43)
-                            .addComponent(jFormattedTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(quote_over_tf_overhead)
+                            .addComponent(quote_over_tf_total, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(22, 22, 22))
         );
         jPanel37Layout.setVerticalGroup(
@@ -948,34 +1009,44 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel117)
-                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_over_tf_overhead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel118)
-                    .addComponent(jFormattedTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_over_tf_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton31)
-                    .addComponent(jButton32))
+                    .addComponent(quote_over_but_done)
+                    .addComponent(quote_over_but_cancel))
                 .addGap(28, 28, 28))
         );
 
-        jList13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList13.setModel(new javax.swing.AbstractListModel<String>() {
+        quote_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quote_over_li_overheads.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane15.setViewportView(jList13);
+        jScrollPane15.setViewportView(quote_over_li_overheads);
 
-        activeState_butRemove15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove15.setText("Change");
+        quote_over_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_over_but_change.setText("Change");
+        quote_over_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_changeActionPerformed(evt);
+            }
+        });
 
-        activeState_butAdd20.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butAdd20.setText("Add");
+        quote_over_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_over_but_add.setText("Add");
+        quote_over_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_over_but_addActionPerformed(evt);
+            }
+        });
 
-        activeState_butRemove16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove16.setText("Remove");
+        quote_over_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_over_but_remove.setText("Remove");
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
@@ -986,9 +1057,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(activeState_butRemove15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butAdd20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butRemove16, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_over_but_change, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quote_over_but_add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quote_over_but_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1002,24 +1073,24 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel36Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(activeState_butAdd20)
+                        .addComponent(quote_over_but_add)
                         .addGap(18, 18, 18)
-                        .addComponent(activeState_butRemove15)
+                        .addComponent(quote_over_but_change)
                         .addGap(18, 18, 18)
-                        .addComponent(activeState_butRemove16)
+                        .addComponent(quote_over_but_remove)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Overheads", jPanel36);
+        quote_TabPane.addTab("Overheads", jPanel36);
 
-        jList14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList14.setModel(new javax.swing.AbstractListModel<String>() {
+        quote_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quote_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Stefan (450)", "Andre (400)", "Simeon (440)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane16.setViewportView(jList14);
+        jScrollPane16.setViewportView(quote_labour_li_labour);
 
         jPanel39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1029,19 +1100,29 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel120.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel120.setText("Hours");
 
-        jButton33.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton33.setText("Done");
+        quote_labour_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_labour_but_done.setText("Done");
+        quote_labour_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_doneActionPerformed(evt);
+            }
+        });
 
-        jButton34.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton34.setText("Cancel");
+        quote_labour_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_labour_but_cancel.setText("Cancel");
+        quote_labour_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_cancelActionPerformed(evt);
+            }
+        });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
 
         jLabel60.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel60.setText("Rate:");
 
-        jLabel121.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel121.setText("(Hourly Rate)");
+        quote_labour_l_rate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_labour_l_rate.setText("(Hourly Rate)");
 
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
@@ -1051,9 +1132,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
-                        .addComponent(jButton34)
+                        .addComponent(quote_labour_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton33))
+                        .addComponent(quote_labour_but_done))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
                         .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel119)
@@ -1061,12 +1142,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel39Layout.createSequentialGroup()
-                                .addComponent(jSpinner14, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(quote_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel60)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel121))
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(quote_labour_l_rate))
+                            .addComponent(quote_labour_combo_workers, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 25, 25))
         );
         jPanel39Layout.setVerticalGroup(
@@ -1075,28 +1156,38 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel119)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_labour_combo_workers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel120)
-                    .addComponent(jSpinner14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quote_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel60)
-                    .addComponent(jLabel121))
+                    .addComponent(quote_labour_l_rate))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton33)
-                    .addComponent(jButton34))
+                    .addComponent(quote_labour_but_done)
+                    .addComponent(quote_labour_but_cancel))
                 .addGap(25, 25, 25))
         );
 
-        activeState_butRemove17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove17.setText("Remove");
+        quote_labour_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_labour_but_remove.setText("Remove");
 
-        activeState_butRemove18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove18.setText("Change");
+        quote_labour_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_labour_but_change.setText("Change");
+        quote_labour_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_changeActionPerformed(evt);
+            }
+        });
 
-        activeState_butAdd21.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butAdd21.setText("Add");
+        quote_labour_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        quote_labour_but_add.setText("Add");
+        quote_labour_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_labour_but_addActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
@@ -1107,9 +1198,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(activeState_butRemove18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butAdd21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butRemove17, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quote_labour_but_change, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quote_labour_but_add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(quote_labour_but_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1123,16 +1214,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jPanel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel38Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(activeState_butAdd21)
+                        .addComponent(quote_labour_but_add)
                         .addGap(18, 18, 18)
-                        .addComponent(activeState_butRemove18)
+                        .addComponent(quote_labour_but_change)
                         .addGap(18, 18, 18)
-                        .addComponent(activeState_butRemove17)
+                        .addComponent(quote_labour_but_remove)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Labour", jPanel38);
+        quote_TabPane.addTab("Labour", jPanel38);
 
         jLabel24.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel24.setText("(Quote Date Here)");
@@ -1143,16 +1234,26 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel32.setText("Quote Summary");
 
-        activeState_butAdd22.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        activeState_butAdd22.setForeground(new java.awt.Color(0, 102, 0));
-        activeState_butAdd22.setText("Accept");
+        quote_but_acc.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        quote_but_acc.setForeground(new java.awt.Color(0, 102, 0));
+        quote_but_acc.setText("Accept");
+        quote_but_acc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_accActionPerformed(evt);
+            }
+        });
 
-        activeState_butAdd23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        activeState_butAdd23.setForeground(new java.awt.Color(102, 51, 0));
-        activeState_butAdd23.setText("Reject");
+        quote_but_rej.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        quote_but_rej.setForeground(new java.awt.Color(102, 51, 0));
+        quote_but_rej.setText("Reject");
+        quote_but_rej.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_rejActionPerformed(evt);
+            }
+        });
 
-        jButton21.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton21.setText("Delete");
+        quote_but_delete.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        quote_but_delete.setText("Delete");
 
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel33.setText("ID:");
@@ -1168,7 +1269,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(quote_TabPane, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(jLabel32)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1180,36 +1281,37 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jButton20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton21)
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton19)
+                        .addComponent(quote_but_create)
+                        .addGap(30, 30, 30)
+                        .addComponent(quote_but_delete)
+                        .addGap(33, 33, 33)
+                        .addComponent(quote_but_jobDesc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton22)
+                        .addComponent(quote_but_prev)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(quote_but_next, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeState_butAdd23)
+                        .addComponent(quote_but_rej)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(activeState_butAdd22)))
+                        .addComponent(quote_but_acc)))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(activeState_butAdd22)
-                    .addComponent(activeState_butAdd23)
-                    .addComponent(jButton20)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton22)
-                        .addComponent(jButton23)
-                        .addComponent(jButton21)
-                        .addComponent(jButton19)))
+                        .addComponent(quote_but_prev)
+                        .addComponent(quote_but_next)
+                        .addComponent(quote_but_jobDesc))
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(quote_but_acc)
+                        .addComponent(quote_but_rej)
+                        .addComponent(quote_but_create)
+                        .addComponent(quote_but_delete)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(quote_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
@@ -1235,69 +1337,69 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel89.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel89.setText("Materials:");
 
-        jTextField16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField16.setEnabled(false);
+        work_tf_PCost_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_PCost_mat.setEnabled(false);
 
-        jTextField17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField17.setEnabled(false);
+        work_tf_PCost_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_PCost_over.setEnabled(false);
 
-        jTextField25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField25.setEnabled(false);
+        work_tf_PCost_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_PCost_labour.setEnabled(false);
 
-        jTextField29.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField29.setEnabled(false);
+        work_tf_PCost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_PCost_total.setEnabled(false);
 
         jLabel97.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel97.setText("Total");
 
-        jTextField26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField26.setEnabled(false);
+        work_tf_ACost_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_ACost_mat.setEnabled(false);
 
-        jTextField32.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField32.setEnabled(false);
+        work_tf_ACost_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_ACost_over.setEnabled(false);
 
-        jTextField33.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField33.setEnabled(false);
+        work_tf_ACost_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_ACost_labour.setEnabled(false);
 
-        jTextField34.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField34.setEnabled(false);
+        work_tf_Quote_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_Quote_mat.setEnabled(false);
 
-        jTextField40.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField40.setEnabled(false);
+        work_tf_Quote_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_Quote_over.setEnabled(false);
 
-        jTextField41.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField41.setEnabled(false);
+        work_tf_Quote_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_Quote_labour.setEnabled(false);
 
-        jProgressBar1.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar1.setToolTipText("");
-        jProgressBar1.setValue(100);
+        work_proBar_primary_mat.setBackground(new java.awt.Color(51, 255, 255));
+        work_proBar_primary_mat.setToolTipText("");
+        work_proBar_primary_mat.setValue(100);
 
-        jTextField31.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField31.setEnabled(false);
+        work_tf_ACost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_ACost_total.setEnabled(false);
 
-        jTextField42.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField42.setEnabled(false);
+        work_tf_Quote_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        work_tf_Quote_total.setEnabled(false);
 
-        jProgressBar7.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar7.setToolTipText("");
-        jProgressBar7.setValue(75);
+        work_proBar_primary_over.setBackground(new java.awt.Color(51, 255, 255));
+        work_proBar_primary_over.setToolTipText("");
+        work_proBar_primary_over.setValue(75);
 
-        jProgressBar8.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar8.setToolTipText("");
-        jProgressBar8.setValue(55);
+        work_proBar_primary_labour.setBackground(new java.awt.Color(51, 255, 255));
+        work_proBar_primary_labour.setToolTipText("");
+        work_proBar_primary_labour.setValue(55);
 
-        jProgressBar9.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar9.setToolTipText("");
-        jProgressBar9.setValue(85);
+        work_proBar_primary_total.setBackground(new java.awt.Color(51, 255, 255));
+        work_proBar_primary_total.setToolTipText("");
+        work_proBar_primary_total.setValue(85);
 
-        jProgressBar5.setForeground(new java.awt.Color(255, 0, 0));
+        work_proBar_secondary_over.setForeground(new java.awt.Color(255, 0, 0));
 
-        jProgressBar6.setForeground(new java.awt.Color(255, 0, 0));
+        work_proBar_secondary_labour.setForeground(new java.awt.Color(255, 0, 0));
 
-        jProgressBar10.setForeground(new java.awt.Color(255, 0, 0));
+        work_proBar_secondary_total.setForeground(new java.awt.Color(255, 0, 0));
 
-        jProgressBar4.setForeground(new java.awt.Color(255, 0, 0));
-        jProgressBar4.setValue(25);
+        work_proBar_secondary_mat.setForeground(new java.awt.Color(255, 0, 0));
+        work_proBar_secondary_mat.setValue(25);
 
         jLabel94.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel94.setText("Planned Cost");
@@ -1332,45 +1434,45 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addComponent(jTextField25, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField16))
+                        .addComponent(work_tf_PCost_total, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                        .addComponent(work_tf_PCost_labour, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(work_tf_PCost_mat))
                     .addComponent(jLabel94)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_tf_PCost_over, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField26)
-                        .addComponent(jTextField32)
-                        .addComponent(jTextField33)
-                        .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(work_tf_ACost_mat)
+                        .addComponent(work_tf_ACost_over)
+                        .addComponent(work_tf_ACost_labour)
+                        .addComponent(work_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel96))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField34)
-                        .addComponent(jTextField40)
-                        .addComponent(jTextField41)
-                        .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(work_tf_Quote_mat)
+                        .addComponent(work_tf_Quote_over)
+                        .addComponent(work_tf_Quote_labour)
+                        .addComponent(work_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel98))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel27Layout.createSequentialGroup()
                         .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jProgressBar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jProgressBar8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jProgressBar9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(work_proBar_primary_mat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(work_proBar_primary_over, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(work_proBar_primary_labour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(work_proBar_primary_total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel27Layout.createSequentialGroup()
                         .addComponent(jLabel93)
                         .addGap(101, 101, 101)))
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jProgressBar6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jProgressBar4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(work_proBar_secondary_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(work_proBar_secondary_over, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(work_proBar_secondary_mat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel110, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(work_proBar_secondary_total, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1397,61 +1499,61 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jLabel110))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(work_proBar_primary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_Quote_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_proBar_secondary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_PCost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel89)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_ACost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel88))
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_Quote_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel27Layout.createSequentialGroup()
                             .addGap(2, 2, 2)
                             .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jProgressBar7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(work_proBar_secondary_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(work_proBar_primary_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(21, 21, 21)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_ACost_labour, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_Quote_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel27Layout.createSequentialGroup()
                             .addGap(2, 2, 2)
                             .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jProgressBar6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jProgressBar8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(work_proBar_secondary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(work_proBar_primary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_PCost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel68)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jProgressBar9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jProgressBar10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(work_proBar_primary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_proBar_secondary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel97)
-                        .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(work_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
 
-        jTabbedPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTabbedPane2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        work_TabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        work_TabPane.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jPanel28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1464,13 +1566,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel92.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel92.setText("Count");
 
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        work_mat_tf_cost.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
-        jButton3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton3.setText("Done");
+        work_mat_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_mat_but_done.setText("Done");
+        work_mat_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_doneActionPerformed(evt);
+            }
+        });
 
-        jButton14.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton14.setText("Cancel");
+        work_mat_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_mat_but_cancel.setText("Cancel");
+        work_mat_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -1485,13 +1597,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel28Layout.createSequentialGroup()
-                        .addComponent(jSpinner11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton14)
+                        .addComponent(work_mat_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
-                    .addComponent(jFormattedTextField4)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(work_mat_but_done))
+                    .addComponent(work_mat_tf_cost)
+                    .addComponent(work_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
@@ -1500,39 +1612,49 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel90)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel91)
-                    .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_mat_tf_cost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel92)
-                    .addComponent(jButton3)
-                    .addComponent(jSpinner11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14))
+                    .addComponent(work_mat_but_done)
+                    .addComponent(work_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(work_mat_but_cancel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jList8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList8.setModel(new javax.swing.AbstractListModel<String>() {
+        work_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_mat_li_materials.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane6.setViewportView(jList8);
+        jScrollPane6.setViewportView(work_mat_li_materials);
 
-        activeState_butRemove4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove4.setText("Change");
+        work_mat_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_mat_but_change.setText("Change");
+        work_mat_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_changeActionPerformed(evt);
+            }
+        });
 
-        activeState_butChange4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butChange4.setText("From Quote");
+        work_mat_but_fromQ.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_mat_but_fromQ.setText("From Quote");
 
-        activeState_butAdd7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butAdd7.setText("Add");
+        work_mat_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_mat_but_add.setText("Add");
+        work_mat_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_addActionPerformed(evt);
+            }
+        });
 
-        activeState_butRemove12.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove12.setText("Remove");
+        work_mat_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_mat_but_remove.setText("Remove");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1543,10 +1665,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(activeState_butRemove4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butAdd7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butChange4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butRemove12, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_mat_but_change, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_mat_but_add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_mat_but_fromQ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_mat_but_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1557,20 +1679,20 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(activeState_butAdd7)
+                        .addComponent(work_mat_but_add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeState_butChange4)
+                        .addComponent(work_mat_but_fromQ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeState_butRemove4)
+                        .addComponent(work_mat_but_change)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeState_butRemove12)
-                        .addGap(0, 2, Short.MAX_VALUE))
+                        .addComponent(work_mat_but_remove)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Materials", jPanel18);
+        work_TabPane.addTab("Materials", jPanel18);
 
         jPanel30.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1580,13 +1702,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel100.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel100.setText("Total Cost");
 
-        jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        work_over_tf_cost.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
-        jButton11.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton11.setText("Done");
+        work_over_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_over_but_done.setText("Done");
+        work_over_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_doneActionPerformed(evt);
+            }
+        });
 
-        jButton15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton15.setText("Cancel");
+        work_over_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_over_but_cancel.setText("Cancel");
+        work_over_but_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -1596,17 +1728,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel30Layout.createSequentialGroup()
-                        .addComponent(jButton15)
+                        .addComponent(work_over_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton11))
+                        .addComponent(work_over_but_done))
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel99)
                             .addComponent(jLabel100))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField28)
-                            .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(work_over_tf_overhead)
+                            .addComponent(work_over_tf_cost, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(22, 22, 22))
         );
         jPanel30Layout.setVerticalGroup(
@@ -1615,37 +1747,47 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel99)
-                    .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_over_tf_overhead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel100)
-                    .addComponent(jFormattedTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_over_tf_cost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11)
-                    .addComponent(jButton15))
+                    .addComponent(work_over_but_done)
+                    .addComponent(work_over_but_cancel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jList10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList10.setModel(new javax.swing.AbstractListModel<String>() {
+        work_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_over_li_overheads.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane12.setViewportView(jList10);
+        jScrollPane12.setViewportView(work_over_li_overheads);
 
-        activeState_butRemove9.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove9.setText("Change");
+        work_over_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_over_but_change.setText("Change");
+        work_over_but_change.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_changeActionPerformed(evt);
+            }
+        });
 
-        activeState_butChange7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butChange7.setText("From Quote");
+        work_over_but_fromQ.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_over_but_fromQ.setText("From Quote");
 
-        activeState_butAdd18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butAdd18.setText("Add");
+        work_over_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_over_but_add.setText("Add");
+        work_over_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_over_but_addActionPerformed(evt);
+            }
+        });
 
-        activeState_butRemove13.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        activeState_butRemove13.setText("Remove");
+        work_over_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_over_but_remove.setText("Remove");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -1656,10 +1798,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(activeState_butRemove9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butAdd18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butChange7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(activeState_butRemove13, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_over_but_change, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_over_but_add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_over_but_fromQ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_over_but_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1672,26 +1814,26 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(activeState_butAdd18)
+                        .addComponent(work_over_but_add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeState_butChange7)
+                        .addComponent(work_over_but_fromQ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeState_butRemove9)
+                        .addComponent(work_over_but_change)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(activeState_butRemove13)
-                        .addGap(0, 2, Short.MAX_VALUE)))
+                        .addComponent(work_over_but_remove)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Overheads", jPanel29);
+        work_TabPane.addTab("Overheads", jPanel29);
 
-        jList11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jList11.setModel(new javax.swing.AbstractListModel<String>() {
+        work_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane13.setViewportView(jList11);
+        jScrollPane13.setViewportView(work_labour_li_labour);
 
         jPanel33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -1704,8 +1846,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel59.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel59.setText("Rate:");
 
-        jLabel111.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel111.setText("(Hourly Rate)");
+        work_labour_l_rate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_labour_l_rate.setText("(Hourly Rate)");
+
+        work_labour_spin_hours.setEnabled(false);
+
+        work_labour_tf_worker.setEnabled(false);
 
         javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
         jPanel33.setLayout(jPanel33Layout);
@@ -1719,14 +1865,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel33Layout.createSequentialGroup()
-                        .addComponent(jSpinner12, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
                         .addComponent(jLabel59)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel111)
+                        .addComponent(work_labour_l_rate)
                         .addGap(25, 25, 25))
                     .addGroup(jPanel33Layout.createSequentialGroup()
-                        .addComponent(jTextField35)
+                        .addComponent(work_labour_tf_worker)
                         .addContainerGap())))
         );
         jPanel33Layout.setVerticalGroup(
@@ -1735,18 +1881,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel101)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_labour_tf_worker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel102)
-                    .addComponent(jSpinner12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel59)
-                    .addComponent(jLabel111))
+                    .addComponent(work_labour_l_rate))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jButton16.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton16.setText("Job Logs");
+        work_labour_but_logs.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        work_labour_but_logs.setText("Job Logs");
+        work_labour_but_logs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_labour_but_logsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -1756,7 +1907,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(work_labour_but_logs, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1771,17 +1922,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jButton16)
+                .addComponent(work_labour_but_logs)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Labour", jPanel31);
+        work_TabPane.addTab("Labour", jPanel31);
 
         jLabel95.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel95.setText("Cost Summary");
 
-        butCreateJob5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        butCreateJob5.setText("Finalise Job");
+        work_but_finaliseJob.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        work_but_finaliseJob.setText("Finalise Job");
+        work_but_finaliseJob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_but_finaliseJobActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1790,23 +1946,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane2)
+                    .addComponent(work_TabPane)
                     .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel95)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(butCreateJob5)))
+                        .addComponent(work_but_finaliseJob)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(butCreateJob5)
+                .addComponent(work_but_finaliseJob)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(work_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel95)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1816,226 +1972,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jobStatesTabPane.addTab("Work", jPanel3);
 
-        jPanel40.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel70.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel70.setText("Labour:");
-
-        jLabel125.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel125.setText("Overheads:");
-
-        jLabel126.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel126.setText("Materials:");
-
-        jTextField44.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField44.setEnabled(false);
-
-        jTextField45.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField45.setEnabled(false);
-
-        jTextField46.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField46.setEnabled(false);
-
-        jLabel127.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel127.setText("Progression");
-
-        jLabel128.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel128.setText("Planned Cost");
-
-        jTextField47.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField47.setEnabled(false);
-
-        jLabel129.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel129.setText("Total:");
-
-        jTextField48.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField48.setEnabled(false);
-
-        jTextField49.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField49.setEnabled(false);
-
-        jLabel130.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel130.setText("Actual Cost");
-
-        jTextField50.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField50.setEnabled(false);
-
-        jLabel131.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel131.setText("Total Quote");
-
-        jTextField51.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField51.setEnabled(false);
-
-        jTextField52.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField52.setEnabled(false);
-
-        jTextField53.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField53.setEnabled(false);
-
-        jProgressBar2.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar2.setToolTipText("");
-        jProgressBar2.setValue(100);
-
-        jProgressBar11.setForeground(new java.awt.Color(255, 0, 0));
-        jProgressBar11.setValue(25);
-
-        jTextField54.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField54.setEnabled(false);
-
-        jTextField55.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jTextField55.setEnabled(false);
-
-        jProgressBar12.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar12.setToolTipText("");
-        jProgressBar12.setValue(75);
-
-        jProgressBar13.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar13.setToolTipText("");
-        jProgressBar13.setValue(55);
-
-        jProgressBar14.setBackground(new java.awt.Color(51, 255, 255));
-        jProgressBar14.setToolTipText("");
-        jProgressBar14.setValue(85);
-
-        jProgressBar15.setForeground(new java.awt.Color(255, 0, 0));
-
-        jProgressBar16.setForeground(new java.awt.Color(255, 0, 0));
-
-        jProgressBar17.setForeground(new java.awt.Color(255, 0, 0));
-
-        jLabel132.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel132.setText("Profit Margin");
-
-        javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
-        jPanel40.setLayout(jPanel40Layout);
-        jPanel40Layout.setHorizontalGroup(
-            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createSequentialGroup()
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel40Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel70)
-                            .addComponent(jLabel125)
-                            .addComponent(jLabel129))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField47, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                            .addComponent(jTextField46, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField45, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField49)
-                            .addComponent(jTextField50, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                            .addComponent(jTextField54))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField52)
-                            .addComponent(jTextField53, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                            .addComponent(jTextField55))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jProgressBar14, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                            .addComponent(jProgressBar13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jProgressBar12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar15, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jProgressBar16, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jProgressBar17, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(jPanel40Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel126)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel128)
-                            .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel130)
-                            .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel131))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel127))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel40Layout.createSequentialGroup()
-                                .addComponent(jLabel132)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
-                            .addComponent(jProgressBar11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addGap(20, 20, 20))
-        );
-        jPanel40Layout.setVerticalGroup(
-            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel40Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel128)
-                        .addComponent(jLabel130))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel131)
-                        .addComponent(jLabel127)
-                        .addComponent(jLabel132)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel126))
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel40Layout.createSequentialGroup()
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel40Layout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jProgressBar15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jProgressBar12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel40Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jProgressBar16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jProgressBar13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel40Layout.createSequentialGroup()
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel125))
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel70))))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel129))
-                    .addGroup(jPanel40Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jProgressBar17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jProgressBar14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(17, 17, 17))
-        );
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        final_table_costs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Material", "Screws", "12", "30", "360"},
                 {"Material", "2x4 Wood", "4", "100", "400"},
@@ -2046,22 +1983,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 "Type", "Title", "Count/Hours", "Cost/Rate", "Final Cost"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(final_table_costs);
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("View");
 
-        jRadioButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jRadioButton1.setText("All");
+        final_rb_all.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        final_rb_all.setText("All");
 
-        jRadioButton4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jRadioButton4.setText("Material");
+        final_rb_mat.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        final_rb_mat.setText("Material");
 
-        jRadioButton3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jRadioButton3.setText("Overhead");
+        final_rb_over.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        final_rb_over.setText("Overhead");
 
-        jRadioButton2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jRadioButton2.setText("Labour");
+        final_rb_lab.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        final_rb_lab.setText("Labour");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -2070,21 +2007,18 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jSeparator3)
-                        .addContainerGap())
+                    .addComponent(jSeparator3)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addComponent(jRadioButton1)
-                .addGap(22, 22, 22)
-                .addComponent(jRadioButton4)
-                .addGap(22, 22, 22)
-                .addComponent(jRadioButton3)
-                .addGap(22, 22, 22)
-                .addComponent(jRadioButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(final_rb_all)
+                        .addGap(22, 22, 22)
+                        .addComponent(final_rb_mat)
+                        .addGap(22, 22, 22)
+                        .addComponent(final_rb_over)
+                        .addGap(22, 22, 22)
+                        .addComponent(final_rb_lab)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -2095,35 +2029,266 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2)))
+                    .addComponent(final_rb_all)
+                    .addComponent(final_rb_mat)
+                    .addComponent(final_rb_over)
+                    .addComponent(final_rb_lab)))
         );
 
-        butCreateJob7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        butCreateJob7.setText("Sign Off Job");
+        final_but_signOff.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        final_but_signOff.setText("Sign Off Job");
+        final_but_signOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                final_but_signOffActionPerformed(evt);
+            }
+        });
 
         jLabel136.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel136.setText("Quote");
 
-        jTextField56.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField56.setEnabled(false);
+        final_tf_quote.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_quote.setEnabled(false);
 
-        jTextField60.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField60.setEnabled(false);
+        final_tf_rec.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_rec.setEnabled(false);
 
         jLabel138.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel138.setText("Recieved");
 
-        jTextField61.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jTextField61.setEnabled(false);
+        final_tf_outst.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_outst.setEnabled(false);
 
         jLabel139.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel139.setText("Outstanding");
 
-        jButton17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton17.setText("Manage Payments");
+        final_but_managePay.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        final_but_managePay.setText("Manage Payments");
+
+        jPanel32.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel71.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel71.setText("Labour:");
+
+        jLabel103.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel103.setText("Overheads:");
+
+        jLabel104.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel104.setText("Materials:");
+
+        final_tf_PCost_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_mat.setEnabled(false);
+
+        final_tf_PCost_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_over.setEnabled(false);
+
+        final_tf_PCost_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_labour.setEnabled(false);
+
+        final_tf_PCost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_total.setEnabled(false);
+
+        jLabel105.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel105.setText("Total");
+
+        final_tf_ACost_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_ACost_mat.setEnabled(false);
+
+        final_tf_ACost_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_ACost_over.setEnabled(false);
+
+        final_tf_ACost_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_ACost_labour.setEnabled(false);
+
+        final_tf_Quote_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_Quote_mat.setEnabled(false);
+
+        final_tf_Quote_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_Quote_over.setEnabled(false);
+
+        final_tf_Quote_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_Quote_labour.setEnabled(false);
+
+        final_proBar_primary_mat.setBackground(new java.awt.Color(51, 255, 255));
+        final_proBar_primary_mat.setToolTipText("");
+        final_proBar_primary_mat.setValue(100);
+
+        final_tf_ACost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_ACost_total.setEnabled(false);
+
+        final_tf_Quote_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_Quote_total.setEnabled(false);
+
+        final_proBar_primary_over.setBackground(new java.awt.Color(51, 255, 255));
+        final_proBar_primary_over.setToolTipText("");
+        final_proBar_primary_over.setValue(75);
+
+        final_proBar_primary_labour.setBackground(new java.awt.Color(51, 255, 255));
+        final_proBar_primary_labour.setToolTipText("");
+        final_proBar_primary_labour.setValue(55);
+
+        final_proBar_primary_total.setBackground(new java.awt.Color(51, 255, 255));
+        final_proBar_primary_total.setToolTipText("");
+        final_proBar_primary_total.setValue(85);
+
+        final_proBar_secondary_over.setForeground(new java.awt.Color(255, 0, 0));
+
+        final_proBar_secondary_labour.setForeground(new java.awt.Color(255, 0, 0));
+
+        final_proBar_secondary_total.setForeground(new java.awt.Color(255, 0, 0));
+
+        final_proBar_secondary_mat.setForeground(new java.awt.Color(255, 0, 0));
+        final_proBar_secondary_mat.setValue(25);
+
+        jLabel106.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel106.setText("Planned Cost");
+
+        jLabel107.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel107.setText("Actual Cost");
+
+        jLabel108.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel108.setText("Total Quote");
+
+        jLabel109.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel109.setText("Cost Progression");
+
+        jLabel111.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel111.setText("Profit Margin");
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel104)
+                            .addComponent(jLabel71)
+                            .addComponent(jLabel105)))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel103)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(final_tf_PCost_total, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                        .addComponent(final_tf_PCost_labour, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(final_tf_PCost_mat))
+                    .addComponent(jLabel106)
+                    .addComponent(final_tf_PCost_over, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(final_tf_ACost_mat)
+                        .addComponent(final_tf_ACost_over)
+                        .addComponent(final_tf_ACost_labour)
+                        .addComponent(final_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel107))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(final_tf_Quote_mat)
+                        .addComponent(final_tf_Quote_over)
+                        .addComponent(final_tf_Quote_labour)
+                        .addComponent(final_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel108))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(final_proBar_primary_mat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(final_proBar_primary_over, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(final_proBar_primary_labour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(final_proBar_primary_total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(jLabel109)
+                        .addGap(101, 101, 101)))
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(final_proBar_secondary_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(final_proBar_secondary_over, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(final_proBar_secondary_mat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel111, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(final_proBar_secondary_total, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel106)
+                    .addComponent(jLabel107)
+                    .addComponent(jLabel108)
+                    .addComponent(jLabel109)
+                    .addComponent(jLabel111))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(final_proBar_primary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(final_tf_Quote_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(final_proBar_secondary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(final_tf_PCost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel104)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(final_tf_ACost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel103))
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(final_tf_Quote_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel32Layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(final_proBar_secondary_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(final_proBar_primary_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(21, 21, 21)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(final_tf_ACost_labour, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_Quote_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel32Layout.createSequentialGroup()
+                            .addGap(2, 2, 2)
+                            .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(final_proBar_secondary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(final_proBar_primary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(final_tf_PCost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel71)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(final_proBar_primary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_proBar_secondary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(final_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel105)
+                        .addComponent(final_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -2132,7 +2297,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2141,42 +2305,43 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(jLabel136)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_quote, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel138)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_rec, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel139)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton17))
+                        .addComponent(final_tf_outst, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(final_but_managePay))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(butCreateJob7)))
+                        .addComponent(final_but_signOff))
+                    .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(butCreateJob7)
+                .addComponent(final_but_signOff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(final_tf_quote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel136)
-                    .addComponent(jTextField60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(final_tf_rec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel138)
-                    .addComponent(jTextField61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(final_tf_outst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel139)
-                    .addComponent(jButton17))
-                .addGap(18, 18, 18)
+                    .addComponent(final_but_managePay))
+                .addGap(21, 21, 21)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2186,11 +2351,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel9.setText("Client Email");
 
-        jLabel15.setText("jamesMkotze@gmail.com");
+        l_email.setText("jamesMkotze@gmail.com");
 
-        jLabel14.setText("0820745213");
+        l_contactNr.setText("0820745213");
 
-        jLabel13.setText("James Kotze");
+        l_clientFullname.setText("James Kotze");
 
         jLabel7.setText("Client Name");
 
@@ -2198,11 +2363,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel50.setText("Client Code");
 
-        jLabel51.setText("JK001");
+        l_clientCode.setText("JK001");
 
         jLabel10.setText("Site Location");
 
-        jLabel16.setText("12 mountainview crescent Durbanville");
+        l_siteLocation.setText("12 mountainview crescent Durbanville");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2218,11 +2383,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
+                    .addComponent(l_clientFullname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_contactNr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_clientCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_siteLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
         jPanel8Layout.setVerticalGroup(
@@ -2231,23 +2396,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(jLabel51))
+                    .addComponent(l_clientCode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel13))
+                    .addComponent(l_clientFullname))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel14))
+                    .addComponent(l_contactNr))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel15))
+                    .addComponent(l_email))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel16))
+                    .addComponent(l_siteLocation))
                 .addGap(20, 20, 20))
         );
 
@@ -2255,33 +2420,33 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel11.setText("Job Title:");
 
-        jLabel17.setText("Install Wood Fence");
+        l_jobTitle.setText("Install Wood Fence");
 
         jLabel27.setText("Current Cost:");
 
-        jLabel26.setText("Unquoted");
+        l_currentCost.setText("Unquoted");
 
         jLabel38.setText("Job ID:");
 
-        jLabel46.setText("J0001");
+        l_jobID.setText("J0001");
 
-        jLabel52.setText("Unquoted");
+        l_plannedCost.setText("Unquoted");
 
         jLabel53.setText("Planned Cost:");
 
         jLabel31.setText("Quote ID:");
 
-        jLabel54.setText("Unquoted");
+        l_quoteID.setText("Unquoted");
 
         jLabel28.setText("Total Quote:");
 
-        jLabel29.setText("Unquoted");
+        l_totalQuote.setText("Unquoted");
 
-        jLabel143.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel143.setText("Quote Accepted");
+        l_quoteState.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        l_quoteState.setText("Quote Pending");
 
-        jLabel109.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel109.setText("Job Open");
+        l_jobState.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        l_jobState.setText("Job Open");
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -2290,7 +2455,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel109)
+                    .addComponent(l_jobState)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
@@ -2298,9 +2463,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                             .addComponent(jLabel31))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                            .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(l_jobTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(l_jobID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(l_quoteID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(38, 38, 38)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel15Layout.createSequentialGroup()
@@ -2310,12 +2475,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
                                     .addComponent(jLabel28))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                                    .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(l_currentCost, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                    .addComponent(l_plannedCost, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(l_totalQuote, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(l_quoteState, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))))))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2323,28 +2488,28 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
-                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_jobID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel28)
-                    .addComponent(jLabel29))
+                    .addComponent(l_totalQuote))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel11)
-                        .addComponent(jLabel17))
+                        .addComponent(l_jobTitle))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel52)
+                            .addComponent(l_plannedCost)
                             .addComponent(jLabel53))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
-                            .addComponent(jLabel26)
+                            .addComponent(l_currentCost)
                             .addComponent(jLabel31)
-                            .addComponent(jLabel54))))
+                            .addComponent(l_quoteID))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel143)
-                    .addComponent(jLabel109)))
+                    .addComponent(l_quoteState)
+                    .addComponent(l_jobState)))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -2367,19 +2532,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        butCreateJob3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        butCreateJob3.setText("Save And Close");
-        butCreateJob3.addActionListener(new java.awt.event.ActionListener() {
+        but_saveClose.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        but_saveClose.setText("Save And Close");
+        but_saveClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butCreateJob3ActionPerformed(evt);
-            }
-        });
-
-        butCreateJob6.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        butCreateJob6.setText("Close");
-        butCreateJob6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butCreateJob6ActionPerformed(evt);
+                but_saveCloseActionPerformed(evt);
             }
         });
 
@@ -2389,9 +2546,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(butCreateJob6)
-                .addGap(32, 32, 32)
-                .addComponent(butCreateJob3)
+                .addComponent(but_saveClose)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -2404,9 +2559,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jobStatesTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(butCreateJob3)
-                    .addComponent(butCreateJob6))
+                .addComponent(but_saveClose)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -2415,42 +2568,373 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //initialize GUI components
-    private void initComponentsCustom(){
+    private void initComponentsCustom() {
+        disableAllPanels();
     }
-    
+
     //Methods
-    private void generateJobID(){
-        JOptionPane.showMessageDialog(rootPane, "The Job ID is: (display Job ID here)");
+    private void disableAllPanels() {
+        enablePanelJob(false);
+        enablePanelQuoteLabour(false);
+        enablePanelQuoteMat(false);
+        enablePanelQuoteOver(false);
+        enablePanelWorkMat(false);
+        enablePanelWorkOver(false);
+        enableQuoteComponents(false);
     }
 
-    
-    
-    
+    private void disableAllButJobsTab(boolean a) {
+        jobStatesTabPane.setEnabledAt(0, a);
+        jobStatesTabPane.setEnabledAt(1, !a);
+        jobStatesTabPane.setEnabledAt(2, !a);
+        jobStatesTabPane.setEnabledAt(3, !a);
+    }
+
+    private void disableAllTabs(boolean a) {
+        jobStatesTabPane.setEnabledAt(0, a);
+        jobStatesTabPane.setEnabledAt(1, a);
+        jobStatesTabPane.setEnabledAt(2, a);
+        jobStatesTabPane.setEnabledAt(3, a);
+    }
+
+    private void enablePanelJob(boolean a) {
+        job_tf_title.setEnabled(a);
+        job_but_done.setEnabled(a);
+        job_but_cancel.setEnabled(a);
+        job_but_insertAdr.setEnabled(a);
+        job_spin_date.setEnabled(a);
+        job_ta_specification.setEnabled(a);
+
+        job_cb_selectClient.setEnabled(!a);
+        job_but_changeDetails.setEnabled(!a);
+        job_but_createJob.setEnabled(!a);
+        job_but_createQuote.setEnabled(!a);
+
+        but_saveClose.setEnabled(!a);
+        disableAllTabs(!a);
+    }
+
+    private void enablePanelJob_noDate(boolean a) {
+        enablePanelJob(a);
+        job_spin_date.setEnabled(!a);
+    }
+
+    private void enablePanelQuoteMain(boolean a) {
+        //top buttons
+        quote_but_create.setEnabled(!a);
+        quote_but_delete.setEnabled(!a);
+        quote_but_jobDesc.setEnabled(!a);
+        quote_but_next.setEnabled(!a);
+        quote_but_prev.setEnabled(!a);
+        quote_but_rej.setEnabled(!a);
+        quote_but_acc.setEnabled(!a);
+
+        //summary panel
+        quote_spin_cont_mat.setEnabled(!a);
+        quote_spin_cont_over.setEnabled(!a);
+        quote_spin_cont_labour.setEnabled(!a);
+        quote_cb_cont_mat.setEnabled(!a);
+        quote_cb_cont_over.setEnabled(!a);
+        quote_cb_cont_labour.setEnabled(!a);
+        quote_spin_charge_mat.setEnabled(!a);
+        quote_spin_charge_over.setEnabled(!a);
+        quote_spin_charge_labour.setEnabled(!a);
+        quote_cb_charge_mat.setEnabled(!a);
+        quote_cb_charge_over.setEnabled(!a);
+        quote_cb_charge_labour.setEnabled(!a);
+        quote_tf_chFee_mat.setEnabled(!a);
+        quote_tf_chFee_over.setEnabled(!a);
+        quote_tf_chFee_labour.setEnabled(!a);
+        quote_tf_finalCharges.setEnabled(!a);
+
+        but_saveClose.setEnabled(!a);
+        disableAllTabs(!a);
+        quote_TabPane.setEnabledAt(0, !a);
+        quote_TabPane.setEnabledAt(1, !a);
+        quote_TabPane.setEnabledAt(2, !a);
+    }
+
+    private void enablePanelQuoteMat(boolean a) {
+        quote_mat_but_add.setEnabled(!a);
+        quote_mat_but_remove.setEnabled(!a);
+        quote_mat_but_change.setEnabled(!a);
+        quote_mat_li_materials.setEnabled(!a);
+        enablePanelQuoteMain(a);
+
+        quote_mat_tf_item.setEnabled(a);
+        quote_mat_tf_cost.setEnabled(a);
+        quote_mat_spin_count.setEnabled(a);
+        quote_mat_but_cancel.setEnabled(a);
+        quote_mat_but_done.setEnabled(a);
+
+    }
+
+    private void enablePanelQuoteOver(boolean a) {
+        quote_over_but_add.setEnabled(!a);
+        quote_over_but_remove.setEnabled(!a);
+        quote_over_but_change.setEnabled(!a);
+        quote_over_li_overheads.setEnabled(!a);
+        enablePanelQuoteMain(a);
+
+        quote_over_tf_total.setEnabled(a);
+        quote_over_tf_overhead.setEnabled(a);
+        quote_over_but_cancel.setEnabled(a);
+        quote_over_but_done.setEnabled(a);
+    }
+
+    private void enablePanelQuoteLabour(boolean a) {
+        quote_labour_but_add.setEnabled(!a);
+        quote_labour_but_remove.setEnabled(!a);
+        quote_labour_but_change.setEnabled(!a);
+        quote_labour_li_labour.setEnabled(!a);
+        enablePanelQuoteMain(a);
+
+        quote_labour_spin_hours.setEnabled(a);
+        quote_labour_combo_workers.setEnabled(a);
+        quote_labour_but_cancel.setEnabled(a);
+        quote_labour_but_done.setEnabled(a);
+    }
+
+    private void enableQuoteComponents(boolean a) {
+        //materials pane
+        quote_TabPane.setEnabledAt(0, a);
+        //materials pane components
+        quote_mat_but_add.setEnabled(a);
+        quote_mat_but_remove.setEnabled(a);
+        quote_mat_but_change.setEnabled(a);
+        quote_mat_li_materials.setEnabled(a);
+        quote_mat_tf_item.setEnabled(a);
+        quote_mat_tf_cost.setEnabled(a);
+        quote_mat_spin_count.setEnabled(a);
+        quote_mat_but_cancel.setEnabled(a);
+        quote_mat_but_done.setEnabled(a);
+
+        //overheads pane
+        quote_TabPane.setEnabledAt(1, a);
+        //overheads pane components
+        quote_over_but_add.setEnabled(a);
+        quote_over_but_remove.setEnabled(a);
+        quote_over_but_change.setEnabled(a);
+        quote_over_li_overheads.setEnabled(a);
+        quote_over_tf_total.setEnabled(a);
+        quote_over_tf_overhead.setEnabled(a);
+        quote_over_but_cancel.setEnabled(a);
+        quote_over_but_done.setEnabled(a);
+
+        //labour pane
+        quote_TabPane.setEnabledAt(2, a);
+        //labour pane components
+        quote_labour_but_add.setEnabled(a);
+        quote_labour_but_remove.setEnabled(a);
+        quote_labour_but_change.setEnabled(a);
+        quote_labour_li_labour.setEnabled(a);
+        quote_labour_spin_hours.setEnabled(a);
+        quote_labour_combo_workers.setEnabled(a);
+        quote_labour_but_cancel.setEnabled(a);
+        quote_labour_but_done.setEnabled(a);
+
+        //quote summary components 
+        quote_spin_cont_mat.setEnabled(a);
+        quote_spin_cont_over.setEnabled(a);
+        quote_spin_cont_labour.setEnabled(a);
+        quote_cb_cont_mat.setEnabled(a);
+        quote_cb_cont_over.setEnabled(a);
+        quote_cb_cont_labour.setEnabled(a);
+        quote_spin_charge_mat.setEnabled(a);
+        quote_spin_charge_over.setEnabled(a);
+        quote_spin_charge_labour.setEnabled(a);
+        quote_cb_charge_mat.setEnabled(a);
+        quote_cb_charge_over.setEnabled(a);
+        quote_cb_charge_labour.setEnabled(a);
+        quote_tf_chFee_mat.setEnabled(a);
+        quote_tf_chFee_over.setEnabled(a);
+        quote_tf_chFee_labour.setEnabled(a);
+        quote_tf_finalCharges.setEnabled(a);
+
+    }
+
+    private void enablePanelWorkMain(boolean a) {
+        disableAllTabs(!a);
+        work_but_finaliseJob.setEnabled(!a);
+        but_saveClose.setEnabled(!a);
+        work_TabPane.setEnabledAt(0, !a);
+        work_TabPane.setEnabledAt(1, !a);
+        work_TabPane.setEnabledAt(2, !a);
+    }
+
+    private void enablePanelWorkMat(boolean a) {
+        enablePanelWorkMain(a);
+        work_mat_but_add.setEnabled(!a);
+        work_mat_but_fromQ.setEnabled(!a);
+        work_mat_but_change.setEnabled(!a);
+        work_mat_but_remove.setEnabled(!a);
+        work_mat_li_materials.setEnabled(!a);
+
+        work_mat_tf_item.setEnabled(a);
+        work_mat_tf_cost.setEnabled(a);
+        work_mat_spin_count.setEnabled(a);
+        work_mat_but_done.setEnabled(a);
+        work_mat_but_cancel.setEnabled(a);
+    }
+
+    private void enablePanelWorkOver(boolean a) {
+        enablePanelWorkMain(a);
+        work_over_but_add.setEnabled(!a);
+        work_over_but_fromQ.setEnabled(!a);
+        work_over_but_change.setEnabled(!a);
+        work_over_but_remove.setEnabled(!a);
+        work_over_li_overheads.setEnabled(!a);
+
+        work_over_tf_cost.setEnabled(a);
+        work_over_tf_overhead.setEnabled(a);
+        work_over_but_done.setEnabled(a);
+        work_over_but_cancel.setEnabled(a);
+    }
+
     //action performed listeners
-    
-    private void butCreateJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCreateJobActionPerformed
-        
-    }//GEN-LAST:event_butCreateJobActionPerformed
 
-    private void butCreateJob1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCreateJob1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_butCreateJob1ActionPerformed
+    private void job_but_createJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createJobActionPerformed
+        enablePanelJob(true);
+    }//GEN-LAST:event_job_but_createJobActionPerformed
 
-    private void butCreateJob4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCreateJob4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_butCreateJob4ActionPerformed
+    private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
+        jobStatesTabPane.setSelectedIndex(1);
+    }//GEN-LAST:event_job_but_createQuoteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        generateJobID();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void job_but_changeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_changeDetailsActionPerformed
+        enablePanelJob_noDate(true);
+    }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
-    private void butCreateJob3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCreateJob3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_butCreateJob3ActionPerformed
+    private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
+        enablePanelJob(false);
+    }//GEN-LAST:event_job_but_doneActionPerformed
 
-    private void butCreateJob6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCreateJob6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_butCreateJob6ActionPerformed
+    private void but_saveCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_saveCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_but_saveCloseActionPerformed
+
+    private void job_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_cancelActionPerformed
+        enablePanelJob(false);
+    }//GEN-LAST:event_job_but_cancelActionPerformed
+
+    private void quote_mat_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_addActionPerformed
+        enablePanelQuoteMat(true);
+    }//GEN-LAST:event_quote_mat_but_addActionPerformed
+
+    private void quote_mat_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_cancelActionPerformed
+        enablePanelQuoteMat(false);
+    }//GEN-LAST:event_quote_mat_but_cancelActionPerformed
+
+    private void quote_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_doneActionPerformed
+        enablePanelQuoteMat(false);
+    }//GEN-LAST:event_quote_mat_but_doneActionPerformed
+
+    private void quote_mat_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_changeActionPerformed
+        enablePanelQuoteMat(true);
+    }//GEN-LAST:event_quote_mat_but_changeActionPerformed
+
+    private void quote_over_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_addActionPerformed
+        enablePanelQuoteOver(true);
+    }//GEN-LAST:event_quote_over_but_addActionPerformed
+
+    private void quote_over_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_changeActionPerformed
+        enablePanelQuoteOver(true);
+    }//GEN-LAST:event_quote_over_but_changeActionPerformed
+
+    private void quote_over_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_cancelActionPerformed
+        enablePanelQuoteOver(false);
+    }//GEN-LAST:event_quote_over_but_cancelActionPerformed
+
+    private void quote_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_doneActionPerformed
+        enablePanelQuoteOver(false);
+    }//GEN-LAST:event_quote_over_but_doneActionPerformed
+
+    private void quote_labour_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_addActionPerformed
+        enablePanelQuoteLabour(true);
+    }//GEN-LAST:event_quote_labour_but_addActionPerformed
+
+    private void quote_labour_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_changeActionPerformed
+        enablePanelQuoteLabour(true);
+    }//GEN-LAST:event_quote_labour_but_changeActionPerformed
+
+    private void quote_labour_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_cancelActionPerformed
+        enablePanelQuoteLabour(false);
+    }//GEN-LAST:event_quote_labour_but_cancelActionPerformed
+
+    private void quote_labour_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_doneActionPerformed
+        enablePanelQuoteLabour(false);
+    }//GEN-LAST:event_quote_labour_but_doneActionPerformed
+
+    private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
+        enableQuoteComponents(true);
+        enablePanelQuoteLabour(false);
+        enablePanelQuoteMat(false);
+        enablePanelQuoteOver(false);
+        l_quoteState.setText("Quote Pending");
+    }//GEN-LAST:event_quote_but_createActionPerformed
+
+    private void quote_but_rejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_rejActionPerformed
+        enableQuoteComponents(false);
+        l_quoteState.setText("Quote Rejected");
+    }//GEN-LAST:event_quote_but_rejActionPerformed
+
+    private void quote_but_accActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_accActionPerformed
+        enableQuoteComponents(false);
+        jobStatesTabPane.setSelectedIndex(2);
+        l_quoteState.setText("Quote Accepted");
+    }//GEN-LAST:event_quote_but_accActionPerformed
+
+    private void quote_but_jobDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_jobDescActionPerformed
+        GUI_JobDescription jobDescGUI = new GUI_JobDescription();
+        jobDescGUI.setVisible(true);
+    }//GEN-LAST:event_quote_but_jobDescActionPerformed
+
+    private void work_mat_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_addActionPerformed
+        enablePanelWorkMat(true);
+    }//GEN-LAST:event_work_mat_but_addActionPerformed
+
+    private void work_mat_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_cancelActionPerformed
+        enablePanelWorkMat(false);
+    }//GEN-LAST:event_work_mat_but_cancelActionPerformed
+
+    private void work_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_doneActionPerformed
+        enablePanelWorkMat(false);
+    }//GEN-LAST:event_work_mat_but_doneActionPerformed
+
+    private void work_mat_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_changeActionPerformed
+        enablePanelWorkMat(true);
+    }//GEN-LAST:event_work_mat_but_changeActionPerformed
+
+    private void work_over_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_addActionPerformed
+        enablePanelWorkOver(true);
+    }//GEN-LAST:event_work_over_but_addActionPerformed
+
+    private void work_over_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_changeActionPerformed
+        enablePanelWorkOver(true);
+    }//GEN-LAST:event_work_over_but_changeActionPerformed
+
+    private void work_labour_but_logsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_labour_but_logsActionPerformed
+        GUI_jobLog jobLogsGUI = new GUI_jobLog();
+        jobLogsGUI.setVisible(true);
+    }//GEN-LAST:event_work_labour_but_logsActionPerformed
+
+    private void work_over_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_cancelActionPerformed
+        enablePanelWorkOver(false);
+    }//GEN-LAST:event_work_over_but_cancelActionPerformed
+
+    private void work_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_doneActionPerformed
+        enablePanelWorkOver(false);
+    }//GEN-LAST:event_work_over_but_doneActionPerformed
+
+    private void work_but_finaliseJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_but_finaliseJobActionPerformed
+        jobStatesTabPane.setSelectedIndex(3);
+        l_quoteState.setText("Payment Pending");
+    }//GEN-LAST:event_work_but_finaliseJobActionPerformed
+
+    private void final_but_signOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_signOffActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "This Job is now closed");
+        this.dispose();
+    }//GEN-LAST:event_final_but_signOffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2489,68 +2973,48 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton activeState_butAdd16;
-    private javax.swing.JButton activeState_butAdd18;
-    private javax.swing.JButton activeState_butAdd20;
-    private javax.swing.JButton activeState_butAdd21;
-    private javax.swing.JButton activeState_butAdd22;
-    private javax.swing.JButton activeState_butAdd23;
-    private javax.swing.JButton activeState_butAdd7;
-    private javax.swing.JButton activeState_butChange4;
-    private javax.swing.JButton activeState_butChange7;
-    private javax.swing.JButton activeState_butRemove12;
-    private javax.swing.JButton activeState_butRemove13;
-    private javax.swing.JButton activeState_butRemove14;
-    private javax.swing.JButton activeState_butRemove15;
-    private javax.swing.JButton activeState_butRemove16;
-    private javax.swing.JButton activeState_butRemove17;
-    private javax.swing.JButton activeState_butRemove18;
-    private javax.swing.JButton activeState_butRemove4;
-    private javax.swing.JButton activeState_butRemove5;
-    private javax.swing.JButton activeState_butRemove9;
-    private javax.swing.JButton butCreateJob;
-    private javax.swing.JButton butCreateJob1;
-    private javax.swing.JButton butCreateJob3;
-    private javax.swing.JButton butCreateJob4;
-    private javax.swing.JButton butCreateJob5;
-    private javax.swing.JButton butCreateJob6;
-    private javax.swing.JButton butCreateJob7;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField6;
-    private javax.swing.JFormattedTextField jFormattedTextField7;
-    private javax.swing.JFormattedTextField jFormattedTextField8;
+    private javax.swing.JButton but_saveClose;
+    private javax.swing.JButton final_but_managePay;
+    private javax.swing.JButton final_but_signOff;
+    private javax.swing.JProgressBar final_proBar_primary_labour;
+    private javax.swing.JProgressBar final_proBar_primary_mat;
+    private javax.swing.JProgressBar final_proBar_primary_over;
+    private javax.swing.JProgressBar final_proBar_primary_total;
+    private javax.swing.JProgressBar final_proBar_secondary_labour;
+    private javax.swing.JProgressBar final_proBar_secondary_mat;
+    private javax.swing.JProgressBar final_proBar_secondary_over;
+    private javax.swing.JProgressBar final_proBar_secondary_total;
+    private javax.swing.JRadioButton final_rb_all;
+    private javax.swing.JRadioButton final_rb_lab;
+    private javax.swing.JRadioButton final_rb_mat;
+    private javax.swing.JRadioButton final_rb_over;
+    private javax.swing.JTable final_table_costs;
+    private javax.swing.JTextField final_tf_ACost_labour;
+    private javax.swing.JTextField final_tf_ACost_mat;
+    private javax.swing.JTextField final_tf_ACost_over;
+    private javax.swing.JTextField final_tf_ACost_total;
+    private javax.swing.JTextField final_tf_PCost_labour;
+    private javax.swing.JTextField final_tf_PCost_mat;
+    private javax.swing.JTextField final_tf_PCost_over;
+    private javax.swing.JTextField final_tf_PCost_total;
+    private javax.swing.JTextField final_tf_Quote_labour;
+    private javax.swing.JTextField final_tf_Quote_mat;
+    private javax.swing.JTextField final_tf_Quote_over;
+    private javax.swing.JTextField final_tf_Quote_total;
+    private javax.swing.JTextField final_tf_outst;
+    private javax.swing.JTextField final_tf_quote;
+    private javax.swing.JTextField final_tf_rec;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
@@ -2563,33 +3027,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel120;
-    private javax.swing.JLabel jLabel121;
-    private javax.swing.JLabel jLabel125;
-    private javax.swing.JLabel jLabel126;
-    private javax.swing.JLabel jLabel127;
-    private javax.swing.JLabel jLabel128;
-    private javax.swing.JLabel jLabel129;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel130;
-    private javax.swing.JLabel jLabel131;
-    private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel137;
     private javax.swing.JLabel jLabel138;
     private javax.swing.JLabel jLabel139;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel143;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -2598,14 +3045,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
@@ -2615,7 +3058,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
@@ -2637,12 +3080,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private javax.swing.JList<String> jList10;
-    private javax.swing.JList<String> jList11;
-    private javax.swing.JList<String> jList12;
-    private javax.swing.JList<String> jList13;
-    private javax.swing.JList<String> jList14;
-    private javax.swing.JList<String> jList8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel15;
@@ -2656,6 +3093,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;
@@ -2664,30 +3102,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar10;
-    private javax.swing.JProgressBar jProgressBar11;
-    private javax.swing.JProgressBar jProgressBar12;
-    private javax.swing.JProgressBar jProgressBar13;
-    private javax.swing.JProgressBar jProgressBar14;
-    private javax.swing.JProgressBar jProgressBar15;
-    private javax.swing.JProgressBar jProgressBar16;
-    private javax.swing.JProgressBar jProgressBar17;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar4;
-    private javax.swing.JProgressBar jProgressBar5;
-    private javax.swing.JProgressBar jProgressBar6;
-    private javax.swing.JProgressBar jProgressBar7;
-    private javax.swing.JProgressBar jProgressBar8;
-    private javax.swing.JProgressBar jProgressBar9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
@@ -2701,72 +3118,142 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner11;
-    private javax.swing.JSpinner jSpinner12;
-    private javax.swing.JSpinner jSpinner13;
-    private javax.swing.JSpinner jSpinner14;
-    private javax.swing.JSpinner jSpinner5;
-    private javax.swing.JSpinner jSpinner6;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JTextField jTextField44;
-    private javax.swing.JTextField jTextField45;
-    private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
-    private javax.swing.JTextField jTextField49;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField50;
-    private javax.swing.JTextField jTextField51;
-    private javax.swing.JTextField jTextField52;
-    private javax.swing.JTextField jTextField53;
-    private javax.swing.JTextField jTextField54;
-    private javax.swing.JTextField jTextField55;
-    private javax.swing.JTextField jTextField56;
-    private javax.swing.JTextField jTextField60;
-    private javax.swing.JTextField jTextField61;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTabbedPane jobStatesTabPane;
+    private javax.swing.JButton job_but_cancel;
+    private javax.swing.JButton job_but_changeDetails;
+    private javax.swing.JButton job_but_createJob;
+    private javax.swing.JButton job_but_createQuote;
+    private javax.swing.JButton job_but_done;
+    private javax.swing.JButton job_but_insertAdr;
+    private javax.swing.JComboBox<String> job_cb_selectClient;
+    private javax.swing.JSpinner job_spin_date;
+    private javax.swing.JTextArea job_ta_specification;
+    private javax.swing.JTextField job_tf_contactNr;
+    private javax.swing.JTextField job_tf_email;
+    private javax.swing.JTextField job_tf_fname;
+    private javax.swing.JTextField job_tf_lname;
+    private javax.swing.JTextField job_tf_siteLocation;
+    private javax.swing.JTextField job_tf_title;
+    private javax.swing.JLabel l_clientCode;
+    private javax.swing.JLabel l_clientFullname;
+    private javax.swing.JLabel l_contactNr;
+    private javax.swing.JLabel l_currentCost;
+    private javax.swing.JLabel l_email;
+    private javax.swing.JLabel l_jobID;
+    private javax.swing.JLabel l_jobState;
+    private javax.swing.JLabel l_jobTitle;
+    private javax.swing.JLabel l_plannedCost;
+    private javax.swing.JLabel l_quoteID;
+    private javax.swing.JLabel l_quoteState;
+    private javax.swing.JLabel l_siteLocation;
+    private javax.swing.JLabel l_totalQuote;
+    private javax.swing.JTabbedPane quote_TabPane;
+    private javax.swing.JButton quote_but_acc;
+    private javax.swing.JButton quote_but_create;
+    private javax.swing.JButton quote_but_delete;
+    private javax.swing.JButton quote_but_jobDesc;
+    private javax.swing.JButton quote_but_next;
+    private javax.swing.JButton quote_but_prev;
+    private javax.swing.JButton quote_but_rej;
+    private javax.swing.JCheckBox quote_cb_charge_labour;
+    private javax.swing.JCheckBox quote_cb_charge_mat;
+    private javax.swing.JCheckBox quote_cb_charge_over;
+    private javax.swing.JCheckBox quote_cb_cont_labour;
+    private javax.swing.JCheckBox quote_cb_cont_mat;
+    private javax.swing.JCheckBox quote_cb_cont_over;
+    private javax.swing.JButton quote_labour_but_add;
+    private javax.swing.JButton quote_labour_but_cancel;
+    private javax.swing.JButton quote_labour_but_change;
+    private javax.swing.JButton quote_labour_but_done;
+    private javax.swing.JButton quote_labour_but_remove;
+    private javax.swing.JComboBox<String> quote_labour_combo_workers;
+    private javax.swing.JLabel quote_labour_l_rate;
+    private javax.swing.JList<String> quote_labour_li_labour;
+    private javax.swing.JSpinner quote_labour_spin_hours;
+    private javax.swing.JButton quote_mat_but_add;
+    private javax.swing.JButton quote_mat_but_cancel;
+    private javax.swing.JButton quote_mat_but_change;
+    private javax.swing.JButton quote_mat_but_done;
+    private javax.swing.JButton quote_mat_but_remove;
+    private javax.swing.JList<String> quote_mat_li_materials;
+    private javax.swing.JSpinner quote_mat_spin_count;
+    private javax.swing.JFormattedTextField quote_mat_tf_cost;
+    private javax.swing.JTextField quote_mat_tf_item;
+    private javax.swing.JButton quote_over_but_add;
+    private javax.swing.JButton quote_over_but_cancel;
+    private javax.swing.JButton quote_over_but_change;
+    private javax.swing.JButton quote_over_but_done;
+    private javax.swing.JButton quote_over_but_remove;
+    private javax.swing.JList<String> quote_over_li_overheads;
+    private javax.swing.JTextField quote_over_tf_overhead;
+    private javax.swing.JFormattedTextField quote_over_tf_total;
+    private javax.swing.JSpinner quote_spin_charge_labour;
+    private javax.swing.JSpinner quote_spin_charge_mat;
+    private javax.swing.JSpinner quote_spin_charge_over;
+    private javax.swing.JSpinner quote_spin_cont_labour;
+    private javax.swing.JSpinner quote_spin_cont_mat;
+    private javax.swing.JSpinner quote_spin_cont_over;
+    private javax.swing.JTextField quote_tf_chFee_labour;
+    private javax.swing.JTextField quote_tf_chFee_mat;
+    private javax.swing.JTextField quote_tf_chFee_over;
+    private javax.swing.JTextField quote_tf_cost_labour;
+    private javax.swing.JTextField quote_tf_cost_mat;
+    private javax.swing.JTextField quote_tf_cost_over;
+    private javax.swing.JTextField quote_tf_cost_subtotal;
+    private javax.swing.JTextField quote_tf_finalCharges;
+    private javax.swing.JTextField quote_tf_final_labour;
+    private javax.swing.JTextField quote_tf_final_mat;
+    private javax.swing.JTextField quote_tf_final_over;
+    private javax.swing.JTextField quote_tf_total;
+    private javax.swing.JTabbedPane work_TabPane;
+    private javax.swing.JButton work_but_finaliseJob;
+    private javax.swing.JButton work_labour_but_logs;
+    private javax.swing.JLabel work_labour_l_rate;
+    private javax.swing.JList<String> work_labour_li_labour;
+    private javax.swing.JSpinner work_labour_spin_hours;
+    private javax.swing.JTextField work_labour_tf_worker;
+    private javax.swing.JButton work_mat_but_add;
+    private javax.swing.JButton work_mat_but_cancel;
+    private javax.swing.JButton work_mat_but_change;
+    private javax.swing.JButton work_mat_but_done;
+    private javax.swing.JButton work_mat_but_fromQ;
+    private javax.swing.JButton work_mat_but_remove;
+    private javax.swing.JList<String> work_mat_li_materials;
+    private javax.swing.JSpinner work_mat_spin_count;
+    private javax.swing.JFormattedTextField work_mat_tf_cost;
+    private javax.swing.JTextField work_mat_tf_item;
+    private javax.swing.JButton work_over_but_add;
+    private javax.swing.JButton work_over_but_cancel;
+    private javax.swing.JButton work_over_but_change;
+    private javax.swing.JButton work_over_but_done;
+    private javax.swing.JButton work_over_but_fromQ;
+    private javax.swing.JButton work_over_but_remove;
+    private javax.swing.JList<String> work_over_li_overheads;
+    private javax.swing.JFormattedTextField work_over_tf_cost;
+    private javax.swing.JTextField work_over_tf_overhead;
+    private javax.swing.JProgressBar work_proBar_primary_labour;
+    private javax.swing.JProgressBar work_proBar_primary_mat;
+    private javax.swing.JProgressBar work_proBar_primary_over;
+    private javax.swing.JProgressBar work_proBar_primary_total;
+    private javax.swing.JProgressBar work_proBar_secondary_labour;
+    private javax.swing.JProgressBar work_proBar_secondary_mat;
+    private javax.swing.JProgressBar work_proBar_secondary_over;
+    private javax.swing.JProgressBar work_proBar_secondary_total;
+    private javax.swing.JTextField work_tf_ACost_labour;
+    private javax.swing.JTextField work_tf_ACost_mat;
+    private javax.swing.JTextField work_tf_ACost_over;
+    private javax.swing.JTextField work_tf_ACost_total;
+    private javax.swing.JTextField work_tf_PCost_labour;
+    private javax.swing.JTextField work_tf_PCost_mat;
+    private javax.swing.JTextField work_tf_PCost_over;
+    private javax.swing.JTextField work_tf_PCost_total;
+    private javax.swing.JTextField work_tf_Quote_labour;
+    private javax.swing.JTextField work_tf_Quote_mat;
+    private javax.swing.JTextField work_tf_Quote_over;
+    private javax.swing.JTextField work_tf_Quote_total;
     // End of variables declaration//GEN-END:variables
 }
