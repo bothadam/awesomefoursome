@@ -1,10 +1,13 @@
 
+import java.io.File;
+import static java.lang.Math.random;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.sql.*;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,7 +19,9 @@ import java.sql.*;
  * @author james
  */
 public class GUI_mainGUI extends javax.swing.JFrame {
-Connection conn;
+
+    Connection conn;
+
     /**
      * Creates new form mainGUI
      */
@@ -70,11 +75,11 @@ Connection conn;
         client_but_manageClient = new javax.swing.JButton();
         client_tf_searchInput = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        client_li_jobs = new javax.swing.JList<>();
+        client_li_jobs = new javax.swing.JList<String>();
         jLabel14 = new javax.swing.JLabel();
         client_but_manageJob = new javax.swing.JButton();
         client_but_search = new javax.swing.JButton();
-        client_combo_searchVia = new javax.swing.JComboBox<>();
+        client_combo_searchVia = new javax.swing.JComboBox<String>();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -126,7 +131,7 @@ Connection conn;
         jLabel47 = new javax.swing.JLabel();
         staff_l_staffCode = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        staff_list_skillset = new javax.swing.JList<>();
+        staff_list_skillset = new javax.swing.JList<String>();
         jLabel46 = new javax.swing.JLabel();
         staff_tf_fname = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
@@ -141,7 +146,7 @@ Connection conn;
         jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        schedule_list_openJobs = new javax.swing.JList<>();
+        schedule_list_openJobs = new javax.swing.JList<String>();
         jPanel5 = new javax.swing.JPanel();
         scheduling_dateSpinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
@@ -150,7 +155,7 @@ Connection conn;
         jLabel18 = new javax.swing.JLabel();
         scheduling_hoursSpinner = new javax.swing.JSpinner();
         jScrollPane5 = new javax.swing.JScrollPane();
-        schedule_list_dates = new javax.swing.JList<>();
+        schedule_list_dates = new javax.swing.JList<String>();
         schedule_but_add = new javax.swing.JButton();
         schedule_but_remove = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -164,18 +169,18 @@ Connection conn;
         jLabel15 = new javax.swing.JLabel();
         schedule_l_jobID = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        schedule_list_scheduledDates = new javax.swing.JList<>();
+        schedule_list_scheduledDates = new javax.swing.JList<String>();
         schedule_but_removeSchedule = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        schedule_list_workers = new javax.swing.JList<>();
+        schedule_list_workers = new javax.swing.JList<String>();
         jLabel24 = new javax.swing.JLabel();
         schedule_but_manageSchedule = new javax.swing.JButton();
         schedule_l_scheduleCode = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         schedule_but_plus = new javax.swing.JButton();
         schedule_but_minus = new javax.swing.JButton();
-        schedule_combo_selectWorker = new javax.swing.JComboBox<>();
+        schedule_combo_selectWorker = new javax.swing.JComboBox<String>();
         schedule_but_viewClash = new javax.swing.JButton();
         schedule_but_createSchedule = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
@@ -201,7 +206,6 @@ Connection conn;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(new java.awt.Dimension(1200, 800));
 
         mainTabs.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         mainTabs.setToolTipText("");
@@ -235,6 +239,11 @@ Connection conn;
         client_but_done.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         client_but_done.setText("Done");
         client_but_done.setEnabled(false);
+        client_but_done.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                client_but_doneMouseClicked(evt);
+            }
+        });
         client_but_done.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 client_but_doneActionPerformed(evt);
@@ -422,10 +431,10 @@ Connection conn;
 
         client_tf_searchInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        client_li_jobs.setModel(new javax.swing.AbstractListModel<String>() {
+        client_li_jobs.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane8.setViewportView(client_li_jobs);
 
@@ -451,7 +460,7 @@ Connection conn;
         });
 
         client_combo_searchVia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Surname", "ID" }));
+        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Surname", "ID" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -859,10 +868,10 @@ Connection conn;
         staff_l_staffCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         staff_l_staffCode.setText("(Code)");
 
-        staff_list_skillset.setModel(new javax.swing.AbstractListModel<String>() {
+        staff_list_skillset.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane10.setViewportView(staff_list_skillset);
 
@@ -1052,10 +1061,10 @@ Connection conn;
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(schedule_list_openJobs);
 
@@ -1076,13 +1085,13 @@ Connection conn;
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel18.setText("Hours");
 
-        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(4, null, null, 1));
+        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(4), null, null, Integer.valueOf(1)));
         scheduling_hoursSpinner.setEnabled(false);
 
-        schedule_list_dates.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_dates.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         schedule_list_dates.setEnabled(false);
         jScrollPane5.setViewportView(schedule_list_dates);
@@ -1264,10 +1273,10 @@ Connection conn;
         schedule_l_jobID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         schedule_l_jobID.setText("(Job ID)");
 
-        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane4.setViewportView(schedule_list_scheduledDates);
 
@@ -1283,10 +1292,10 @@ Connection conn;
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel23.setText("Scheduled Dates");
 
-        schedule_list_workers.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_workers.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Adam", "Thomas", "Steven", "Andrew" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane6.setViewportView(schedule_list_workers);
 
@@ -1315,7 +1324,7 @@ Connection conn;
         schedule_but_minus.setText("-");
 
         schedule_combo_selectWorker.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
+        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Adriaan", "Pieter" }));
 
         schedule_but_viewClash.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         schedule_but_viewClash.setText("View Clash");
@@ -1789,6 +1798,10 @@ Connection conn;
         }
     }//GEN-LAST:event_staff_but_plusActionPerformed
 
+    private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
+        addClient();
+    }//GEN-LAST:event_client_but_doneMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1986,8 +1999,8 @@ Connection conn;
 
     private void connection() {
         try {
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:/__tmp/test/zzz.accdb", "", "");
+            String filename = new File("afordableDB.accdb").getAbsolutePath();
+            conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Program Files/afordableDB.accdb");
         } catch (Exception e) {
             System.out.println("Database connection error" + e);
         }
@@ -2007,12 +2020,50 @@ Connection conn;
     private void getClients() {
         try {
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("SELECT [*] FROM [Clients]");
+            ResultSet rs = s.executeQuery("SELECT * FROM [Client]");
             while (rs.next()) {
                 System.out.println(rs.getString(1));
             }
         } catch (Exception e) {
             System.out.println("Problem in getClients" + e);
+        }
+    }
+
+    private void addClient() {
+        try {
+            String sql = "Insert into Client(ClientCode,FName,LName,ConNum,Email,ID,Addr) values(?,?,?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            Random rand = new Random();
+            int code = (rand.nextInt(100000));
+            
+            
+            statement.setInt(1, code);
+       
+            statement.setString(2, client_tf_fname.getText());
+            statement.setString(3, client_tf_lname.getText());
+            
+            statement.setString(4, client_tf_nr.getText());
+            statement.setString(5, client_tf_email.getText());
+            statement.setString(6, "no");
+            
+            statement.setString(7, "no");
+            
+
+            if (!client_tf_ID.getText().equals("")) {
+                System.out.println("no ID");
+                statement.setString(6, client_tf_ID.getText());
+            }
+
+            if (!client_tf_address.getText().equals("")) {
+                statement.setString(7, client_tf_address.getText());
+                System.out.println("no address");
+            }
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Problem with adding client" + e);
         }
     }
 
