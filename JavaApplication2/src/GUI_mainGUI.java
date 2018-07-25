@@ -8,6 +8,8 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.sql.*;
 import java.util.Random;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,6 +23,8 @@ import java.util.Random;
 public class GUI_mainGUI extends javax.swing.JFrame {
 
     Connection conn;
+    Statement st;
+    ResultSet rs;
 
     /**
      * Creates new form mainGUI
@@ -2019,10 +2023,20 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void getClients() {
         try {
+            Statement st = conn.createStatement();
+            String query = "select * from client";
+            rs = st.executeQuery(query);
+            client_table_clients.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            System.out.println("error " + e);
+        }
+
+        try {
             Statement s = conn.createStatement();
             ResultSet rs = s.executeQuery("SELECT * FROM [Client]");
             while (rs.next()) {
-                System.out.println(rs.getString(1));
+                System.out.println("Client" + rs.getString(3));
             }
         } catch (Exception e) {
             System.out.println("Problem in getClients" + e);
@@ -2033,22 +2047,20 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             String sql = "Insert into Client(ClientCode,FName,LName,ConNum,Email,ID,Addr) values(?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            
+
             Random rand = new Random();
             int code = (rand.nextInt(100000));
-            
-            
+
             statement.setInt(1, code);
-       
+
             statement.setString(2, client_tf_fname.getText());
             statement.setString(3, client_tf_lname.getText());
-            
+
             statement.setString(4, client_tf_nr.getText());
             statement.setString(5, client_tf_email.getText());
             statement.setString(6, "no");
-            
+
             statement.setString(7, "no");
-            
 
             if (!client_tf_ID.getText().equals("")) {
                 System.out.println("no ID");

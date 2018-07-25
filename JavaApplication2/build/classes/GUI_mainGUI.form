@@ -1026,7 +1026,7 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <Component id="jobs_tf_email" min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
