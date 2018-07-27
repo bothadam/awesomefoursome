@@ -33,7 +33,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         initComponents();
         initComponentsCustom();
         connection();
-        getClients();
+        populateClientTable();
     }
 
     /**
@@ -457,6 +457,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_but_search.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         client_but_search.setText("Search");
         client_but_search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        client_but_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                client_but_searchMouseClicked(evt);
+            }
+        });
         client_but_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 client_but_searchActionPerformed(evt);
@@ -705,7 +710,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jobs_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1770,6 +1775,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_cancelActionPerformed
 
     private void client_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_doneActionPerformed
+        addClient();
         enablePanel_Client(false);
         clearPanel_Client();
     }//GEN-LAST:event_client_but_doneActionPerformed
@@ -1803,8 +1809,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_plusActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
-        addClient();
+        
     }//GEN-LAST:event_client_but_doneMouseClicked
+
+    private void client_but_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_searchMouseClicked
+       searchClient();
+    }//GEN-LAST:event_client_but_searchMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2021,7 +2031,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
          */
     }
 
-    private void getClients() {
+    private void populateClientTable() {
         try {
             Statement st = conn.createStatement();
             String query = "select * from client";
@@ -2031,21 +2041,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("error " + e);
         }
-
-        try {
-            Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("SELECT * FROM [Client]");
-            while (rs.next()) {
-                System.out.println("Client" + rs.getString(3));
-            }
-        } catch (Exception e) {
-            System.out.println("Problem in getClients" + e);
-        }
     }
 
     private void addClient() {
         try {
-            String sql = "Insert into Client(ClientCode,FName,LName,ConNum,Email,ID,Addr) values(?,?,?,?,?,?,?)";
+            String sql = "Insert into Client(ClientID,FName,LName,ConNum,Email,ID,Addr) values(?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             Random rand = new Random();
@@ -2053,29 +2053,54 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
             statement.setInt(1, code);
 
-            statement.setString(2, client_tf_fname.getText());
-            statement.setString(3, client_tf_lname.getText());
+            statement.setString(2, client_tf_fname.getText().toString());
+            statement.setString(3, client_tf_lname.getText().toString());
 
-            statement.setString(4, client_tf_nr.getText());
-            statement.setString(5, client_tf_email.getText());
-            statement.setString(6, "no");
-
-            statement.setString(7, "no");
+            statement.setInt(4, Integer.parseInt(client_tf_nr.getText().toString()));
+            statement.setString(5, client_tf_email.getText().toString());
+            statement.setString(6, "not inserted");
+            statement.setString(7, "not inserted");
 
             if (!client_tf_ID.getText().equals("")) {
-                System.out.println("no ID");
-                statement.setString(6, client_tf_ID.getText());
+                System.out.println("ID inserted");
+                statement.setString(6, client_tf_ID.getText().toString());
             }
 
             if (!client_tf_address.getText().equals("")) {
-                statement.setString(7, client_tf_address.getText());
-                System.out.println("no address");
+                statement.setString(7, client_tf_address.getText().toString());
+                System.out.println("address inputted");
             }
 
             statement.executeUpdate();
 
         } catch (Exception e) {
             System.out.println("Problem with adding client" + e);
+        }
+    }
+
+    private void searchClient() {
+        String query = "select * from client where ";
+        String searchVia = client_combo_searchVia.getModel().getSelectedItem().toString();
+        String searchArgument = "";
+        if (searchVia.equals("Name")) {
+            //query = query + "FName = " + client_tf_searchInput.getText();
+            searchArgument = "FName = '" + client_tf_searchInput.getText() + "'";
+        } else if(searchVia.equals("ID")){
+            //query = query + "ID = " + client_tf_searchInput.getText();
+            searchArgument = "ID = '" + client_tf_searchInput.getText() + "'";
+        } else if(searchVia.equals("Surname")){
+            //query = query + "LName = " + client_tf_searchInput.getText();
+            searchArgument = "LName = '" + client_tf_searchInput.getText() + "'";
+        }
+        query = query + searchArgument;
+        try {
+            Statement st = conn.createStatement();
+            
+            rs = st.executeQuery(query);
+            client_table_clients.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            System.out.println("error " + e);
         }
     }
 
