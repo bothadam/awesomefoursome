@@ -79,11 +79,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_but_manageClient = new javax.swing.JButton();
         client_tf_searchInput = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        client_li_jobs = new javax.swing.JList<>();
+        client_li_jobs = new javax.swing.JList<String>();
         jLabel14 = new javax.swing.JLabel();
         client_but_manageJob = new javax.swing.JButton();
         client_but_search = new javax.swing.JButton();
-        client_combo_searchVia = new javax.swing.JComboBox<>();
+        client_combo_searchVia = new javax.swing.JComboBox<String>();
+        client_but_showAll = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -135,7 +136,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         staff_l_staffCode = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        staff_list_skillset = new javax.swing.JList<>();
+        staff_list_skillset = new javax.swing.JList<String>();
         jLabel46 = new javax.swing.JLabel();
         staff_tf_fname = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
@@ -150,7 +151,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        schedule_list_openJobs = new javax.swing.JList<>();
+        schedule_list_openJobs = new javax.swing.JList<String>();
         jPanel5 = new javax.swing.JPanel();
         scheduling_dateSpinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
@@ -159,7 +160,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         scheduling_hoursSpinner = new javax.swing.JSpinner();
         jScrollPane5 = new javax.swing.JScrollPane();
-        schedule_list_dates = new javax.swing.JList<>();
+        schedule_list_dates = new javax.swing.JList<String>();
         schedule_but_add = new javax.swing.JButton();
         schedule_but_remove = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -173,18 +174,18 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         schedule_l_jobID = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        schedule_list_scheduledDates = new javax.swing.JList<>();
+        schedule_list_scheduledDates = new javax.swing.JList<String>();
         schedule_but_removeSchedule = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        schedule_list_workers = new javax.swing.JList<>();
+        schedule_list_workers = new javax.swing.JList<String>();
         jLabel24 = new javax.swing.JLabel();
         schedule_but_manageSchedule = new javax.swing.JButton();
         schedule_l_scheduleCode = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         schedule_but_plus = new javax.swing.JButton();
         schedule_but_minus = new javax.swing.JButton();
-        schedule_combo_selectWorker = new javax.swing.JComboBox<>();
+        schedule_combo_selectWorker = new javax.swing.JComboBox<String>();
         schedule_but_viewClash = new javax.swing.JButton();
         schedule_but_createSchedule = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
@@ -426,7 +427,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(client_but_insertAdr)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(19, Short.MAX_VALUE))))
         );
 
         client_but_manageClient.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -440,10 +441,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         client_tf_searchInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        client_li_jobs.setModel(new javax.swing.AbstractListModel<String>() {
+        client_li_jobs.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane8.setViewportView(client_li_jobs);
 
@@ -474,7 +475,14 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         });
 
         client_combo_searchVia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Surname", "ID" }));
+        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Surname", "ID" }));
+
+        client_but_showAll.setText("Show All");
+        client_but_showAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                client_but_showAllActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -484,18 +492,21 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(client_but_newClient, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(client_but_manageClient, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(client_combo_searchVia, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(client_tf_searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(client_but_search))
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(client_combo_searchVia, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(client_tf_searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(client_but_search)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(client_but_showAll)))
+                        .addGap(13, 13, 13)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
@@ -507,7 +518,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane8))))
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,13 +527,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(client_but_newClient)
-                        .addComponent(client_but_manageClient))
-                    .addComponent(client_but_manageJob)
-                    .addComponent(jLabel14)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(client_but_manageClient)
+                        .addComponent(client_combo_searchVia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(client_tf_searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(client_but_search)
-                        .addComponent(client_combo_searchVia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(client_but_showAll))
+                    .addComponent(client_but_manageJob)
+                    .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -882,10 +893,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_l_staffCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         staff_l_staffCode.setText("(Code)");
 
-        staff_list_skillset.setModel(new javax.swing.AbstractListModel<String>() {
+        staff_list_skillset.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane10.setViewportView(staff_list_skillset);
 
@@ -969,7 +980,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(staff_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(staff_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1051,7 +1062,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainTabs.addTab("Staff", jPanel6);
@@ -1076,10 +1087,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(schedule_list_openJobs);
 
@@ -1100,13 +1111,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel18.setText("Hours");
 
-        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(4, null, null, 1));
+        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(4), null, null, Integer.valueOf(1)));
         scheduling_hoursSpinner.setEnabled(false);
 
-        schedule_list_dates.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_dates.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         schedule_list_dates.setEnabled(false);
         jScrollPane5.setViewportView(schedule_list_dates);
@@ -1288,10 +1299,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         schedule_l_jobID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         schedule_l_jobID.setText("(Job ID)");
 
-        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane4.setViewportView(schedule_list_scheduledDates);
 
@@ -1307,10 +1318,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel23.setText("Scheduled Dates");
 
-        schedule_list_workers.setModel(new javax.swing.AbstractListModel<String>() {
+        schedule_list_workers.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Adam", "Thomas", "Steven", "Andrew" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane6.setViewportView(schedule_list_workers);
 
@@ -1339,7 +1350,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         schedule_but_minus.setText("-");
 
         schedule_combo_selectWorker.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
+        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Adriaan", "Pieter" }));
 
         schedule_but_viewClash.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         schedule_but_viewClash.setText("View Clash");
@@ -1406,7 +1417,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(schedule_but_createSchedule)
                         .addGap(185, 185, 185)
                         .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1517,7 +1528,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabs)
+            .addComponent(mainTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
@@ -1827,6 +1838,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
        searchClient();
     }//GEN-LAST:event_client_but_searchMouseClicked
 
+    private void client_but_showAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_showAllActionPerformed
+        populateClientTable();
+    }//GEN-LAST:event_client_but_showAllActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1873,6 +1888,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JButton client_but_manageJob;
     private javax.swing.JButton client_but_newClient;
     private javax.swing.JButton client_but_search;
+    private javax.swing.JButton client_but_showAll;
     private javax.swing.JComboBox<String> client_combo_searchVia;
     private javax.swing.JLabel client_l_clientCode;
     private javax.swing.JLabel client_l_dateToday;
