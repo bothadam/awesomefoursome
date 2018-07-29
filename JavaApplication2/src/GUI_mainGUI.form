@@ -101,7 +101,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="mainTabs" alignment="0" pref="1064" max="32767" attributes="0"/>
+          <Component id="mainTabs" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -195,10 +195,7 @@
                                       <Component id="client_but_manageJob" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane8" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jScrollPane8" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jPanel9" max="32767" attributes="0"/>
@@ -254,6 +251,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="client_table_clientsMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1294,6 +1294,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="staff_table_staffMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

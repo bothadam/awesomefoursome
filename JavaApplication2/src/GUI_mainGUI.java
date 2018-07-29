@@ -8,6 +8,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.sql.*;
 import java.util.Random;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
@@ -34,6 +35,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         initComponentsCustom();
         connection();
         populateClientTable();
+        populateJobTable();
+        populateStaffTable();
+
+        DefaultListModel tempModel = new DefaultListModel();
+        tempModel.addElement("No client selected");
+        client_li_jobs.setModel(tempModel);
     }
 
     /**
@@ -228,6 +235,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        client_table_clients.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                client_table_clientsMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(client_table_clients);
 
         client_but_newClient.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -514,9 +526,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                 .addGap(48, 48, 48)
                                 .addComponent(client_but_manageJob)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane8))))
+                            .addComponent(jScrollPane8)))
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -839,6 +849,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        staff_table_staff.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                staff_table_staffMouseClicked(evt);
+            }
+        });
         jScrollPane9.setViewportView(staff_table_staff);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1528,7 +1543,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 1064, Short.MAX_VALUE)
+            .addComponent(mainTabs)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
@@ -1826,7 +1841,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_removeActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
-        
+
     }//GEN-LAST:event_client_but_doneMouseClicked
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
@@ -1835,12 +1850,21 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_insertAdrActionPerformed
 
     private void client_but_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_searchMouseClicked
-       searchClient();
+        searchClient();
     }//GEN-LAST:event_client_but_searchMouseClicked
 
     private void client_but_showAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_showAllActionPerformed
         populateClientTable();
     }//GEN-LAST:event_client_but_showAllActionPerformed
+
+    private void staff_table_staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staff_table_staffMouseClicked
+
+    }//GEN-LAST:event_staff_table_staffMouseClicked
+
+    private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
+        showJobsForSelectedClient();
+        populateClientTextfields();
+    }//GEN-LAST:event_client_table_clientsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2061,7 +2085,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void populateClientTable() {
         try {
             Statement st = conn.createStatement();
-            String query = "select * from client";
+            // String query = "select * from client";
+            String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
             rs = st.executeQuery(query);
             client_table_clients.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -2078,12 +2103,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             Random rand = new Random();
             int code = (rand.nextInt(100000));
 
-            statement.setInt(1, code);
+            statement.setInt(1, 2);
 
             statement.setString(2, client_tf_fname.getText().toString());
             statement.setString(3, client_tf_lname.getText().toString());
 
-            statement.setInt(4, Integer.parseInt(client_tf_nr.getText().toString()));
+            statement.setString(4, (client_tf_nr.getText().toString()));
             statement.setString(5, client_tf_email.getText().toString());
             statement.setString(6, "not inserted");
             statement.setString(7, "not inserted");
@@ -2112,23 +2137,91 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         if (searchVia.equals("Name")) {
             //query = query + "FName = " + client_tf_searchInput.getText();
             searchArgument = "FName = '" + client_tf_searchInput.getText() + "'";
-        } else if(searchVia.equals("ID")){
+        } else if (searchVia.equals("ID")) {
             //query = query + "ID = " + client_tf_searchInput.getText();
             searchArgument = "ID = '" + client_tf_searchInput.getText() + "'";
-        } else if(searchVia.equals("Surname")){
+        } else if (searchVia.equals("Surname")) {
             //query = query + "LName = " + client_tf_searchInput.getText();
             searchArgument = "LName = '" + client_tf_searchInput.getText() + "'";
         }
         query = query + searchArgument;
         try {
             Statement st = conn.createStatement();
-            
+
             rs = st.executeQuery(query);
             client_table_clients.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (Exception e) {
             System.out.println("error " + e);
         }
+    }
+
+    private void populateJobTable() {
+        try {
+            Statement st = conn.createStatement();
+            //String query = "select * from jobs";
+            String query = "select jobid as Job_ID,jobtitle as Job_Title,jobstate as Status from jobs";
+            rs = st.executeQuery(query);
+            jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            System.out.println("Problem with populating jobs table:" + e);
+        }
+    }
+
+    private void populateStaffTable() {
+        try {
+            Statement st = conn.createStatement();
+            String query = "select * from staff";
+            rs = st.executeQuery(query);
+            staff_table_staff.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            System.out.println("problem with populateStaffTable :" + e);
+        }
+
+    }
+
+    private void showJobsForSelectedClient() {
+        String selectedClientCode = null;
+        try {
+            Statement st = conn.createStatement();
+            int row = client_table_clients.getSelectedRow();
+            selectedClientCode = (client_table_clients.getModel().getValueAt(row, 0).toString());
+            String query = "select * from jobs where clientID = '" + selectedClientCode + "'";
+            rs = st.executeQuery(query);
+            DefaultListModel tempModel = new DefaultListModel();
+
+            while (rs.next()) {
+                tempModel.addElement(rs.getString("jobtitle"));
+            }
+
+            client_li_jobs.setModel(tempModel);
+        } catch (Exception e) {
+            System.out.println("Problems with showJobForSelectedClient2 : " + e);
+        }
+    }
+
+    private void populateClientTextfields() {
+        try {
+            Statement st = conn.createStatement();
+            int row = client_table_clients.getSelectedRow();
+            String selectedClientCode = (client_table_clients.getModel().getValueAt(row, 0).toString());
+            String query = "select * from client where clientID = '" + selectedClientCode + "'";
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                client_tf_fname.setText(rs.getString("fname"));
+                client_tf_nr.setText(rs.getString("ConNum"));
+                client_tf_lname.setText(rs.getString("lname"));
+                client_tf_email.setText(rs.getString("email"));
+                client_tf_ID.setText(rs.getString("id"));
+                client_tf_address.setText(rs.getString("addr"));
+            }
+
+        } catch (Exception e) {
+            System.out.println("Problem with populateCLientTextfields" + e);
+        }
+
     }
 
 }
