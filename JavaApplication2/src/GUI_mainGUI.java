@@ -350,10 +350,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addComponent(jLabel30)
                             .addComponent(jLabel34)
                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(client_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(client_but_insertAdr)
-                            .addComponent(client_tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(client_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(client_tf_address, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -1807,9 +1808,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_cancelActionPerformed
 
     private void client_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_doneActionPerformed
-        addClient();
-        enablePanel_Client(false);
-        clearPanel_Client();
+
     }//GEN-LAST:event_client_but_doneActionPerformed
 
     private void menu_file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_file_saveActionPerformed
@@ -1841,7 +1840,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_removeActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
-
+        addClient();
+        enablePanel_Client(false);
+        clearPanel_Client();
     }//GEN-LAST:event_client_but_doneMouseClicked
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
@@ -2085,8 +2086,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void populateClientTable() {
         try {
             Statement st = conn.createStatement();
-            // String query = "select * from client";
-            String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
+            String query = "select * from client";
+            //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
             rs = st.executeQuery(query);
             client_table_clients.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -2097,32 +2098,32 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void addClient() {
         try {
-            String sql = "Insert into Client(ClientID,FName,LName,ConNum,Email,ID,Addr) values(?,?,?,?,?,?,?)";
+            String sql = "Insert into client (ClientID,FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             Random rand = new Random();
-            int code = (rand.nextInt(100000));
+            String code = Integer.toString(rand.nextInt(100000));
+            code = "C" + code;
 
-            statement.setInt(1, 2);
-
-            statement.setString(2, client_tf_fname.getText().toString());
-            statement.setString(3, client_tf_lname.getText().toString());
-
-            statement.setString(4, (client_tf_nr.getText().toString()));
-            statement.setString(5, client_tf_email.getText().toString());
+            statement.setString(1, code);
+            statement.setString(2, client_tf_fname.getText());
+            statement.setString(3, client_tf_lname.getText());
+            statement.setString(4, client_tf_nr.getText());
+            statement.setString(5, client_tf_email.getText());
             statement.setString(6, "not inserted");
             statement.setString(7, "not inserted");
 
-            if (!client_tf_ID.getText().equals("")) {
+            
+
+            if (client_tf_ID.getText().length() > 0) {
                 System.out.println("ID inserted");
                 statement.setString(6, client_tf_ID.getText().toString());
             }
 
-            if (!client_tf_address.getText().equals("")) {
+            if (client_tf_address.getText().length() > 0) {
                 statement.setString(7, client_tf_address.getText().toString());
                 System.out.println("address inputted");
             }
-
             statement.executeUpdate();
 
         } catch (Exception e) {
@@ -2215,7 +2216,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 client_tf_lname.setText(rs.getString("lname"));
                 client_tf_email.setText(rs.getString("email"));
                 client_tf_ID.setText(rs.getString("id"));
-                client_tf_address.setText(rs.getString("addr"));
+                String address[] = rs.getString("address").split("#");
+                System.out.println(address[0] + "#" + address[1]);
+                client_tf_address.setText(address[0] + " " + address[1] + " " + address[2] + " " + address[3] + " " + address[4]);
             }
 
         } catch (Exception e) {
