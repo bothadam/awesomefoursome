@@ -2066,21 +2066,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void connection() {
         try {
             String filename = new File("afordableDB.accdb").getAbsolutePath();
+            //conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/adamb/Desktop");
             conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Program Files/afordableDB.accdb");
         } catch (Exception e) {
             System.out.println("Database connection error" + e);
         }
-
-        /*
-         Connection conn=DriverManager.getConnection(
-         "jdbc:ucanaccess://C:/__tmp/test/zzz.accdb");
-         Statement s = conn.createStatement();
-         ResultSet rs = s.executeQuery("SELECT [LastName] FROM [Clients]");
-         while (rs.next()) {
-         System.out.println(rs.getString(1));
-         }
-        
-         */
     }
 
     private void populateClientTable() {
@@ -2098,7 +2088,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void addClient() {
         try {
-            String sql = "Insert into client (ClientID,FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?,?)";
+            String sql = "Insert into client(ClientID,FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             Random rand = new Random();
@@ -2125,7 +2115,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 System.out.println("address inputted");
             }
             statement.executeUpdate();
-
+            populateClientTable();
+                    
+           // String sql = "Insert into client(ClientID,FName,LName,ConNum,Email,ID,Address) values ('"+"444"+ "','" + "ALitza" + "','"+ "langa "+ "','" + "08231323123" + "','"+ "alanga@gmail.com" + "','"+"970721321" + "','" + "9 helloworld"+ "')";
+             //   st = conn.prepareStatement(sql);
+               // st.execute(sql);
         } catch (Exception e) {
             System.out.println("Problem with adding client" + e);
         }

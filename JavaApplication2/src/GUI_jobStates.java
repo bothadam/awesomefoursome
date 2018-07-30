@@ -3381,7 +3381,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void connection() {
         try {
             String filename = new File("afordableDB.accdb").getAbsolutePath();
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Program Files/afordableDB.accdb");
+            //conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Program Files/afordableDB.accdb");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/adamb/Desktop");
+            
         } catch (Exception e) {
             System.out.println("Database connection error" + e);
         }
