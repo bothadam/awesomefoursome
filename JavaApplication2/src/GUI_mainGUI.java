@@ -26,6 +26,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     Connection conn;
     Statement st;
     ResultSet rs;
+    String editOrAdd = "neither";
 
     /**
      * Creates new form mainGUI
@@ -41,6 +42,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         DefaultListModel tempModel = new DefaultListModel();
         tempModel.addElement("No client selected");
         client_li_jobs.setModel(tempModel);
+    }
+
+    public GUI_mainGUI(String streetnumber, String streetname, String suburb, String city, String areacode, String resident_name) {
+
     }
 
     /**
@@ -203,12 +208,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_l_user = new javax.swing.JLabel();
         but_save = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
-        menu_file = new javax.swing.JMenu();
-        menu_file_save = new javax.swing.JMenuItem();
-        menu_file_close = new javax.swing.JMenuItem();
         menu_user = new javax.swing.JMenu();
         menu_user_login = new javax.swing.JMenuItem();
         menu_user_logout = new javax.swing.JMenuItem();
+        menu_file = new javax.swing.JMenu();
+        menu_file_save = new javax.swing.JMenuItem();
+        menu_file_close = new javax.swing.JMenuItem();
 
         jMenu5.setText("File");
         jMenuBar2.add(jMenu5);
@@ -459,6 +464,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        client_li_jobs.setMaximumSize(new java.awt.Dimension(39, 91));
         jScrollPane8.setViewportView(client_li_jobs);
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -1507,6 +1513,17 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         menuBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        menu_user.setText("User");
+        menu_user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        menu_user_login.setText("Login");
+        menu_user.add(menu_user_login);
+
+        menu_user_logout.setText("Logout");
+        menu_user.add(menu_user_logout);
+
+        menuBar.add(menu_user);
+
         menu_file.setText("File");
 
         menu_file_save.setText("Save");
@@ -1526,17 +1543,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         menu_file.add(menu_file_close);
 
         menuBar.add(menu_file);
-
-        menu_user.setText("User");
-        menu_user.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
-        menu_user_login.setText("Login");
-        menu_user.add(menu_user_login);
-
-        menu_user_logout.setText("Logout");
-        menu_user.add(menu_user_logout);
-
-        menuBar.add(menu_user);
 
         setJMenuBar(menuBar);
 
@@ -1771,6 +1777,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
         enablePanel_Client(true);
+        clearPanel_Client();
+        client_but_showAll.setEnabled(false);
+        editOrAdd = "add";
+
     }//GEN-LAST:event_client_but_newClientActionPerformed
 
     private void but_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_saveActionPerformed
@@ -1779,6 +1789,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void client_but_manageClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageClientActionPerformed
         enablePanel_Client(true);
+        client_but_showAll.setEnabled(false);
+        editOrAdd = "edit";
     }//GEN-LAST:event_client_but_manageClientActionPerformed
 
     private void schedule_but_createScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_createScheduleActionPerformed
@@ -1804,6 +1816,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void client_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_cancelActionPerformed
         enablePanel_Client(false);
+        client_but_showAll.setEnabled(true);
         clearPanel_Client();
     }//GEN-LAST:event_client_but_cancelActionPerformed
 
@@ -1840,7 +1853,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_removeActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
-        addClient();
+        if (editOrAdd.equals("add")) {
+            addClient();
+            editOrAdd = "";
+        } else if (editOrAdd.equals("edit")) {
+            editClient();
+            editOrAdd = "";
+        }
+
+        client_but_showAll.setEnabled(true);
         enablePanel_Client(false);
         clearPanel_Client();
     }//GEN-LAST:event_client_but_doneMouseClicked
@@ -2076,8 +2097,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void populateClientTable() {
         try {
             Statement st = conn.createStatement();
-            String query = "select * from client";
-            //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
+            //String query = "select * from client";
+            String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
             rs = st.executeQuery(query);
             client_table_clients.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -2090,10 +2111,24 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             String sql = "Insert into client(ClientID,FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
+            boolean goahead = false;
+            String code = "";
+            
+            while (goahead == false) {
+                Random rand = new Random();
+                code = Integer.toString(rand.nextInt(100000));
+                code = "C" + code;
 
-            Random rand = new Random();
-            String code = Integer.toString(rand.nextInt(100000));
-            code = "C" + code;
+                String sql2 = "Select * from client";
+                Statement st = conn.createStatement();
+                rs = st.executeQuery(sql2);
+                
+                while (rs.next()) {
+                    if (rs.getString("clientID") != code) {
+                        goahead = true;
+                    } 
+                }
+            }
 
             statement.setString(1, code);
             statement.setString(2, client_tf_fname.getText());
@@ -2102,8 +2137,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             statement.setString(5, client_tf_email.getText());
             statement.setString(6, "not inserted");
             statement.setString(7, "not inserted");
-
-            
 
             if (client_tf_ID.getText().length() > 0) {
                 System.out.println("ID inserted");
@@ -2116,10 +2149,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             }
             statement.executeUpdate();
             populateClientTable();
-                    
-           // String sql = "Insert into client(ClientID,FName,LName,ConNum,Email,ID,Address) values ('"+"444"+ "','" + "ALitza" + "','"+ "langa "+ "','" + "08231323123" + "','"+ "alanga@gmail.com" + "','"+"970721321" + "','" + "9 helloworld"+ "')";
-             //   st = conn.prepareStatement(sql);
-               // st.execute(sql);
+
         } catch (Exception e) {
             System.out.println("Problem with adding client" + e);
         }
@@ -2210,15 +2240,52 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 client_tf_lname.setText(rs.getString("lname"));
                 client_tf_email.setText(rs.getString("email"));
                 client_tf_ID.setText(rs.getString("id"));
+                client_l_clientCode.setText(rs.getString("ClientID"));
+
                 String address[] = rs.getString("address").split("#");
-                System.out.println(address[0] + "#" + address[1]);
-                client_tf_address.setText(address[0] + " " + address[1] + " " + address[2] + " " + address[3] + " " + address[4]);
+                if (address.length == 5) {
+                    client_tf_address.setText(address[0] + " " + address[1] + " " + address[2] + " " + address[3] + " " + address[4]);
+                } else {
+                    client_tf_address.setText(rs.getString("address"));
+                }
+
             }
 
         } catch (Exception e) {
             System.out.println("Problem with populateCLientTextfields" + e);
         }
 
+    }
+
+    private void editClient() {
+        try {
+
+            String sql = "update client set FName = ? ,LName = ?,ConNum = ?,Email = ?,ID = ?,Address = ? where ClientID = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, client_tf_fname.getText());
+            statement.setString(2, client_tf_lname.getText());
+            statement.setString(3, client_tf_nr.getText());
+            statement.setString(4, client_tf_email.getText());
+            statement.setString(5, client_tf_ID.getText());
+            statement.setString(6, client_tf_address.getText());
+            statement.setString(7, client_l_clientCode.getText());
+
+            int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to update this Client");
+
+            if (choice == 0) {
+
+                int rowsUpdated = statement.executeUpdate();
+                if (rowsUpdated > 0) {
+                    System.out.println("An existing client was updated successfully!");
+                }
+
+                populateClientTable();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 }
