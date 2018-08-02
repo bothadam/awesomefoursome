@@ -43,6 +43,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         tempModel.addElement("No client selected");
         client_li_jobs.setModel(tempModel);
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1863,8 +1864,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
         if (editOrAdd.equals("add")) {
-            GUI_insertAddress addrGUI = new GUI_insertAddress();
-            addrGUI.setVisible(true);
+            String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#" ;
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street")+ "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the suburb")+ "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City")+ "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code")+ "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)")+ "#";
+            client_tf_address.setText(createdAddress);
             editOrAdd = "";
         } else if (editOrAdd.equals("edit")) {
             GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
@@ -1923,9 +1929,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUI_mainGUI mine = new GUI_mainGUI();
-                mine.setVisible(true);
-                //new GUI_mainGUI().setVisible(true);
+                //GUI_mainGUI mine = new GUI_mainGUI();
+                //mine.setVisible(true);
+                new GUI_mainGUI().setVisible(true);
             }
         });
     }
@@ -2104,7 +2110,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             //String query = "select * from client";
-            String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
+            //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
+            String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number from client";
             rs = st.executeQuery(query);
             client_table_clients.setModel(DbUtils.resultSetToTableModel(rs));
 

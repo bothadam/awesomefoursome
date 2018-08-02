@@ -20,7 +20,7 @@ public class GUI_insertAddress extends javax.swing.JFrame {
     Connection conn;
     Statement st;
     ResultSet rs;
-
+    
     String globalClientID = "";
 
     /**
@@ -196,10 +196,7 @@ public class GUI_insertAddress extends javax.swing.JFrame {
         if (globalClientID.length() > 0) {
             modifyClientAddress();
             this.dispose();
-        } else{
-            generateNewAddress();
-            this.dispose();
-        }
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -286,7 +283,5 @@ public class GUI_insertAddress extends javax.swing.JFrame {
         }
     }
 
-    private void generateNewAddress() {
-        
-    }
+    
 }
