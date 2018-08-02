@@ -44,10 +44,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_li_jobs.setModel(tempModel);
     }
 
-    public GUI_mainGUI(String streetnumber, String streetname, String suburb, String city, String areacode, String resident_name) {
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -290,6 +286,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel33.setText("ID");
 
+        client_tf_address.setEditable(false);
         client_tf_address.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         client_tf_address.setEnabled(false);
 
@@ -356,10 +353,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addComponent(jLabel34)
                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(client_but_insertAdr)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(client_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(client_tf_address, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(client_but_insertAdr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(client_tf_ID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                                .addComponent(client_tf_address, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -433,19 +430,17 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                 .addComponent(jLabel31)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(client_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addGap(0, 4, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(client_but_done)
                             .addComponent(client_but_cancel)
                             .addComponent(jLabel37)
-                            .addComponent(client_l_clientCode))
-                        .addContainerGap())
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(client_but_insertAdr)
-                        .addContainerGap(19, Short.MAX_VALUE))))
+                            .addComponent(client_l_clientCode)))
+                    .addComponent(client_but_insertAdr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         client_but_manageClient.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -1867,8 +1862,17 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_doneMouseClicked
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
-        GUI_insertAddress addrGUI = new GUI_insertAddress();
-        addrGUI.setVisible(true);
+        if (editOrAdd.equals("add")) {
+            GUI_insertAddress addrGUI = new GUI_insertAddress();
+            addrGUI.setVisible(true);
+            editOrAdd = "";
+        } else if (editOrAdd.equals("edit")) {
+            GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
+            addrGUI.setVisible(true);
+            editOrAdd = "";
+        }
+
+
     }//GEN-LAST:event_client_but_insertAdrActionPerformed
 
     private void client_but_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_searchMouseClicked
@@ -1919,7 +1923,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI_mainGUI().setVisible(true);
+                GUI_mainGUI mine = new GUI_mainGUI();
+                mine.setVisible(true);
+                //new GUI_mainGUI().setVisible(true);
             }
         });
     }
@@ -2113,7 +2119,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             PreparedStatement statement = conn.prepareStatement(sql);
             boolean goahead = false;
             String code = "";
-            
+
             while (goahead == false) {
                 Random rand = new Random();
                 code = Integer.toString(rand.nextInt(100000));
@@ -2122,33 +2128,35 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 String sql2 = "Select * from client";
                 Statement st = conn.createStatement();
                 rs = st.executeQuery(sql2);
-                
+
                 while (rs.next()) {
                     if (rs.getString("clientID") != code) {
                         goahead = true;
-                    } 
+                    }
                 }
             }
 
-            statement.setString(1, code);
-            statement.setString(2, client_tf_fname.getText());
-            statement.setString(3, client_tf_lname.getText());
-            statement.setString(4, client_tf_nr.getText());
-            statement.setString(5, client_tf_email.getText());
-            statement.setString(6, "not inserted");
-            statement.setString(7, "not inserted");
+            if (goahead == true) {
+                statement.setString(1, code);
+                statement.setString(2, client_tf_fname.getText());
+                statement.setString(3, client_tf_lname.getText());
+                statement.setString(4, client_tf_nr.getText());
+                statement.setString(5, client_tf_email.getText());
+                statement.setString(6, "not inserted");
+                statement.setString(7, "not inserted");
 
-            if (client_tf_ID.getText().length() > 0) {
-                System.out.println("ID inserted");
-                statement.setString(6, client_tf_ID.getText().toString());
-            }
+                if (client_tf_ID.getText().length() > 0) {
+                    System.out.println("ID inserted");
+                    statement.setString(6, client_tf_ID.getText().toString());
+                }
 
-            if (client_tf_address.getText().length() > 0) {
-                statement.setString(7, client_tf_address.getText().toString());
-                System.out.println("address inputted");
+                if (client_tf_address.getText().length() > 0) {
+                    statement.setString(7, client_tf_address.getText().toString());
+                    System.out.println("address inputted");
+                }
+                statement.executeUpdate();
+                populateClientTable();
             }
-            statement.executeUpdate();
-            populateClientTable();
 
         } catch (Exception e) {
             System.out.println("Problem with adding client" + e);
@@ -2243,8 +2251,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 client_l_clientCode.setText(rs.getString("ClientID"));
 
                 String address[] = rs.getString("address").split("#");
-                if (address.length == 5) {
-                    client_tf_address.setText(address[0] + " " + address[1] + " " + address[2] + " " + address[3] + " " + address[4]);
+                if (address.length == 6) {
+                    client_tf_address.setText(address[0] + " " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4]);
                 } else {
                     client_tf_address.setText(rs.getString("address"));
                 }
@@ -2286,6 +2294,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+    
+    public void setAddressOnGui(String a){
+        client_tf_address.setText(a);
     }
 
 }
