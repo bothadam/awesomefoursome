@@ -27,6 +27,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     String editOrAdd = "neither";
+    DefaultListModel blankListModel = new DefaultListModel();
 
     /**
      * Creates new form mainGUI
@@ -42,8 +43,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         DefaultListModel tempModel = new DefaultListModel();
         tempModel.addElement("No client selected");
         client_li_jobs.setModel(tempModel);
+        blankListModel = (DefaultListModel) client_li_jobs.getModel();
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -566,38 +567,83 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         viewButGroup.add(jobs_rb_all);
         jobs_rb_all.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_all.setText("All");
+        jobs_rb_all.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_allActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_open);
         jobs_rb_open.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_open.setText("Open");
+        jobs_rb_open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_openActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_QIP);
         jobs_rb_QIP.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_QIP.setText("Quote I.P.");
+        jobs_rb_QIP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_QIPActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_QAcc);
         jobs_rb_QAcc.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_QAcc.setText("Quote Acc.");
+        jobs_rb_QAcc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_QAccActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_QRej);
         jobs_rb_QRej.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_QRej.setText("Quote Rej.");
+        jobs_rb_QRej.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_QRejActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_WIP);
         jobs_rb_WIP.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_WIP.setText("Work I.P.");
+        jobs_rb_WIP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_WIPActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_pPend);
         jobs_rb_pPend.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_pPend.setText("P. Pending");
+        jobs_rb_pPend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_pPendActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_pRec);
         jobs_rb_pRec.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_pRec.setText("P. Recieved");
+        jobs_rb_pRec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_pRecActionPerformed(evt);
+            }
+        });
 
         viewButGroup.add(jobs_rb_closed);
         jobs_rb_closed.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_rb_closed.setText("Closed");
+        jobs_rb_closed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_rb_closedActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -669,6 +715,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jobs_table_jobs.setRowHeight(35);
         jobs_table_jobs.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         jobs_table_jobs.setShowVerticalLines(false);
+        jobs_table_jobs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jobs_table_jobsMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jobs_table_jobs);
         if (jobs_table_jobs.getColumnModel().getColumnCount() > 0) {
             jobs_table_jobs.getColumnModel().getColumn(0).setMinWidth(100);
@@ -1733,9 +1784,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_but_closeActionPerformed
 
     private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
+        
         String newJobID = generateNewJobID();
         GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
         jobStatesGUI.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jobs_but_newJobActionPerformed
 
     private void schedule_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_addActionPerformed
@@ -1864,12 +1917,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
         if (editOrAdd.equals("add")) {
-            String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#" ;
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street")+ "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the suburb")+ "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City")+ "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code")+ "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)")+ "#";
+            String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the suburb") + "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City") + "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
+            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
             client_tf_address.setText(createdAddress);
             editOrAdd = "";
         } else if (editOrAdd.equals("edit")) {
@@ -1897,6 +1950,80 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         showJobsForSelectedClient();
         populateClientTextfields();
     }//GEN-LAST:event_client_table_clientsMouseClicked
+
+    private void jobs_rb_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_allActionPerformed
+        if (jobs_rb_all.isSelected()) {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_allActionPerformed
+
+    private void jobs_rb_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_openActionPerformed
+        if (jobs_rb_open.isSelected()) {
+            populateJobTable("Open");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_openActionPerformed
+
+    private void jobs_rb_QIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QIPActionPerformed
+        if (jobs_rb_QIP.isSelected()) {
+            populateJobTable("Quote in Progress");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_QIPActionPerformed
+
+    private void jobs_rb_QAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QAccActionPerformed
+        if (jobs_rb_QAcc.isSelected()) {
+            populateJobTable("Quote Accepted");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_QAccActionPerformed
+
+    private void jobs_rb_QRejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QRejActionPerformed
+        if (jobs_rb_QRej.isSelected()) {
+            populateJobTable("Quote Rejected");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_QRejActionPerformed
+
+    private void jobs_rb_WIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_WIPActionPerformed
+        if (jobs_rb_WIP.isSelected()) {
+            populateJobTable("Work in Progress");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_WIPActionPerformed
+
+    private void jobs_rb_pPendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_pPendActionPerformed
+        if (jobs_rb_pPend.isSelected()) {
+            populateJobTable("Payment Pending");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_pPendActionPerformed
+
+    private void jobs_rb_pRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_pRecActionPerformed
+        if (jobs_rb_pRec.isSelected()) {
+            populateJobTable("Payment Received");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_pRecActionPerformed
+
+    private void jobs_rb_closedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_closedActionPerformed
+        if (jobs_rb_closed.isSelected()) {
+            populateJobTable("Closed");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_closedActionPerformed
+
+    private void jobs_table_jobsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobs_table_jobsMouseClicked
+        populateClientTextFieldsForJob();
+    }//GEN-LAST:event_jobs_table_jobsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2209,6 +2336,18 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         }
     }
 
+    private void populateJobTable(String state) {
+        try {
+            Statement st = conn.createStatement();
+            String query = "select jobid as Job_ID,jobtitle as Job_Title,jobstate as Status from jobs where QuoteState = '" + state + "'";
+            rs = st.executeQuery(query);
+            jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            System.out.println("error with open quote radio button" + e);
+        }
+    }
+
     private void populateStaffTable() {
         try {
             Statement st = conn.createStatement();
@@ -2223,6 +2362,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private void showJobsForSelectedClient() {
+        client_li_jobs.setModel(blankListModel);
         String selectedClientCode = null;
         try {
             Statement st = conn.createStatement();
@@ -2234,9 +2374,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
             while (rs.next()) {
                 tempModel.addElement(rs.getString("jobtitle"));
+                client_li_jobs.setModel(tempModel);
             }
 
-            client_li_jobs.setModel(tempModel);
         } catch (Exception e) {
             System.out.println("Problems with showJobForSelectedClient2 : " + e);
         }
@@ -2302,9 +2442,41 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
-    
-    public void setAddressOnGui(String a){
+
+    public void setAddressOnGui(String a) {
         client_tf_address.setText(a);
+    }
+
+    private void populateClientTextFieldsForJob() {
+        try {
+            Statement st = conn.createStatement();
+            int row = jobs_table_jobs.getSelectedRow();
+            String selectedJobCode = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
+            String query = "select * from jobs where jobID = '" + selectedJobCode + "'";
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                String myclientCode = rs.getString("ClientID");
+
+                Statement st2 = conn.createStatement();
+                String query2 = "select * from client where clientID = '" + myclientCode + "'";
+                ResultSet rs2;
+                rs2 = st2.executeQuery(query2);
+
+                while (rs2.next()) {
+                    jobs_tf_fname.setText(rs2.getString("fname"));
+                    jobs_tf_lname.setText(rs2.getString("lname"));
+                    jobs_tf_nr.setText(rs2.getString("ConNum"));
+                    jobs_tf_email.setText(rs2.getString("email"));
+                    jobs_l_clientCode.setText(rs2.getString("ClientID"));
+                    
+
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Problem with populateCLientTextfields on job thing:" + e);
+        }
     }
 
 }

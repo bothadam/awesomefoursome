@@ -848,6 +848,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="All"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_allActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_open">
                   <Properties>
@@ -859,6 +862,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Open"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_openActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_QIP">
                   <Properties>
@@ -870,6 +876,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Quote I.P."/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_QIPActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_QAcc">
                   <Properties>
@@ -881,6 +890,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Quote Acc."/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_QAccActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_QRej">
                   <Properties>
@@ -892,6 +904,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Quote Rej."/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_QRejActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_WIP">
                   <Properties>
@@ -903,6 +918,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Work I.P."/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_WIPActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_pPend">
                   <Properties>
@@ -914,6 +932,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="P. Pending"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_pPendActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_pRec">
                   <Properties>
@@ -925,6 +946,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="P. Recieved"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_pRecActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jobs_rb_closed">
                   <Properties>
@@ -936,6 +960,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Closed"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_rb_closedActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1002,6 +1029,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jobs_table_jobsMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
