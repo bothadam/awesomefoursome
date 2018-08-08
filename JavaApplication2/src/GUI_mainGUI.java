@@ -1858,9 +1858,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void staff_but_newStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_newStaffActionPerformed
         enablePanel_Staff(true);
+        editOrAdd = "add";
     }//GEN-LAST:event_staff_but_newStaffActionPerformed
 
     private void staff_but_manageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_manageStaffActionPerformed
+        editOrAdd = "edit";
         enablePanel_Staff(true);
     }//GEN-LAST:event_staff_but_manageStaffActionPerformed
 
@@ -1888,6 +1890,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_cancelActionPerformed
 
     private void staff_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_doneActionPerformed
+        if (editOrAdd.equals("add")) {
+        } else if (editOrAdd.equals("edit")) {
+            editStaff();
+        }
+        editOrAdd = "";
         enablePanel_Staff(false);
         clearPanel_Staff();
     }//GEN-LAST:event_staff_but_doneActionPerformed
@@ -2490,16 +2497,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 staff_tf_fname.setText(rs.getString("fname"));
                 staff_tf_lname.setText(rs.getString("lname"));
                 staff_tf_nr.setText(rs.getString("conNum"));
-                 staff_tf_ID.setText(rs.getString("ID"));
+                staff_tf_ID.setText(rs.getString("ID"));
                 staff_l_staffCode.setText(rs.getString("staffID"));
-               
+
                 staff_tf_email.setText(rs.getString("email"));
                 staff_tf_address.setText(rs.getString("address"));
                 staff_spin_rate.getModel().setValue(rs.getDouble("rate"));
                 DefaultListModel a = new DefaultListModel();
                 a.addElement(rs.getString("skillset"));
                 staff_list_skillset.setModel(a);
-                
+
                 String address[] = rs.getString("address").split("#");
                 if (address.length == 6) {
                     client_tf_address.setText(address[0] + " " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4]);
@@ -2511,6 +2518,45 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         } catch (Exception e) {
             System.out.println("Problem with populateCLientTextfields" + e);
+        }
+    }
+
+    private void editStaff() {
+        try {
+            System.out.println("start");
+
+            String sql = "update staff set FName = ? ,LName = ?,ConNum = ?,Email = ?,ID = ?,Address = ?, Rate = ?, SkillSet = ? where staffID = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, staff_tf_fname.getText());
+            statement.setString(2, staff_tf_lname.getText());
+            statement.setString(3, staff_tf_nr.getText());
+            statement.setString(4, staff_tf_email.getText());
+            statement.setString(5, staff_tf_ID.getText());
+            statement.setString(6, staff_tf_address.getText());
+            statement.setString(7, staff_spin_rate.getModel().getValue().toString());
+            
+            String skillset = "";
+            for (int i = 0; i < staff_list_skillset.getModel().getSize(); i++) {
+                skillset = staff_list_skillset.getModel().getElementAt(i)+ "," +skillset  ;
+            }
+            statement.setString(8, skillset);
+            statement.setString(9, staff_l_staffCode.getText());
+
+            int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to update this Staff Member");
+
+            if (choice == 0) {
+
+                int rowsUpdated = statement.executeUpdate();
+                if (rowsUpdated > 0) {
+                    System.out.println("An existing Staff Member was updated successfully!");
+                }
+
+                populateStaffTable();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
