@@ -39,6 +39,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         populateClientTable();
         populateJobTable();
         populateStaffTable();
+        populateStaffTable();
 
         DefaultListModel tempModel = new DefaultListModel();
         tempModel.addElement("No client selected");
@@ -1784,7 +1785,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_but_closeActionPerformed
 
     private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
-        
+
         String newJobID = generateNewJobID();
         GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
         jobStatesGUI.setVisible(true);
@@ -1943,7 +1944,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_showAllActionPerformed
 
     private void staff_table_staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staff_table_staffMouseClicked
-
+        populateStaffTextfields();
     }//GEN-LAST:event_staff_table_staffMouseClicked
 
     private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
@@ -2468,7 +2469,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     jobs_tf_nr.setText(rs2.getString("ConNum"));
                     jobs_tf_email.setText(rs2.getString("email"));
                     jobs_l_clientCode.setText(rs2.getString("ClientID"));
-                    
 
                 }
 
@@ -2476,6 +2476,41 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         } catch (Exception e) {
             System.out.println("Problem with populateCLientTextfields on job thing:" + e);
+        }
+    }
+
+    private void populateStaffTextfields() {
+        try {
+            Statement st = conn.createStatement();
+            int row = staff_table_staff.getSelectedRow();
+            String selectedClientCode = (staff_table_staff.getModel().getValueAt(row, 0).toString());
+            String query = "select * from staff where staffID = '" + selectedClientCode + "'";
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                staff_tf_fname.setText(rs.getString("fname"));
+                staff_tf_lname.setText(rs.getString("lname"));
+                staff_tf_nr.setText(rs.getString("conNum"));
+                 staff_tf_ID.setText(rs.getString("ID"));
+                staff_l_staffCode.setText(rs.getString("staffID"));
+               
+                staff_tf_email.setText(rs.getString("email"));
+                staff_tf_address.setText(rs.getString("address"));
+                staff_spin_rate.getModel().setValue(rs.getDouble("rate"));
+                DefaultListModel a = new DefaultListModel();
+                a.addElement(rs.getString("skillset"));
+                staff_list_skillset.setModel(a);
+                
+                String address[] = rs.getString("address").split("#");
+                if (address.length == 6) {
+                    client_tf_address.setText(address[0] + " " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4]);
+                } else {
+                    client_tf_address.setText(rs.getString("address"));
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Problem with populateCLientTextfields" + e);
         }
     }
 

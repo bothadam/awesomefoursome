@@ -325,7 +325,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         l_quoteState = new javax.swing.JLabel();
         l_jobState = new javax.swing.JLabel();
         but_close = new javax.swing.JButton();
-        but_save = new javax.swing.JButton();
 
         jLabel137.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel137.setForeground(new java.awt.Color(255, 51, 0));
@@ -2594,18 +2593,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         but_close.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        but_close.setText("Close");
+        but_close.setText("Return To Main Menu");
         but_close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but_closeActionPerformed(evt);
-            }
-        });
-
-        but_save.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        but_save.setText("Save");
-        but_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but_saveActionPerformed(evt);
             }
         });
 
@@ -2615,8 +2606,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(but_save)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(but_close)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
@@ -2630,9 +2619,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jobStatesTabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(but_close)
-                    .addComponent(but_save))
+                .addComponent(but_close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -3036,10 +3023,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_tf_siteLocation.setText(createdAddress);
     }//GEN-LAST:event_job_but_insertAdrActionPerformed
 
-    private void but_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_saveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_but_saveActionPerformed
-
     private void work_over_but_fromQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_fromQActionPerformed
         fromQuoteJFrameCall("overheads");
     }//GEN-LAST:event_work_over_but_fromQActionPerformed
@@ -3103,7 +3086,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton but_close;
-    private javax.swing.JButton but_save;
     private javax.swing.JButton final_but_managePay;
     private javax.swing.JButton final_but_signOff;
     private javax.swing.JProgressBar final_proBar_primary_labour;
