@@ -3452,14 +3452,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
             String[] dateSplit = job_spin_date.getModel().getValue().toString().split(" ");
             String[] timeSplit = dateSplit[3].split(":");
 
-            Date n = new Date(0, 0, 0);
-            n.setSeconds(0);
-            n.setMinutes(Integer.parseInt(timeSplit[1]));
-            n.setHours(Integer.parseInt(timeSplit[0]));
-            n.setDate(Integer.parseInt(dateSplit[2]));
-            n.setYear(Integer.parseInt(dateSplit[5]));
-            System.out.println("date created" + n.toString());
-            statement.setTimestamp(5, (Timestamp) job_spin_date.getModel().getValue());
+            
+            
+            statement.setString(5, job_spin_date.getModel().getValue().toString());
 
             statement.setString(6, job_ta_comments.getText());
             statement.setBoolean(7, false);
