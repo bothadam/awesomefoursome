@@ -334,6 +334,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jobStatesTabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jobStatesTabPane.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+        jobStatesTabPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jobStatesTabPaneMouseClicked(evt);
+            }
+        });
 
         jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -3048,6 +3053,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     }//GEN-LAST:event_job_but_goActionPerformed
 
+    private void jobStatesTabPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobStatesTabPaneMouseClicked
+        System.out.println("swapped to 2");
+    }//GEN-LAST:event_jobStatesTabPaneMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -3407,6 +3416,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             rs = st.executeQuery(query);
 
             while (rs.next()) {
+                l_clientCode.setText(rs.getString("clientID"));
+                l_clientFullname.setText(rs.getString("fname"));
+                l_contactNr.setText(rs.getString("connum"));
+                l_email.setText(rs.getString("email"));
+                l_siteLocation.setText(rs.getString("address"));
                 job_tf_fname.setText(rs.getString("fname"));
                 job_tf_lname.setText(rs.getString("lname"));
                 job_tf_contactNr.setText(rs.getString("connum"));
