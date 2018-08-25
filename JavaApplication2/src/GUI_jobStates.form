@@ -1375,7 +1375,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                                  <EmptySpace pref="67" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="quote_over_but_cancel" min="-2" max="-2" attributes="0"/>
@@ -1389,8 +1389,8 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="quote_over_tf_overhead" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="quote_over_tf_total" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="quote_over_tf_overhead" pref="230" max="32767" attributes="0"/>
+                                              <Component id="quote_over_tf_total" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1443,14 +1443,6 @@
                             <Property name="text" type="java.lang.String" value="Total Cost"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="quote_over_tf_total">
-                          <Properties>
-                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                              <Format subtype="0" type="4"/>
-                            </Property>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                        </Component>
                         <Component class="javax.swing.JButton" name="quote_over_but_done">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1472,6 +1464,8 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_over_but_cancelActionPerformed"/>
                           </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="quote_over_tf_total">
                         </Component>
                       </SubComponents>
                     </Container>

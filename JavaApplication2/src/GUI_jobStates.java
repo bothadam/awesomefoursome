@@ -35,6 +35,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateMaterials();
         populateOverheads();
         populateLabour();
+        getWorkerRate();
+        calculateAllTotals();
 
     }
 
@@ -146,9 +148,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel117 = new javax.swing.JLabel();
         quote_over_tf_overhead = new javax.swing.JTextField();
         jLabel118 = new javax.swing.JLabel();
-        quote_over_tf_total = new javax.swing.JFormattedTextField();
         quote_over_but_done = new javax.swing.JButton();
         quote_over_but_cancel = new javax.swing.JButton();
+        quote_over_tf_total = new javax.swing.JTextField();
         jScrollPane15 = new javax.swing.JScrollPane();
         quote_over_li_overheads = new javax.swing.JList<String>();
         quote_over_but_change = new javax.swing.JButton();
@@ -1033,9 +1035,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel118.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel118.setText("Total Cost");
 
-        quote_over_tf_total.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-        quote_over_tf_total.setEnabled(false);
-
         quote_over_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quote_over_but_done.setText("Done");
         quote_over_but_done.addActionListener(new java.awt.event.ActionListener() {
@@ -1057,7 +1056,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addComponent(quote_over_but_cancel)
@@ -1069,8 +1068,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                             .addComponent(jLabel118))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(quote_over_tf_overhead)
-                            .addComponent(quote_over_tf_total, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(quote_over_tf_overhead, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                            .addComponent(quote_over_tf_total))))
                 .addGap(22, 22, 22))
         );
         jPanel37Layout.setVerticalGroup(
@@ -2942,8 +2941,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Problem with adding quoteItem Material : " + e);
         }
         populateMaterials();
+        calculateAllTotals();
+
         enablePanelQuoteMat(false);
-        
+
     }//GEN-LAST:event_quote_mat_but_doneActionPerformed
 
     private void quote_mat_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_changeActionPerformed
@@ -2963,6 +2964,25 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_over_but_cancelActionPerformed
 
     private void quote_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_doneActionPerformed
+        try {
+            String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            Random rand = new Random();
+            statement.setInt(1, rand.nextInt(100000));
+            statement.setString(2, l_quoteID.getText().toString());
+            statement.setString(3, quote_over_tf_overhead.getText());
+            statement.setString(4, "Overheads");
+            statement.setInt(5, 1);
+            statement.setInt(6, Integer.parseInt(quote_over_tf_total.getText().toString()));
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Problem with adding quoteItem Overhead : " + e);
+        }
+        populateOverheads();
+        calculateAllTotals();
+
         enablePanelQuoteOver(false);
     }//GEN-LAST:event_quote_over_but_doneActionPerformed
 
@@ -2979,48 +2999,24 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_labour_but_cancelActionPerformed
 
     private void quote_labour_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_doneActionPerformed
-        System.out.println("index + " + quote_TabPane.getModel().getSelectedIndex());
-        int index = quote_TabPane.getModel().getSelectedIndex();
-        String typeOfItem = "";
-        String quoteTitle = "";
-        int count_hours = 0;
-        int cost_rate = 0;
-
-        if (index == 0) {
-            typeOfItem = "Material";
-            quoteTitle = quote_mat_tf_item.getText().toString();
-            cost_rate = Integer.parseInt(quote_mat_tf_cost.getText().toString());
-            count_hours = Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString());
-        } else if (index == 1) {
-            typeOfItem = "Overhead";
-            quoteTitle = quote_over_tf_overhead.getText().toString();
-            cost_rate = Integer.parseInt(quote_over_tf_total.getText().toString());
-            count_hours = 1;
-        } else if (index == 2) {
-            typeOfItem = "Labour";
-            quoteTitle = quote_labour_combo_workers.getModel().getSelectedItem().toString();
-            count_hours = Integer.parseInt(quote_labour_spin_hours.getValue().toString());
-            cost_rate = Integer.parseInt(quote_labour_l_rate.getText().toString());
-        }
-
         try {
             String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-
-            statement.setInt(1, 2);
+            Random rand = new Random();
+            statement.setInt(1, rand.nextInt(100000));
             statement.setString(2, l_quoteID.getText().toString());
-            statement.setString(3, quoteTitle);
-            statement.setString(4, typeOfItem);
-            statement.setInt(5, count_hours);
-            statement.setInt(6, cost_rate);
+            statement.setString(3, quote_labour_combo_workers.getModel().getSelectedItem().toString());
+            statement.setString(4, "Labour");
+            statement.setInt(5, Integer.parseInt(quote_labour_spin_hours.getValue().toString()));
+            statement.setInt(6, Integer.parseInt(quote_labour_l_rate.getText()));
 
             statement.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println("Problem with adding quote : " + e);
+            System.out.println("Problem with adding quoteItem Labour : " + e);
         }
-        
-        
+        populateLabour();
+        calculateAllTotals();
 
         enablePanelQuoteLabour(false);
     }//GEN-LAST:event_quote_labour_but_doneActionPerformed
@@ -3170,6 +3166,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void job_but_goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_goActionPerformed
         populateClientInfo();
         populateBottomInfo();
+        populateMaterials();
+        calculateAllTotals();
 
     }//GEN-LAST:event_job_but_goActionPerformed
 
@@ -3177,26 +3175,15 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateMaterials();
         populateOverheads();
         populateLabour();
+        calculateAllTotals();
+
     }//GEN-LAST:event_jobStatesTabPaneMouseClicked
 
     private void quote_TabPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_TabPaneMouseClicked
     }//GEN-LAST:event_quote_TabPaneMouseClicked
 
     private void quote_labour_combo_workersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_combo_workersActionPerformed
-        try {
-            Statement st = conn.createStatement();
-            String worker[] = quote_labour_combo_workers.getSelectedItem().toString().split("_");
-            
-            String query = "select rate from staff where fname = '" + worker[0] + "' and lname = '" + worker[1] + "'";
-            rs = st.executeQuery(query);
-
-            while (rs.next()) {
-                int rate = rs.getInt("rate");
-                quote_labour_l_rate.setText(Integer.toString(rate));
-            }
-        } catch (Exception e) {
-            System.out.println("error in populateClientCombo:" + e);
-        }
+        getWorkerRate();
     }//GEN-LAST:event_quote_labour_combo_workersActionPerformed
 
     private void quote_mat_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_mat_but_doneMouseClicked
@@ -3458,7 +3445,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JButton quote_over_but_remove;
     private javax.swing.JList<String> quote_over_li_overheads;
     private javax.swing.JTextField quote_over_tf_overhead;
-    private javax.swing.JFormattedTextField quote_over_tf_total;
+    private javax.swing.JTextField quote_over_tf_total;
     private javax.swing.JSpinner quote_spin_charge_labour;
     private javax.swing.JSpinner quote_spin_charge_mat;
     private javax.swing.JSpinner quote_spin_charge_over;
@@ -3654,7 +3641,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             String query = "select * from quote where jobID = '" + selectedJobForClient + "'";
             rs = st.executeQuery(query);
             if (rs.next() == true) {
-                System.out.println("one");
                 l_quoteState.setText(rs.getString("quoteStatus"));
                 l_quoteID.setText(rs.getString("QuoteID"));
             } else {
@@ -3674,8 +3660,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     }
 
-     private void populateStaffCombo() {
-         DefaultComboBoxModel a = new DefaultComboBoxModel();
+    private void populateStaffCombo() {
+        DefaultComboBoxModel a = new DefaultComboBoxModel();
         try {
             Statement st = conn.createStatement();
             String query = "select Fname,LName from staff";
@@ -3701,7 +3687,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             String query = "select * from quoteItem where quoteID = '" + l_quoteID.getText().toString() + "' and quoteType = '" + quoteType + "'";
             rs = st.executeQuery(query);
             while (rs.next()) {
-                item = rs.getInt("Cost_rate") + "_" + rs.getString("QuoteTitle") + " (" + rs.getInt("Count_Hours") + ")";
+                item = "R" + rs.getInt("Cost_rate") + "  " + rs.getString("QuoteTitle") + " (" + rs.getInt("Count_Hours") + ")";
                 a.addElement(item);
             }
         } catch (Exception e) {
@@ -3711,11 +3697,84 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void populateOverheads() {
-        
+        DefaultListModel a = new DefaultListModel();
+        String item = "";
+        try {
+            String quoteType = "Overheads";
+            Statement st = conn.createStatement();
+            String query = "select * from quoteItem where quoteID = '" + l_quoteID.getText().toString() + "' and quoteType = '" + quoteType + "'";
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                item = "R" + rs.getInt("Cost_rate") + "  " + rs.getString("QuoteTitle");
+                a.addElement(item);
+            }
+        } catch (Exception e) {
+            System.out.println("problem with populateStaffCombo :" + e);
+        }
+        quote_over_li_overheads.setModel(a);
     }
 
     private void populateLabour() {
-        
+        DefaultListModel a = new DefaultListModel();
+        String item = "";
+        try {
+            String quoteType = "Labour";
+            Statement st = conn.createStatement();
+            String query = "select * from quoteItem where quoteID = '" + l_quoteID.getText().toString() + "' and quoteType = '" + quoteType + "'";
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                item = "R" + rs.getInt("Cost_rate") + " " + rs.getString("QuoteTitle") + " (" + rs.getInt("Count_Hours") + ")";
+                a.addElement(item);
+            }
+        } catch (Exception e) {
+            System.out.println("problem with populateStaffCombo :" + e);
+        }
+        quote_labour_li_labour.setModel(a);
+    }
+
+    private void getWorkerRate() {
+        try {
+            Statement st = conn.createStatement();
+            String worker[] = quote_labour_combo_workers.getSelectedItem().toString().split("_");
+
+            String query = "select rate from staff where fname = '" + worker[0] + "' and lname = '" + worker[1] + "'";
+            rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int rate = rs.getInt("rate");
+                quote_labour_l_rate.setText(Integer.toString(rate));
+            }
+        } catch (Exception e) {
+            System.out.println("error in populateClientCombo:" + e);
+        }
+    }
+
+    private double populateTotals(String typeOfItem) {
+        double total = 0;
+        try {
+            Statement st = conn.createStatement();
+            String quoteID = l_quoteID.getText();
+
+            String query = "select * from quoteItem where quoteID = '" + quoteID + "' and QuoteType = '" + typeOfItem + "'";
+            rs = st.executeQuery(query);
+            System.out.println("found");
+
+            while (rs.next()) {
+                int rate = rs.getInt("Cost_Rate");
+                int quantity = rs.getInt("Count_Hours");
+                total = total + (rate * quantity);
+            }
+        } catch (Exception e) {
+            System.out.println("error in populateClientCombo:" + e);
+        }
+
+        return total;
+    }
+
+    private void calculateAllTotals() {
+        quote_tf_cost_mat.setText(Double.toString(populateTotals("Material")));
+        quote_tf_cost_over.setText(Double.toString(populateTotals("Overheads")));
+        quote_tf_cost_labour.setText(Double.toString(populateTotals("Labour")));
     }
 
 }
