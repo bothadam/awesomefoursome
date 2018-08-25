@@ -2892,7 +2892,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
         jobStatesTabPane.setSelectedIndex(1);
-
+        populateMaterials();
+        populateOverheads();
+        populateLabour();
+        calculateAllTotals();
     }//GEN-LAST:event_job_but_createQuoteActionPerformed
 
     private void job_but_changeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_changeDetailsActionPerformed
@@ -3757,7 +3760,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
             String query = "select * from quoteItem where quoteID = '" + quoteID + "' and QuoteType = '" + typeOfItem + "'";
             rs = st.executeQuery(query);
-            System.out.println("found");
 
             while (rs.next()) {
                 int rate = rs.getInt("Cost_Rate");
@@ -3775,6 +3777,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_cost_mat.setText(Double.toString(populateTotals("Material")));
         quote_tf_cost_over.setText(Double.toString(populateTotals("Overheads")));
         quote_tf_cost_labour.setText(Double.toString(populateTotals("Labour")));
+        double subtotal = Double.parseDouble(quote_tf_cost_mat.getText()) + Double.parseDouble(quote_tf_cost_over.getText()) + Double.parseDouble(quote_tf_cost_labour.getText());
+        quote_tf_cost_subtotal.setText(Double.toString(subtotal));
     }
 
 }
