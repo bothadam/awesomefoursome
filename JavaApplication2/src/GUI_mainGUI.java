@@ -89,11 +89,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_but_manageClient = new javax.swing.JButton();
         client_tf_searchInput = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        client_li_jobs = new javax.swing.JList<String>();
+        client_li_jobs = new javax.swing.JList<>();
         jLabel14 = new javax.swing.JLabel();
         client_but_manageJob = new javax.swing.JButton();
         client_but_search = new javax.swing.JButton();
-        client_combo_searchVia = new javax.swing.JComboBox<String>();
+        client_combo_searchVia = new javax.swing.JComboBox<>();
         client_but_showAll = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -146,7 +146,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         staff_l_staffCode = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        staff_list_skillset = new javax.swing.JList<String>();
+        staff_list_skillset = new javax.swing.JList<>();
         jLabel46 = new javax.swing.JLabel();
         staff_tf_fname = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
@@ -161,7 +161,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        schedule_list_openJobs = new javax.swing.JList<String>();
+        schedule_list_openJobs = new javax.swing.JList<>();
         jPanel5 = new javax.swing.JPanel();
         scheduling_dateSpinner = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
@@ -170,7 +170,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         scheduling_hoursSpinner = new javax.swing.JSpinner();
         jScrollPane5 = new javax.swing.JScrollPane();
-        schedule_list_dates = new javax.swing.JList<String>();
+        schedule_list_dates = new javax.swing.JList<>();
         schedule_but_add = new javax.swing.JButton();
         schedule_but_remove = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -184,27 +184,21 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         schedule_l_jobID = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        schedule_list_scheduledDates = new javax.swing.JList<String>();
+        schedule_list_scheduledDates = new javax.swing.JList<>();
         schedule_but_removeSchedule = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        schedule_list_workers = new javax.swing.JList<String>();
+        schedule_list_workers = new javax.swing.JList<>();
         jLabel24 = new javax.swing.JLabel();
         schedule_but_manageSchedule = new javax.swing.JButton();
         schedule_l_scheduleCode = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         schedule_but_plus = new javax.swing.JButton();
         schedule_but_minus = new javax.swing.JButton();
-        schedule_combo_selectWorker = new javax.swing.JComboBox<String>();
+        schedule_combo_selectWorker = new javax.swing.JComboBox<>();
         schedule_but_viewClash = new javax.swing.JButton();
         schedule_but_createSchedule = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
-        but_close = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        client_l_dateToday = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        client_l_user = new javax.swing.JLabel();
-        but_save = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menu_user = new javax.swing.JMenu();
         menu_user_login = new javax.swing.JMenuItem();
@@ -248,6 +242,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_but_newClient.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         client_but_newClient.setText("New Client");
         client_but_newClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        client_but_newClient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                client_but_newClientMouseClicked(evt);
+            }
+        });
         client_but_newClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 client_but_newClientActionPerformed(evt);
@@ -284,6 +283,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         client_tf_ID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         client_tf_ID.setEnabled(false);
+        client_tf_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                client_tf_IDActionPerformed(evt);
+            }
+        });
 
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel33.setText("ID");
@@ -456,10 +460,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         client_tf_searchInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        client_li_jobs.setModel(new javax.swing.AbstractListModel() {
+        client_li_jobs.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         client_li_jobs.setMaximumSize(new java.awt.Dimension(39, 91));
         jScrollPane8.setViewportView(client_li_jobs);
@@ -491,7 +495,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         });
 
         client_combo_searchVia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Surname", "ID" }));
+        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Surname", "ID" }));
 
         client_but_showAll.setText("Show All");
         client_but_showAll.addActionListener(new java.awt.event.ActionListener() {
@@ -972,10 +976,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_l_staffCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         staff_l_staffCode.setText("(Code)");
 
-        staff_list_skillset.setModel(new javax.swing.AbstractListModel() {
+        staff_list_skillset.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane10.setViewportView(staff_list_skillset);
 
@@ -1169,10 +1173,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel() {
+        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(schedule_list_openJobs);
 
@@ -1193,13 +1197,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel18.setText("Hours");
 
-        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(4), null, null, Integer.valueOf(1)));
+        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(4, null, null, 1));
         scheduling_hoursSpinner.setEnabled(false);
 
-        schedule_list_dates.setModel(new javax.swing.AbstractListModel() {
+        schedule_list_dates.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         schedule_list_dates.setEnabled(false);
         jScrollPane5.setViewportView(schedule_list_dates);
@@ -1381,10 +1385,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         schedule_l_jobID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         schedule_l_jobID.setText("(Job ID)");
 
-        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel() {
+        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane4.setViewportView(schedule_list_scheduledDates);
 
@@ -1400,10 +1404,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel23.setText("Scheduled Dates");
 
-        schedule_list_workers.setModel(new javax.swing.AbstractListModel() {
+        schedule_list_workers.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Adam", "Thomas", "Steven", "Andrew" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane6.setViewportView(schedule_list_workers);
 
@@ -1432,7 +1436,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         schedule_but_minus.setText("-");
 
         schedule_combo_selectWorker.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Adriaan", "Pieter" }));
+        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
 
         schedule_but_viewClash.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         schedule_but_viewClash.setText("View Clash");
@@ -1541,36 +1545,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         mainTabs.addTab("Scheduling", jPanel8);
 
-        but_close.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        but_close.setText("Close");
-        but_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        but_close.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but_closeActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel3.setText("Date");
-
-        client_l_dateToday.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        client_l_dateToday.setText("(Display Date)");
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel5.setText("User");
-
-        client_l_user.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        client_l_user.setText("(Display User)");
-
-        but_save.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        but_save.setText("Save");
-        but_save.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        but_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                but_saveActionPerformed(evt);
-            }
-        });
-
         menuBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         menu_user.setText("User");
@@ -1611,33 +1585,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainTabs)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(client_l_dateToday)
-                .addGap(123, 123, 123)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(client_l_user)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(but_save, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(but_close, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(client_l_dateToday)
-                    .addComponent(jLabel5)
-                    .addComponent(client_l_user)
-                    .addComponent(but_close)
-                    .addComponent(but_save))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mainTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1721,18 +1673,21 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_fname.setEnabled(a);
         client_tf_lname.setEnabled(a);
         client_tf_nr.setEnabled(a);
-
-        client_but_manageClient.setEnabled(!a);
-        client_but_manageJob.setEnabled(!a);
+        //As per user testing
+        //Place a ! infrount of a to enable it if needed
+        client_but_manageClient.setEnabled(a);
+        //As per user testing
+        //Place a ! infrount of a to enable it if needed
+        client_but_manageJob.setEnabled(a);
         client_but_newClient.setEnabled(!a);
         client_but_search.setEnabled(!a);
         client_combo_searchVia.setEnabled(!a);
         client_tf_searchInput.setEnabled(!a);
-        client_li_jobs.setEnabled(!a);
+        //As per user testing
+        //Place a ! infrount of a to enable it if needed
+        client_li_jobs.setEnabled(a);
         client_table_clients.setEnabled(!a);
 
-        but_save.setEnabled(!a);
-        but_close.setEnabled(!a);
         mainTabs.setEnabledAt(0, !a);
         mainTabs.setEnabledAt(1, !a);
         mainTabs.setEnabledAt(2, !a);
@@ -1760,8 +1715,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_but_newStaff.setEnabled(!a);
         staff_table_staff.setEnabled(!a);
 
-        but_save.setEnabled(!a);
-        but_close.setEnabled(!a);
         mainTabs.setEnabledAt(0, !a);
         mainTabs.setEnabledAt(1, !a);
         mainTabs.setEnabledAt(2, !a);
@@ -1791,12 +1744,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_lname.setText("");
         client_tf_nr.setText("");
     }
-
-    //action performed
-
-    private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
-        doClose();
-    }//GEN-LAST:event_but_closeActionPerformed
 
     private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
 
@@ -1840,16 +1787,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
+        
         enablePanel_Client(true);
         clearPanel_Client();
         client_but_showAll.setEnabled(false);
         editOrAdd = "add";
 
     }//GEN-LAST:event_client_but_newClientActionPerformed
-
-    private void but_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_saveActionPerformed
-        doSave();
-    }//GEN-LAST:event_but_saveActionPerformed
 
     private void client_but_manageClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageClientActionPerformed
         enablePanel_Client(true);
@@ -1871,7 +1815,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_searchActionPerformed
 
     private void staff_but_newStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_newStaffActionPerformed
-        clearPanel_Staff();        
+        clearPanel_Staff();
         enablePanel_Staff(true);
         editOrAdd = "add";
     }//GEN-LAST:event_staff_but_newStaffActionPerformed
@@ -1941,6 +1885,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_doneMouseClicked
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
+
         if (editOrAdd.equals("add")) {
             String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
@@ -1972,8 +1917,19 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_table_staffMouseClicked
 
     private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
+         //As per user testing
+         //Will only enable if a client has been selected
+        client_but_manageClient.setEnabled(true);
+        //As per user testing
+         //Will only enable if a client has been selected
+        client_but_manageJob.setEnabled(true);
+         //As per user testing
+         //Will only enable if a client has been selected
+        client_li_jobs.setEnabled(true);
+        
         showJobsForSelectedClient();
         populateClientTextfields();
+
     }//GEN-LAST:event_client_table_clientsMouseClicked
 
     private void jobs_rb_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_allActionPerformed
@@ -2054,6 +2010,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         FillAddressFieldOfStaff();        // TODO add your handling code here:
     }//GEN-LAST:event_staff_but_insertAddressMouseClicked
 
+    private void client_tf_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_tf_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_client_tf_IDActionPerformed
+
+    private void client_but_newClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_newClientMouseClicked
+        //As per user testing 
+        //Disable edit clients button while adding a client
+        client_but_manageClient.setEnabled(false);
+    }//GEN-LAST:event_client_but_newClientMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2093,8 +2059,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton but_close;
-    private javax.swing.JButton but_save;
     private javax.swing.JButton client_but_cancel;
     private javax.swing.JButton client_but_done;
     private javax.swing.JButton client_but_insertAdr;
@@ -2105,8 +2069,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JButton client_but_showAll;
     private javax.swing.JComboBox<String> client_combo_searchVia;
     private javax.swing.JLabel client_l_clientCode;
-    private javax.swing.JLabel client_l_dateToday;
-    private javax.swing.JLabel client_l_user;
     private javax.swing.JList<String> client_li_jobs;
     private javax.swing.JTable client_table_clients;
     private javax.swing.JTextField client_tf_ID;
@@ -2135,7 +2097,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -2153,7 +2114,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2529,7 +2489,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 staff_list_skillset.setModel(a);
 
                 String address[] = rs.getString("address").split("#");
-                
+
                 if (address.length > 3) {
                     System.out.println(rs.getString("address"));
                     staff_tf_address.setText(address[0] + " " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4]);
@@ -2592,5 +2552,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
         staff_tf_address.setText(createdAddress);
     }
+
 
 }
