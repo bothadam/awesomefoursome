@@ -44,6 +44,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         tempModel.addElement("No client selected");
         client_li_jobs.setModel(tempModel);
         blankListModel = (DefaultListModel) client_li_jobs.getModel();
+        
+        jobs_but_manageJob.setEnabled(false);
+        jobs_but_removeRecord.setEnabled(false);
     }
 
     /**
@@ -439,7 +442,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(0, 19, Short.MAX_VALUE)
+                        .addGap(0, 132, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(client_but_done)
                             .addComponent(client_but_cancel)
@@ -536,7 +539,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane8)))
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -856,7 +859,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(jobs_but_newJob, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jobs_but_manageJob, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 564, Short.MAX_VALUE)
                         .addComponent(jobs_but_removeRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
@@ -1043,7 +1046,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addGap(0, 176, Short.MAX_VALUE)
+                                .addGap(0, 212, Short.MAX_VALUE)
                                 .addComponent(staff_but_cancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(staff_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1133,7 +1136,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(staff_but_newStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(staff_but_manageStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 472, Short.MAX_VALUE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1148,7 +1151,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         mainTabs.addTab("Staff", jPanel6);
@@ -1503,7 +1506,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(schedule_but_createSchedule)
                         .addGap(185, 185, 185)
                         .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 26, Short.MAX_VALUE))
+                .addGap(0, 62, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1640,7 +1643,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         //disable scheduling panel
         mainTabs.setEnabledAt(3, false);
     }
-
+    
     private void enablePanel_Schedule(boolean a) {
         schedule_but_add.setEnabled(a);
         schedule_but_remove.setEnabled(a);
@@ -1746,11 +1749,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
-
+        
         String newJobID = generateNewJobID();
         GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
         jobStatesGUI.setVisible(true);
-        this.dispose();
+        this.dispose();                
     }//GEN-LAST:event_jobs_but_newJobActionPerformed
 
     private void schedule_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_addActionPerformed
@@ -1787,7 +1790,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
-        
         enablePanel_Client(true);
         clearPanel_Client();
         client_but_showAll.setEnabled(false);
@@ -1797,6 +1799,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void client_but_manageClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageClientActionPerformed
         enablePanel_Client(true);
+        //As per user testing
+         //Will only enable if a client has been selected
         client_but_showAll.setEnabled(false);
         editOrAdd = "edit";
     }//GEN-LAST:event_client_but_manageClientActionPerformed
@@ -2003,6 +2007,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jobs_rb_closedActionPerformed
 
     private void jobs_table_jobsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobs_table_jobsMouseClicked
+        //As per user testing
+        //Will only enable if a job has been selected
+        jobs_but_manageJob.setEnabled(true);
+        //As per user testing
+        //Will only enable if a job has been selected
+        jobs_but_removeRecord.setEnabled(true);
+                
         populateClientTextFieldsForJob();
     }//GEN-LAST:event_jobs_table_jobsMouseClicked
 
