@@ -606,14 +606,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="quote_but_acc" alignment="1" max="32767" attributes="0"/>
                           <Component id="quote_but_rej" alignment="1" max="32767" attributes="0"/>
                           <Component id="quote_but_create" alignment="1" max="32767" attributes="0"/>
-                          <Component id="quote_allquotes_combo" alignment="3" max="32767" attributes="0"/>
-                          <Component id="quote_selectquote_button" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="quote_but_delete" alignment="1" max="32767" attributes="0"/>
-                          <Component id="quote_but_jobDesc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="quote_allquotes_combo" alignment="3" max="32767" attributes="0"/>
+                              <Component id="quote_selectquote_button" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="quote_but_jobDesc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Component id="quote_TabPane" min="-2" pref="177" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
