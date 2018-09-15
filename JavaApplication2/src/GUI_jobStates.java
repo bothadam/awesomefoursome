@@ -124,8 +124,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_chFee_mat = new javax.swing.JTextField();
         quote_tf_finalCharges = new javax.swing.JTextField();
         quote_but_create = new javax.swing.JButton();
-        quote_but_prev = new javax.swing.JButton();
-        quote_but_next = new javax.swing.JButton();
         quote_but_jobDesc = new javax.swing.JButton();
         quote_TabPane = new javax.swing.JTabbedPane();
         jPanel34 = new javax.swing.JPanel();
@@ -179,6 +177,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_but_delete = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
@@ -429,7 +428,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                                     .addGroup(jPanel13Layout.createSequentialGroup()
                                         .addComponent(jLabel19)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(job_spin_date, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
+                                    .addComponent(job_spin_date, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)))
                             .addComponent(jScrollPane3)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel13Layout.createSequentialGroup()
@@ -524,7 +523,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(job_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(job_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel49))
@@ -863,12 +862,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        quote_but_prev.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        quote_but_prev.setText("Previous");
-
-        quote_but_next.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        quote_but_next.setText("Next");
-
         quote_but_jobDesc.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         quote_but_jobDesc.setText("Job Description");
         quote_but_jobDesc.addActionListener(new java.awt.event.ActionListener() {
@@ -941,7 +934,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(quote_mat_but_done))
                     .addComponent(quote_mat_tf_item)
                     .addComponent(quote_mat_tf_cost))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -980,7 +973,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         quote_mat_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        quote_mat_but_add.setText("//Add");
+        quote_mat_but_add.setText("Add");
+        quote_mat_but_add.setToolTipText("");
         quote_mat_but_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_mat_but_addActionPerformed(evt);
@@ -1056,7 +1050,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addComponent(quote_over_but_cancel)
@@ -1202,7 +1196,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel39Layout.setHorizontalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
                         .addComponent(quote_labour_but_cancel)
@@ -1333,6 +1327,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel34.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel34.setText("Date:");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -1360,9 +1356,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(quote_but_jobDesc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(quote_but_prev)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(quote_but_next, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(quote_but_rej)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1373,16 +1367,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(quote_but_prev)
-                        .addComponent(quote_but_next)
-                        .addComponent(quote_but_jobDesc))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(quote_but_jobDesc)
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(quote_but_acc)
                         .addComponent(quote_but_rej)
                         .addComponent(quote_but_create)
-                        .addComponent(quote_but_delete)))
+                        .addComponent(quote_but_delete))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(jComboBox1)
+                        .addGap(2, 2, 2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(quote_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1677,7 +1671,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(work_mat_but_done))
                     .addComponent(work_mat_tf_cost)
                     .addComponent(work_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1803,7 +1797,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel30Layout.setHorizontalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addComponent(work_over_but_cancel)
@@ -2402,7 +2396,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(jLabel139)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(final_tf_outst, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(final_but_managePay))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -3261,6 +3255,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTextField final_tf_outst;
     private javax.swing.JTextField final_tf_quote;
     private javax.swing.JTextField final_tf_rec;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -3414,8 +3409,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JButton quote_but_create;
     private javax.swing.JButton quote_but_delete;
     private javax.swing.JButton quote_but_jobDesc;
-    private javax.swing.JButton quote_but_next;
-    private javax.swing.JButton quote_but_prev;
     private javax.swing.JButton quote_but_rej;
     private javax.swing.JCheckBox quote_cb_charge_labour;
     private javax.swing.JCheckBox quote_cb_charge_mat;
@@ -3543,7 +3536,28 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Database connection error" + e);
         }
     }
+    private void initialPopulateClientInfo(){
+        try {
+            Statement st = conn.createStatement();
+            String name[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
+            String query = "select * from client where fname = '" + name[0] + "'";
+            rs = st.executeQuery(query);
 
+            while (rs.next()) {
+                l_clientCode.setText(rs.getString("clientID"));
+                l_clientFullname.setText(rs.getString("fname"));
+                l_contactNr.setText(rs.getString("connum"));
+                l_email.setText(rs.getString("email"));
+                l_siteLocation.setText(rs.getString("address"));
+                job_tf_fname.setText(rs.getString("fname"));
+                job_tf_lname.setText(rs.getString("lname"));
+                job_tf_contactNr.setText(rs.getString("connum"));
+                job_tf_email.setText(rs.getString("email"));
+            }
+        } catch (Exception e) {
+            System.out.println("Problem with populateClientsInfo " + e);
+        }
+    }
     private void populateClientInfo() {
         try {
             Statement st = conn.createStatement();
