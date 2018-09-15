@@ -186,7 +186,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         quote_allquotes_combo = new javax.swing.JComboBox();
-        quote_selectquote_button = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
@@ -1322,6 +1321,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_but_delete.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         quote_but_delete.setText("Delete");
+        quote_but_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_but_deleteActionPerformed(evt);
+            }
+        });
 
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel33.setText("ID:");
@@ -1334,14 +1338,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_allquotes_combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_allquotes_comboActionPerformed(evt);
-            }
-        });
-
-        quote_selectquote_button.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        quote_selectquote_button.setText("Select Quote");
-        quote_selectquote_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quote_selectquote_buttonActionPerformed(evt);
             }
         });
 
@@ -1370,10 +1366,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(quote_but_jobDesc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(quote_allquotes_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(quote_selectquote_button)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(quote_allquotes_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(quote_but_delete)
                         .addGap(37, 37, 37)
                         .addComponent(quote_but_rej)
@@ -1392,7 +1386,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(quote_but_delete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(quote_allquotes_combo)
-                        .addComponent(quote_selectquote_button)
                         .addComponent(quote_but_jobDesc)))
                 .addComponent(quote_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -3231,16 +3224,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_quote_mat_but_doneMouseClicked
 
-    private void quote_selectquote_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_selectquote_buttonActionPerformed
-        currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
-        populateMaterials();
-        populateOverheads();
-        populateLabour();
-        calculateAllTotals();
-        quoteID_l.setText(currentQuoteID);
-
-    }//GEN-LAST:event_quote_selectquote_buttonActionPerformed
-
     private void quote_allquotes_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_allquotes_comboActionPerformed
         currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
         populateMaterials();
@@ -3326,6 +3309,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_quote_calculate_buttonActionPerformed
+
+    private void quote_but_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_deleteActionPerformed
+        String quoteID = quote_allquotes_combo.getModel().getSelectedItem().toString();
+        try {
+            String sql = "Delete from quote where QuoteID = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, quoteID);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Problem with deleteing quote : " + e);
+        }
+        getAllQuotes();
+    }//GEN-LAST:event_quote_but_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3576,7 +3572,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JList<String> quote_over_li_overheads;
     private javax.swing.JTextField quote_over_tf_overhead;
     private javax.swing.JTextField quote_over_tf_total;
-    private javax.swing.JButton quote_selectquote_button;
     private javax.swing.JSpinner quote_spin_charge_labour;
     private javax.swing.JSpinner quote_spin_charge_mat;
     private javax.swing.JSpinner quote_spin_charge_over;
