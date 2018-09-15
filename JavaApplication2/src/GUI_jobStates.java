@@ -656,10 +656,30 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel64.setText("Materials:");
 
         quote_spin_cont_mat.setEnabled(false);
+        quote_spin_cont_mat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quote_spin_cont_matMouseClicked(evt);
+            }
+        });
+        quote_spin_cont_mat.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                quote_spin_cont_matStateChanged(evt);
+            }
+        });
 
         quote_spin_cont_over.setEnabled(false);
+        quote_spin_cont_over.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                quote_spin_cont_overStateChanged(evt);
+            }
+        });
 
         quote_spin_cont_labour.setEnabled(false);
+        quote_spin_cont_labour.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                quote_spin_cont_labourStateChanged(evt);
+            }
+        });
 
         quote_tf_cost_mat.setEnabled(false);
 
@@ -673,10 +693,25 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 quote_spin_charge_matMouseClicked(evt);
             }
         });
+        quote_spin_charge_mat.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                quote_spin_charge_matStateChanged(evt);
+            }
+        });
 
         quote_spin_charge_over.setEnabled(false);
+        quote_spin_charge_over.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                quote_spin_charge_overStateChanged(evt);
+            }
+        });
 
         quote_spin_charge_labour.setEnabled(false);
+        quote_spin_charge_labour.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                quote_spin_charge_labourStateChanged(evt);
+            }
+        });
 
         jLabel69.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel69.setText("Contingency %");
@@ -3323,6 +3358,34 @@ public class GUI_jobStates extends javax.swing.JFrame {
         getAllQuotes();
     }//GEN-LAST:event_quote_but_deleteActionPerformed
 
+    private void quote_spin_cont_matMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_spin_cont_matMouseClicked
+        
+    }//GEN-LAST:event_quote_spin_cont_matMouseClicked
+
+    private void quote_spin_cont_matStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_matStateChanged
+        showCalculations();   
+    }//GEN-LAST:event_quote_spin_cont_matStateChanged
+
+    private void quote_spin_charge_matStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_charge_matStateChanged
+       showCalculations();   
+    }//GEN-LAST:event_quote_spin_charge_matStateChanged
+
+    private void quote_spin_cont_overStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_overStateChanged
+        showCalculations();   
+    }//GEN-LAST:event_quote_spin_cont_overStateChanged
+
+    private void quote_spin_charge_overStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_charge_overStateChanged
+       showCalculations();  
+    }//GEN-LAST:event_quote_spin_charge_overStateChanged
+
+    private void quote_spin_cont_labourStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_labourStateChanged
+         showCalculations();  
+    }//GEN-LAST:event_quote_spin_cont_labourStateChanged
+
+    private void quote_spin_charge_labourStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_charge_labourStateChanged
+         showCalculations();  
+    }//GEN-LAST:event_quote_spin_charge_labourStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -3927,6 +3990,35 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_cost_labour.setText(Double.toString(populateTotals("Labour")));
         double subtotal = Double.parseDouble(quote_tf_cost_mat.getText()) + Double.parseDouble(quote_tf_cost_over.getText()) + Double.parseDouble(quote_tf_cost_labour.getText());
         quote_tf_cost_subtotal.setText(Double.toString(subtotal));
+    }
+    
+    private void showCalculations(){
+        DecimalFormat df = new DecimalFormat("#.##");
+        double matCost = Double.parseDouble(quote_tf_cost_mat.getText().toString());
+        double chargingM = Double.parseDouble(quote_tf_cost_mat.getText().toString()) / 100 * Integer.parseInt(quote_spin_charge_mat.getValue().toString());
+        double contM = Integer.parseInt(quote_spin_cont_mat.getValue().toString()) * matCost / 100;
+        quote_tf_chFee_mat.setText(Double.toString(chargingM));
+        double finalM = chargingM + matCost + contM;
+        quote_tf_final_mat.setText(Double.toString(finalM));
+
+        double overCost = Double.parseDouble(quote_tf_cost_over.getText().toString());
+        double chargingO = Double.parseDouble(quote_tf_cost_over.getText().toString()) / 100 * Integer.parseInt(quote_spin_charge_over.getValue().toString());
+        double contO = Integer.parseInt(quote_spin_cont_over.getValue().toString()) * overCost / 100;
+        quote_tf_chFee_over.setText(Double.toString(chargingO));
+        double finalO = overCost + chargingO + contO;
+        quote_tf_final_over.setText(Double.toString(finalO));
+
+        double labourCost = Double.parseDouble(quote_tf_cost_labour.getText().toString());
+        double chargingL = Double.parseDouble(quote_tf_cost_labour.getText().toString()) / 100 * Integer.parseInt(quote_spin_charge_labour.getValue().toString());
+        double contL = Integer.parseInt(quote_spin_cont_labour.getValue().toString()) * labourCost / 100;
+        quote_tf_chFee_labour.setText(Double.toString(chargingL));
+        double finalL = labourCost + chargingL + contL;
+        quote_tf_final_labour.setText(Double.toString(finalL));
+        
+        double finalCost = finalM + finalO + finalL;
+        quote_tf_total.setText(df.format(finalCost));
+        String finalCharges = df.format((chargingM + chargingO + chargingL));
+        quote_tf_finalCharges.setText(finalCharges);
     }
 
 }

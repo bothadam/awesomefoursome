@@ -845,16 +845,26 @@
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quote_spin_cont_matMouseClicked"/>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_cont_matStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_cont_over">
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_cont_overStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_cont_labour">
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_cont_labourStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_cost_mat">
                   <Properties>
@@ -877,17 +887,24 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quote_spin_charge_matMouseClicked"/>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_charge_matStateChanged"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_charge_over">
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_charge_overStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_charge_labour">
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_charge_labourStateChanged"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel69">
                   <Properties>
