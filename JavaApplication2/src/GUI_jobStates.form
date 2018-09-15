@@ -584,13 +584,15 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="quote_but_create" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="quote_but_delete" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="quote_but_jobDesc" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jComboBox1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="quote_allquotes_combo" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="quote_selectquote_button" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="quote_but_delete" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="quote_but_rej" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="quote_but_acc" min="-2" max="-2" attributes="0"/>
@@ -604,22 +606,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="quote_but_jobDesc" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="quote_but_acc" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="quote_but_rej" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="quote_but_create" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="quote_but_delete" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jComboBox1" max="32767" attributes="0"/>
-                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="quote_but_acc" alignment="1" max="32767" attributes="0"/>
+                          <Component id="quote_but_rej" alignment="1" max="32767" attributes="0"/>
+                          <Component id="quote_but_create" alignment="1" max="32767" attributes="0"/>
+                          <Component id="quote_allquotes_combo" alignment="3" max="32767" attributes="0"/>
+                          <Component id="quote_selectquote_button" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="quote_but_delete" alignment="1" max="32767" attributes="0"/>
+                          <Component id="quote_but_jobDesc" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="quote_TabPane" min="-2" pref="177" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1251,10 +1248,7 @@
                               <Font name="Tahoma" size="14" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                              <StringArray count="2">
-                                <StringItem index="0" value="12_Screws (30)"/>
-                                <StringItem index="1" value="10_2x4 Pinewood (100)"/>
-                              </StringArray>
+                              <StringArray count="0"/>
                             </Property>
                           </Properties>
                           <AuxValues>
@@ -1293,6 +1287,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Remove"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_mat_but_removeActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1465,11 +1462,7 @@
                               <Font name="Tahoma" size="14" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                              <StringArray count="3">
-                                <StringItem index="0" value="Petrol (200)"/>
-                                <StringItem index="1" value="Safeguard of Materials on site (300)"/>
-                                <StringItem index="2" value="Trailer Hire (400)"/>
-                              </StringArray>
+                              <StringArray count="0"/>
                             </Property>
                           </Properties>
                           <AuxValues>
@@ -1507,6 +1500,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Remove"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_over_but_removeActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1572,11 +1568,7 @@
                               <Font name="Tahoma" size="14" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                              <StringArray count="3">
-                                <StringItem index="0" value="Stefan (450)"/>
-                                <StringItem index="1" value="Andre (400)"/>
-                                <StringItem index="2" value="Simeon (440)"/>
-                              </StringArray>
+                              <StringArray count="0"/>
                             </Property>
                           </Properties>
                           <AuxValues>
@@ -1737,6 +1729,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Remove"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_labour_but_removeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="quote_labour_but_change">
                       <Properties>
@@ -1840,8 +1835,11 @@
                 <Property name="text" type="java.lang.String" value="Date:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="quote_allquotes_combo">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
                     <StringItem index="0" value="Item 1"/>
@@ -1851,6 +1849,20 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_allquotes_comboActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="quote_selectquote_button">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Select Quote"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_selectquote_buttonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

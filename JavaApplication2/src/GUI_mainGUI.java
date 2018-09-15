@@ -1658,6 +1658,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private String getSelectedJobID() {
         //identify the job ID that is currently selected in the list/the table as a string to parse through to the GUIjobStates pane
         //so that it can "manage" the newly created Job
+        
         return "";
     }
 
@@ -1836,6 +1837,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void jobs_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_manageJobActionPerformed
         String selectedJobID = getSelectedJobID();
+        int row = jobs_table_jobs.getSelectedRow();
+        selectedJobID = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
         manageJob(selectedJobID);
     }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
