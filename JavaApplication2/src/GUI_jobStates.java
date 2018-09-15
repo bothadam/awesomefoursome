@@ -3242,7 +3242,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_selectquote_buttonActionPerformed
 
     private void quote_allquotes_comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_allquotes_comboActionPerformed
-        // TODO add your handling code here:
+        currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
+        populateMaterials();
+        populateOverheads();
+        populateLabour();
+        calculateAllTotals();
+        quoteID_l.setText(currentQuoteID);
     }//GEN-LAST:event_quote_allquotes_comboActionPerformed
 
     private void quote_mat_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_removeActionPerformed
