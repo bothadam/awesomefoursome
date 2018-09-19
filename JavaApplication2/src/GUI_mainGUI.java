@@ -951,7 +951,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel41.setText("Billing Address");
 
         staff_but_insertAddress.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        staff_but_insertAddress.setText("Insert Address");
+        staff_but_insertAddress.setText("Address");
         staff_but_insertAddress.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 staff_but_insertAddressMouseClicked(evt);
@@ -964,7 +964,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel42.setText("Email Address");
 
         staff_tf_skillsetInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-
+		staff_tf_skillsetInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                staff_tf_skillsetInputFocusGained(evt);
+            }
+        });
+		
         jLabel44.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel44.setText("First Name");
 
@@ -998,6 +1003,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         staff_but_add.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         staff_but_add.setText("Add");
+		 staff_but_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staff_but_addActionPerformed(evt);
+            }
+        });
 
         staff_but_remove.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         staff_but_remove.setText("Remove");
@@ -1010,7 +1020,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel50.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel50.setText("Rate:");
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1046,7 +1056,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addGap(0, 212, Short.MAX_VALUE)
+                                .addGap(0, 176, Short.MAX_VALUE)
                                 .addComponent(staff_but_cancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(staff_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1136,7 +1146,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(staff_but_newStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(staff_but_manageStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 472, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1151,7 +1161,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         mainTabs.addTab("Staff", jPanel6);
@@ -1708,17 +1718,21 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_list_skillset.setEnabled(a);
         staff_spin_rate.setEnabled(a);
         staff_tf_ID.setEnabled(a);
-        staff_tf_address.setEnabled(a);
         staff_tf_email.setEnabled(a);
         staff_tf_fname.setEnabled(a);
         staff_tf_lname.setEnabled(a);
         staff_tf_nr.setEnabled(a);
         staff_tf_skillsetInput.setEnabled(a);
+        staff_tf_address.setEnabled(false);
 
-        staff_but_manageStaff.setEnabled(!a);
+        
+        staff_but_manageStaff.setEnabled(false);
+        
         staff_but_newStaff.setEnabled(!a);
         staff_table_staff.setEnabled(!a);
 
+        but_save.setEnabled(!a);
+        but_close.setEnabled(!a);
         mainTabs.setEnabledAt(0, !a);
         mainTabs.setEnabledAt(1, !a);
         mainTabs.setEnabledAt(2, !a);
@@ -1730,6 +1744,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         DefaultListModel a = new DefaultListModel();
         staff_list_skillset.setModel(a);
         staff_tf_ID.setText("");
+        staff_l_staffCode.setText("");
         staff_tf_address.setText("");
         staff_tf_email.setText("");
         staff_tf_fname.setText("");
@@ -1822,14 +1837,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_searchActionPerformed
 
     private void staff_but_newStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_newStaffActionPerformed
-        clearPanel_Staff();
+        clearPanel_Staff();        
         enablePanel_Staff(true);
         editOrAdd = "add";
+        staff_but_insertAddress.setText("Add Billing Address");
     }//GEN-LAST:event_staff_but_newStaffActionPerformed
 
-    private void staff_but_manageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_manageStaffActionPerformed
+   private void staff_but_manageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_manageStaffActionPerformed
         editOrAdd = "edit";
         enablePanel_Staff(true);
+        staff_but_insertAddress.setText("Edit Billing Address");
     }//GEN-LAST:event_staff_but_manageStaffActionPerformed
 
     private void client_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_cancelActionPerformed
@@ -1857,23 +1874,28 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void staff_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_doneActionPerformed
         if (editOrAdd.equals("add")) {
+            addStaff();
         } else if (editOrAdd.equals("edit")) {
             editStaff();
         }
         editOrAdd = "";
+        staff_but_insertAddress.setText("Address");
         enablePanel_Staff(false);
         clearPanel_Staff();
         populateStaffTable();
     }//GEN-LAST:event_staff_but_doneActionPerformed
 
-    private void staff_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_removeActionPerformed
-        try {
-            String input = staff_tf_skillsetInput.getText();
-            if (isValidString(input)) {
-
+     private void staff_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_removeActionPerformed
+       
+        int[] selectedSkills = staff_list_skillset.getSelectedIndices();
+        DefaultListModel allSkills = (DefaultListModel) staff_list_skillset.getModel();
+        if(selectedSkills.length > 0){
+            for (int i = 0; i < selectedSkills.length; i++) {
+                allSkills.remove(selectedSkills[i]);
             }
-        } catch (Exception e) {
+            staff_list_skillset.setModel(allSkills);
         }
+        
     }//GEN-LAST:event_staff_but_removeActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
@@ -1921,6 +1943,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void staff_table_staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staff_table_staffMouseClicked
         populateStaffTextfields();
+        staff_but_manageStaff.setEnabled(staff_table_staff.getSelectedRow() > -1);
+        
     }//GEN-LAST:event_staff_table_staffMouseClicked
 
     private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
@@ -2020,10 +2044,24 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         populateClientTextFieldsForJob();
     }//GEN-LAST:event_jobs_table_jobsMouseClicked
 
-    private void staff_but_insertAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staff_but_insertAddressMouseClicked
-        FillAddressFieldOfStaff();        // TODO add your handling code here:
-    }//GEN-LAST:event_staff_but_insertAddressMouseClicked
+    private void staff_but_insertAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_insertAddressActionPerformed
+        AddressPane ap = new AddressPane(staff_tf_address);
+    }//GEN-LAST:event_staff_but_insertAddressActionPerformed
 
+	private void staff_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_addActionPerformed
+        String input = staff_tf_skillsetInput.getText();
+        if(isValidString(input)){
+            DefaultListModel skillset = (DefaultListModel) staff_list_skillset.getModel();
+            skillset.addElement(input);
+            staff_list_skillset.setModel(skillset);
+            staff_tf_skillsetInput.setText("");
+        }
+    }//GEN-LAST:event_staff_but_addActionPerformed
+
+    private void staff_tf_skillsetInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_staff_tf_skillsetInputFocusGained
+        staff_tf_skillsetInput.setText("");
+    }//GEN-LAST:event_staff_tf_skillsetInputFocusGained
+	
     private void client_tf_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_tf_IDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_client_tf_IDActionPerformed
@@ -2072,6 +2110,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         });
     }
 
+	// <editor-fold defaultstate="collapsed" desc="Swing variable declarations">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton client_but_cancel;
     private javax.swing.JButton client_but_done;
@@ -2225,7 +2264,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField staff_tf_skillsetInput;
     private javax.swing.ButtonGroup viewButGroup;
     // End of variables declaration//GEN-END:variables
-
+//</editor-fold>
     private void connection() {
         try {
             String filename = new File("afordableDB.accdb").getAbsolutePath();
@@ -2353,8 +2392,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void populateStaffTable() {
         try {
-            Statement st = conn.createStatement();
-            String query = "select StaffID, Fname as Name,LName as Surname, ConNum as Contact, Rate from staff";
+            st = conn.createStatement();
+            String query = "select StaffID, FName as Name, LName as Surname, ConNum as Contact, Rate from Staff";
             rs = st.executeQuery(query);
             staff_table_staff.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -2522,22 +2561,21 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             System.out.println("start");
 
-            String sql = "update staff set FName = ? ,LName = ?,ConNum = ?,Email = ?,ID = ?,Address = ?, Rate = ?, SkillSet = ? where staffID = ?";
+            String sql = "update Staff set FName = ? ,LName = ?,ID = ?,ConNum = ?,Email = ?, Rate = ?,SkillSet = ?, Address = ? WHERE StaffID = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement.setString(1, staff_tf_fname.getText());
             statement.setString(2, staff_tf_lname.getText());
-            statement.setString(3, staff_tf_nr.getText());
-            statement.setString(4, staff_tf_email.getText());
-            statement.setString(5, staff_tf_ID.getText());
-            statement.setString(6, staff_tf_address.getText());
-            statement.setString(7, staff_spin_rate.getModel().getValue().toString());
-
+            statement.setString(3, staff_tf_ID.getText());
+            statement.setString(4, staff_tf_nr.getText());
+            statement.setString(5, staff_tf_email.getText());
+            statement.setString(6, staff_spin_rate.getModel().getValue().toString());
             String skillset = "";
             for (int i = 0; i < staff_list_skillset.getModel().getSize(); i++) {
                 skillset = staff_list_skillset.getModel().getElementAt(i) + "," + skillset;
             }
-            statement.setString(8, skillset);
+            statement.setString(7, skillset);
+            statement.setString(8, staff_tf_address.getText());
             statement.setString(9, staff_l_staffCode.getText());
 
             int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to update this Staff Member");
@@ -2556,16 +2594,56 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
+	
+	private void addStaff(){
+        try {
+            
+            
+            boolean goahead = false;
+            String code = "";
 
-    private void FillAddressFieldOfStaff() {
-        String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
-        createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
-        createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the suburb") + "#";
-        createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City") + "#";
-        createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
-        createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
-        staff_tf_address.setText(createdAddress);
+            while (goahead == false) {
+                Random rand = new Random();
+                code = Integer.toString(rand.nextInt(100000));
+                code = "S" + code;
+
+                String sql2 = "Select * from Staff";
+                Statement st = conn.createStatement();
+                rs = st.executeQuery(sql2);
+
+                while (rs.next()) {
+                    if (!rs.getString("StaffID").equals(code) && !rs.getString("ID").equals(staff_tf_ID.getText())) {
+                        goahead = true;
+                    }else{
+                        JOptionPane.showMessageDialog(rootPane, "Staff ID and/or Code already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+
+            String sql = "Insert into Staff(StaffID,FName,LName,ID,ConNum,Email,Rate,SkillSet,Address) values(?,?,?,?,?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            if (goahead) {
+                statement.setString(1, code);
+                statement.setString(2, staff_tf_fname.getText());
+                statement.setString(3, staff_tf_lname.getText());
+                statement.setString(4, staff_tf_ID.getText());
+                statement.setString(5, staff_tf_nr.getText());
+                statement.setString(6, staff_tf_email.getText());
+                statement.setString(7, staff_spin_rate.getModel().getValue().toString());
+                String skillset = "";
+                for (int i = 0; i < staff_list_skillset.getModel().getSize(); i++) {
+                    skillset = staff_list_skillset.getModel().getElementAt(i) + "," + skillset;
+                }
+                statement.setString(8, skillset);
+                statement.setString(9, staff_tf_address.getText());
+
+                statement.executeUpdate();
+                populateStaffTable();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Problem with adding staff" + e);
+        }
     }
-
-
 }
