@@ -1564,7 +1564,7 @@
                     <Property name="text" type="java.lang.String" value="Insert Address"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="staff_but_insertAddressMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="staff_but_insertAddressActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="staff_tf_email">
@@ -1690,6 +1690,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Add"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="staff_but_addActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="staff_but_remove">
                   <Properties>
