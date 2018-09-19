@@ -952,9 +952,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         staff_but_insertAddress.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         staff_but_insertAddress.setText("Address");
-        staff_but_insertAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                staff_but_insertAddressMouseClicked(evt);
+        staff_but_insertAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staff_but_insertAddressActionPerformed(evt);
             }
         });
 
