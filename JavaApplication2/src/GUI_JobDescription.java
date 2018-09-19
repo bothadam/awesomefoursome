@@ -16,6 +16,11 @@ public class GUI_JobDescription extends javax.swing.JFrame {
     public GUI_JobDescription() {
         initComponents();
     }
+    
+    public GUI_JobDescription(String message) {
+        initComponents();
+        jTextArea1.setText(message);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -3117,25 +3117,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enableQuoteComponents(false);
         l_quoteState.setText("Quote Rejected");
         try {
-
-            String sql = "update quote set quoteStatus = ? where QuoteID = ?";
+            String sql = "update quote set quoteStatus = '" + false + "'  where QuoteID = '" + currentQuoteID + "' ";
             PreparedStatement statement = conn.prepareStatement(sql);
-
-            statement.setString(1, "rejected");
-            statement.setString(2, currentQuoteID);
-
-            int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to update this Client");
-
-            if (choice == 0) {
-
-                int rowsUpdated = statement.executeUpdate();
-                if (rowsUpdated > 0) {
-                    System.out.println("An existing client was updated successfully!");
-                }
-            }
-
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "You have rejected quote: " + currentQuoteID);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("myerror" + e);
         }
 
     }//GEN-LAST:event_quote_but_rejActionPerformed
@@ -3143,10 +3130,36 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void quote_but_accActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_accActionPerformed
         enableQuoteComponents(false);
         l_quoteState.setText("Quote Accepted");
+        try {
+            String sql = "update quote set quoteStatus = '" + true + "'  where QuoteID = '" + currentQuoteID + "' ";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "You have Accepted quote: " + currentQuoteID);
+        } catch (Exception e) {
+            System.out.println("myerror" + e);
+        }
+        try {
+            String sql = "update quote set quoteStatus = '" + false + "'  where QuoteID != '" + currentQuoteID + "' ";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("myerror" + e);
+        }
     }//GEN-LAST:event_quote_but_accActionPerformed
 
     private void quote_but_jobDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_jobDescActionPerformed
-        GUI_JobDescription jobDescGUI = new GUI_JobDescription();
+       String desc = "none";
+        try{
+            String q = "Select * from Jobs where jobID = '"+currentJobID+"'";
+            PreparedStatement statement = conn.prepareStatement(q);
+            rs = statement.executeQuery();
+            while(rs.next()){
+                desc = rs.getString("jobDes");
+            }
+        }catch(Exception e){
+            System.out.println("error when displaying job with description" + e);
+        }
+        GUI_JobDescription jobDescGUI = new GUI_JobDescription(desc);
         jobDescGUI.setVisible(true);
     }//GEN-LAST:event_quote_but_jobDescActionPerformed
 
