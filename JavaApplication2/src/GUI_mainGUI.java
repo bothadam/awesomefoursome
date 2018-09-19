@@ -1731,8 +1731,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_but_newStaff.setEnabled(!a);
         staff_table_staff.setEnabled(!a);
 
-        but_save.setEnabled(!a);
-        but_close.setEnabled(!a);
         mainTabs.setEnabledAt(0, !a);
         mainTabs.setEnabledAt(1, !a);
         mainTabs.setEnabledAt(2, !a);
@@ -2520,40 +2518,29 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         }
     }
 
-    private void populateStaffTextfields() {
+     private void populateStaffTextfields() {
         try {
-            Statement st = conn.createStatement();
+            st = conn.createStatement();
             int row = staff_table_staff.getSelectedRow();
-            String selectedClientCode = (staff_table_staff.getModel().getValueAt(row, 0).toString());
-            String query = "select * from staff where staffID = '" + selectedClientCode + "'";
+            String selectedStaffCode = (staff_table_staff.getModel().getValueAt(row, 0).toString());
+            String query = "select * from Staff where StaffID = '" + selectedStaffCode + "'";
             rs = st.executeQuery(query);
             while (rs.next()) {
-                staff_tf_fname.setText(rs.getString("fname"));
-                staff_tf_lname.setText(rs.getString("lname"));
-                staff_tf_nr.setText(rs.getString("conNum"));
-                staff_tf_ID.setText(rs.getString("ID"));
                 staff_l_staffCode.setText(rs.getString("staffID"));
-
-                staff_tf_email.setText(rs.getString("email"));
-                staff_tf_address.setText(rs.getString("address"));
-                staff_spin_rate.getModel().setValue(rs.getDouble("rate"));
+                staff_tf_fname.setText(rs.getString("FName"));
+                staff_tf_lname.setText(rs.getString("LName"));
+                staff_tf_ID.setText(rs.getString("ID"));
+                staff_tf_nr.setText(rs.getString("ConNum"));
+                staff_tf_email.setText(rs.getString("Email"));
+                staff_spin_rate.getModel().setValue(rs.getDouble("Rate"));
                 DefaultListModel a = new DefaultListModel();
-                a.addElement(rs.getString("skillset"));
+                a.addElement(rs.getString("SkillSet"));
                 staff_list_skillset.setModel(a);
-
-                String address[] = rs.getString("address").split("#");
-
-                if (address.length > 3) {
-                    System.out.println(rs.getString("address"));
-                    staff_tf_address.setText(address[0] + " " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4]);
-                } else {
-                    staff_tf_address.setText(rs.getString("address"));
-                }
-
+                staff_tf_address.setText(rs.getString("Address"));
             }
 
         } catch (Exception e) {
-            System.out.println("Problem with populateCLientTextfields" + e);
+            System.out.println("Problem with populateStaffTextfields" + e);
         }
     }
 
