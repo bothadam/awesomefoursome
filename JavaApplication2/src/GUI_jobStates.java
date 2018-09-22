@@ -29,7 +29,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         initComponents();
         initComponentsCustom();
         connection();
-       
+
         populateClientInfo();
         populateJobInfo();
         getAllQuotes();
@@ -41,7 +41,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateLabour();
         getWorkerRate();
         calculateAllTotals();
-         //
+        //
         currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
         System.out.println(currentQuoteID);
         populateMaterials();
@@ -3139,24 +3139,32 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("myerror" + e);
         }
         try {
-            String sql = "update quote set quoteStatus = '" + false + "'  where QuoteID != '" + currentQuoteID + "' ";
+            String sql = "update quote set quoteStatus = '" + false + "' where QuoteID != '" + currentQuoteID + "' ";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.executeUpdate();
         } catch (Exception e) {
             System.out.println("myerror" + e);
         }
+
+        try {
+            String sql = "update jobs set quoteState = '" + "Quote Accepted" + "' where JobID = '" + currentJobID + "'";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("myerror at update jobstate : " + e);
+        }
     }//GEN-LAST:event_quote_but_accActionPerformed
 
     private void quote_but_jobDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_jobDescActionPerformed
-       String desc = "none";
-        try{
-            String q = "Select * from Jobs where jobID = '"+currentJobID+"'";
+        String desc = "none";
+        try {
+            String q = "Select * from Jobs where jobID = '" + currentJobID + "'";
             PreparedStatement statement = conn.prepareStatement(q);
             rs = statement.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 desc = rs.getString("jobDes");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("error when displaying job with description" + e);
         }
         GUI_JobDescription jobDescGUI = new GUI_JobDescription(desc);
@@ -3349,7 +3357,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_chFee_labour.setText(Double.toString(chargingL));
         double finalL = labourCost + chargingL + contL;
         quote_tf_final_labour.setText(Double.toString(finalL));
-        
+
         double finalCost = finalM + finalO + finalL;
         quote_tf_total.setText(df.format(finalCost));
         String finalCharges = df.format((chargingM + chargingO + chargingL));
@@ -3372,31 +3380,31 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_but_deleteActionPerformed
 
     private void quote_spin_cont_matMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_spin_cont_matMouseClicked
-        
+
     }//GEN-LAST:event_quote_spin_cont_matMouseClicked
 
     private void quote_spin_cont_matStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_matStateChanged
-        showCalculations();   
+        showCalculations();
     }//GEN-LAST:event_quote_spin_cont_matStateChanged
 
     private void quote_spin_charge_matStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_charge_matStateChanged
-       showCalculations();   
+        showCalculations();
     }//GEN-LAST:event_quote_spin_charge_matStateChanged
 
     private void quote_spin_cont_overStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_overStateChanged
-        showCalculations();   
+        showCalculations();
     }//GEN-LAST:event_quote_spin_cont_overStateChanged
 
     private void quote_spin_charge_overStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_charge_overStateChanged
-       showCalculations();  
+        showCalculations();
     }//GEN-LAST:event_quote_spin_charge_overStateChanged
 
     private void quote_spin_cont_labourStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_labourStateChanged
-         showCalculations();  
+        showCalculations();
     }//GEN-LAST:event_quote_spin_cont_labourStateChanged
 
     private void quote_spin_charge_labourStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_charge_labourStateChanged
-         showCalculations();  
+        showCalculations();
     }//GEN-LAST:event_quote_spin_charge_labourStateChanged
 
     /**
@@ -4004,8 +4012,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         double subtotal = Double.parseDouble(quote_tf_cost_mat.getText()) + Double.parseDouble(quote_tf_cost_over.getText()) + Double.parseDouble(quote_tf_cost_labour.getText());
         quote_tf_cost_subtotal.setText(Double.toString(subtotal));
     }
-    
-    private void showCalculations(){
+
+    private void showCalculations() {
         DecimalFormat df = new DecimalFormat("#.##");
         double matCost = Double.parseDouble(quote_tf_cost_mat.getText().toString());
         double chargingM = Double.parseDouble(quote_tf_cost_mat.getText().toString()) / 100 * Integer.parseInt(quote_spin_charge_mat.getValue().toString());
@@ -4027,7 +4035,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_chFee_labour.setText(Double.toString(chargingL));
         double finalL = labourCost + chargingL + contL;
         quote_tf_final_labour.setText(Double.toString(finalL));
-        
+
         double finalCost = finalM + finalO + finalL;
         quote_tf_total.setText(df.format(finalCost));
         String finalCharges = df.format((chargingM + chargingO + chargingL));
