@@ -23,6 +23,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     Connection conn;
     Statement st;
     ResultSet rs;
+    String addOrChange = "x";
 
     public GUI_jobStates(String passedThroughIDOfJob) {
         currentJobID = passedThroughIDOfJob;
@@ -43,16 +44,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
         calculateAllTotals();
         //
         currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
-        System.out.println(currentQuoteID);
         populateMaterials();
         populateOverheads();
         populateLabour();
         calculateAllTotals();
         quoteID_l.setText(currentQuoteID);
+        setStatesFields("Pending of something");
+        enablePanelQuoteLabour(false);
+        enablePanelQuoteMat(false);
+        enablePanelQuoteOver(false);
+
         ///
         ///work page
         ///
         populateTotalsOnWorkPage();
+        populateMaterialExpenses();
+        populateOverheadExpenses();
+        calculateAllExpenses();
         //
     }
 
@@ -230,10 +238,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_tf_item = new javax.swing.JTextField();
         jLabel91 = new javax.swing.JLabel();
         jLabel92 = new javax.swing.JLabel();
-        work_mat_tf_cost = new javax.swing.JFormattedTextField();
         work_mat_but_done = new javax.swing.JButton();
         work_mat_spin_count = new javax.swing.JSpinner();
         work_mat_but_cancel = new javax.swing.JButton();
+        work_mat_tf_cost = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         work_mat_li_materials = new javax.swing.JList<String>();
         work_mat_but_change = new javax.swing.JButton();
@@ -245,9 +253,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel99 = new javax.swing.JLabel();
         work_over_tf_overhead = new javax.swing.JTextField();
         jLabel100 = new javax.swing.JLabel();
-        work_over_tf_cost = new javax.swing.JFormattedTextField();
         work_over_but_done = new javax.swing.JButton();
         work_over_but_cancel = new javax.swing.JButton();
+        work_over_tf_cost = new javax.swing.JTextField();
         jScrollPane12 = new javax.swing.JScrollPane();
         work_over_li_overheads = new javax.swing.JList<String>();
         work_over_but_change = new javax.swing.JButton();
@@ -1680,8 +1688,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel92.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel92.setText("Count");
 
-        work_mat_tf_cost.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-
         work_mat_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_done.setText("Done");
         work_mat_but_done.addActionListener(new java.awt.event.ActionListener() {
@@ -1716,8 +1722,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(work_mat_but_cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(work_mat_but_done))
-                    .addComponent(work_mat_tf_cost)
-                    .addComponent(work_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_mat_tf_item)
+                    .addComponent(work_mat_tf_cost))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
@@ -1737,7 +1743,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(work_mat_but_done)
                     .addComponent(work_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(work_mat_but_cancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         work_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1774,6 +1780,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_mat_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_mat_but_remove.setText("Remove");
+        work_mat_but_remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_mat_but_removeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1821,8 +1832,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel100.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel100.setText("Total Cost");
 
-        work_over_tf_cost.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-
         work_over_but_done.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         work_over_but_done.setText("Done");
         work_over_but_done.addActionListener(new java.awt.event.ActionListener() {
@@ -1856,8 +1865,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                             .addComponent(jLabel100))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(work_over_tf_overhead)
-                            .addComponent(work_over_tf_cost, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(work_over_tf_overhead, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                            .addComponent(work_over_tf_cost))))
                 .addGap(22, 22, 22))
         );
         jPanel30Layout.setVerticalGroup(
@@ -1875,7 +1884,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(work_over_but_done)
                     .addComponent(work_over_but_cancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         work_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -2012,7 +2021,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel59)
                     .addComponent(work_labour_l_rate))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         work_labour_but_logs.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -2946,6 +2955,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_cancelActionPerformed
 
     private void quote_mat_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_addActionPerformed
+        addOrChange = "add";
         enablePanelQuoteMat(true);
     }//GEN-LAST:event_quote_mat_but_addActionPerformed
 
@@ -2954,47 +2964,56 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_mat_but_cancelActionPerformed
 
     private void quote_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_doneActionPerformed
-        try {
-            String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            Random rand = new Random();
-            statement.setInt(1, rand.nextInt(100000));
-            statement.setString(2, currentQuoteID);
-            statement.setString(3, quote_mat_tf_item.getText());
-            statement.setString(4, "Material");
-            statement.setInt(5, Integer.parseInt(quote_mat_spin_count.getValue().toString()));
-            statement.setInt(6, Integer.parseInt(quote_mat_tf_cost.getText().toString()));
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with adding quoteItem Material : " + e);
-        }
-        populateMaterials();
-        calculateAllTotals();
 
+        if (addOrChange.equals("change")) {
+            try {
+                String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, quote_mat_tf_item.getText().toString());
+                statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
+                statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with modifying quoteItem Material : " + e);
+            }
+            populateMaterials();
+            calculateAllTotals();
+        } else if (addOrChange.equals("add")) {
+            try {
+                String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentQuoteID);
+                statement.setString(3, quote_mat_tf_item.getText());
+                statement.setString(4, "Material");
+                statement.setInt(5, Integer.parseInt(quote_mat_spin_count.getValue().toString()));
+                statement.setInt(6, Integer.parseInt(quote_mat_tf_cost.getText().toString()));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with adding quoteItem Material : " + e);
+            }
+            populateMaterials();
+            calculateAllTotals();
+        }
+
+        addOrChange = "x";
         enablePanelQuoteMat(false);
 
     }//GEN-LAST:event_quote_mat_but_doneActionPerformed
 
     private void quote_mat_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_changeActionPerformed
-        try {
-            String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, quote_mat_tf_item.getText().toString());
-            statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
-            statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with modifying quoteItem Material : " + e);
-        }
-        populateMaterials();
-        calculateAllTotals();
+        addOrChange = "change";
+        enablePanelQuoteMat(true);
     }//GEN-LAST:event_quote_mat_but_changeActionPerformed
 
     private void quote_over_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_addActionPerformed
+        addOrChange = "add";
         enablePanelQuoteOver(true);
     }//GEN-LAST:event_quote_over_but_addActionPerformed
 
     private void quote_over_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_changeActionPerformed
+        addOrChange = "change";
         enablePanelQuoteOver(true);
     }//GEN-LAST:event_quote_over_but_changeActionPerformed
 
@@ -3026,27 +3045,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_over_but_doneActionPerformed
 
     private void quote_labour_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_addActionPerformed
+        addOrChange = "add";
         enablePanelQuoteLabour(true);
     }//GEN-LAST:event_quote_labour_but_addActionPerformed
 
     private void quote_labour_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_changeActionPerformed
+        addOrChange = "change";
         enablePanelQuoteLabour(true);
-        try {
-            String sql = "Update quoteitem set(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            Random rand = new Random();
-            statement.setInt(1, rand.nextInt(100000));
-            statement.setString(2, currentQuoteID);
-            statement.setString(3, quote_labour_combo_workers.getModel().getSelectedItem().toString());
-            statement.setString(4, "Labour");
-            statement.setInt(5, Integer.parseInt(quote_labour_spin_hours.getValue().toString()));
-            statement.setInt(6, Integer.parseInt(quote_labour_l_rate.getText()));
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with adding quoteItem Labour : " + e);
-        }
-        populateLabour();
-        calculateAllTotals();
     }//GEN-LAST:event_quote_labour_but_changeActionPerformed
 
     private void quote_labour_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_cancelActionPerformed
@@ -3054,23 +3059,42 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_labour_but_cancelActionPerformed
 
     private void quote_labour_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_doneActionPerformed
-        try {
-            String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            Random rand = new Random();
-            statement.setInt(1, rand.nextInt(100000));
-            statement.setString(2, currentQuoteID);
-            statement.setString(3, quote_labour_combo_workers.getModel().getSelectedItem().toString());
-            statement.setString(4, "Labour");
-            statement.setInt(5, Integer.parseInt(quote_labour_spin_hours.getValue().toString()));
-            statement.setInt(6, Integer.parseInt(quote_labour_l_rate.getText()));
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with adding quoteItem Labour : " + e);
+        if (addOrChange.equals("add")) {
+            try {
+                String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentQuoteID);
+                statement.setString(3, quote_labour_combo_workers.getModel().getSelectedItem().toString());
+                statement.setString(4, "Labour");
+                statement.setInt(5, Integer.parseInt(quote_labour_spin_hours.getValue().toString()));
+                statement.setInt(6, Integer.parseInt(quote_labour_l_rate.getText()));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with adding quoteItem Labour : " + e);
+            }
+            populateLabour();
+            calculateAllTotals();
+        } else if (addOrChange.equals("change")) {
+            try {
+                String sql = "Update quoteitem set(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentQuoteID);
+                statement.setString(3, quote_labour_combo_workers.getModel().getSelectedItem().toString());
+                statement.setString(4, "Labour");
+                statement.setInt(5, Integer.parseInt(quote_labour_spin_hours.getValue().toString()));
+                statement.setInt(6, Integer.parseInt(quote_labour_l_rate.getText()));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with adding quoteItem Labour : " + e);
+            }
+            populateLabour();
+            calculateAllTotals();
         }
-        populateLabour();
-        calculateAllTotals();
-
+        addOrChange = "x";
         enablePanelQuoteLabour(false);
     }//GEN-LAST:event_quote_labour_but_doneActionPerformed
 
@@ -3176,6 +3200,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void work_mat_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_addActionPerformed
         enablePanelWorkMat(true);
+        addOrChange = "add";
     }//GEN-LAST:event_work_mat_but_addActionPerformed
 
     private void work_mat_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_cancelActionPerformed
@@ -3183,18 +3208,54 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_work_mat_but_cancelActionPerformed
 
     private void work_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_doneActionPerformed
+        if (addOrChange.equals("change")) {
+//            try {
+//                String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=?";
+//                PreparedStatement statement = conn.prepareStatement(sql);
+//                statement.setString(1, quote_mat_tf_item.getText().toString());
+//                statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
+//                statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
+//                statement.executeUpdate();
+//            } catch (Exception e) {
+//                System.out.println("Problem with modifying quoteItem Material : " + e);
+//            }
+//            populateMaterials();
+//            calculateAllTotals();
+        } else if (addOrChange.equals("add")) {
+            try {
+                String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentJobID);
+                statement.setString(3, work_mat_tf_item.getText());
+                statement.setString(4, "Material");
+                statement.setInt(5, Integer.parseInt(work_mat_spin_count.getValue().toString()));
+                statement.setInt(6, Integer.parseInt(work_mat_tf_cost.getText().toString()));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with adding quoteItem Material : " + e);
+                System.out.println("currentjobID " + work_mat_tf_cost.getText().toString());
+            }
+        }
+        addOrChange = "x";
+        populateMaterialExpenses();
+        calculateAllExpenses();
         enablePanelWorkMat(false);
     }//GEN-LAST:event_work_mat_but_doneActionPerformed
 
     private void work_mat_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_changeActionPerformed
         enablePanelWorkMat(true);
+        addOrChange = "change";
     }//GEN-LAST:event_work_mat_but_changeActionPerformed
 
     private void work_over_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_addActionPerformed
+        addOrChange = "add";
         enablePanelWorkOver(true);
     }//GEN-LAST:event_work_over_but_addActionPerformed
 
     private void work_over_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_changeActionPerformed
+        addOrChange = "change";
         enablePanelWorkOver(true);
     }//GEN-LAST:event_work_over_but_changeActionPerformed
 
@@ -3208,7 +3269,41 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_work_over_but_cancelActionPerformed
 
     private void work_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_doneActionPerformed
+        if (addOrChange.equals("change")) {
+//            try {
+//                String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=?";
+//                PreparedStatement statement = conn.prepareStatement(sql);
+//                statement.setString(1, quote_mat_tf_item.getText().toString());
+//                statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
+//                statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
+//                statement.executeUpdate();
+//            } catch (Exception e) {
+//                System.out.println("Problem with modifying quoteItem Material : " + e);
+//            }
+//            populateMaterials();
+//            calculateAllTotals();
+        } else if (addOrChange.equals("add")) {
+            try {
+                String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentJobID);
+                statement.setString(3, work_over_tf_overhead.getText());
+                statement.setString(4, "Overheads");
+                statement.setInt(5, 1);
+                statement.setInt(6, Integer.parseInt(work_over_tf_cost.getText().toString()));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with adding quoteItem Material : " + e);
+                System.out.println("currentjobID " + work_mat_tf_cost.getText().toString());
+            }
+        }
+        addOrChange = "x";
+        populateOverheadExpenses();
+        calculateAllExpenses();
         enablePanelWorkOver(false);
+        calculateAllExpenses();
     }//GEN-LAST:event_work_over_but_doneActionPerformed
 
     private void work_but_finaliseJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_but_finaliseJobActionPerformed
@@ -3409,6 +3504,20 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void quote_spin_charge_labourStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_charge_labourStateChanged
         showCalculations();
     }//GEN-LAST:event_quote_spin_charge_labourStateChanged
+
+    private void work_mat_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_removeActionPerformed
+//        String quoteItemCode[] = work_mat_li_materials.getSelectedValue().toString().split("#");
+//        try {
+//            String sql = "Delete from WorkingExpense where ExpenseID = ?";
+//            PreparedStatement statement = conn.prepareStatement(sql);
+//            statement.setString(1, quoteItemCode[1]);
+//            statement.executeUpdate();
+//        } catch (Exception e) {
+//            System.out.println("Problem with deleteing Material : " + e);
+//        }
+//        populateMaterials();
+//        calculateAllTotals();
+    }//GEN-LAST:event_work_mat_but_removeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3692,7 +3801,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JButton work_mat_but_remove;
     private javax.swing.JList<String> work_mat_li_materials;
     private javax.swing.JSpinner work_mat_spin_count;
-    private javax.swing.JFormattedTextField work_mat_tf_cost;
+    private javax.swing.JTextField work_mat_tf_cost;
     private javax.swing.JTextField work_mat_tf_item;
     private javax.swing.JButton work_over_but_add;
     private javax.swing.JButton work_over_but_cancel;
@@ -3701,7 +3810,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JButton work_over_but_fromQ;
     private javax.swing.JButton work_over_but_remove;
     private javax.swing.JList<String> work_over_li_overheads;
-    private javax.swing.JFormattedTextField work_over_tf_cost;
+    private javax.swing.JTextField work_over_tf_cost;
     private javax.swing.JTextField work_over_tf_overhead;
     private javax.swing.JProgressBar work_proBar_primary_labour;
     private javax.swing.JProgressBar work_proBar_primary_mat;
@@ -4015,7 +4124,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         double subtotal = Double.parseDouble(quote_tf_cost_mat.getText()) + Double.parseDouble(quote_tf_cost_over.getText()) + Double.parseDouble(quote_tf_cost_labour.getText());
         quote_tf_cost_subtotal.setText(Double.toString(subtotal));
     }
-    
+
     private void populateTotalsOnWorkPage() {
         work_tf_PCost_mat.setText(Double.toString(populateTotals("Material")));
         work_tf_PCost_over.setText(Double.toString(populateTotals("Overheads")));
@@ -4051,5 +4160,74 @@ public class GUI_jobStates extends javax.swing.JFrame {
         String finalCharges = df.format((chargingM + chargingO + chargingL));
         quote_tf_finalCharges.setText(finalCharges);
     }
+
+    private void setStatesFields(String state) {
+        //TODO method to be used to update states at bottom right hand corner
+    }
+
+    private void populateMaterialExpenses() {
+        DefaultListModel a = new DefaultListModel();
+        String item = "";
+        try {
+            String expenseType = "Material";
+            Statement st = conn.createStatement();
+            String query = "select * from WorkingExpense where jobID = '" + currentJobID + "' and ExpenseType = '" + expenseType + "'";
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                item = "R" + rs.getInt("Cost_rate") + "  " + rs.getString("ExpenseTitle") + " (" + rs.getInt("Count_Hours") + ") #" + rs.getString("WorkingExpenseID");
+                a.addElement(item);
+            }
+        } catch (Exception e) {
+            System.out.println("problem with populating material expenses :" + e);
+        }
+        work_mat_li_materials.setModel(a);
+    }
+    
+     private void populateOverheadExpenses() {
+        DefaultListModel a = new DefaultListModel();
+        String item = "";
+        try {
+            String expenseType = "Overhead";
+            Statement st = conn.createStatement();
+            String query = "select * from WorkingExpense where jobID = '" + currentJobID + "' and ExpenseType = '" + expenseType + "'";
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                item = "R" + rs.getInt("Cost_rate") + "  " + rs.getString("ExpenseTitle") + " (" + rs.getInt("Count_Hours") + ") #" + rs.getString("WorkingExpenseID");
+                a.addElement(item);
+            }
+        } catch (Exception e) {
+            System.out.println("problem with populating overhead expenses :" + e);
+        }
+        work_over_li_overheads.setModel(a);
+    }
+
+    private void calculateAllExpenses() {
+        work_tf_ACost_mat.setText(Double.toString(populateExpense("Material")));
+        work_tf_ACost_over.setText(Double.toString(populateExpense("Overheads")));
+        work_tf_ACost_labour.setText(Double.toString(populateExpense("Labour")));
+        double subtotal = Double.parseDouble(work_tf_ACost_mat.getText()) + Double.parseDouble(work_tf_ACost_over.getText()) + Double.parseDouble(work_tf_ACost_labour.getText());
+        work_tf_ACost_total.setText(Double.toString(subtotal));
+    }
+
+    private Double populateExpense(String typeOfItem) {
+        double total = 0;
+        try {
+            Statement st = conn.createStatement();
+            String query = "select * from WorkingExpense where JobID = '" + currentJobID + "' and ExpenseType = '" + typeOfItem + "'";
+            rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int rate = rs.getInt("Cost_Rate");
+                int quantity = rs.getInt("Count_Hours");
+                total = total + (rate * quantity);
+            }
+        } catch (Exception e) {
+            System.out.println("error in populate expense type:" +  typeOfItem +  "error " + e);
+        }
+
+        return total;
+    }
+
+    
 
 }

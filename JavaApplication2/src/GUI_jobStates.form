@@ -2418,8 +2418,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="work_mat_but_done" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="work_mat_tf_cost" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="work_mat_tf_item" alignment="0" min="-2" pref="212" max="-2" attributes="0"/>
+                                      <Component id="work_mat_tf_item" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="work_mat_tf_cost" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="69" max="32767" attributes="0"/>
                               </Group>
@@ -2445,7 +2445,7 @@
                                       <Component id="work_mat_spin_count" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="work_mat_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="23" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2477,13 +2477,6 @@
                             <Property name="text" type="java.lang.String" value="Count"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="work_mat_tf_cost">
-                          <Properties>
-                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                              <Format subtype="0" type="4"/>
-                            </Property>
-                          </Properties>
-                        </Component>
                         <Component class="javax.swing.JButton" name="work_mat_but_done">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -2507,6 +2500,8 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_mat_but_cancelActionPerformed"/>
                           </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="work_mat_tf_cost">
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2575,6 +2570,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Remove"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_mat_but_removeActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -2657,8 +2655,8 @@
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="work_over_tf_overhead" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="work_over_tf_cost" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="work_over_tf_overhead" pref="230" max="32767" attributes="0"/>
+                                              <Component id="work_over_tf_cost" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -2684,7 +2682,7 @@
                                       <Component id="work_over_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="work_over_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="23" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2708,13 +2706,6 @@
                             <Property name="text" type="java.lang.String" value="Total Cost"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JFormattedTextField" name="work_over_tf_cost">
-                          <Properties>
-                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                              <Format subtype="0" type="4"/>
-                            </Property>
-                          </Properties>
-                        </Component>
                         <Component class="javax.swing.JButton" name="work_over_but_done">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -2736,6 +2727,8 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_over_but_cancelActionPerformed"/>
                           </Events>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="work_over_tf_cost">
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2927,7 +2920,7 @@
                                       <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="work_labour_l_rate" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                                  <EmptySpace pref="44" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
