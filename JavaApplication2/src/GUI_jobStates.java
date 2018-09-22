@@ -50,7 +50,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         calculateAllTotals();
         quoteID_l.setText(currentQuoteID);
         ///
-
+        ///work page
+        ///
+        populateTotalsOnWorkPage();
+        //
     }
 
     private GUI_jobStates() {
@@ -4011,6 +4014,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_cost_labour.setText(Double.toString(populateTotals("Labour")));
         double subtotal = Double.parseDouble(quote_tf_cost_mat.getText()) + Double.parseDouble(quote_tf_cost_over.getText()) + Double.parseDouble(quote_tf_cost_labour.getText());
         quote_tf_cost_subtotal.setText(Double.toString(subtotal));
+    }
+    
+    private void populateTotalsOnWorkPage() {
+        work_tf_PCost_mat.setText(Double.toString(populateTotals("Material")));
+        work_tf_PCost_over.setText(Double.toString(populateTotals("Overheads")));
+        work_tf_PCost_labour.setText(Double.toString(populateTotals("Labour")));
+        work_tf_PCost_total.setText(Double.toString(populateTotals("Material") + populateTotals("Overheads") + populateTotals("Labour")));
     }
 
     private void showCalculations() {
