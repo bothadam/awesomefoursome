@@ -25,6 +25,15 @@ public class GUI_jobStates extends javax.swing.JFrame {
     ResultSet rs;
     String addOrChange = "x";
 
+    ///variables needed for contingency and charge percentages
+    int materialCont;
+    int labourCont;
+    int overheadCont;
+
+    int materialCharge;
+    int labourCharge;
+    int overheadCharge;
+
     public GUI_jobStates(String passedThroughIDOfJob) {
         currentJobID = passedThroughIDOfJob;
         initComponents();
@@ -57,11 +66,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         ///
         ///work page
         ///
-        populateTotalsOnWorkPage();
         populateMaterialExpenses();
         populateOverheadExpenses();
         calculateAllExpenses();
-        calculateAllProgressions();
+        populatePlannedTotalsOnWorkPage();
+         calculateAllProgressions();
+
+
         //
     }
 
@@ -224,7 +235,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_proBar_secondary_labour = new javax.swing.JProgressBar();
         work_proBar_secondary_total = new javax.swing.JProgressBar();
         work_proBar_secondary_mat = new javax.swing.JProgressBar();
-        jLabel94 = new javax.swing.JLabel();
         jLabel96 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
         jLabel93 = new javax.swing.JLabel();
@@ -232,6 +242,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
+        jLabel94 = new javax.swing.JLabel();
         work_TabPane = new javax.swing.JTabbedPane();
         jPanel18 = new javax.swing.JPanel();
         jPanel28 = new javax.swing.JPanel();
@@ -759,7 +770,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_tf_final_mat.setEnabled(false);
 
-        quote_calculate_button.setText("Calculate");
+        quote_calculate_button.setText("Capture Charges");
         quote_calculate_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_calculate_buttonActionPerformed(evt);
@@ -1524,9 +1535,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_proBar_secondary_mat.setForeground(new java.awt.Color(255, 0, 0));
         work_proBar_secondary_mat.setValue(25);
 
-        jLabel94.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel94.setText("Planned Cost");
-
         jLabel96.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel96.setText("Actual Cost");
 
@@ -1538,6 +1546,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel110.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel110.setText("Profit Margin");
+
+        jLabel94.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel94.setText("Planned Cost");
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -1556,28 +1567,39 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(jLabel88)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(work_tf_PCost_total, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addComponent(work_tf_PCost_labour, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(work_tf_PCost_mat))
-                    .addComponent(jLabel94)
-                    .addComponent(work_tf_PCost_over, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(work_tf_ACost_mat)
-                        .addComponent(work_tf_ACost_over)
-                        .addComponent(work_tf_ACost_labour)
-                        .addComponent(work_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel96))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(work_tf_Quote_mat)
-                        .addComponent(work_tf_Quote_over)
-                        .addComponent(work_tf_Quote_labour)
-                        .addComponent(work_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel98))
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel27Layout.createSequentialGroup()
+                                .addComponent(work_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(work_tf_PCost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel27Layout.createSequentialGroup()
+                                .addComponent(work_tf_ACost_over, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(work_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel27Layout.createSequentialGroup()
+                                .addComponent(work_tf_ACost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(work_tf_PCost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel27Layout.createSequentialGroup()
+                                .addComponent(work_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(work_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel96)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel94)
+                        .addGap(65, 65, 65)))
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(work_tf_Quote_mat)
+                    .addComponent(work_tf_Quote_over)
+                    .addComponent(work_tf_Quote_labour)
+                    .addComponent(work_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel98)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel27Layout.createSequentialGroup()
@@ -1615,29 +1637,28 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel94)
                     .addComponent(jLabel96)
                     .addComponent(jLabel98)
                     .addComponent(jLabel93)
-                    .addComponent(jLabel110))
+                    .addComponent(jLabel110)
+                    .addComponent(jLabel94))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(work_proBar_primary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(work_tf_Quote_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(work_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(work_tf_Quote_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(work_proBar_secondary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(work_tf_PCost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel89)))
+                        .addComponent(jLabel89)
+                        .addComponent(work_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_PCost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(work_tf_ACost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(work_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel88))
+                        .addComponent(jLabel88)
+                        .addComponent(work_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(work_tf_Quote_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel27Layout.createSequentialGroup()
@@ -1649,17 +1670,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(work_tf_ACost_labour, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(work_tf_Quote_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel27Layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(work_proBar_secondary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(work_proBar_primary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(work_tf_Quote_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(work_proBar_secondary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(work_proBar_primary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(work_tf_PCost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel68)))
+                        .addComponent(jLabel68)
+                        .addComponent(work_tf_ACost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_PCost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1668,10 +1688,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(work_proBar_primary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(work_proBar_secondary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(work_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel97)
                         .addComponent(work_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(work_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(work_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(work_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -2997,7 +3017,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateMaterials();
             calculateAllTotals();
         }
-
+        populatePlannedTotalsOnWorkPage();
         addOrChange = "x";
         enablePanelQuoteMat(false);
 
@@ -3041,7 +3061,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
         populateOverheads();
         calculateAllTotals();
-
+        populatePlannedTotalsOnWorkPage();
         enablePanelQuoteOver(false);
     }//GEN-LAST:event_quote_over_but_doneActionPerformed
 
@@ -3095,6 +3115,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateLabour();
             calculateAllTotals();
         }
+        populatePlannedTotalsOnWorkPage();
         addOrChange = "x";
         enablePanelQuoteLabour(false);
     }//GEN-LAST:event_quote_labour_but_doneActionPerformed
@@ -3463,7 +3484,24 @@ public class GUI_jobStates extends javax.swing.JFrame {
         String finalCharges = df.format((chargingM + chargingO + chargingL));
         quote_tf_finalCharges.setText(finalCharges);
 
+        try {
+            String sql = "Update quote set materialCont=?, OverheadCont=?, LabourCont=?,materialCharge=?, OverheadCharge=?, LabourCharge=?  where quoteID = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, quote_spin_cont_mat.getValue().toString());
+            statement.setString(2, quote_spin_cont_over.getValue().toString());
+            statement.setString(3, quote_spin_cont_labour.getValue().toString());
+            statement.setString(4, quote_spin_charge_mat.getValue().toString());
+            statement.setString(5, quote_spin_charge_over.getValue().toString());
+            statement.setString(6, quote_spin_charge_labour.getValue().toString());
+            statement.setString(7, currentQuoteID);
+            statement.executeUpdate();
 
+        } catch (Exception e) {
+            System.out.println("Error with capturing markup :" + e);
+        }
+
+        populatePlannedTotalsOnWorkPage();
+        setContingenciesAndCharges();
     }//GEN-LAST:event_quote_calculate_buttonActionPerformed
 
     private void quote_but_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_deleteActionPerformed
@@ -4127,8 +4165,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_cost_subtotal.setText(Double.toString(subtotal));
     }
 
-    private void populateTotalsOnWorkPage() {
-        work_tf_PCost_mat.setText(Double.toString(populateTotals("Material")));
+    private void populatePlannedTotalsOnWorkPage() {
+        setContingenciesAndCharges();
+        System.out.println("materialcont" + materialCont + "/n and total mat" + populateTotals("Material"));
+        work_tf_PCost_mat.setText(Double.toString(populateTotals("Material") * ((materialCont + 100) / 100)));
         work_tf_PCost_over.setText(Double.toString(populateTotals("Overheads")));
         work_tf_PCost_labour.setText(Double.toString(populateTotals("Labour")));
         work_tf_PCost_total.setText(Double.toString(populateTotals("Material") + populateTotals("Overheads") + populateTotals("Labour")));
@@ -4235,12 +4275,29 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_proBar_primary_mat.setValue(matProgression);
         if ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) > 1) {
             //cutting into profits
-            int overProgression = (int)((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) * 100) - 100;
+            int overProgression = (int) ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) * 100) - 100;
             work_proBar_secondary_mat.setValue(overProgression);
         } else {
             work_proBar_secondary_mat.setValue(0);
         }
+    }
 
+    private void setContingenciesAndCharges() {
+        try {
+            String sql = "Select * from quote where quoteID = '" + currentQuoteID + "'";
+            Statement st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                int materialCont = Integer.parseInt(rs.getString("materialCont"));
+                int labourCont = Integer.parseInt(rs.getString("labourCont"));
+                int overheadCont = Integer.parseInt(rs.getString("overheadCont"));
+                int materialCharge = Integer.parseInt(rs.getString("materialCharge"));
+                int labourCharge = Integer.parseInt(rs.getString("labourCharge"));
+                int overheadCharge = Integer.parseInt(rs.getString("overheadCharge"));
+            }
+        } catch (Exception e) {
+            System.out.println("Problem with setting contingencies" + e);
+        }
     }
 
 }
