@@ -61,6 +61,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateMaterialExpenses();
         populateOverheadExpenses();
         calculateAllExpenses();
+        calculateAllProgressions();
         //
     }
 
@@ -3241,6 +3242,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         addOrChange = "x";
         populateMaterialExpenses();
         calculateAllExpenses();
+        calculateAllProgressions();
         enablePanelWorkMat(false);
     }//GEN-LAST:event_work_mat_but_doneActionPerformed
 
@@ -3302,8 +3304,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         addOrChange = "x";
         populateOverheadExpenses();
         calculateAllExpenses();
+        calculateAllProgressions();
         enablePanelWorkOver(false);
-        calculateAllExpenses();
     }//GEN-LAST:event_work_over_but_doneActionPerformed
 
     private void work_but_finaliseJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_but_finaliseJobActionPerformed
@@ -4182,8 +4184,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
         work_mat_li_materials.setModel(a);
     }
-    
-     private void populateOverheadExpenses() {
+
+    private void populateOverheadExpenses() {
         DefaultListModel a = new DefaultListModel();
         String item = "";
         try {
@@ -4222,12 +4224,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 total = total + (rate * quantity);
             }
         } catch (Exception e) {
-            System.out.println("error in populate expense type:" +  typeOfItem +  "error " + e);
+            System.out.println("error in populate expense type:" + typeOfItem + "error " + e);
         }
 
         return total;
     }
 
-    
+    private void calculateAllProgressions() {
+        int matProgression = (int) (Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText()) * 100);
+        work_proBar_primary_mat.setValue(matProgression);
+        if ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) > 1) {
+            //cutting into profits
+            int overProgression = (int)((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) * 100) - 100;
+            work_proBar_secondary_mat.setValue(overProgression);
+        } else {
+            work_proBar_secondary_mat.setValue(0);
+        }
+
+    }
 
 }
