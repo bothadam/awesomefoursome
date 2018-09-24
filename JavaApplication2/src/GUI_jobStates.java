@@ -37,6 +37,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     double overheadCharge;
 
     public GUI_jobStates(String passedThroughIDOfJob) {
+
         currentJobID = passedThroughIDOfJob;
         initComponents();
         initComponentsCustom();
@@ -74,6 +75,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         calculateAllProgressions();
         populateFromQuoteCombos();
         //
+        //currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
+
     }
 
     private GUI_jobStates() {
