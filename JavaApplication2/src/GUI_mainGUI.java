@@ -44,7 +44,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         tempModel.addElement("No client selected");
         client_li_jobs.setModel(tempModel);
         blankListModel = (DefaultListModel) client_li_jobs.getModel();
-        
+
         jobs_but_manageJob.setEnabled(false);
         jobs_but_removeRecord.setEnabled(false);
     }
@@ -1623,13 +1623,18 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private String getSelectedJobID() {
         //identify the job ID that is currently selected in the list/the table as a string to parse through to the GUIjobStates pane
         //so that it can "manage" the newly created Job
-        
+
         return "";
     }
 
     private void manageJob(String selectedJobID) {
-        GUI_jobStates jobStatesGUI = new GUI_jobStates(selectedJobID);
-        jobStatesGUI.setVisible(true);
+        try {
+            GUI_jobStates jobStatesGUI = new GUI_jobStates(selectedJobID);
+            jobStatesGUI.setVisible(true);
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Please select a job first.");
+        }
+
     }
 
     private boolean isValidString(String a) {
@@ -1654,7 +1659,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         //disable scheduling panel
         mainTabs.setEnabledAt(3, false);
     }
-    
+
     private void enablePanel_Schedule(boolean a) {
         schedule_but_add.setEnabled(a);
         schedule_but_remove.setEnabled(a);
@@ -1725,9 +1730,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_tf_skillsetInput.setEnabled(a);
         staff_tf_address.setEnabled(false);
 
-        
         staff_but_manageStaff.setEnabled(false);
-        
+
         staff_but_newStaff.setEnabled(!a);
         staff_table_staff.setEnabled(!a);
 
@@ -1763,11 +1767,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
-        
         String newJobID = generateNewJobID();
         GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
         jobStatesGUI.setVisible(true);
-        this.dispose();                
+        this.dispose();
     }//GEN-LAST:event_jobs_but_newJobActionPerformed
 
     private void schedule_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_addActionPerformed
@@ -1816,7 +1819,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void client_but_manageClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageClientActionPerformed
         enablePanel_Client(true);
         //As per user testing
-         //Will only enable if a client has been selected
+        //Will only enable if a client has been selected
         client_but_showAll.setEnabled(false);
         editOrAdd = "edit";
     }//GEN-LAST:event_client_but_manageClientActionPerformed
@@ -1835,16 +1838,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_searchActionPerformed
 
     private void staff_but_newStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_newStaffActionPerformed
-        clearPanel_Staff();        
+        clearPanel_Staff();
         enablePanel_Staff(true);
         editOrAdd = "add";
         staff_but_insertAddress.setText("Add Billing Address");
     }//GEN-LAST:event_staff_but_newStaffActionPerformed
 
    private void staff_but_manageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_manageStaffActionPerformed
-        editOrAdd = "edit";
-        enablePanel_Staff(true);
-        staff_but_insertAddress.setText("Edit Billing Address");
+       editOrAdd = "edit";
+       enablePanel_Staff(true);
+       staff_but_insertAddress.setText("Edit Billing Address");
     }//GEN-LAST:event_staff_but_manageStaffActionPerformed
 
     private void client_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_cancelActionPerformed
@@ -1884,16 +1887,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_doneActionPerformed
 
      private void staff_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_removeActionPerformed
-       
-        int[] selectedSkills = staff_list_skillset.getSelectedIndices();
-        DefaultListModel allSkills = (DefaultListModel) staff_list_skillset.getModel();
-        if(selectedSkills.length > 0){
-            for (int i = 0; i < selectedSkills.length; i++) {
-                allSkills.remove(selectedSkills[i]);
-            }
-            staff_list_skillset.setModel(allSkills);
-        }
-        
+
+         int[] selectedSkills = staff_list_skillset.getSelectedIndices();
+         DefaultListModel allSkills = (DefaultListModel) staff_list_skillset.getModel();
+         if (selectedSkills.length > 0) {
+             for (int i = 0; i < selectedSkills.length; i++) {
+                 allSkills.remove(selectedSkills[i]);
+             }
+             staff_list_skillset.setModel(allSkills);
+         }
+
     }//GEN-LAST:event_staff_but_removeActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
@@ -1942,20 +1945,20 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void staff_table_staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staff_table_staffMouseClicked
         populateStaffTextfields();
         staff_but_manageStaff.setEnabled(staff_table_staff.getSelectedRow() > -1);
-        
+
     }//GEN-LAST:event_staff_table_staffMouseClicked
 
     private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
          //As per user testing
-         //Will only enable if a client has been selected
+        //Will only enable if a client has been selected
         client_but_manageClient.setEnabled(true);
         //As per user testing
-         //Will only enable if a client has been selected
+        //Will only enable if a client has been selected
         client_but_manageJob.setEnabled(true);
          //As per user testing
-         //Will only enable if a client has been selected
+        //Will only enable if a client has been selected
         client_li_jobs.setEnabled(true);
-        
+
         showJobsForSelectedClient();
         populateClientTextfields();
 
@@ -2038,7 +2041,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         //As per user testing
         //Will only enable if a job has been selected
         jobs_but_removeRecord.setEnabled(true);
-                
+
         populateClientTextFieldsForJob();
     }//GEN-LAST:event_jobs_table_jobsMouseClicked
 
@@ -2047,19 +2050,19 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_insertAddressActionPerformed
 
 	private void staff_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_addActionPerformed
-        String input = staff_tf_skillsetInput.getText();
-        if(isValidString(input)){
-            DefaultListModel skillset = (DefaultListModel) staff_list_skillset.getModel();
-            skillset.addElement(input);
-            staff_list_skillset.setModel(skillset);
-            staff_tf_skillsetInput.setText("");
-        }
+            String input = staff_tf_skillsetInput.getText();
+            if (isValidString(input)) {
+                DefaultListModel skillset = (DefaultListModel) staff_list_skillset.getModel();
+                skillset.addElement(input);
+                staff_list_skillset.setModel(skillset);
+                staff_tf_skillsetInput.setText("");
+            }
     }//GEN-LAST:event_staff_but_addActionPerformed
 
     private void staff_tf_skillsetInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_staff_tf_skillsetInputFocusGained
         staff_tf_skillsetInput.setText("");
     }//GEN-LAST:event_staff_tf_skillsetInputFocusGained
-	
+
     private void client_tf_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_tf_IDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_client_tf_IDActionPerformed
@@ -2108,7 +2111,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         });
     }
 
-	// <editor-fold defaultstate="collapsed" desc="Swing variable declarations">
+    // <editor-fold defaultstate="collapsed" desc="Swing variable declarations">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton client_but_cancel;
     private javax.swing.JButton client_but_done;
@@ -2263,6 +2266,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup viewButGroup;
     // End of variables declaration//GEN-END:variables
 //</editor-fold>
+
     private void connection() {
         try {
             String filename = new File("afordableDB.accdb").getAbsolutePath();
@@ -2518,7 +2522,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         }
     }
 
-     private void populateStaffTextfields() {
+    private void populateStaffTextfields() {
         try {
             st = conn.createStatement();
             int row = staff_table_staff.getSelectedRow();
@@ -2581,11 +2585,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             System.out.println(e);
         }
     }
-	
-	private void addStaff(){
+
+    private void addStaff() {
         try {
-            
-            
+
             boolean goahead = false;
             String code = "";
 
@@ -2601,7 +2604,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 while (rs.next()) {
                     if (!rs.getString("StaffID").equals(code) && !rs.getString("ID").equals(staff_tf_ID.getText())) {
                         goahead = true;
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(rootPane, "Staff ID and/or Code already exists!", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
@@ -2609,7 +2612,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
             String sql = "Insert into Staff(StaffID,FName,LName,ID,ConNum,Email,Rate,SkillSet,Address) values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            
+
             if (goahead) {
                 statement.setString(1, code);
                 statement.setString(2, staff_tf_fname.getText());
