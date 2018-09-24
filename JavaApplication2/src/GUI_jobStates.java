@@ -26,13 +26,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
     String addOrChange = "x";
 
     ///variables needed for contingency and charge percentages
-    int materialCont;
-    int labourCont;
-    int overheadCont;
+    double materialCont;
+    double labourCont;
+    double overheadCont;
 
-    int materialCharge;
-    int labourCharge;
-    int overheadCharge;
+    double materialCharge;
+    double labourCharge;
+    double overheadCharge;
 
     public GUI_jobStates(String passedThroughIDOfJob) {
         currentJobID = passedThroughIDOfJob;
@@ -69,10 +69,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateMaterialExpenses();
         populateOverheadExpenses();
         calculateAllExpenses();
-        populatePlannedTotalsOnWorkPage();
-         calculateAllProgressions();
-
-
+        populateTotalsOnWorkPage();
+        calculateAllProgressions();
         //
     }
 
@@ -1506,7 +1504,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_proBar_primary_mat.setBackground(new java.awt.Color(51, 255, 255));
         work_proBar_primary_mat.setToolTipText("");
-        work_proBar_primary_mat.setValue(100);
 
         work_tf_ACost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         work_tf_ACost_total.setEnabled(false);
@@ -1516,15 +1513,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_proBar_primary_over.setBackground(new java.awt.Color(51, 255, 255));
         work_proBar_primary_over.setToolTipText("");
-        work_proBar_primary_over.setValue(75);
 
         work_proBar_primary_labour.setBackground(new java.awt.Color(51, 255, 255));
         work_proBar_primary_labour.setToolTipText("");
-        work_proBar_primary_labour.setValue(55);
 
         work_proBar_primary_total.setBackground(new java.awt.Color(51, 255, 255));
         work_proBar_primary_total.setToolTipText("");
-        work_proBar_primary_total.setValue(85);
 
         work_proBar_secondary_over.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -1533,7 +1527,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_proBar_secondary_total.setForeground(new java.awt.Color(255, 0, 0));
 
         work_proBar_secondary_mat.setForeground(new java.awt.Color(255, 0, 0));
-        work_proBar_secondary_mat.setValue(25);
 
         jLabel96.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel96.setText("Actual Cost");
@@ -3017,7 +3010,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateMaterials();
             calculateAllTotals();
         }
-        populatePlannedTotalsOnWorkPage();
+        populateTotalsOnWorkPage();
         addOrChange = "x";
         enablePanelQuoteMat(false);
 
@@ -3061,7 +3054,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
         populateOverheads();
         calculateAllTotals();
-        populatePlannedTotalsOnWorkPage();
+        populateTotalsOnWorkPage();
         enablePanelQuoteOver(false);
     }//GEN-LAST:event_quote_over_but_doneActionPerformed
 
@@ -3115,7 +3108,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateLabour();
             calculateAllTotals();
         }
-        populatePlannedTotalsOnWorkPage();
+        populateTotalsOnWorkPage();
         addOrChange = "x";
         enablePanelQuoteLabour(false);
     }//GEN-LAST:event_quote_labour_but_doneActionPerformed
@@ -3499,8 +3492,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error with capturing markup :" + e);
         }
-
-        populatePlannedTotalsOnWorkPage();
+        populateTotalsOnWorkPage();
         setContingenciesAndCharges();
     }//GEN-LAST:event_quote_calculate_buttonActionPerformed
 
@@ -4165,13 +4157,26 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_cost_subtotal.setText(Double.toString(subtotal));
     }
 
-    private void populatePlannedTotalsOnWorkPage() {
+    private void populateTotalsOnWorkPage() {
+        // Planned totals
         setContingenciesAndCharges();
-        System.out.println("materialcont" + materialCont + "/n and total mat" + populateTotals("Material"));
-        work_tf_PCost_mat.setText(Double.toString(populateTotals("Material") * ((materialCont + 100) / 100)));
-        work_tf_PCost_over.setText(Double.toString(populateTotals("Overheads")));
-        work_tf_PCost_labour.setText(Double.toString(populateTotals("Labour")));
-        work_tf_PCost_total.setText(Double.toString(populateTotals("Material") + populateTotals("Overheads") + populateTotals("Labour")));
+        double materialIncCont = (populateTotals("Material") * ((materialCont + 100) / 100));
+        work_tf_PCost_mat.setText(Double.toString(materialIncCont));
+        double overheadsIncCont = (populateTotals("Overheads") * ((overheadCont + 100) / 100));
+        work_tf_PCost_over.setText(Double.toString(overheadsIncCont));
+        double labourIncCont = populateTotals("Labour") * ((labourCont + 100) / 100);
+        work_tf_PCost_labour.setText(Double.toString(labourIncCont));
+        work_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
+
+        // Total on Quote so it includes charges
+        double materialIncCharges = materialIncCont * ((materialCharge + 100) / 100);
+        work_tf_Quote_mat.setText(Double.toString(materialIncCharges));
+        double overheadIncCharges = overheadsIncCont * ((overheadCharge + 100) / 100);
+        work_tf_Quote_over.setText(Double.toString(overheadIncCharges));
+        double labourIncCharges = labourIncCont * ((labourCharge + 100) / 100);
+        work_tf_Quote_labour.setText(Double.toString(labourIncCharges));
+        work_tf_Quote_total.setText(Double.toString(materialIncCharges + overheadIncCharges + labourIncCharges));
+
     }
 
     private void showCalculations() {
@@ -4229,7 +4234,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         DefaultListModel a = new DefaultListModel();
         String item = "";
         try {
-            String expenseType = "Overhead";
+            String expenseType = "Overheads";
             Statement st = conn.createStatement();
             String query = "select * from WorkingExpense where jobID = '" + currentJobID + "' and ExpenseType = '" + expenseType + "'";
             rs = st.executeQuery(query);
@@ -4273,13 +4278,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void calculateAllProgressions() {
         int matProgression = (int) (Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText()) * 100);
         work_proBar_primary_mat.setValue(matProgression);
-        if ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) > 1) {
-            //cutting into profits
-            int overProgression = (int) ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) * 100) - 100;
-            work_proBar_secondary_mat.setValue(overProgression);
-        } else {
-            work_proBar_secondary_mat.setValue(0);
-        }
+        
+        int overheadProgression = (int) (Double.parseDouble(work_tf_ACost_over.getText()) / Double.parseDouble(work_tf_PCost_over.getText()) * 100);
+        work_proBar_primary_over.setValue(overheadProgression);
+        
+        
+        int labourProgression = (int) (Double.parseDouble(work_tf_ACost_labour.getText()) / Double.parseDouble(work_tf_PCost_labour.getText()) * 100);
+        work_proBar_primary_labour.setValue(labourProgression);
+        
+        
+//        if ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) > 1) {
+//            //cutting into profits
+//            int overProgression = (int) ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) * 100) - 100;
+//            work_proBar_secondary_mat.setValue(overProgression);
+//        } else {
+//            work_proBar_secondary_mat.setValue(0);
+//        }
     }
 
     private void setContingenciesAndCharges() {
@@ -4288,12 +4302,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
             Statement st = conn.createStatement();
             rs = st.executeQuery(sql);
             while (rs.next()) {
-                int materialCont = Integer.parseInt(rs.getString("materialCont"));
-                int labourCont = Integer.parseInt(rs.getString("labourCont"));
-                int overheadCont = Integer.parseInt(rs.getString("overheadCont"));
-                int materialCharge = Integer.parseInt(rs.getString("materialCharge"));
-                int labourCharge = Integer.parseInt(rs.getString("labourCharge"));
-                int overheadCharge = Integer.parseInt(rs.getString("overheadCharge"));
+                materialCont = Double.parseDouble(rs.getString("materialCont"));
+                labourCont = Double.parseDouble(rs.getString("labourCont"));
+                overheadCont = Double.parseDouble(rs.getString("overheadCont"));
+                materialCharge = Double.parseDouble(rs.getString("materialCharge"));
+                labourCharge = Double.parseDouble(rs.getString("labourCharge"));
+                overheadCharge = Double.parseDouble(rs.getString("overheadCharge"));
             }
         } catch (Exception e) {
             System.out.println("Problem with setting contingencies" + e);
