@@ -284,12 +284,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
-        work_labour_l_rate = new javax.swing.JLabel();
         work_labour_spin_hours = new javax.swing.JSpinner();
         jComboBox3 = new javax.swing.JComboBox();
         work_over_tf_labour = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        rateSpinner = new javax.swing.JSpinner();
         work_labour_but_add = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -1791,6 +1791,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        work_mat_li_materials.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                work_mat_li_materialsMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(work_mat_li_materials);
 
         work_mat_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -1934,6 +1939,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        work_over_li_overheads.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                work_over_li_overheadsMouseClicked(evt);
+            }
+        });
         jScrollPane12.setViewportView(work_over_li_overheads);
 
         work_over_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -2001,6 +2011,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        work_labour_li_labour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                work_labour_li_labourMouseClicked(evt);
+            }
+        });
         jScrollPane13.setViewportView(work_labour_li_labour);
 
         jPanel33.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -2013,9 +2028,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel59.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel59.setText("Rate:");
-
-        work_labour_l_rate.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        work_labour_l_rate.setText("(Hourly Rate)");
 
         work_labour_spin_hours.setEnabled(false);
 
@@ -2053,8 +2065,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60)
                         .addComponent(jLabel59)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(work_labour_l_rate)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addGap(163, 163, 163)
@@ -2075,9 +2087,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(work_labour_l_rate)
                     .addComponent(jLabel59)
-                    .addComponent(jLabel102))
+                    .addComponent(jLabel102)
+                    .addComponent(rateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
@@ -3071,6 +3083,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(4, "Material");
                 statement.setInt(5, Integer.parseInt(quote_mat_spin_count.getValue().toString()));
                 statement.setInt(6, Integer.parseInt(quote_mat_tf_cost.getText().toString()));
+                System.out.println(statement);
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Material : " + e);
@@ -3351,6 +3364,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
 //        GUI_jobLog jobLogsGUI = new GUI_jobLog();
         //  jobLogsGUI.setVisible(true);
         populateLabourExpenses();
+        work_over_tf_labour.setEnabled(true);
+        work_labour_spin_hours.setEnabled(true);
 
     }//GEN-LAST:event_work_labour_but_addActionPerformed
 
@@ -3649,7 +3664,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         String item[] = (jComboBox3.getSelectedItem().toString()).split("_");
         work_over_tf_labour.setText(item[0] + " " + item[1]);
         String costWithRand[] = item[2].split("R");
-        work_labour_l_rate.setText(costWithRand[1]);
+        rateSpinner.setValue(costWithRand[1]);
         String quantityWithDesc[] = item[3].split(":");
         work_labour_spin_hours.setValue(Integer.parseInt(quantityWithDesc[1]));
     }//GEN-LAST:event_jComboBox3ActionPerformed
@@ -3717,7 +3732,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(3, work_over_tf_labour.getText());
                 statement.setString(4, "Labour");
                 statement.setInt(5, Integer.parseInt(work_labour_spin_hours.getValue().toString()));
-                statement.setInt(6, Integer.parseInt(work_labour_l_rate.getText().toString()));
+                statement.setInt(6, Integer.parseInt(rateSpinner.getValue().toString()));
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Labour : " + e);
@@ -3729,7 +3744,34 @@ public class GUI_jobStates extends javax.swing.JFrame {
         calculateAllExpenses();
         calculateAllProgressions();
         enablePanelWorkOver(false);
+        work_over_tf_labour.setEnabled(false);
+        work_labour_spin_hours.setEnabled(false);
+        rateSpinner.setEnabled(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void work_mat_li_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_work_mat_li_materialsMouseClicked
+        String item[] = work_mat_li_materials.getSelectedValue().split("_");
+        String cost[] = item[0].split("R");
+        work_mat_tf_cost.setText(cost[1]);
+        work_mat_tf_item.setText(item[1]);
+        work_mat_spin_count.setValue(Integer.parseInt(item[2]));
+
+    }//GEN-LAST:event_work_mat_li_materialsMouseClicked
+
+    private void work_over_li_overheadsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_work_over_li_overheadsMouseClicked
+        String item[] = work_over_li_overheads.getSelectedValue().split("_");
+        String cost[] = item[0].split("R");
+        work_over_tf_cost.setText(cost[1]);
+        work_over_tf_overhead.setText(item[1]);
+    }//GEN-LAST:event_work_over_li_overheadsMouseClicked
+
+    private void work_labour_li_labourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_work_labour_li_labourMouseClicked
+        String item[] = work_labour_li_labour.getSelectedValue().split("_");
+        String cost[] = item[0].split("R");
+        rateSpinner.setValue(Integer.parseInt(cost[1]));
+        work_over_tf_labour.setText(item[1]);
+        work_labour_spin_hours.setValue(Integer.parseInt(item[2]));
+    }//GEN-LAST:event_work_labour_li_labourMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4005,10 +4047,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTextField quote_tf_final_mat;
     private javax.swing.JTextField quote_tf_final_over;
     private javax.swing.JTextField quote_tf_total;
+    private javax.swing.JSpinner rateSpinner;
     private javax.swing.JTabbedPane work_TabPane;
     private javax.swing.JButton work_but_finaliseJob;
     private javax.swing.JButton work_labour_but_add;
-    private javax.swing.JLabel work_labour_l_rate;
     private javax.swing.JList<String> work_labour_li_labour;
     private javax.swing.JSpinner work_labour_spin_hours;
     private javax.swing.JButton work_mat_but_add;
@@ -4406,7 +4448,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             String query = "select * from WorkingExpense where jobID = '" + currentJobID + "' and ExpenseType = '" + expenseType + "'";
             rs = st.executeQuery(query);
             while (rs.next()) {
-                item = "R" + rs.getInt("Cost_rate") + "  " + rs.getString("ExpenseTitle") + " (" + rs.getInt("Count_Hours") + ") #" + rs.getString("WorkingExpenseID");
+                item = "R" + rs.getInt("Cost_rate") + "_" + rs.getString("ExpenseTitle") + "_" + rs.getInt("Count_Hours") + "_#" + rs.getString("WorkingExpenseID");
                 a.addElement(item);
             }
         } catch (Exception e) {
@@ -4424,7 +4466,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             String query = "select * from WorkingExpense where jobID = '" + currentJobID + "' and ExpenseType = '" + expenseType + "'";
             rs = st.executeQuery(query);
             while (rs.next()) {
-                item = "R" + rs.getInt("Cost_rate") + "  " + rs.getString("ExpenseTitle") + " (" + rs.getInt("Count_Hours") + ") #" + rs.getString("WorkingExpenseID");
+                item = "R" + rs.getInt("Cost_rate") + "_" + rs.getString("ExpenseTitle") + "_" + rs.getInt("Count_Hours") + "_#" + rs.getString("WorkingExpenseID");
                 a.addElement(item);
             }
         } catch (Exception e) {
@@ -4442,7 +4484,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             String query = "select * from WorkingExpense where jobID = '" + currentJobID + "' and ExpenseType = '" + expenseType + "'";
             rs = st.executeQuery(query);
             while (rs.next()) {
-                item = "R" + rs.getInt("Cost_rate") + "  " + rs.getString("ExpenseTitle") + " (" + rs.getInt("Count_Hours") + ") #" + rs.getString("WorkingExpenseID");
+                item = "R" + rs.getInt("Cost_rate") + "_" + rs.getString("ExpenseTitle") + "_" + rs.getInt("Count_Hours") + "_#" + rs.getString("WorkingExpenseID");
                 a.addElement(item);
             }
         } catch (Exception e) {
