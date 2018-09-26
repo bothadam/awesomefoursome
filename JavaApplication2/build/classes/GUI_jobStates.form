@@ -2555,6 +2555,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="work_mat_li_materialsMouseClicked"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -2793,6 +2796,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="work_over_li_overheadsMouseClicked"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -2903,6 +2909,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="work_labour_li_labourMouseClicked"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -2935,8 +2944,8 @@
                                           <Component id="work_labour_spin_hours" min="-2" pref="83" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                           <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="work_labour_l_rate" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="rateSpinner" min="-2" pref="63" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="42" max="32767" attributes="0"/>
@@ -2963,9 +2972,9 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="work_labour_spin_hours" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="work_labour_l_rate" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel102" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rateSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -3000,14 +3009,6 @@
                               <Font name="Verdana" size="12" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Rate:"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="work_labour_l_rate">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Verdana" size="12" style="0"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="(Hourly Rate)"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JSpinner" name="work_labour_spin_hours">
@@ -3047,6 +3048,8 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
                           </Events>
+                        </Component>
+                        <Component class="javax.swing.JSpinner" name="rateSpinner">
                         </Component>
                       </SubComponents>
                     </Container>
