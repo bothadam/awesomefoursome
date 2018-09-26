@@ -3308,18 +3308,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void work_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_doneActionPerformed
         if (addOrChange.equals("change")) {
-//            try {
-//                String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=?";
-//                PreparedStatement statement = conn.prepareStatement(sql);
-//                statement.setString(1, quote_mat_tf_item.getText().toString());
-//                statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
-//                statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
-//                statement.executeUpdate();
-//            } catch (Exception e) {
-//                System.out.println("Problem with modifying quoteItem Material : " + e);
-//            }
-//            populateMaterials();
-//            calculateAllTotals();
+            try {
+                String sql = "Update WorkingExpense set ExpenseTitle=?, Count_Hours=?, Cost_Rate=? where WorkingExpenseID = ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, work_mat_tf_item.getText().toString());
+                statement.setInt(2, Integer.parseInt(work_mat_spin_count.getModel().getValue().toString()));
+                statement.setInt(3, Integer.parseInt(work_mat_tf_cost.getText()));
+                String id[] = work_mat_li_materials.getSelectedValue().split("#");
+                statement.setInt(4, Integer.parseInt(id[1]));
+
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with modifying workingexpense Material : " + e);
+            }
+            populateMaterials();
+            calculateAllTotals();
         } else if (addOrChange.equals("add")) {
             try {
                 String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
@@ -3375,18 +3378,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void work_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_doneActionPerformed
         if (addOrChange.equals("change")) {
-//            try {
-//                String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=?";
-//                PreparedStatement statement = conn.prepareStatement(sql);
-//                statement.setString(1, quote_mat_tf_item.getText().toString());
-//                statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
-//                statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
-//                statement.executeUpdate();
-//            } catch (Exception e) {
-//                System.out.println("Problem with modifying quoteItem Material : " + e);
-//            }
-//            populateMaterials();
-//            calculateAllTotals();
+            try {
+                String sql = "Update WorkingExpense set ExpenseTitle=?, Count_Hours=?, Cost_Rate=? where WorkingExpenseID = ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, work_over_tf_overhead.getText().toString());
+                statement.setInt(2, 1);
+                statement.setInt(3, Integer.parseInt(work_over_tf_cost.getText()));
+                String id[] = work_over_li_overheads.getSelectedValue().split("#");
+                statement.setInt(4, Integer.parseInt(id[1]));
+
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with modifying workingexpense Overheads : " + e);
+            }
+            populateOverheads();
+            calculateAllTotals();
         } else if (addOrChange.equals("add")) {
             try {
                 String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
@@ -3686,8 +3692,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_work_over_but_removeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        addOrChange = "change";
         populateLabourExpenses();
-
+        work_over_tf_labour.setEnabled(true);
+        work_labour_spin_hours.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -3710,18 +3718,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         if (addOrChange.equals("change")) {
-//            try {
-//                String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=?";
-//                PreparedStatement statement = conn.prepareStatement(sql);
-//                statement.setString(1, quote_mat_tf_item.getText().toString());
-//                statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
-//                statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
-//                statement.executeUpdate();
-//            } catch (Exception e) {
-//                System.out.println("Problem with modifying quoteItem Material : " + e);
-//            }
-//            populateMaterials();
-//            calculateAllTotals();
+            try {
+                String sql = "Update WorkingExpense set ExpenseTitle=?, Count_Hours=?, Cost_Rate=? where WorkingExpenseID = ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, work_over_tf_labour.getText().toString());
+                statement.setInt(2, Integer.parseInt(work_labour_spin_hours.getValue().toString()));
+
+                statement.setInt(3, Integer.parseInt(rateSpinner.getValue().toString()));
+                String id[] = work_labour_li_labour.getSelectedValue().split("#");
+                statement.setInt(4, Integer.parseInt(id[1]));
+
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with modifying workingexpense Overheads : " + e);
+            }
+            populateLabour();
+            calculateAllTotals();
         } else if (addOrChange.equals("add")) {
             try {
                 String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
