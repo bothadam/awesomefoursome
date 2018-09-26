@@ -1813,6 +1813,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         clearPanel_Client();
         client_but_showAll.setEnabled(false);
         editOrAdd = "add";
+        System.out.println(editOrAdd);
 
     }//GEN-LAST:event_client_but_newClientActionPerformed
 
@@ -1857,7 +1858,22 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_cancelActionPerformed
 
     private void client_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_doneActionPerformed
+         System.out.println("yes" + editOrAdd);
 
+        if (editOrAdd.equals("add")) {
+          System.out.println("helloooo");
+
+            addClient();
+            editOrAdd = "";
+        } else if (editOrAdd.equals("edit")) {
+            editClient();
+            editOrAdd = "";
+        }
+
+        client_but_showAll.setEnabled(true);
+        enablePanel_Client(false);
+        clearPanel_Client();
+        populateClientTable();
     }//GEN-LAST:event_client_but_doneActionPerformed
 
     private void menu_file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_file_saveActionPerformed
@@ -1900,18 +1916,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_removeActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
-        if (editOrAdd.equals("add")) {
-            addClient();
-            editOrAdd = "";
-        } else if (editOrAdd.equals("edit")) {
-            editClient();
-            editOrAdd = "";
-        }
-
-        client_but_showAll.setEnabled(true);
-        enablePanel_Client(false);
-        clearPanel_Client();
-        populateClientTable();
+       
     }//GEN-LAST:event_client_but_doneMouseClicked
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
@@ -1924,11 +1929,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
             client_tf_address.setText(createdAddress);
-            editOrAdd = "";
         } else if (editOrAdd.equals("edit")) {
             GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
             addrGUI.setVisible(true);
-            editOrAdd = "";
         }
 
 
