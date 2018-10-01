@@ -37,46 +37,26 @@ public class GUI_jobStates extends javax.swing.JFrame {
     double overheadCharge;
 
     public GUI_jobStates(String passedThroughIDOfJob) {
-
         currentJobID = passedThroughIDOfJob;
-        initComponents();
-        initComponentsCustom();
+
+        //make DB connection
         connection();
 
-        populateClientInfo();
-        populateJobInfo();
-        getAllQuotes();
-        populateClientCombo();
-        System.out.println("index + " + quote_TabPane.getModel().getSelectedIndex());
-        enableQuoteComponents(true);
-        populateStaffCombo();
-        populateOverheads();
-        populateLabour();
-        getWorkerRate();
-        calculateAllTotals();
-        //
-        populateMaterials();
-        populateOverheads();
-        populateLabour();
-        calculateAllTotals();
-        quoteID_l.setText(currentQuoteID);
-        setStatesFields("Pending of something");
-        enablePanelQuoteLabour(false);
-        enablePanelQuoteMat(false);
-        enablePanelQuoteOver(false);
-        ///
-        ///work page
-        ///
-        populateMaterialExpenses();
-        populateOverheadExpenses();
-        populateLabourExpenses();
-        calculateAllExpenses();
-        populateTotalsOnWorkPage();
-        calculateAllProgressions();
-        populateFromQuoteCombos();
-        //
-        //currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
+        //initialize GUI
+        initComponents();
 
+        //custom initialization for GUI component management
+        //determine if the create or manage button was pressed
+        if (currentJobID.equals("")) {
+            //new job button was pressed
+            initComponentsNewJob();
+
+        } else {
+            //manageJob button was pressed
+            initComponentsManageJob();
+        }
+
+        //currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
     }
 
     private GUI_jobStates() {
@@ -123,7 +103,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_tf_email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         job_but_changeDetails = new javax.swing.JButton();
-        job_cb_selectClient = new javax.swing.JComboBox<String>();
+        job_cb_selectClient = new javax.swing.JComboBox<>();
         job_but_go = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -171,7 +151,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_mat_but_cancel = new javax.swing.JButton();
         quote_mat_tf_cost = new javax.swing.JTextField();
         jScrollPane14 = new javax.swing.JScrollPane();
-        quote_mat_li_materials = new javax.swing.JList<String>();
+        quote_mat_li_materials = new javax.swing.JList<>();
         quote_mat_but_change = new javax.swing.JButton();
         quote_mat_but_add = new javax.swing.JButton();
         quote_mat_but_remove = new javax.swing.JButton();
@@ -184,19 +164,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_over_but_cancel = new javax.swing.JButton();
         quote_over_tf_total = new javax.swing.JTextField();
         jScrollPane15 = new javax.swing.JScrollPane();
-        quote_over_li_overheads = new javax.swing.JList<String>();
+        quote_over_li_overheads = new javax.swing.JList<>();
         quote_over_but_change = new javax.swing.JButton();
         quote_over_but_add = new javax.swing.JButton();
         quote_over_but_remove = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        quote_labour_li_labour = new javax.swing.JList<String>();
+        quote_labour_li_labour = new javax.swing.JList<>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
         quote_labour_but_done = new javax.swing.JButton();
         quote_labour_but_cancel = new javax.swing.JButton();
-        quote_labour_combo_workers = new javax.swing.JComboBox<String>();
+        quote_labour_combo_workers = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
         quote_labour_l_rate = new javax.swing.JLabel();
         quote_labour_spin_hours = new javax.swing.JSpinner();
@@ -259,7 +239,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_tf_cost = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane6 = new javax.swing.JScrollPane();
-        work_mat_li_materials = new javax.swing.JList<String>();
+        work_mat_li_materials = new javax.swing.JList<>();
         work_mat_but_change = new javax.swing.JButton();
         work_mat_but_add = new javax.swing.JButton();
         work_mat_but_remove = new javax.swing.JButton();
@@ -273,13 +253,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_over_tf_cost = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox();
         jScrollPane12 = new javax.swing.JScrollPane();
-        work_over_li_overheads = new javax.swing.JList<String>();
+        work_over_li_overheads = new javax.swing.JList<>();
         work_over_but_change = new javax.swing.JButton();
         work_over_but_add = new javax.swing.JButton();
         work_over_but_remove = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        work_labour_li_labour = new javax.swing.JList<String>();
+        work_labour_li_labour = new javax.swing.JList<>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -605,7 +585,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         job_cb_selectClient.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
         job_cb_selectClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 job_cb_selectClientMouseClicked(evt);
@@ -618,11 +598,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         job_but_go.setText("Find Data");
-        job_but_go.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                job_but_goMouseClicked(evt);
-            }
-        });
         job_but_go.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 job_but_goActionPerformed(evt);
@@ -1240,7 +1215,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
         quote_labour_combo_workers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_labour_combo_workersActionPerformed(evt);
@@ -1786,10 +1761,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_mat_li_materials.setModel(new javax.swing.AbstractListModel() {
+        work_mat_li_materials.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         work_mat_li_materials.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1934,10 +1909,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_over_li_overheads.setModel(new javax.swing.AbstractListModel() {
+        work_over_li_overheads.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         work_over_li_overheads.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2006,10 +1981,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_TabPane.addTab("Overheads", jPanel29);
 
         work_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_labour_li_labour.setModel(new javax.swing.AbstractListModel() {
+        work_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         work_labour_li_labour.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2798,9 +2773,60 @@ public class GUI_jobStates extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //initialize GUI components
-    private void initComponentsCustom() {
+    //initialize GUI components for when a new job is created
+    private void initComponentsNewJob() {
+        sharedInitializations();
+        disableAllButJobsTab(true);
+    }
+
+    //initialize GUI components for when you manage a current job
+    private void initComponentsManageJob() {
+        sharedInitializations();
+        initializeWorkPage();
+        initializeQuotePage();
+    }
+
+    private void sharedInitializations() {
         disableAllPanels();
+        populateClientInfo();
+        populateJobInfo();
+        populateClientCombo();
+    }
+
+    private void initializeQuotePage() {
+        boolean hasQuote = getAllQuotes();
+        if (hasQuote) {
+            //has at least one quote from the query search
+            quote_allquotes_combo.setEnabled(true);
+        } else {
+            //has no queary result when trying to find a quote for the Job
+            DefaultComboBoxModel b = new DefaultComboBoxModel();
+            b.addElement("Please create a New Quote");
+            quote_allquotes_combo.setModel(b);
+            quote_allquotes_combo.setEnabled(false);
+        }
+        populateStaffCombo();
+        getWorkerRate();
+
+        //populate
+        populateMaterials();
+        populateOverheads();
+        populateLabour();
+
+        //calculate
+        calculateAllTotals();
+        quoteID_l.setText(currentQuoteID);
+        setStatesFields("Pending of something");
+    }
+
+    private void initializeWorkPage() {
+        populateMaterialExpenses();
+        populateOverheadExpenses();
+        populateLabourExpenses();
+        calculateAllExpenses();
+        populateTotalsOnWorkPage();
+        calculateAllProgressions();
+        populateFromQuoteCombos();
     }
 
     //Methods
@@ -3018,6 +3044,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void job_but_createJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createJobActionPerformed
         enablePanelJob(true);
+        addOrChange = "add";
     }//GEN-LAST:event_job_but_createJobActionPerformed
 
     private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
@@ -3030,17 +3057,23 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void job_but_changeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_changeDetailsActionPerformed
         enablePanelJob_noDate(true);
+        addOrChange = "change";
     }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
-        addNewJob();
+        if (addOrChange.equals("add")) {
+            addNewJob();
+            initComponentsManageJob();
+        }
+        if (addOrChange.equals("change")) {
+            //The Job should be changed
+            //write a change Method
+            System.out.println("Please write a change job method here");
+        }
         enablePanelJob(false);
     }//GEN-LAST:event_job_but_doneActionPerformed
 
     private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
-        GUI_mainGUI newMain = new GUI_mainGUI();
-        newMain.setVisible(true);
-
         this.dispose();
     }//GEN-LAST:event_but_closeActionPerformed
 
@@ -3198,6 +3231,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_labour_but_doneActionPerformed
 
     private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
+
         l_quoteState.setText("Quote Pending");
         try {
             String sql = "Insert into quote(QuoteID,JobID,QuoteStatus) values(?,?,?)";
@@ -3217,6 +3251,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 while (rs.next()) {
                     if (rs.getString("quoteID") != code) {
                         goahead = true;
+                    } else {
                     }
                 }
             }
@@ -3224,7 +3259,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             if (goahead == true) {
                 statement.setString(1, code);
                 statement.setString(2, currentJobID);
-                statement.setBoolean(3, false);
+                statement.setString(3, "Quote in Progress");
                 statement.executeUpdate();
             }
 
@@ -3232,11 +3267,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Problem with adding quote : " + e);
         }
 
-        enableQuoteComponents(true);
-        enablePanelQuoteLabour(false);
-        enablePanelQuoteMat(false);
-        enablePanelQuoteOver(false);
-        getAllQuotes();
+        System.out.println("initializing the quote page...");
+        initializeQuotePage();
     }//GEN-LAST:event_quote_but_createActionPerformed
 
     private void quote_but_rejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_rejActionPerformed
@@ -3451,9 +3483,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void job_cb_selectClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_job_cb_selectClientMouseClicked
 
     }//GEN-LAST:event_job_cb_selectClientMouseClicked
-
-    private void job_but_goMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_job_but_goMouseClicked
-    }//GEN-LAST:event_job_but_goMouseClicked
 
     private void job_but_goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_goActionPerformed
         initialPopulateClientInfo();
@@ -4210,21 +4239,29 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
     }
 
-    private void getAllQuotes() {
+    private boolean getAllQuotes() {
         DefaultComboBoxModel a = new DefaultComboBoxModel();
         try {
             Statement st = conn.createStatement();
             String query = "select * from quote where jobID = '" + currentJobID + "'";
             rs = st.executeQuery(query);
 
-            while (rs.next()) {
-                a.addElement(rs.getString("QuoteID"));
+            //if the current Job has no quotes attached to it.
+            if (!rs.next()) {
+                return false;
             }
 
+            System.out.println("\n\nQUOTES FOR JOB " + currentJobID + "\n===============================");
+            do {
+                a.addElement(rs.getString("QuoteID"));
+                System.out.println(rs.getString("QuoteID"));
+            } while (rs.next());
+            System.out.println("===============================");
         } catch (Exception e) {
             System.out.println("Problems with populating combo with all the quotes: " + e);
         }
         quote_allquotes_combo.setModel(a);
+        return true;
     }
 
     private void addNewJob() {
@@ -4264,15 +4301,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
             statement.setString(5, job_spin_date.getModel().getValue().toString());
 
             statement.setString(6, job_ta_comments.getText());
-            statement.setBoolean(7, false);
-            statement.setString(8, "Open");
+            statement.setString(7, "Open");
+            statement.setString(8, "Quote in Progress");
             statement.setString(9, job_tf_siteLocation.getText());
 
             statement.executeUpdate();
-            GUI_mainGUI newMain = new GUI_mainGUI();
-            newMain.setVisible(true);
-            this.dispose();
-            //populateJobsTable();
+            currentJobID = jobCode;
 
         } catch (Exception e) {
             System.out.println("Problem with adding new job : " + e);

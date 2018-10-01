@@ -547,7 +547,6 @@
                 <Property name="text" type="java.lang.String" value="Find Data"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="job_but_goMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="job_but_goActionPerformed"/>
               </Events>
             </Component>

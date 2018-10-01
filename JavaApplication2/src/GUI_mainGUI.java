@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
 
 /*
@@ -829,6 +830,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jobs_but_removeRecord.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jobs_but_removeRecord.setText("Remove Record");
         jobs_but_removeRecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jobs_but_removeRecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_but_removeRecordActionPerformed(evt);
+            }
+        });
 
         jobs_but_newJob.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jobs_but_newJob.setText("New Job");
@@ -951,7 +957,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel41.setText("Billing Address");
 
         staff_but_insertAddress.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        staff_but_insertAddress.setText("Address");
+        staff_but_insertAddress.setText("Insert Address");
         staff_but_insertAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 staff_but_insertAddressActionPerformed(evt);
@@ -964,12 +970,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel42.setText("Email Address");
 
         staff_tf_skillsetInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-		staff_tf_skillsetInput.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                staff_tf_skillsetInputFocusGained(evt);
-            }
-        });
-		
+
         jLabel44.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel44.setText("First Name");
 
@@ -1003,7 +1004,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         staff_but_add.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         staff_but_add.setText("Add");
-		 staff_but_add.addActionListener(new java.awt.event.ActionListener() {
+        staff_but_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 staff_but_addActionPerformed(evt);
             }
@@ -1020,7 +1021,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel50.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel50.setText("Rate:");
 
-         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1056,7 +1057,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addGap(0, 176, Short.MAX_VALUE)
+                                .addGap(0, 212, Short.MAX_VALUE)
                                 .addComponent(staff_but_cancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(staff_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1146,7 +1147,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(staff_but_newStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(staff_but_manageStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 472, Short.MAX_VALUE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1161,7 +1162,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         mainTabs.addTab("Staff", jPanel6);
@@ -1622,9 +1623,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private String getSelectedJobID() {
         //identify the job ID that is currently selected in the list/the table as a string to parse through to the GUIjobStates pane
-        //so that it can "manage" the newly created Job
+        //so that it can "manage" an already created Job
 
-        return "";
+        String selectedJobID = "";
+        if (jobs_table_jobs.getSelectedRow() > -1) {
+            selectedJobID = jobs_table_jobs.getValueAt(jobs_table_jobs.getSelectedRow(), 0) + "";
+        }
+        return selectedJobID;
     }
 
     private void manageJob(String selectedJobID) {
@@ -1770,7 +1775,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         String newJobID = generateNewJobID();
         GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
         jobStatesGUI.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jobs_but_newJobActionPerformed
 
     private void schedule_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_addActionPerformed
@@ -1803,9 +1807,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void jobs_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_manageJobActionPerformed
         String selectedJobID = getSelectedJobID();
-        int row = jobs_table_jobs.getSelectedRow();
-        selectedJobID = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
-        manageJob(selectedJobID);
+        if (!selectedJobID.equals("")) {
+            int row = jobs_table_jobs.getSelectedRow();
+            selectedJobID = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
+            manageJob(selectedJobID);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Job to manage");
+        }
+
+
     }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
@@ -1858,10 +1868,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_client_but_cancelActionPerformed
 
     private void client_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_doneActionPerformed
-         System.out.println("yes" + editOrAdd);
+        System.out.println("yes" + editOrAdd);
 
         if (editOrAdd.equals("add")) {
-          System.out.println("helloooo");
+            System.out.println("helloooo");
 
             addClient();
             editOrAdd = "";
@@ -1916,7 +1926,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_but_removeActionPerformed
 
     private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
-       
+
     }//GEN-LAST:event_client_but_doneMouseClicked
 
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
@@ -1952,13 +1962,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_table_staffMouseClicked
 
     private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
-         //As per user testing
+        //As per user testing
         //Will only enable if a client has been selected
         client_but_manageClient.setEnabled(true);
         //As per user testing
         //Will only enable if a client has been selected
         client_but_manageJob.setEnabled(true);
-         //As per user testing
+        //As per user testing
         //Will only enable if a client has been selected
         client_li_jobs.setEnabled(true);
 
@@ -2075,6 +2085,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         //Disable edit clients button while adding a client
         client_but_manageClient.setEnabled(false);
     }//GEN-LAST:event_client_but_newClientMouseClicked
+
+    private void jobs_but_removeRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_removeRecordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jobs_but_removeRecordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2374,7 +2388,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             //String query = "select * from jobs";
-            String query = "select jobid as Job_ID,jobtitle as Job_Title,jobstate as Status from jobs";
+            String query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs";
             rs = st.executeQuery(query);
             jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -2385,8 +2399,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void populateJobTable(String state) {
         try {
+            String query = "";
+            //check to see of it refers to the job state or the quote state
+            if (state.equals("Open") || state.equals("Closed")) {
+                query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs where JobState = '" + state + "'";
+            } else {
+                query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs where QuoteState = '" + state + "'";
+            }
+            
             Statement st = conn.createStatement();
-            String query = "select jobid as Job_ID,jobtitle as Job_Title,jobstate as Status from jobs where QuoteState = '" + state + "'";
             rs = st.executeQuery(query);
             jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
 
