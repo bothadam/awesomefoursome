@@ -547,7 +547,6 @@
                 <Property name="text" type="java.lang.String" value="Find Data"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="job_but_goMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="job_but_goActionPerformed"/>
               </Events>
             </Component>
@@ -662,35 +661,42 @@
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="quote_spin_cont_over" min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="quote_spin_cont_labour" min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="quote_spin_cont_mat" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="jLabel69" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="quote_spin_charge_over" max="32767" attributes="0"/>
-                                          <Component id="quote_spin_charge_labour" max="32767" attributes="0"/>
-                                          <Component id="quote_spin_charge_mat" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="quote_spin_cont_over" min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="quote_spin_cont_labour" min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="quote_spin_cont_mat" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="jLabel69" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="quote_spin_charge_over" max="32767" attributes="0"/>
+                                                  <Component id="quote_spin_charge_labour" max="32767" attributes="0"/>
+                                                  <Component id="quote_spin_charge_mat" min="-2" pref="54" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabel77" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Component id="jLabel77" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="quote_but_resetCharges" min="-2" pref="173" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_tf_chFee_mat" max="32767" attributes="0"/>
                                       <Component id="quote_tf_chFee_over" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="quote_tf_chFee_labour" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_chFee_labour" alignment="0" pref="112" max="32767" attributes="0"/>
+                                      <Component id="jLabel82" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="quote_calculate_button" min="-2" pref="173" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
@@ -701,12 +707,8 @@
                                   <Component id="quote_tf_final_mat" alignment="0" max="32767" attributes="0"/>
                                   <Component id="quote_tf_final_over" alignment="0" max="32767" attributes="0"/>
                                   <Component id="quote_tf_final_labour" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="quote_tf_total" alignment="0" min="-2" pref="212" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel82" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="quote_tf_finalCharges" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="quote_tf_total" alignment="1" pref="212" max="32767" attributes="0"/>
+                                  <Component id="quote_tf_finalCharges" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -766,22 +768,22 @@
                                           <Component id="quote_tf_final_labour" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="quote_tf_finalCharges" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel82" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="quote_tf_total" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="quote_calculate_button" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                          <Component id="quote_but_resetCharges" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -811,7 +813,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace pref="14" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -843,16 +845,19 @@
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_cont_mat">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                    </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quote_spin_cont_matMouseClicked"/>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_cont_matStateChanged"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_cont_over">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_cont_overStateChanged"/>
@@ -860,7 +865,9 @@
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_cont_labour">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_cont_labourStateChanged"/>
@@ -868,31 +875,34 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_cost_mat">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_cost_over">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_cost_labour">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_charge_mat">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                    </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quote_spin_charge_matMouseClicked"/>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_charge_matStateChanged"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_charge_over">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_charge_overStateChanged"/>
@@ -900,7 +910,9 @@
                 </Component>
                 <Component class="javax.swing.JSpinner" name="quote_spin_charge_labour">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0.0" minimum="0.0" numberType="java.lang.Double" stepSize="1.0" type="number"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="quote_spin_charge_labourStateChanged"/>
@@ -927,10 +939,13 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Charging Fee"/>
+                    <Property name="text" type="java.lang.String" value="Charge Amount"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_chFee_labour">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel79">
                   <Properties>
@@ -950,17 +965,17 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_final_over">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_final_labour">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_cost_subtotal">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel81">
@@ -973,7 +988,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_total">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel82">
@@ -994,26 +1009,31 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_final_mat">
                   <Properties>
-                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_chFee_over">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_chFee_mat">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_finalCharges">
-                </Component>
-                <Component class="javax.swing.JButton" name="quote_calculate_button">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Capture Charges"/>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="quote_but_resetCharges">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Reset Charges"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_calculate_buttonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_but_resetChargesActionPerformed"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -1224,6 +1244,9 @@
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="quote_mat_tf_cost">
+                          <Properties>
+                            <Property name="enabled" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1845,7 +1868,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_allquotes_comboActionPerformed"/>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="quote_allquotes_comboItemStateChanged"/>
               </Events>
             </Component>
           </SubComponents>
