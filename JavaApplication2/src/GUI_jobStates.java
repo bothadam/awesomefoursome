@@ -103,7 +103,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_tf_email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         job_but_changeDetails = new javax.swing.JButton();
-        job_cb_selectClient = new javax.swing.JComboBox<>();
+        job_cb_selectClient = new javax.swing.JComboBox<String>();
         job_but_go = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -151,7 +151,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_mat_but_cancel = new javax.swing.JButton();
         quote_mat_tf_cost = new javax.swing.JTextField();
         jScrollPane14 = new javax.swing.JScrollPane();
-        quote_mat_li_materials = new javax.swing.JList<>();
+        quote_mat_li_materials = new javax.swing.JList<String>();
         quote_mat_but_change = new javax.swing.JButton();
         quote_mat_but_add = new javax.swing.JButton();
         quote_mat_but_remove = new javax.swing.JButton();
@@ -164,19 +164,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_over_but_cancel = new javax.swing.JButton();
         quote_over_tf_total = new javax.swing.JTextField();
         jScrollPane15 = new javax.swing.JScrollPane();
-        quote_over_li_overheads = new javax.swing.JList<>();
+        quote_over_li_overheads = new javax.swing.JList<String>();
         quote_over_but_change = new javax.swing.JButton();
         quote_over_but_add = new javax.swing.JButton();
         quote_over_but_remove = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        quote_labour_li_labour = new javax.swing.JList<>();
+        quote_labour_li_labour = new javax.swing.JList<String>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
         quote_labour_but_done = new javax.swing.JButton();
         quote_labour_but_cancel = new javax.swing.JButton();
-        quote_labour_combo_workers = new javax.swing.JComboBox<>();
+        quote_labour_combo_workers = new javax.swing.JComboBox<String>();
         jLabel60 = new javax.swing.JLabel();
         quote_labour_l_rate = new javax.swing.JLabel();
         quote_labour_spin_hours = new javax.swing.JSpinner();
@@ -239,7 +239,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_tf_cost = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane6 = new javax.swing.JScrollPane();
-        work_mat_li_materials = new javax.swing.JList<>();
+        work_mat_li_materials = new javax.swing.JList<String>();
         work_mat_but_change = new javax.swing.JButton();
         work_mat_but_add = new javax.swing.JButton();
         work_mat_but_remove = new javax.swing.JButton();
@@ -253,13 +253,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_over_tf_cost = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox();
         jScrollPane12 = new javax.swing.JScrollPane();
-        work_over_li_overheads = new javax.swing.JList<>();
+        work_over_li_overheads = new javax.swing.JList<String>();
         work_over_but_change = new javax.swing.JButton();
         work_over_but_add = new javax.swing.JButton();
         work_over_but_remove = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        work_labour_li_labour = new javax.swing.JList<>();
+        work_labour_li_labour = new javax.swing.JList<String>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -297,10 +297,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel71 = new javax.swing.JLabel();
         jLabel103 = new javax.swing.JLabel();
         jLabel104 = new javax.swing.JLabel();
-        final_tf_PCost_mat = new javax.swing.JTextField();
-        final_tf_PCost_over = new javax.swing.JTextField();
-        final_tf_PCost_labour = new javax.swing.JTextField();
-        final_tf_PCost_total = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
         final_tf_ACost_mat = new javax.swing.JTextField();
         final_tf_ACost_over = new javax.swing.JTextField();
@@ -319,13 +315,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
         final_proBar_secondary_total = new javax.swing.JProgressBar();
         final_proBar_secondary_mat = new javax.swing.JProgressBar();
         jLabel106 = new javax.swing.JLabel();
-        jLabel107 = new javax.swing.JLabel();
         jLabel108 = new javax.swing.JLabel();
         jLabel109 = new javax.swing.JLabel();
         jLabel111 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
+        jLabel107 = new javax.swing.JLabel();
+        final_tf_PCost_mat = new javax.swing.JTextField();
+        final_tf_PCost_over = new javax.swing.JTextField();
+        final_tf_PCost_labour = new javax.swing.JTextField();
+        final_tf_PCost_total = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -585,7 +585,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         job_cb_selectClient.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
         job_cb_selectClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 job_cb_selectClientMouseClicked(evt);
@@ -661,21 +661,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel64.setText("Materials:");
 
-        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_matStateChanged(evt);
             }
         });
 
-        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_overStateChanged(evt);
             }
         });
 
-        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_labourStateChanged(evt);
@@ -688,21 +688,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_tf_cost_labour.setEditable(false);
 
-        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_matStateChanged(evt);
             }
         });
 
-        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_overStateChanged(evt);
             }
         });
 
-        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_labourStateChanged(evt);
@@ -1216,7 +1216,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
         quote_labour_combo_workers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_labour_combo_workersActionPerformed(evt);
@@ -1762,10 +1762,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_mat_li_materials.setModel(new javax.swing.AbstractListModel<String>() {
+        work_mat_li_materials.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_mat_li_materials.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1910,10 +1910,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_over_li_overheads.setModel(new javax.swing.AbstractListModel<String>() {
+        work_over_li_overheads.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_over_li_overheads.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1982,10 +1982,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_TabPane.addTab("Overheads", jPanel29);
 
         work_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
+        work_labour_li_labour.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_labour_li_labour.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2284,18 +2284,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel104.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel104.setText("Materials:");
 
-        final_tf_PCost_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        final_tf_PCost_mat.setEnabled(false);
-
-        final_tf_PCost_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        final_tf_PCost_over.setEnabled(false);
-
-        final_tf_PCost_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        final_tf_PCost_labour.setEnabled(false);
-
-        final_tf_PCost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        final_tf_PCost_total.setEnabled(false);
-
         jLabel105.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel105.setText("Total");
 
@@ -2319,7 +2307,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         final_proBar_primary_mat.setBackground(new java.awt.Color(51, 255, 255));
         final_proBar_primary_mat.setToolTipText("");
-        final_proBar_primary_mat.setValue(100);
 
         final_tf_ACost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         final_tf_ACost_total.setEnabled(false);
@@ -2329,15 +2316,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         final_proBar_primary_over.setBackground(new java.awt.Color(51, 255, 255));
         final_proBar_primary_over.setToolTipText("");
-        final_proBar_primary_over.setValue(75);
 
         final_proBar_primary_labour.setBackground(new java.awt.Color(51, 255, 255));
         final_proBar_primary_labour.setToolTipText("");
-        final_proBar_primary_labour.setValue(55);
 
         final_proBar_primary_total.setBackground(new java.awt.Color(51, 255, 255));
         final_proBar_primary_total.setToolTipText("");
-        final_proBar_primary_total.setValue(85);
 
         final_proBar_secondary_over.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -2346,13 +2330,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         final_proBar_secondary_total.setForeground(new java.awt.Color(255, 0, 0));
 
         final_proBar_secondary_mat.setForeground(new java.awt.Color(255, 0, 0));
-        final_proBar_secondary_mat.setValue(25);
 
         jLabel106.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel106.setText("Planned Cost");
-
-        jLabel107.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel107.setText("Actual Cost");
 
         jLabel108.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel108.setText("Total Quote");
@@ -2362,6 +2342,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel111.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel111.setText("Profit Margin");
+
+        jLabel107.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel107.setText("Actual Cost");
+
+        final_tf_PCost_mat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_mat.setEnabled(false);
+
+        final_tf_PCost_over.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_over.setEnabled(false);
+
+        final_tf_PCost_labour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_labour.setEnabled(false);
+
+        final_tf_PCost_total.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        final_tf_PCost_total.setEnabled(false);
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
@@ -2380,20 +2375,29 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(jLabel103)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(final_tf_PCost_total, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addComponent(final_tf_PCost_labour, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(final_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(final_tf_PCost_mat))
-                    .addComponent(jLabel106)
-                    .addComponent(final_tf_PCost_over, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(final_tf_ACost_mat)
-                        .addComponent(final_tf_ACost_over)
-                        .addComponent(final_tf_ACost_labour)
-                        .addComponent(final_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel107))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(final_tf_ACost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(final_tf_PCost_labour))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel32Layout.createSequentialGroup()
+                                .addComponent(jLabel107)
+                                .addGap(78, 78, 78)
+                                .addComponent(jLabel106))
+                            .addGroup(jPanel32Layout.createSequentialGroup()
+                                .addComponent(final_tf_ACost_over, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(final_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel32Layout.createSequentialGroup()
+                                .addComponent(final_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(final_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2406,7 +2410,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(final_proBar_primary_mat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(final_proBar_primary_mat, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                             .addComponent(final_proBar_primary_over, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(final_proBar_primary_labour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(final_proBar_primary_total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2440,30 +2444,30 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel106)
-                    .addComponent(jLabel107)
                     .addComponent(jLabel108)
                     .addComponent(jLabel109)
-                    .addComponent(jLabel111))
+                    .addComponent(jLabel111)
+                    .addComponent(jLabel107))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(final_proBar_primary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(final_tf_Quote_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(final_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(final_tf_Quote_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(final_proBar_secondary_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(final_tf_PCost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel104)))
+                        .addComponent(jLabel104)
+                        .addComponent(final_tf_ACost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_PCost_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(final_tf_ACost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(final_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel103))
                     .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(final_tf_Quote_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(final_tf_Quote_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(final_tf_PCost_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel32Layout.createSequentialGroup()
                             .addGap(2, 2, 2)
                             .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2473,17 +2477,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(final_tf_ACost_labour, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(final_tf_Quote_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel32Layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(final_proBar_secondary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(final_proBar_primary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(final_tf_Quote_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(final_proBar_secondary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(final_proBar_primary_labour, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(final_tf_PCost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel71)))
+                        .addComponent(jLabel71)
+                        .addComponent(final_tf_ACost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_PCost_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2492,10 +2495,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(final_proBar_primary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(final_proBar_secondary_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(final_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel105)
                         .addComponent(final_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(final_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(final_tf_Quote_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(final_tf_PCost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -2526,7 +2529,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(final_but_managePay))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(final_but_signOff))
                     .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -2785,6 +2788,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         sharedInitializations();
         initializeWorkPage();
         initializeQuotePage();
+        initializeFinalisePage();
     }
 
     private void sharedInitializations() {
@@ -2840,6 +2844,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateTotalsOnWorkPage();
         calculateAllProgressions();
         populateFromQuoteCombos();
+    }
+
+    private void initializeFinalisePage() {
+        calculateAllExpensesOnFinalise();
+        populateTotalsOnFinalisePage();
+        calculateAllProgressionsOnFinalise();
+        populateExpensesTable();
     }
 
     //Methods
@@ -3466,6 +3477,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void work_but_finaliseJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_but_finaliseJobActionPerformed
         jobStatesTabPane.setSelectedIndex(3);
         l_quoteState.setText("Payment Pending");
+        initializeFinalisePage();
     }//GEN-LAST:event_work_but_finaliseJobActionPerformed
 
     private void final_but_signOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_signOffActionPerformed
@@ -3654,7 +3666,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         String item[] = (jComboBox3.getSelectedItem().toString()).split("_");
         work_over_tf_labour.setText(item[0] + " " + item[1]);
         String costWithRand[] = item[2].split("R");
-        rateSpinner.setValue(costWithRand[1]);
+        rateSpinner.setValue(Integer.parseInt(costWithRand[1]));
         String quantityWithDesc[] = item[3].split(":");
         work_labour_spin_hours.setValue(Integer.parseInt(quantityWithDesc[1]));
     }//GEN-LAST:event_jComboBox3ActionPerformed
@@ -4614,13 +4626,36 @@ public class GUI_jobStates extends javax.swing.JFrame {
         int labourProgression = (int) (Double.parseDouble(work_tf_ACost_labour.getText()) / Double.parseDouble(work_tf_PCost_labour.getText()) * 100);
         work_proBar_primary_labour.setValue(labourProgression);
 
-//        if ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) > 1) {
-//            //cutting into profits
-//            int overProgression = (int) ((Double.parseDouble(work_tf_ACost_mat.getText()) / Double.parseDouble(work_tf_PCost_mat.getText())) * 100) - 100;
-//            work_proBar_secondary_mat.setValue(overProgression);
-//        } else {
-//            work_proBar_secondary_mat.setValue(0);
-//        }
+        double totalQuoteMat = Double.parseDouble(work_tf_Quote_mat.getText());
+        double totalQuoteOver = Double.parseDouble(work_tf_Quote_over.getText());
+        double totalQuoteLab = Double.parseDouble(work_tf_Quote_labour.getText());
+        
+        double totalActualMat = Double.parseDouble(work_tf_ACost_mat.getText());
+        double totalActualOver = Double.parseDouble(work_tf_ACost_over.getText());
+        double totalActualLab = Double.parseDouble(work_tf_ACost_labour.getText());
+        
+        double totalPlannedMat = Double.parseDouble(work_tf_PCost_mat.getText());
+        double totalPlannedOver = Double.parseDouble(work_tf_PCost_over.getText());
+        double totalPlannedLab = Double.parseDouble(work_tf_PCost_labour.getText());
+        
+        double cutIntoProfits;
+        if (totalQuoteMat < totalActualMat) {
+            cutIntoProfits = 0;
+            cutIntoProfits = (totalActualMat - totalQuoteMat)/(totalQuoteMat - totalPlannedMat)*100;
+            work_proBar_secondary_mat.setValue((int)(cutIntoProfits));
+        }
+        if (totalQuoteOver < totalActualOver) {
+            cutIntoProfits = 0;
+            cutIntoProfits = (totalActualOver - totalQuoteOver)/(totalQuoteOver - totalPlannedOver)*100;
+            work_proBar_secondary_over.setValue((int)(cutIntoProfits));
+        }
+        if (totalQuoteLab < totalActualLab) {
+            cutIntoProfits = 0;
+            cutIntoProfits = (totalActualLab - totalQuoteLab)/(totalQuoteLab - totalPlannedLab)*100;
+            work_proBar_secondary_labour.setValue((int)(cutIntoProfits));
+        }
+        
+        
     }
 
     private void getContingenciesAndCharges() {
@@ -4695,16 +4730,90 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("state = " + currentState);
 
             if (currentState.equalsIgnoreCase("Accepted")) {
-                
+
             }
             if (currentState.equalsIgnoreCase("Rejected")) {
-                
+
             }
             if (currentState.equalsIgnoreCase("Quote in Progress")) {
-                
+
             }
         } catch (Exception e) {
             System.out.println("problem with validateQuoteStatus :" + e);
         }
     }
+
+    ///FINALISE PAGE STUFF/////
+    private void populateTotalsOnFinalisePage() {
+        // Planned totals
+        double materialIncCont = (calculateTotals("Material") * ((materialCont + 100) / 100));
+        final_tf_PCost_mat.setText(Double.toString(materialIncCont));
+        double overheadsIncCont = (calculateTotals("Overheads") * ((overheadCont + 100) / 100));
+        final_tf_PCost_over.setText(Double.toString(overheadsIncCont));
+        double labourIncCont = calculateTotals("Labour") * ((labourCont + 100) / 100);
+        final_tf_PCost_labour.setText(Double.toString(labourIncCont));
+        final_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
+
+        // Total on Quote so it includes charges
+        double materialIncCharges = materialIncCont * ((materialCharge + 100) / 100);
+        final_tf_Quote_mat.setText(Double.toString(materialIncCharges));
+        double overheadIncCharges = overheadsIncCont * ((overheadCharge + 100) / 100);
+        final_tf_Quote_over.setText(Double.toString(overheadIncCharges));
+        double labourIncCharges = labourIncCont * ((labourCharge + 100) / 100);
+        final_tf_Quote_labour.setText(Double.toString(labourIncCharges));
+        final_tf_Quote_total.setText(Double.toString(materialIncCharges + overheadIncCharges + labourIncCharges));
+    }
+
+    private void calculateAllExpensesOnFinalise() {
+        final_tf_ACost_mat.setText(Double.toString(populateExpenseOnFinalise("Material")));
+        final_tf_ACost_over.setText(Double.toString(populateExpenseOnFinalise("Overheads")));
+        final_tf_ACost_labour.setText(Double.toString(populateExpenseOnFinalise("Labour")));
+        double subtotal = Double.parseDouble(final_tf_ACost_mat.getText()) + Double.parseDouble(final_tf_ACost_over.getText()) + Double.parseDouble(final_tf_ACost_labour.getText());
+        final_tf_ACost_total.setText(Double.toString(subtotal));
+    }
+
+    private Double populateExpenseOnFinalise(String typeOfItem) {
+        double total = 0;
+        try {
+            Statement st = conn.createStatement();
+            String query = "select * from WorkingExpense where JobID = '" + currentJobID + "' and ExpenseType = '" + typeOfItem + "'";
+            rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int rate = rs.getInt("Cost_Rate");
+                int quantity = rs.getInt("Count_Hours");
+                total = total + (rate * quantity);
+            }
+        } catch (Exception e) {
+            System.out.println("error in populate expense type:" + typeOfItem + "error " + e);
+        }
+
+        return total;
+    }
+
+    private void calculateAllProgressionsOnFinalise() {
+        int matProgression = (int) (Double.parseDouble(final_tf_ACost_mat.getText()) / Double.parseDouble(final_tf_PCost_mat.getText()) * 100);
+        final_proBar_primary_mat.setValue(matProgression);
+
+        int overheadProgression = (int) (Double.parseDouble(final_tf_ACost_over.getText()) / Double.parseDouble(final_tf_PCost_over.getText()) * 100);
+        final_proBar_primary_over.setValue(overheadProgression);
+
+        int labourProgression = (int) (Double.parseDouble(final_tf_ACost_labour.getText()) / Double.parseDouble(final_tf_PCost_labour.getText()) * 100);
+        final_proBar_primary_labour.setValue(labourProgression);
+
+    }
+
+    private void populateExpensesTable() {
+        try {
+            Statement st = conn.createStatement();
+            //String query = "select * from client";
+            //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
+            String query = "Select * from WorkingExpense";
+            rs = st.executeQuery(query);
+            final_table_costs.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            System.out.println("problem with populating expenses table " + e);
+        }
+    }
+    ///End of finalise stuff/////
 }

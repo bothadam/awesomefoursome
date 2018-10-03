@@ -3171,7 +3171,7 @@
                               <Component id="final_but_managePay" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="final_but_signOff" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanel32" alignment="0" max="32767" attributes="0"/>
@@ -3474,23 +3474,36 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="final_tf_PCost_total" alignment="0" pref="139" max="32767" attributes="0"/>
-                                  <Component id="final_tf_PCost_labour" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="final_tf_PCost_mat" alignment="1" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="final_tf_ACost_mat" min="-2" pref="139" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="final_tf_PCost_mat" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jLabel106" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="final_tf_PCost_over" alignment="1" min="-2" pref="139" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="final_tf_ACost_mat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="final_tf_ACost_over" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="final_tf_ACost_labour" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="final_tf_ACost_total" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="final_tf_ACost_labour" min="-2" pref="139" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Component id="final_tf_PCost_labour" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jLabel107" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel107" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Component id="jLabel106" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="final_tf_ACost_over" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="final_tf_PCost_over" min="-2" pref="139" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="final_tf_ACost_total" min="-2" pref="139" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="final_tf_PCost_total" min="-2" pref="139" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -3506,7 +3519,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="final_proBar_primary_mat" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="final_proBar_primary_mat" alignment="0" pref="254" max="32767" attributes="0"/>
                                       <Component id="final_proBar_primary_over" alignment="0" max="32767" attributes="0"/>
                                       <Component id="final_proBar_primary_labour" alignment="0" max="32767" attributes="0"/>
                                       <Component id="final_proBar_primary_total" alignment="0" max="32767" attributes="0"/>
@@ -3552,22 +3565,20 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel106" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel107" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel108" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel109" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel111" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel107" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="final_proBar_primary_mat" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="final_tf_Quote_mat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="final_tf_ACost_mat" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="final_tf_Quote_mat" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="final_proBar_secondary_mat" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="final_tf_PCost_mat" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel104" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="final_tf_ACost_mat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="final_tf_PCost_mat" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -3576,11 +3587,13 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                   <Component id="final_tf_ACost_over" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="final_tf_PCost_over" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel103" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="final_tf_Quote_over" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="final_tf_Quote_over" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="final_tf_PCost_over" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -3594,20 +3607,18 @@
                           <Component id="jSeparator8" min="-2" pref="3" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="final_tf_ACost_labour" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="final_tf_Quote_labour" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="final_proBar_secondary_labour" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="final_proBar_primary_labour" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                              <Component id="final_tf_Quote_labour" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="final_proBar_secondary_labour" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="final_proBar_primary_labour" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="final_tf_PCost_labour" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel71" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="final_tf_ACost_labour" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="final_tf_PCost_labour" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -3619,10 +3630,10 @@
                                   <Component id="final_proBar_secondary_total" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="final_tf_PCost_total" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel105" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="final_tf_ACost_total" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="final_tf_Quote_total" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="final_tf_PCost_total" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -3653,38 +3664,6 @@
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Materials:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="final_tf_PCost_mat">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="10" style="0"/>
-                    </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="final_tf_PCost_over">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="10" style="0"/>
-                    </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="final_tf_PCost_labour">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="10" style="0"/>
-                    </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="final_tf_PCost_total">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="10" style="0"/>
-                    </Property>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel105">
@@ -3749,7 +3728,6 @@
                       <Color blue="ff" green="ff" red="33" type="rgb"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="value" type="int" value="100"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="final_tf_ACost_total">
@@ -3774,7 +3752,6 @@
                       <Color blue="ff" green="ff" red="33" type="rgb"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="value" type="int" value="75"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JProgressBar" name="final_proBar_primary_labour">
@@ -3783,7 +3760,6 @@
                       <Color blue="ff" green="ff" red="33" type="rgb"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="value" type="int" value="55"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JProgressBar" name="final_proBar_primary_total">
@@ -3792,7 +3768,6 @@
                       <Color blue="ff" green="ff" red="33" type="rgb"/>
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="value" type="int" value="85"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JProgressBar" name="final_proBar_secondary_over">
@@ -3821,7 +3796,6 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="value" type="int" value="25"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel106">
@@ -3830,14 +3804,6 @@
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Planned Cost"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel107">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Actual Cost"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel108">
@@ -3869,6 +3835,46 @@
                 <Component class="javax.swing.JSeparator" name="jSeparator8">
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator9">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel107">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Verdana" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Actual Cost"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="final_tf_PCost_mat">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="10" style="0"/>
+                    </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="final_tf_PCost_over">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="10" style="0"/>
+                    </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="final_tf_PCost_labour">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="10" style="0"/>
+                    </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="final_tf_PCost_total">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="10" style="0"/>
+                    </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
