@@ -73,6 +73,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel137 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jobStatesTabPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -2192,17 +2193,41 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("View");
 
+        buttonGroup1.add(final_rb_all);
         final_rb_all.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         final_rb_all.setText("All");
+        final_rb_all.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                final_rb_allActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(final_rb_mat);
         final_rb_mat.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         final_rb_mat.setText("Material");
+        final_rb_mat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                final_rb_matActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(final_rb_over);
         final_rb_over.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         final_rb_over.setText("Overhead");
+        final_rb_over.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                final_rb_overActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(final_rb_lab);
         final_rb_lab.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         final_rb_lab.setText("Labour");
+        final_rb_lab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                final_rb_labActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -2528,9 +2553,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(final_tf_outst, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(final_but_managePay))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(final_but_signOff))
+                    .addComponent(final_but_signOff, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -3837,6 +3860,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_quote_allquotes_comboItemStateChanged
 
+    private void final_rb_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_rb_allActionPerformed
+        populateExpensesTable();
+    }//GEN-LAST:event_final_rb_allActionPerformed
+
+    private void final_rb_matActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_rb_matActionPerformed
+        this.sortedExpensesTable("Material");
+    }//GEN-LAST:event_final_rb_matActionPerformed
+
+    private void final_rb_overActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_rb_overActionPerformed
+        this.sortedExpensesTable("Overheads");
+    }//GEN-LAST:event_final_rb_overActionPerformed
+
+    private void final_rb_labActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_rb_labActionPerformed
+        this.sortedExpensesTable("Labour");
+    }//GEN-LAST:event_final_rb_labActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3875,6 +3914,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton but_close;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton final_but_managePay;
     private javax.swing.JButton final_but_signOff;
     private javax.swing.JProgressBar final_proBar_primary_labour;
@@ -4838,6 +4878,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         int labourProgression = (int) (Double.parseDouble(final_tf_ACost_labour.getText()) / Double.parseDouble(final_tf_PCost_labour.getText()) * 100);
         final_proBar_primary_labour.setValue(labourProgression);
+        
+        int allProgression = (int) (Double.parseDouble(final_tf_ACost_total.getText()) / Double.parseDouble(final_tf_PCost_total.getText()) * 100);
+        final_proBar_primary_total.setValue(allProgression);
 
     }
 
@@ -4846,7 +4889,20 @@ public class GUI_jobStates extends javax.swing.JFrame {
             Statement st = conn.createStatement();
             //String query = "select * from client";
             //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
-            String query = "Select * from WorkingExpense";
+            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense";
+            rs = st.executeQuery(query);
+            final_table_costs.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch (Exception e) {
+            System.out.println("problem with populating expenses table " + e);
+        }
+    }
+    
+    private void sortedExpensesTable(String category) {
+        try {
+            Statement st = conn.createStatement();
+            //String query = "select * from client";
+            //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
+            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense where expensetype = '"+category+"'";
             rs = st.executeQuery(query);
             final_table_costs.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
