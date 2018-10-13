@@ -2847,10 +2847,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void initializeFinalisePage() {
+        getContingenciesAndCharges();
         calculateAllExpensesOnFinalise();
         populateTotalsOnFinalisePage();
         calculateAllProgressionsOnFinalise();
         populateExpensesTable();
+        getReceivedFromDB();
+        getQuoteTotalFromDB();
+        calculateOutstanding();
     }
 
     //Methods
@@ -3320,7 +3324,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("myerror" + e);
         }
         try {
-            String sql = "update quote set quoteStatus = 'Rejected' where QuoteID != '" + currentQuoteID + "' ";
+            String sql = "update quote set quoteStatus = 'Rejected' where QuoteID != '" + currentQuoteID + "' AND JobID='"+currentJobID+"' ";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.executeUpdate();
         } catch (Exception e) {
@@ -3498,8 +3502,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_insertAdrActionPerformed
 
     private void final_but_managePayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_managePayActionPerformed
-        GUI_managePayment payGUI = new GUI_managePayment();
-        payGUI.setVisible(true);
+        //GUI_managePayment payGUI = new GUI_managePayment();
+        // payGUI.setVisible(true);
+        Double paidAmount = Double.parseDouble(JOptionPane.showInputDialog("How much have you received from the client"));
+        try {
+            String sql = "Insert into Payment(JobID, PaidAmount) values(?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, this.currentJobID);
+            statement.setDouble(2, paidAmount);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Problem with adding a payment" + e);
+        }
+
+        this.getReceivedFromDB();
+        calculateOutstanding();
     }//GEN-LAST:event_final_but_managePayActionPerformed
 
     private void job_cb_selectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_cb_selectClientActionPerformed
@@ -4501,6 +4518,26 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         return total;
     }
+    
+    private double calculateTotals(String typeOfItem, String quoteID) {
+        double total = 0;
+        try {
+            Statement st = conn.createStatement();
+
+            String query = "select * from quoteItem where quoteID = '" + quoteID + "' and QuoteType = '" + typeOfItem + "'";
+            rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                int rate = rs.getInt("Cost_Rate");
+                int quantity = rs.getInt("Count_Hours");
+                total = total + (rate * quantity);
+            }
+        } catch (Exception e) {
+            System.out.println("error in calculateTotals:" + e);
+        }
+
+        return total;
+    }
 
     private void populateAllTotals() {
         quote_tf_cost_mat.setText(Double.toString(calculateTotals("Material")));
@@ -4511,12 +4548,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void populateTotalsOnWorkPage() {
+        
         // Planned totals
-        double materialIncCont = (calculateTotals("Material") * ((materialCont + 100) / 100));
+        double materialIncCont = (calculateTotals("Material", getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
         work_tf_PCost_mat.setText(Double.toString(materialIncCont));
-        double overheadsIncCont = (calculateTotals("Overheads") * ((overheadCont + 100) / 100));
+        double overheadsIncCont = (calculateTotals("Overheads", getQuoteIDForCurrentJob()) * ((overheadCont + 100) / 100));
         work_tf_PCost_over.setText(Double.toString(overheadsIncCont));
-        double labourIncCont = calculateTotals("Labour") * ((labourCont + 100) / 100);
+        double labourIncCont = calculateTotals("Labour", getQuoteIDForCurrentJob()) * ((labourCont + 100) / 100);
         work_tf_PCost_labour.setText(Double.toString(labourIncCont));
         work_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
 
@@ -4629,33 +4667,32 @@ public class GUI_jobStates extends javax.swing.JFrame {
         double totalQuoteMat = Double.parseDouble(work_tf_Quote_mat.getText());
         double totalQuoteOver = Double.parseDouble(work_tf_Quote_over.getText());
         double totalQuoteLab = Double.parseDouble(work_tf_Quote_labour.getText());
-        
+
         double totalActualMat = Double.parseDouble(work_tf_ACost_mat.getText());
         double totalActualOver = Double.parseDouble(work_tf_ACost_over.getText());
         double totalActualLab = Double.parseDouble(work_tf_ACost_labour.getText());
-        
+
         double totalPlannedMat = Double.parseDouble(work_tf_PCost_mat.getText());
         double totalPlannedOver = Double.parseDouble(work_tf_PCost_over.getText());
         double totalPlannedLab = Double.parseDouble(work_tf_PCost_labour.getText());
-        
+
         double cutIntoProfits;
         if (totalQuoteMat < totalActualMat) {
             cutIntoProfits = 0;
-            cutIntoProfits = (totalActualMat - totalQuoteMat)/(totalQuoteMat - totalPlannedMat)*100;
-            work_proBar_secondary_mat.setValue((int)(cutIntoProfits));
+            cutIntoProfits = (totalActualMat - totalQuoteMat) / (totalQuoteMat - totalPlannedMat) * 100;
+            work_proBar_secondary_mat.setValue((int) (cutIntoProfits));
         }
         if (totalQuoteOver < totalActualOver) {
             cutIntoProfits = 0;
-            cutIntoProfits = (totalActualOver - totalQuoteOver)/(totalQuoteOver - totalPlannedOver)*100;
-            work_proBar_secondary_over.setValue((int)(cutIntoProfits));
+            cutIntoProfits = (totalActualOver - totalQuoteOver) / (totalQuoteOver - totalPlannedOver) * 100;
+            work_proBar_secondary_over.setValue((int) (cutIntoProfits));
         }
         if (totalQuoteLab < totalActualLab) {
             cutIntoProfits = 0;
-            cutIntoProfits = (totalActualLab - totalQuoteLab)/(totalQuoteLab - totalPlannedLab)*100;
-            work_proBar_secondary_labour.setValue((int)(cutIntoProfits));
+            cutIntoProfits = (totalActualLab - totalQuoteLab) / (totalQuoteLab - totalPlannedLab) * 100;
+            work_proBar_secondary_labour.setValue((int) (cutIntoProfits));
         }
-        
-        
+
     }
 
     private void getContingenciesAndCharges() {
@@ -4745,12 +4782,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     ///FINALISE PAGE STUFF/////
     private void populateTotalsOnFinalisePage() {
+       
         // Planned totals
-        double materialIncCont = (calculateTotals("Material") * ((materialCont + 100) / 100));
+        double materialIncCont = (calculateTotals("Material",getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
         final_tf_PCost_mat.setText(Double.toString(materialIncCont));
-        double overheadsIncCont = (calculateTotals("Overheads") * ((overheadCont + 100) / 100));
+        double overheadsIncCont = (calculateTotals("Overheads",getQuoteIDForCurrentJob()) * ((overheadCont + 100) / 100));
         final_tf_PCost_over.setText(Double.toString(overheadsIncCont));
-        double labourIncCont = calculateTotals("Labour") * ((labourCont + 100) / 100);
+        double labourIncCont = calculateTotals("Labour",getQuoteIDForCurrentJob()) * ((labourCont + 100) / 100);
         final_tf_PCost_labour.setText(Double.toString(labourIncCont));
         final_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
 
@@ -4816,4 +4854,58 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
     }
     ///End of finalise stuff/////
+
+    private void getReceivedFromDB() {
+        double paidAmount = 0;
+        try {
+            Statement st = conn.createStatement();
+            String query = "Select * from Payment where JobID = '" + currentJobID + "'";
+            rs = st.executeQuery(query);
+            while (rs.next() == true) {
+                paidAmount += rs.getDouble("PaidAmount");
+            }
+        } catch (Exception e) {
+            System.out.println("problem with populating expenses table " + e);
+        }
+
+        final_tf_rec.setText(Double.toString(paidAmount));
+    }
+
+    private void getQuoteTotalFromDB() {
+        //first we need to get associated quote
+        
+        
+        double materialIncCont = (calculateTotals("Material", getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
+        double overheadsIncCont = (calculateTotals("Overheads", getQuoteIDForCurrentJob()) * ((overheadCont + 100) / 100));
+        double labourIncCont = (calculateTotals("Labour", getQuoteIDForCurrentJob()) * ((labourCont + 100) / 100));
+        double total = materialIncCont + overheadsIncCont + labourIncCont;
+        final_tf_quote.setText(Double.toString(total));
+       
+    }
+
+    private void calculateOutstanding() {
+        double diff = Double.parseDouble(final_tf_quote.getText()) - Double.parseDouble(final_tf_rec.getText());
+        final_tf_outst.setText(Double.toString(diff));
+    }
+
+    private String getQuoteIDForCurrentJob() {
+        String quoteIDToUse = "";
+        try {
+            Statement st = conn.createStatement();
+            String a = "Accepted";
+            String query = "select * from quote where jobID = '" + currentJobID + "' AND quotestatus = '"+a+"'";
+            rs = st.executeQuery(query);
+
+            do {
+                if (!rs.next()) {
+                    break;
+                }
+                quoteIDToUse =  rs.getString("QuoteID");
+            } while (rs.next());
+
+        } catch (Exception e) {
+            System.out.println("Problem with getting quote data on finalise page" + e);
+        }
+        return quoteIDToUse;
+    }
 }
