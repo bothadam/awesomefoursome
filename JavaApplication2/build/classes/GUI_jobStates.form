@@ -77,9 +77,6 @@
           <Font name="Verdana" size="16" style="1"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jobStatesTabPaneMouseClicked"/>
-      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -104,8 +101,6 @@
                                   <Component id="jPanel13" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="job_cb_selectClient" min="-2" pref="191" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="job_but_go" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -127,10 +122,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="job_cb_selectClient" max="32767" attributes="0"/>
-                          <Component id="job_but_go" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="job_cb_selectClient" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -225,7 +217,7 @@
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" pref="42" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" pref="58" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -537,20 +529,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="job_cb_selectClientMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="job_cb_selectClientActionPerformed"/>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="job_cb_selectClientItemStateChanged"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="job_but_go">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Find Data"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="job_but_goActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -4001,17 +3984,17 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_email">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jamesMkotze@gmail.com"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_contactNr">
               <Properties>
-                <Property name="text" type="java.lang.String" value="0820745213"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_clientFullname">
               <Properties>
-                <Property name="text" type="java.lang.String" value="James Kotze"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
@@ -4031,7 +4014,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_clientCode">
               <Properties>
-                <Property name="text" type="java.lang.String" value="JK001"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
@@ -4041,7 +4024,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_siteLocation">
               <Properties>
-                <Property name="text" type="java.lang.String" value="12 mountainview crescent Durbanville"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -4144,7 +4127,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_jobTitle">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Install Wood Fence"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel27">
@@ -4164,7 +4147,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_jobID">
               <Properties>
-                <Property name="text" type="java.lang.String" value="J0001"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_plannedCost">
@@ -4202,7 +4185,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Quote Pending"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_jobState">
@@ -4210,7 +4193,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Job Open"/>
+                <Property name="text" type="java.lang.String" value="-"/>
               </Properties>
             </Component>
           </SubComponents>
