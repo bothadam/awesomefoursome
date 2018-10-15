@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 public class GUI_jobStates extends javax.swing.JFrame {
-
     private String currentJobID = "";
     private String currentQuoteID = "";
     private String currentClientID = "";
@@ -2782,6 +2781,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enableJobCreation(true);
     }
 
+    //delete this comment please (and the one bellow this one)
+    //thank you
+    
     //initialize GUI components for when you manage a current job
     private void initComponentsManageJob() {
         sharedInitializations();
