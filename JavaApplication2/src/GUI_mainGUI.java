@@ -1932,16 +1932,18 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
 
         if (editOrAdd.equals("add")) {
-            String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
+            AddressPane ap = new AddressPane(client_tf_address);
+            /*String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the suburb") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
-            client_tf_address.setText(createdAddress);
+            client_tf_address.setText(createdAddress);*/
         } else if (editOrAdd.equals("edit")) {
-            GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
-            addrGUI.setVisible(true);
+            /*GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
+            addrGUI.setVisible(true);*/
+            AddressPane ap = new AddressPane(client_tf_address);
         }
 
 

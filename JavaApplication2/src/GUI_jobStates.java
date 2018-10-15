@@ -3542,7 +3542,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_final_but_signOffActionPerformed
 
     private void job_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_insertAdrActionPerformed
-        //GUI_insertAddress addrGUI = new GUI_insertAddress();
+        AddressPane ap = new AddressPane(job_tf_siteLocation);
+        /*//GUI_insertAddress addrGUI = new GUI_insertAddress();
         //addrGUI.setVisible(true);
         String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
@@ -3550,7 +3551,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City") + "#";
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
-        job_tf_siteLocation.setText(createdAddress);
+        job_tf_siteLocation.setText(createdAddress);*/
     }//GEN-LAST:event_job_but_insertAdrActionPerformed
 
     private void final_but_managePayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_managePayActionPerformed
