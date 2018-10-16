@@ -3158,8 +3158,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void quote_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_doneActionPerformed
 
-        System.out.println("current quote id = " + currentQuoteID);
-
         if (addOrChange.equals("change")) {
             try {
                 String selectedItem[] = quote_mat_li_materials.getSelectedValue().toString().split("#");
@@ -3228,8 +3226,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void quote_over_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_doneActionPerformed
 
-        System.out.println("current quote id = " + currentQuoteID);
-
         if (addOrChange.equals("add")) {
             try {
                 String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
@@ -3293,8 +3289,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_labour_but_cancelActionPerformed
 
     private void quote_labour_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_doneActionPerformed
-
-        System.out.println("current quote id = " + currentQuoteID);
 
         if (addOrChange.equals("add")) {
             try {
