@@ -798,7 +798,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1093,7 +1093,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jPanel35" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane14" alignment="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                       <Component id="quote_mat_but_add" min="-2" max="-2" attributes="0"/>
@@ -1102,7 +1102,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="quote_mat_but_remove" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane14" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jPanel35" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1141,24 +1141,24 @@
                                       <Component id="quote_mat_tf_item" alignment="0" max="32767" attributes="0"/>
                                       <Component id="quote_mat_tf_cost" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="72" max="32767" attributes="0"/>
+                                  <EmptySpace pref="77" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel114" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_mat_tf_item" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel115" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_mat_tf_cost" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel116" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_mat_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1183,9 +1183,6 @@
                           <Properties>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_mat_tf_itemActionPerformed"/>
-                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel115">
                           <Properties>
@@ -1235,9 +1232,6 @@
                           <Properties>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quote_mat_tf_costActionPerformed"/>
-                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1400,7 +1394,7 @@
                                       <Component id="jLabel118" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_over_tf_total" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="quote_over_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_over_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1474,6 +1468,9 @@
                               <StringArray count="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quote_over_li_overheadsMouseClicked"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -1580,6 +1577,9 @@
                               <StringArray count="0"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quote_labour_li_labourMouseClicked"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -1631,7 +1631,7 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel119" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_labour_combo_workers" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1643,7 +1643,7 @@
                                       <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_labour_l_rate" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="quote_labour_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="quote_labour_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
