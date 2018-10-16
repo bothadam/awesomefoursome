@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 public class GUI_jobStates extends javax.swing.JFrame {
+
     private String currentJobID = "";
     private String currentQuoteID = "";
     private String currentClientID = "";
@@ -35,6 +36,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
     double labourCharge;
     double overheadCharge;
 
+    String selectedItemCode = "";
+    String selectedItem[] = new String[10];
+
     public GUI_jobStates(String passedThroughIDOfJob) {
         //make DB connection
         connection();
@@ -51,7 +55,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         //custom initialization for GUI component management
         //determine if the create or manage button was pressed
         refreshGUI();
-        
 
     }
 
@@ -900,6 +903,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel114.setText("Item");
 
         quote_mat_tf_item.setEnabled(false);
+        quote_mat_tf_item.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_tf_itemActionPerformed(evt);
+            }
+        });
 
         jLabel115.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel115.setText("Cost Per Item");
@@ -931,6 +939,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         quote_mat_tf_cost.setEnabled(false);
+        quote_mat_tf_cost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quote_mat_tf_costActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -975,6 +988,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         quote_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quote_mat_li_materials.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quote_mat_li_materialsMouseClicked(evt);
+            }
+        });
         jScrollPane14.setViewportView(quote_mat_li_materials);
 
         quote_mat_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -2783,7 +2801,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     //delete this comment please (and the one bellow this one)
     //thank you
-    
     //initialize GUI components for when you manage a current job
     private void initComponentsManageJob() {
         sharedInitializations();
@@ -2820,11 +2837,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void initializeJobsPage_Manage() {
         enableJobCreation(false);
-        
+
         selectCorrectClientInJobsPage();
     }
 
-   
     private void selectCorrectClientInJobsPage() {
         try {
             Statement st = conn.createStatement();
@@ -3136,11 +3152,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_mat_but_cancelActionPerformed
 
     private void quote_mat_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_doneActionPerformed
-
         if (addOrChange.equals("change")) {
             try {
                 String selectedItem[] = quote_mat_li_materials.getSelectedValue().toString().split("#");
-                String selectedItemCode = selectedItem[1];
+                selectedItemCode = selectedItem[1].toString();
 
                 String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=? Where QuoteItemCode =?";
                 PreparedStatement statement = conn.prepareStatement(sql);
@@ -3870,6 +3885,61 @@ public class GUI_jobStates extends javax.swing.JFrame {
             itemStateChangedInt = 1;
         }
     }//GEN-LAST:event_job_cb_selectClientItemStateChanged
+
+    private void quote_mat_tf_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_tf_itemActionPerformed
+
+    }//GEN-LAST:event_quote_mat_tf_itemActionPerformed
+
+    private void quote_mat_li_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_mat_li_materialsMouseClicked
+
+        
+        /*System.out.println("");
+        String delimiter = "\\.";
+        String quoteData = quote_mat_li_materials.getSelectedValue();
+        String tempArray[] = quoteData.split(delimiter, 2);
+        for (int i = 0; i < tempArray.length; i++)
+            System.out.println(tempArray[i]);*/
+ 
+        
+        /*System.out.println("");
+        String quoteData = quote_mat_li_materials.getSelectedValue();
+        String delimiter = "\\.";
+        String tempArray[] = quoteData.split(delimiter);
+        
+        for (int i = 0; i < tempArray.length; i++){
+             System.out.println(tempArray[i]);
+        }*/
+        
+        /*String quoteData = quote_mat_li_materials.getSelectedValue();
+        String tempArray[];
+        String delimiter = "-";
+
+        tempArray = quoteData.split(delimiter);
+        //System.out.println("Temp array" + tempArray.toString());
+        
+        for (int i = 0; i < tempArray.length; i++) {
+            System.out.println(tempArray[i]);
+        }*/
+
+        //String  quoteDataSplitter[] = quoteData.split("_");
+        //System.out.println("Main " + quoteDataSplitter[0]);
+        //String quoteItem[] = quoteData.split("-");
+        //System.out.println("First sout: " + quoteItem[0]);
+        //String splitQuote[] = quoteItem[1].split("/");
+        //System.out.println("Second sout: " + splitQuote[0]);
+        //String splitSplitQuote[] = splitQuote[0].split("/");
+        //System.out.println("Third sout: " + splitSplitQuote[3]);
+        /*quote_mat_tf_item.setText(quoteDataSplitter[0]);
+      String quoteCost[] = quoteData.split("#");
+      quote_mat_tf_cost.setText(quoteDataSplitter[1]);
+      String quoteAmount[] = quoteData.split("#");
+      quote_mat_spin_count.setValue(Integer.parseInt(quoteDataSplitter[2]));*/
+
+    }//GEN-LAST:event_quote_mat_li_materialsMouseClicked
+
+    private void quote_mat_tf_costActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_tf_costActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quote_mat_tf_costActionPerformed
 
     /**
      * @param args the command line arguments
