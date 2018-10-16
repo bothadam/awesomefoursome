@@ -3917,45 +3917,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         //read the data from the table in the Database (using ID)
         populateFieldsOfSelectedQuoteItem(selectedItemCode, "Material");
 
-        //set the data as is on the database
-        /*System.out.println("");
-        String delimiter = "\\.";
-        String quoteData = quote_mat_li_materials.getSelectedValue();
-        String tempArray[] = quoteData.split(delimiter, 2);
-        for (int i = 0; i < tempArray.length; i++)
-            System.out.println(tempArray[i]);*/
- /*System.out.println("");
-        String quoteData = quote_mat_li_materials.getSelectedValue();
-        String delimiter = "\\.";
-        String tempArray[] = quoteData.split(delimiter);
-        
-        for (int i = 0; i < tempArray.length; i++){
-             System.out.println(tempArray[i]);
-        }*/
- /*String quoteData = quote_mat_li_materials.getSelectedValue();
-        String tempArray[];
-        String delimiter = "-";
-
-        tempArray = quoteData.split(delimiter);
-        //System.out.println("Temp array" + tempArray.toString());
-        
-        for (int i = 0; i < tempArray.length; i++) {
-            System.out.println(tempArray[i]);
-        }*/
-        //String  quoteDataSplitter[] = quoteData.split("_");
-        //System.out.println("Main " + quoteDataSplitter[0]);
-        //String quoteItem[] = quoteData.split("-");
-        //System.out.println("First sout: " + quoteItem[0]);
-        //String splitQuote[] = quoteItem[1].split("/");
-        //System.out.println("Second sout: " + splitQuote[0]);
-        //String splitSplitQuote[] = splitQuote[0].split("/");
-        //System.out.println("Third sout: " + splitSplitQuote[3]);
-        /*quote_mat_tf_item.setText(quoteDataSplitter[0]);
-      String quoteCost[] = quoteData.split("#");
-      quote_mat_tf_cost.setText(quoteDataSplitter[1]);
-      String quoteAmount[] = quoteData.split("#");
-      quote_mat_spin_count.setValue(Integer.parseInt(quoteDataSplitter[2]));*/
-
     }//GEN-LAST:event_quote_mat_li_materialsMouseClicked
 
     private void quote_over_li_overheadsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_over_li_overheadsMouseClicked
@@ -4331,9 +4292,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("error in populateClientCombo:" + e);
         }
 
-        System.out.println("Title = " + title);
-        System.out.println("costRate = " + costRate);
-        System.out.println("countHours = " + countHours);
 
         //populate the fields accordingly
         if (type.equals("Material")) {
