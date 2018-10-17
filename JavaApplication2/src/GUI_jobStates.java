@@ -2799,8 +2799,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enableJobCreation(true);
     }
 
-    //delete this comment please (and the one bellow this one)
-    //thank you
     //initialize GUI components for when you manage a current job
     private void initComponentsManageJob() {
         sharedInitializations();
@@ -2837,7 +2835,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void initializeJobsPage_Manage() {
         enableJobCreation(false);
-
         selectCorrectClientInJobsPage();
     }
 
@@ -3122,6 +3119,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
+        String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
+        currentClientID = selectedClient[1];
+
         if (addOrChange.equals("add")) {
             addNewJob();
             initComponentsManageJob();
@@ -3132,6 +3132,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Please write a change job method here");
             initComponentsManageJob();
         }
+
     }//GEN-LAST:event_job_but_doneActionPerformed
 
     private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
@@ -3335,11 +3336,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
 
         l_quoteState.setText("Quote Pending");
+        String code = "";
         try {
             String sql = "Insert into quote(QuoteID,JobID,QuoteStatus,MaterialCont,OverheadCont,LabourCont,MaterialCharge,OverheadCharge,LabourCharge) values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             boolean goahead = false;
-            String code = "";
 
             while (goahead == false) {
                 Random rand = new Random();
@@ -3348,7 +3349,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
                 String sql2 = "Select * from quote";
                 Statement st = conn.createStatement();
-                rs = st.executeQuery(sql2);
+                ResultSet rs = st.executeQuery(sql2);
 
                 while (rs.next()) {
                     if (rs.getString("quoteID") != code) {
@@ -3362,12 +3363,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(1, code);
                 statement.setString(2, currentJobID);
                 statement.setString(3, "Quote in Progress");
-                statement.setInt(3, 0);// material contingency
-                statement.setInt(4, 0);//  overhead contingency
-                statement.setInt(5, 0);//   labour contingency
-                statement.setInt(6, 0);// material charge
-                statement.setInt(7, 0);//  overhead charge
-                statement.setInt(8, 0);//   labour charge
+                statement.setInt(4, 0);// material contingency
+                statement.setInt(5, 0);//  overhead contingency
+                statement.setInt(6, 0);//   labour contingency
+                statement.setInt(7, 0);// material charge
+                statement.setInt(8, 0);//  overhead charge
+                statement.setInt(9, 0);//   labour charge
                 statement.executeUpdate();
             }
 
@@ -3377,6 +3378,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         System.out.println("initializing the quote page...");
         initializeQuotePage();
+        quote_allquotes_combo.setSelectedItem(code);
     }//GEN-LAST:event_quote_but_createActionPerformed
 
     private void quote_but_rejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_rejActionPerformed
@@ -3897,7 +3899,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void job_cb_selectClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_job_cb_selectClientItemStateChanged
         itemStateChangedInt++;
         if (itemStateChangedInt == 3) {
-            initialPopulateClientInfo();
+            populateClientInfo();
+
             itemStateChangedInt = 1;
         }
     }//GEN-LAST:event_job_cb_selectClientItemStateChanged
@@ -4286,7 +4289,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("error in populateClientCombo:" + e);
         }
 
-
         //populate the fields accordingly
         if (type.equals("Material")) {
             quote_mat_tf_item.setText(title);
@@ -4395,29 +4397,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         } catch (Exception e) {
             System.out.println("Database connection error" + e);
-        }
-    }
-
-    private void initialPopulateClientInfo() {
-        try {
-            Statement st = conn.createStatement();
-            String name[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
-            String query = "select * from client where fname = '" + name[0] + "'";
-            ResultSet rs = st.executeQuery(query);
-
-            while (rs.next()) {
-                l_clientCode.setText(rs.getString("clientID"));
-                l_clientFullname.setText(rs.getString("fname"));
-                l_contactNr.setText(rs.getString("connum"));
-                l_email.setText(rs.getString("email"));
-                l_siteLocation.setText(rs.getString("address"));
-                job_tf_fname.setText(rs.getString("fname"));
-                job_tf_lname.setText(rs.getString("lname"));
-                job_tf_contactNr.setText(rs.getString("connum"));
-                job_tf_email.setText(rs.getString("email"));
-            }
-        } catch (Exception e) {
-            System.out.println("Problem with populateClientsInfo " + e);
         }
     }
 
