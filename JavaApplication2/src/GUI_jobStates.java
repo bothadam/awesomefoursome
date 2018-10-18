@@ -21,6 +21,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private String currentJobID = "";
     private String currentQuoteID = "";
     private String currentClientID = "";
+    private String DefiniteCurrentClientID = "";
 
     Connection conn;
     Statement st;
@@ -42,7 +43,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     public GUI_jobStates(String passedThroughIDOfJob) {
         //make DB connection
         connection();
-        
+
         //set the JOB ID
         currentJobID = passedThroughIDOfJob;
 
@@ -61,6 +62,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         } else {
             //manageJob button was pressed
             initialLoadComponentsManageJob();
+            currentClientID = DefiniteCurrentClientID;
+            selectCorrectClientInJobsPage();
         }
 
     }
@@ -2806,12 +2809,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enableJobCreation(true);
     }
 
-    
-    
     //initialize GUI components for when you manage a current job
     private void initialLoadComponentsManageJob() {
-        initComponentsManageJob();
         sharedInitializations();
+        initComponentsManageJob();
     }
 
     private void initComponentsManageJob() {
@@ -2823,9 +2824,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         initializeQuotePage();
         initializeFinalisePage();
     }
-    
+
     private void setClientID() {
-        
+
         if (!currentJobID.equals("")) {
 
             try {
@@ -2835,6 +2836,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
                 while (rs.next()) {
                     currentClientID = rs.getString("clientID");
+                    DefiniteCurrentClientID = currentClientID;
                 }
             } catch (Exception e) {
                 System.out.println("Error in setClientID = " + e);
@@ -3114,7 +3116,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     //action performed listeners
-
     private void job_but_createJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createJobActionPerformed
         enablePanelJob(true);
         addOrChange = "add";
@@ -3122,10 +3123,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
         jobStatesTabPane.setSelectedIndex(1);
-        populateMaterials();
-        populateOverheads();
-        populateLabour();
-        populateAllTotals();
+//        populateMaterials();
+//        populateOverheads();
+//        populateLabour();
+//        populateAllTotals();
     }//GEN-LAST:event_job_but_createQuoteActionPerformed
 
     private void job_but_changeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_changeDetailsActionPerformed
@@ -3134,7 +3135,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
-        
+
         String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
         currentClientID = selectedClient[1];
 
@@ -5094,4 +5095,5 @@ public class GUI_jobStates extends javax.swing.JFrame {
             initComponentsManageJob();
         }
     }
+
 }
