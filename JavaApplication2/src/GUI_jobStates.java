@@ -42,7 +42,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     public GUI_jobStates(String passedThroughIDOfJob) {
         //make DB connection
         connection();
-
+        
         //set the JOB ID
         currentJobID = passedThroughIDOfJob;
 
@@ -54,7 +54,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         //custom initialization for GUI component management
         //determine if the create or manage button was pressed
-        refreshGUI();
+        if (currentJobID.equals("")) {
+            //new job button was pressed
+            initComponentsNewJob();
+
+        } else {
+            //manageJob button was pressed
+            initialLoadComponentsManageJob();
+        }
 
     }
 
@@ -2799,9 +2806,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enableJobCreation(true);
     }
 
+    
+    
     //initialize GUI components for when you manage a current job
-    private void initComponentsManageJob() {
+    private void initialLoadComponentsManageJob() {
+        initComponentsManageJob();
         sharedInitializations();
+    }
+
+    private void initComponentsManageJob() {
+        disableAllPanels();
         populateClientInfo();
         populateJobInfo();
         initializeJobsPage_Manage();
@@ -2809,8 +2823,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         initializeQuotePage();
         initializeFinalisePage();
     }
-
+    
     private void setClientID() {
+        
         if (!currentJobID.equals("")) {
 
             try {
@@ -3119,6 +3134,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
+        
         String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
         currentClientID = selectedClient[1];
 
@@ -3899,9 +3915,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void job_cb_selectClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_job_cb_selectClientItemStateChanged
         itemStateChangedInt++;
         if (itemStateChangedInt == 3) {
+            String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
+            currentClientID = selectedClient[1];
             populateClientInfo();
-
             itemStateChangedInt = 1;
+            System.out.println("this is the most recent client id = " + currentClientID);
         }
     }//GEN-LAST:event_job_cb_selectClientItemStateChanged
 
@@ -4419,7 +4437,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             String query = "select * from client where clientID = '" + currentClientID + "'";
-            rs = st.executeQuery(query);
+            ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 l_clientCode.setText(rs.getString("clientID"));
                 l_clientFullname.setText(rs.getString("fname"));
