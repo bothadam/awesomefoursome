@@ -24,6 +24,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private String DefiniteCurrentClientID = "";
     private String acceptedQuoteID = "";
     private String jobState = "";
+    private String jobQuoteState = "";
+    private int itemStateChangedInt = 1;
 
     Connection conn;
     Statement st;
@@ -2669,29 +2671,28 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel27.setText("Current Cost:");
 
-        l_currentCost.setText("Unquoted");
-
         jLabel38.setText("Job ID:");
 
         l_jobID.setText("-");
-
-        l_plannedCost.setText("Unquoted");
 
         jLabel53.setText("Planned Cost:");
 
         jLabel31.setText("Quote ID:");
 
-        l_quoteID.setText("Unquoted");
+        l_quoteID.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        l_quoteID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                l_quoteIDMouseClicked(evt);
+            }
+        });
 
         jLabel28.setText("Total Quote:");
 
-        l_totalQuote.setText("Unquoted");
-
         l_quoteState.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        l_quoteState.setText("-");
+        l_quoteState.setText("Quote State");
 
         l_jobState.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        l_jobState.setText("-");
+        l_jobState.setText("Job State");
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -2728,33 +2729,33 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_quoteID)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel38)
-                    .addComponent(l_jobID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_jobID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_quoteID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(l_totalQuote)
                     .addComponent(jLabel11)
-                    .addComponent(l_jobTitle))
+                    .addComponent(l_jobTitle)
+                    .addComponent(l_totalQuote, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(l_plannedCost)
-                            .addComponent(jLabel53))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(l_currentCost)))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(l_jobState)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(l_quoteState)))
-                .addGap(18, 18, 18))
+                        .addComponent(l_quoteState))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(l_plannedCost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addComponent(l_currentCost, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -2939,6 +2940,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         //after initializing the page, the job state is verified and updated based on all of the current quotes.
         updateRealJobQuoteState();
+        updateQuoteLabels();
     }
 
     private void initializeWorkPage() {
@@ -3448,7 +3450,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 System.out.println("myerror" + e);
             }
 
-            
             initComponentsManageJob();
         }
     }//GEN-LAST:event_quote_but_rejActionPerformed
@@ -4006,6 +4007,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateFieldsOfSelectedQuoteItem(selectedItemCode, "Labour");
 
     }//GEN-LAST:event_quote_labour_li_labourMouseClicked
+
+    private void l_quoteIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l_quoteIDMouseClicked
+        quote_allquotes_combo.setSelectedItem(acceptedQuoteID);
+    }//GEN-LAST:event_l_quoteIDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4983,7 +4988,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         //this method scans through the entire quote list of the current job,
         //and returns the status of the job compared to all of the quotes
         //first, assume that all of the quotes are rejected by default.
-        String jobQuoteStatus = "Rejected";
         try {
             String quoteStatus = "";
             Statement st = conn.createStatement();
@@ -4993,6 +4997,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             //if the current Job has no quotes attached to it.
             if (!rs.next()) {
                 //exit method with a false, to not even loop through the results (there are none)
+                jobQuoteState = "Quote in Progress";
                 return "Quote in Progress";
             }
 
@@ -5003,11 +5008,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 if (quoteStatus.equalsIgnoreCase("Accepted")) {
                     //return rejected if the accepted quote was found
                     acceptedQuoteID = rs.getString("QuoteID");
-                    return "Accepted";
+                    jobQuoteState = "Quote Accepted";
+                    return "Quote Accepted";
                 }
 
                 if (quoteStatus.equalsIgnoreCase("Quote in Progress")) {
                     //if at least one quote is in progress, then the job is not rejected
+                    jobQuoteState = "Quote in Progress";
                     return "Quote in Progress";
                 }
             } while (rs.next());
@@ -5017,7 +5024,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
         //if it made it to the end, then the scan was complete, and all of the quotes were rejected,
         //therefore the job is rejected
-        return "Rejected";
+        jobQuoteState = "Quote Rejected";
+        return "Quote Rejected";
     }
 
     private void updateRealJobQuoteState() {
@@ -5034,6 +5042,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Problem with updateJobQuoteState: " + e);
         }
+    }
+    
+    private void updateQuoteLabels(){
+        l_quoteID.setText(acceptedQuoteID);
+        l_quoteState.setText(jobQuoteState);
     }
 
     ///FINALISE PAGE STUFF/////
@@ -5179,8 +5192,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
         return quoteIDToUse;
     }
-
-    private int itemStateChangedInt = 1;
 
     private void quoteComboBoxItemSelected() {
         //set the currentQuoteID

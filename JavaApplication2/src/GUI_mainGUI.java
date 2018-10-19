@@ -12,6 +12,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,6 +31,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     ResultSet rs;
     String editOrAdd = "neither";
     DefaultListModel blankListModel = new DefaultListModel();
+    List<String> clientJobs = new ArrayList<>();
+    private int itemStateChangedInt = 1;
+    private String selectedJobID;
 
     /**
      * Creates new form mainGUI
@@ -470,6 +475,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         client_li_jobs.setMaximumSize(new java.awt.Dimension(39, 91));
+        client_li_jobs.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                client_li_jobsValueChanged(evt);
+            }
+        });
         jScrollPane8.setViewportView(client_li_jobs);
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -1823,8 +1833,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Job to manage");
         }
-
-
     }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
@@ -1849,8 +1857,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_schedule_but_createScheduleActionPerformed
 
     private void client_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageJobActionPerformed
-        String selectedJobID = getSelectedJobID();
-        manageJob(selectedJobID);
+
+        if (!client_li_jobs.isSelectionEmpty()) {
+            manageJob(selectedJobID);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Job to manage");
+        }
     }//GEN-LAST:event_client_but_manageJobActionPerformed
 
     private void client_but_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_searchActionPerformed
@@ -2012,7 +2024,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void jobs_rb_QAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QAccActionPerformed
         if (jobs_rb_QAcc.isSelected()) {
-            populateJobTable("Accepted");
+            populateJobTable("Quote Accepted");
         } else {
             populateJobTable();
         }
@@ -2020,7 +2032,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void jobs_rb_QRejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QRejActionPerformed
         if (jobs_rb_QRej.isSelected()) {
-            populateJobTable("Rejected");
+            populateJobTable("Quote Rejected");
         } else {
             populateJobTable();
         }
@@ -2067,6 +2079,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jobs_but_removeRecord.setEnabled(true);
 
         populateClientTextFieldsForJob();
+        System.out.println("Selected Job ID = " + selectedJobID);
     }//GEN-LAST:event_jobs_table_jobsMouseClicked
 
     private void staff_but_insertAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_insertAddressActionPerformed
@@ -2104,6 +2117,19 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void jobs_but_refreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_refreshTableActionPerformed
         populateJobTable();
     }//GEN-LAST:event_jobs_but_refreshTableActionPerformed
+
+    private void client_li_jobsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_client_li_jobsValueChanged
+        itemStateChangedInt++;
+        if (itemStateChangedInt == 3) {
+            if (!clientJobs.isEmpty()) {
+                if (client_li_jobs.getSelectedIndex() > -1) {
+                    selectedJobID = clientJobs.get(client_li_jobs.getSelectedIndex() + 1);
+                    System.out.println("selected Job ID = " + selectedJobID);
+                }
+            }
+            itemStateChangedInt = 1;
+        }
+    }//GEN-LAST:event_client_li_jobsValueChanged
 
     /**
      * @param args the command line arguments
@@ -2423,7 +2449,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             } else {
                 query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs where QuoteState = '" + state + "'";
             }
-            
+
             Statement st = conn.createStatement();
             rs = st.executeQuery(query);
             jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
@@ -2447,6 +2473,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private void showJobsForSelectedClient() {
+        clientJobs.clear();
+        clientJobs.add("");
         client_li_jobs.setModel(blankListModel);
         String selectedClientCode = null;
         try {
@@ -2454,16 +2482,18 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             int row = client_table_clients.getSelectedRow();
             selectedClientCode = (client_table_clients.getModel().getValueAt(row, 0).toString());
             String query = "select * from jobs where clientID = '" + selectedClientCode + "'";
-            rs = st.executeQuery(query);
+            ResultSet rs = st.executeQuery(query);
             DefaultListModel tempModel = new DefaultListModel();
-
-            while (rs.next()) {
-                tempModel.addElement(rs.getString("jobtitle"));
-                client_li_jobs.setModel(tempModel);
+            if (rs.next()) {
+                do {
+                    tempModel.addElement(rs.getString("jobtitle"));
+                    clientJobs.add(rs.getString("jobID"));
+                    client_li_jobs.setModel(tempModel);
+                } while (rs.next());
             }
 
         } catch (Exception e) {
-            System.out.println("Problems with showJobForSelectedClient2 : " + e);
+            System.out.println("Problems with showJobsForSelectedClient : " + e);
         }
     }
 
@@ -2536,16 +2566,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             int row = jobs_table_jobs.getSelectedRow();
-            String selectedJobCode = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
-            String query = "select * from jobs where jobID = '" + selectedJobCode + "'";
-            rs = st.executeQuery(query);
+            selectedJobID = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
+            String query = "select * from jobs where jobID = '" + selectedJobID + "'";
+            ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 String myclientCode = rs.getString("ClientID");
 
                 Statement st2 = conn.createStatement();
                 String query2 = "select * from client where clientID = '" + myclientCode + "'";
-                ResultSet rs2;
-                rs2 = st2.executeQuery(query2);
+                ResultSet rs2 = st2.executeQuery(query2);
 
                 while (rs2.next()) {
                     jobs_tf_fname.setText(rs2.getString("fname"));
@@ -2553,9 +2582,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     jobs_tf_nr.setText(rs2.getString("ConNum"));
                     jobs_tf_email.setText(rs2.getString("email"));
                     jobs_l_clientCode.setText(rs2.getString("ClientID"));
-
                 }
-
             }
 
         } catch (Exception e) {
@@ -2677,4 +2704,5 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             System.out.println("Problem with adding staff" + e);
         }
     }
+
 }

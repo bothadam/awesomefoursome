@@ -4100,40 +4100,40 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="l_quoteID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel31" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel38" alignment="0" max="32767" attributes="0"/>
                           <Component id="l_jobID" alignment="3" max="32767" attributes="0"/>
+                          <Component id="l_quoteID" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="l_totalQuote" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="l_jobTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="l_totalQuote" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="l_plannedCost" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="l_currentCost" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="l_jobState" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="l_quoteState" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel53" max="32767" attributes="0"/>
+                                  <Component id="l_plannedCost" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                  <Component id="l_currentCost" min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -4155,9 +4155,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_currentCost">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Unquoted"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel38">
               <Properties>
@@ -4170,9 +4167,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_plannedCost">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Unquoted"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel53">
               <Properties>
@@ -4186,8 +4180,13 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_quoteID">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Unquoted"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="16" style="1"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="l_quoteIDMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
               <Properties>
@@ -4195,16 +4194,13 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_totalQuote">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Unquoted"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_quoteState">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="-"/>
+                <Property name="text" type="java.lang.String" value="Quote State"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_jobState">
@@ -4212,7 +4208,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="-"/>
+                <Property name="text" type="java.lang.String" value="Job State"/>
               </Properties>
             </Component>
           </SubComponents>
