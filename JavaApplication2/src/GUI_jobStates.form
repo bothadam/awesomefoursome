@@ -571,7 +571,9 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="quote_but_jobDesc" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="quote_allquotes_combo" min="-2" pref="205" max="-2" attributes="0"/>
+                              <Component id="selectedQuoteState" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="quote_allquotes_combo" min="-2" pref="164" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="quote_but_delete" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -597,6 +599,7 @@
                               <Component id="quote_allquotes_combo" alignment="3" max="32767" attributes="0"/>
                               <Component id="quote_but_jobDesc" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="selectedQuoteState" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="quote_TabPane" min="-2" pref="177" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1864,6 +1867,13 @@
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="quote_allquotes_comboItemStateChanged"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="selectedQuoteState">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Verdana" size="16" style="1"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

@@ -22,6 +22,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private String currentQuoteID = "";
     private String currentClientID = "";
     private String DefiniteCurrentClientID = "";
+    private String acceptedQuoteID = "";
+    private String jobState = "";
 
     Connection conn;
     Statement st;
@@ -201,6 +203,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         quote_allquotes_combo = new javax.swing.JComboBox();
+        selectedQuoteState = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
@@ -1386,6 +1389,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
+        selectedQuoteState.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -1411,7 +1416,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(quote_but_jobDesc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(quote_allquotes_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selectedQuoteState, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(quote_allquotes_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(quote_but_delete)
                         .addGap(37, 37, 37)
@@ -1431,7 +1438,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(quote_but_delete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(quote_allquotes_combo)
-                        .addComponent(quote_but_jobDesc)))
+                        .addComponent(quote_but_jobDesc))
+                    .addComponent(selectedQuoteState, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addComponent(quote_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2809,20 +2817,32 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enableJobCreation(true);
     }
 
-    //initialize GUI components for when you manage a current job
+    //do the first initial initialization of GUI components for when you manage a current job
     private void initialLoadComponentsManageJob() {
         sharedInitializations();
         initComponentsManageJob();
     }
 
+    //initialize GUI components for when you manage a current job (not the initial one, as they differ in the following way)
+    //the initial loading of components also loads the client combobox fully, which sets the selected client to the first item
+    //this should only happen once, when the page is loaded for the first time, which it does. and is found in sharedInitializations()
     private void initComponentsManageJob() {
         disableAllPanels();
         populateClientInfo();
         populateJobInfo();
         initializeJobsPage_Manage();
-        initializeWorkPage();
         initializeQuotePage();
+        initializeWorkPage();
         initializeFinalisePage();
+        String currentJobStatus = getJobActualQuoteStatus();
+        setComboBoxToAcceptedQuote();
+
+    }
+
+    private void setComboBoxToAcceptedQuote() {
+        if (!acceptedQuoteID.equals("")) {
+            quote_allquotes_combo.setSelectedItem(acceptedQuoteID);
+        }
     }
 
     private void setClientID() {
@@ -2846,7 +2866,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void sharedInitializations() {
         disableAllPanels();
-
         populateClientCombo();
     }
 
@@ -2905,8 +2924,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
             enableQuoteComponents(true);
 
-            //maby set the quote status label here to be what is in the DB ???
-            //by creating a method that reads it from the DB and updates the label text
+            //validate the selected quote status.
+            validateSelectedQuoteStatus();
+
         } else {
             //has no queary result when trying to find a quote for the Job
 
@@ -2914,17 +2934,30 @@ public class GUI_jobStates extends javax.swing.JFrame {
             b.addElement("Please create a New Quote");
             quote_allquotes_combo.setModel(b);
             quote_allquotes_combo.setEnabled(false);
+            selectedQuoteState.setText("");
         }
+
+        //after initializing the page, the job state is verified and updated based on all of the current quotes.
+        updateRealJobQuoteState();
     }
 
     private void initializeWorkPage() {
-        populateMaterialExpenses();
-        populateOverheadExpenses();
-        populateLabourExpenses();
-        calculateAllExpenses();
-        populateTotalsOnWorkPage();
-        calculateAllProgressions();
-        populateFromQuoteCombos();
+        //the pages past the quote page should be on lockdown if there is no quote accepted
+        //the String value acceptedQuoteID is updated at the end of initializeQuotePage
+        if (!acceptedQuoteID.equals("")) {
+            jobStatesTabPane.setEnabledAt(2, true);
+            jobStatesTabPane.setEnabledAt(3, true);
+            populateMaterialExpenses();
+            populateOverheadExpenses();
+            populateLabourExpenses();
+            calculateAllExpenses();
+            populateTotalsOnWorkPage();
+            calculateAllProgressions();
+            populateFromQuoteCombos();
+        } else {
+            jobStatesTabPane.setEnabledAt(2, false);
+            jobStatesTabPane.setEnabledAt(3, false);
+        }
     }
 
     private void initializeFinalisePage() {
@@ -3352,7 +3385,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
 
-        l_quoteState.setText("Quote Pending");
         String code = "";
         try {
             String sql = "Insert into quote(QuoteID,JobID,QuoteStatus,MaterialCont,OverheadCont,LabourCont,MaterialCharge,OverheadCharge,LabourCharge) values(?,?,?,?,?,?,?,?,?)";
@@ -3393,55 +3425,73 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Problem with adding quote : " + e);
         }
 
-        System.out.println("initializing the quote page...");
         initializeQuotePage();
         quote_allquotes_combo.setSelectedItem(code);
     }//GEN-LAST:event_quote_but_createActionPerformed
 
     private void quote_but_rejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_rejActionPerformed
-        enableQuoteComponents(false);
-        l_quoteState.setText("Quote Rejected");
-        try {
-            String sql = "update quote set quoteStatus = 'Rejected'  where QuoteID = '" + currentQuoteID + "' ";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "You have rejected quote: " + currentQuoteID);
-        } catch (Exception e) {
-            System.out.println("myerror" + e);
+        //1.reject the current selected quote
+        //2.update the job state. (done inside of initializeQuotePage())
+
+        if (okcancel("Are you sure you want to reject quote: " + currentQuoteID + "?")) {
+            try {
+                String sql = "update quote set quoteStatus = 'Rejected'  where QuoteID = '" + currentQuoteID + "' ";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "You have rejected quote: " + currentQuoteID);
+
+                if (currentQuoteID.equals(acceptedQuoteID)) {
+                    acceptedQuoteID = "";
+                }
+
+            } catch (Exception e) {
+                System.out.println("myerror" + e);
+            }
+
+            
+            initComponentsManageJob();
         }
-
-        initializeQuotePage();
-
     }//GEN-LAST:event_quote_but_rejActionPerformed
 
     private void quote_but_accActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_accActionPerformed
-        enableQuoteComponents(false);
-        l_quoteState.setText("Quote Accepted");
-        try {
-            String sql = "update quote set quoteStatus = 'Accepted'  where QuoteID = '" + currentQuoteID + "' ";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "You have Accepted quote: " + currentQuoteID);
-        } catch (Exception e) {
-            System.out.println("myerror" + e);
-        }
-        try {
-            String sql = "update quote set quoteStatus = 'Rejected' where QuoteID != '" + currentQuoteID + "' AND JobID='" + currentJobID + "' ";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("myerror" + e);
-        }
 
-        try {
-            String sql = "update jobs set quoteState = '" + "Quote Accepted" + "' where JobID = '" + currentJobID + "'";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("myerror at update jobstate : " + e);
+        //1.Reject any other quote that might be accepted
+        //2.accept current quote
+        //2.update the job state. (done inside of initializeQuotePage())
+        //
+        if (okcancel("By accepting this quote (" + currentQuoteID + ")\nAll other accepted quotes for this Job will be rejected")) {
+
+            //get the current status
+            String currentJobStatus = getJobActualQuoteStatus();
+
+            //if the status is accepted (meaning there is already an accepted quote),
+            //then make that accepted quote rejected
+            if (currentJobStatus.equals("Accepted")) {
+                try {
+                    String sql1 = "update quote set quoteStatus = 'Rejected'  where quoteStatus = 'Accepted' and JobID = '" + currentJobID + "'";
+                    PreparedStatement statement1 = conn.prepareStatement(sql1);
+                    statement1.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println("Error in quote_but_accActionPerformed \n Was trying to reject an accepted quote\n error= " + e);
+                }
+            }
+
+            //make the current Quote the accepted one
+            try {
+                String sql2 = "update quote set quoteStatus = 'Accepted'  where QuoteID = '" + currentQuoteID + "'";
+                PreparedStatement statement2 = conn.prepareStatement(sql2);
+                statement2.executeUpdate();
+                acceptedQuoteID = currentQuoteID;
+                JOptionPane.showMessageDialog(this, "You have Accepted quote: " + currentQuoteID);
+            } catch (Exception e) {
+                System.out.println("Error in quote_but_accActionPerformed \n Was trying to accept the current quote\n error= " + e);
+            }
+
+            initComponentsManageJob();
+            populateTotalsOnWorkPage();
+            populateFromQuoteCombos();
+            setComboBoxToAcceptedQuote();
         }
-        populateTotalsOnWorkPage();
-        populateFromQuoteCombos();
     }//GEN-LAST:event_quote_but_accActionPerformed
 
     private void quote_but_jobDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_jobDescActionPerformed
@@ -3694,10 +3744,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, quoteID);
             statement.executeUpdate();
+            System.out.println("The quote " + quoteID + " is now deleted.");
         } catch (Exception e) {
             System.out.println("Problem with deleteing quote : " + e);
         }
-        getAllQuotes();
+        initComponentsManageJob();
     }//GEN-LAST:event_quote_but_deleteActionPerformed
 
     private void quote_spin_cont_matStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_matStateChanged
@@ -3920,7 +3971,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             currentClientID = selectedClient[1];
             populateClientInfo();
             itemStateChangedInt = 1;
-            System.out.println("this is the most recent client id = " + currentClientID);
         }
     }//GEN-LAST:event_job_cb_selectClientItemStateChanged
 
@@ -4233,6 +4283,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTextField quote_tf_final_over;
     private javax.swing.JTextField quote_tf_total;
     private javax.swing.JSpinner rateSpinner;
+    private javax.swing.JLabel selectedQuoteState;
     private javax.swing.JTabbedPane work_TabPane;
     private javax.swing.JButton work_but_finaliseJob;
     private javax.swing.JButton work_labour_but_add;
@@ -4863,7 +4914,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         DefaultComboBoxModel a = new DefaultComboBoxModel();
         String item;
         try {
-            String sql = "Select * from quoteItem where quoteID = '" + currentQuoteID + "' AND quoteType = '" + type + "'";
+            String sql = "Select * from quoteItem where quoteID = '" + acceptedQuoteID + "' AND quoteType = '" + type + "'";
             Statement st = conn.createStatement();
             rs = st.executeQuery(sql);
             while (rs.next()) {
@@ -4892,7 +4943,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_labour_spin_hours.setValue(0);
     }
 
-    private void validateQuoteStatus() {
+    private void validateSelectedQuoteStatus() {
         try {
             String currentState = "";
             Statement st = conn.createStatement();
@@ -4902,19 +4953,86 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 currentState = rs.getString("QuoteStatus");
             }
 
-            System.out.println("state = " + currentState);
-
             if (currentState.equalsIgnoreCase("Accepted")) {
-
+                enableQuoteComponents(false);
+                quote_but_rej.setEnabled(true);
+                //ultimately, set the combobox to be true sothat you can setill view the quotes,
+                //even if the current one is on lockdown
+                quote_allquotes_combo.setEnabled(true);
+                selectedQuoteState.setText("Quote Accepted");
             }
             if (currentState.equalsIgnoreCase("Rejected")) {
-
+                enableQuoteComponents(false);
+                //ultimately, set the combobox to be true sothat you can setill view the quotes,
+                //even if the current one is on lockdown
+                quote_allquotes_combo.setEnabled(true);
+                selectedQuoteState.setText("Quote Rejected");
             }
             if (currentState.equalsIgnoreCase("Quote in Progress")) {
-
+                enableQuoteComponents(true);
+                selectedQuoteState.setText("Quote I.P.");
             }
+
         } catch (Exception e) {
             System.out.println("problem with validateQuoteStatus :" + e);
+        }
+    }
+
+    private String getJobActualQuoteStatus() {
+
+        //this method scans through the entire quote list of the current job,
+        //and returns the status of the job compared to all of the quotes
+        //first, assume that all of the quotes are rejected by default.
+        String jobQuoteStatus = "Rejected";
+        try {
+            String quoteStatus = "";
+            Statement st = conn.createStatement();
+            String query = "select * from quote where jobID = '" + currentJobID + "'";
+            ResultSet rs = st.executeQuery(query);
+
+            //if the current Job has no quotes attached to it.
+            if (!rs.next()) {
+                //exit method with a false, to not even loop through the results (there are none)
+                return "Quote in Progress";
+            }
+
+            //loop through results
+            do {
+                quoteStatus = rs.getString("QuoteStatus");
+
+                if (quoteStatus.equalsIgnoreCase("Accepted")) {
+                    //return rejected if the accepted quote was found
+                    acceptedQuoteID = rs.getString("QuoteID");
+                    return "Accepted";
+                }
+
+                if (quoteStatus.equalsIgnoreCase("Quote in Progress")) {
+                    //if at least one quote is in progress, then the job is not rejected
+                    return "Quote in Progress";
+                }
+            } while (rs.next());
+
+        } catch (Exception e) {
+            System.out.println("Problems with validateActualJobQuoteStatus: " + e);
+        }
+        //if it made it to the end, then the scan was complete, and all of the quotes were rejected,
+        //therefore the job is rejected
+        return "Rejected";
+    }
+
+    private void updateRealJobQuoteState() {
+        //get the state of the job, relevant to all of the current job quotes
+        String jobStatus = getJobActualQuoteStatus();
+        try {
+
+            //and update the job state
+            String sql = "Update jobs set QuoteState=? Where JobID =?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, jobStatus);
+            statement.setString(2, currentJobID);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Problem with updateJobQuoteState: " + e);
         }
     }
 
@@ -5065,24 +5183,25 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private int itemStateChangedInt = 1;
 
     private void quoteComboBoxItemSelected() {
+        //set the currentQuoteID
         currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
 
         //clear the total textfield values
         clearQuoteFieldValues();
 
-        //set the values
+        //set the values based on current quote
         populateMaterials();
         populateOverheads();
         populateLabour();
         populateQuoteCharges();
 
-        //calculate the totals
+        //calculate the totals based on the values set
         populateAllTotals();
         calculateQuoteCharges();
         quoteID_l.setText(currentQuoteID);
 
         //validate the quote status and update the interface accordingly
-        validateQuoteStatus();
+        validateSelectedQuoteStatus();
     }
 
     private void refreshGUI() {
@@ -5096,4 +5215,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
     }
 
+    private boolean okcancel(String theMessage) {
+        int result = JOptionPane.showConfirmDialog(null, theMessage, "alert", JOptionPane.OK_CANCEL_OPTION);
+        if (result == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
