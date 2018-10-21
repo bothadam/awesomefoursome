@@ -21,6 +21,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private String currentJobID = "";
     private String currentQuoteID = "";
     private String currentClientID = "";
+    private String DefiniteCurrentClientID = "";
+    private String acceptedQuoteID = "";
+    private String jobState = "";
+    private String jobQuoteState = "";
+    private int itemStateChangedInt = 1;
 
     Connection conn;
     Statement st;
@@ -36,11 +41,18 @@ public class GUI_jobStates extends javax.swing.JFrame {
     double labourCharge;
     double overheadCharge;
 
-    public GUI_jobStates(String passedThroughIDOfJob) {
-        currentJobID = passedThroughIDOfJob;
+    String selectedItemCode = "";
+    String selectedItem[] = new String[10];
 
+    public GUI_jobStates(String passedThroughIDOfJob) {
         //make DB connection
         connection();
+
+        //set the JOB ID
+        currentJobID = passedThroughIDOfJob;
+
+        //set the Client ID
+        setClientID();
 
         //initialize GUI
         initComponents();
@@ -53,10 +65,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         } else {
             //manageJob button was pressed
-            initComponentsManageJob();
+            initialLoadComponentsManageJob();
+            currentClientID = DefiniteCurrentClientID;
+            selectCorrectClientInJobsPage();
         }
 
-        //currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
     }
 
     private GUI_jobStates() {
@@ -104,8 +117,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_tf_email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         job_but_changeDetails = new javax.swing.JButton();
-        job_cb_selectClient = new javax.swing.JComboBox<String>();
-        job_but_go = new javax.swing.JButton();
+        job_cb_selectClient = new javax.swing.JComboBox<>();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
@@ -152,7 +164,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_mat_but_cancel = new javax.swing.JButton();
         quote_mat_tf_cost = new javax.swing.JTextField();
         jScrollPane14 = new javax.swing.JScrollPane();
-        quote_mat_li_materials = new javax.swing.JList<String>();
+        quote_mat_li_materials = new javax.swing.JList<>();
         quote_mat_but_change = new javax.swing.JButton();
         quote_mat_but_add = new javax.swing.JButton();
         quote_mat_but_remove = new javax.swing.JButton();
@@ -165,19 +177,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_over_but_cancel = new javax.swing.JButton();
         quote_over_tf_total = new javax.swing.JTextField();
         jScrollPane15 = new javax.swing.JScrollPane();
-        quote_over_li_overheads = new javax.swing.JList<String>();
+        quote_over_li_overheads = new javax.swing.JList<>();
         quote_over_but_change = new javax.swing.JButton();
         quote_over_but_add = new javax.swing.JButton();
         quote_over_but_remove = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        quote_labour_li_labour = new javax.swing.JList<String>();
+        quote_labour_li_labour = new javax.swing.JList<>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
         quote_labour_but_done = new javax.swing.JButton();
         quote_labour_but_cancel = new javax.swing.JButton();
-        quote_labour_combo_workers = new javax.swing.JComboBox<String>();
+        quote_labour_combo_workers = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
         quote_labour_l_rate = new javax.swing.JLabel();
         quote_labour_spin_hours = new javax.swing.JSpinner();
@@ -193,6 +205,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         quote_allquotes_combo = new javax.swing.JComboBox();
+        selectedQuoteState = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
@@ -240,7 +253,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_tf_cost = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jScrollPane6 = new javax.swing.JScrollPane();
-        work_mat_li_materials = new javax.swing.JList<String>();
+        work_mat_li_materials = new javax.swing.JList<>();
         work_mat_but_change = new javax.swing.JButton();
         work_mat_but_add = new javax.swing.JButton();
         work_mat_but_remove = new javax.swing.JButton();
@@ -254,13 +267,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_over_tf_cost = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox();
         jScrollPane12 = new javax.swing.JScrollPane();
-        work_over_li_overheads = new javax.swing.JList<String>();
+        work_over_li_overheads = new javax.swing.JList<>();
         work_over_but_change = new javax.swing.JButton();
         work_over_but_add = new javax.swing.JButton();
         work_over_but_remove = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        work_labour_li_labour = new javax.swing.JList<String>();
+        work_labour_li_labour = new javax.swing.JList<>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -364,11 +377,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jobStatesTabPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jobStatesTabPane.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
-        jobStatesTabPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jobStatesTabPaneMouseClicked(evt);
-            }
-        });
 
         jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -482,7 +490,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel18)
                 .addGap(2, 2, 2)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
@@ -586,22 +594,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         job_cb_selectClient.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
-        job_cb_selectClient.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                job_cb_selectClientMouseClicked(evt);
-            }
-        });
-        job_cb_selectClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                job_cb_selectClientActionPerformed(evt);
-            }
-        });
-
-        job_but_go.setText("Find Data");
-        job_but_go.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                job_but_goActionPerformed(evt);
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                job_cb_selectClientItemStateChanged(evt);
             }
         });
 
@@ -618,8 +614,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(job_but_go)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -634,9 +628,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(job_cb_selectClient)
-                    .addComponent(job_but_go, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -662,21 +654,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel64.setText("Materials:");
 
-        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
+        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         quote_spin_cont_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_matStateChanged(evt);
             }
         });
 
-        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
+        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         quote_spin_cont_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_overStateChanged(evt);
             }
         });
 
-        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
+        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         quote_spin_cont_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_labourStateChanged(evt);
@@ -689,21 +681,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_tf_cost_labour.setEditable(false);
 
-        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
+        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         quote_spin_charge_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_matStateChanged(evt);
             }
         });
 
-        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
+        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         quote_spin_charge_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_overStateChanged(evt);
             }
         });
 
-        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
+        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
         quote_spin_charge_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_labourStateChanged(evt);
@@ -893,7 +885,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(quote_tf_cost_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel83))))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         quote_but_create.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -978,20 +970,20 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(quote_mat_but_done))
                     .addComponent(quote_mat_tf_item)
                     .addComponent(quote_mat_tf_cost))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel114)
                     .addComponent(quote_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel115)
                     .addComponent(quote_mat_tf_cost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel116)
                     .addComponent(quote_mat_but_done)
@@ -1001,6 +993,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         quote_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quote_mat_li_materials.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quote_mat_li_materialsMouseClicked(evt);
+            }
+        });
         jScrollPane14.setViewportView(quote_mat_li_materials);
 
         quote_mat_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -1049,7 +1046,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel35, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel34Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(quote_mat_but_add)
@@ -1057,7 +1054,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(quote_mat_but_change)
                         .addGap(18, 18, 18)
                         .addComponent(quote_mat_but_remove))
-                    .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1121,7 +1118,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel118)
                     .addComponent(quote_over_tf_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(quote_over_but_done)
                     .addComponent(quote_over_but_cancel))
@@ -1129,6 +1126,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         quote_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quote_over_li_overheads.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quote_over_li_overheadsMouseClicked(evt);
+            }
+        });
         jScrollPane15.setViewportView(quote_over_li_overheads);
 
         quote_over_but_change.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -1191,6 +1193,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_TabPane.addTab("Overheads", jPanel36);
 
         quote_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        quote_labour_li_labour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quote_labour_li_labourMouseClicked(evt);
+            }
+        });
         jScrollPane16.setViewportView(quote_labour_li_labour);
 
         jPanel39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1217,7 +1224,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
         quote_labour_combo_workers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_labour_combo_workersActionPerformed(evt);
@@ -1259,7 +1266,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel119)
                     .addComponent(quote_labour_combo_workers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1269,7 +1276,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(quote_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel60)
                     .addComponent(quote_labour_l_rate))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(quote_labour_but_done)
                     .addComponent(quote_labour_but_cancel))
@@ -1384,6 +1391,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
+        selectedQuoteState.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -1409,7 +1418,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(quote_but_jobDesc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(quote_allquotes_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selectedQuoteState, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(quote_allquotes_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(quote_but_delete)
                         .addGap(37, 37, 37)
@@ -1429,7 +1440,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(quote_but_delete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(quote_allquotes_combo)
-                        .addComponent(quote_but_jobDesc)))
+                        .addComponent(quote_but_jobDesc))
+                    .addComponent(selectedQuoteState, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addComponent(quote_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1763,10 +1775,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_mat_li_materials.setModel(new javax.swing.AbstractListModel() {
+        work_mat_li_materials.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         work_mat_li_materials.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1911,10 +1923,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_over_li_overheads.setModel(new javax.swing.AbstractListModel() {
+        work_over_li_overheads.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         work_over_li_overheads.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1983,10 +1995,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_TabPane.addTab("Overheads", jPanel29);
 
         work_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_labour_li_labour.setModel(new javax.swing.AbstractListModel() {
+        work_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         work_labour_li_labour.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2586,11 +2598,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel9.setText("Client Email");
 
-        l_email.setText("jamesMkotze@gmail.com");
+        l_email.setText("-");
 
-        l_contactNr.setText("0820745213");
+        l_contactNr.setText("-");
 
-        l_clientFullname.setText("James Kotze");
+        l_clientFullname.setText("-");
 
         jLabel7.setText("Client Name");
 
@@ -2598,11 +2610,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel50.setText("Client Code");
 
-        l_clientCode.setText("JK001");
+        l_clientCode.setText("-");
 
         jLabel10.setText("Site Location");
 
-        l_siteLocation.setText("12 mountainview crescent Durbanville");
+        l_siteLocation.setText("-");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2655,33 +2667,32 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel11.setText("Job Title:");
 
-        l_jobTitle.setText("Install Wood Fence");
+        l_jobTitle.setText("-");
 
         jLabel27.setText("Current Cost:");
 
-        l_currentCost.setText("Unquoted");
-
         jLabel38.setText("Job ID:");
 
-        l_jobID.setText("J0001");
-
-        l_plannedCost.setText("Unquoted");
+        l_jobID.setText("-");
 
         jLabel53.setText("Planned Cost:");
 
         jLabel31.setText("Quote ID:");
 
-        l_quoteID.setText("Unquoted");
+        l_quoteID.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        l_quoteID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                l_quoteIDMouseClicked(evt);
+            }
+        });
 
         jLabel28.setText("Total Quote:");
 
-        l_totalQuote.setText("Unquoted");
-
         l_quoteState.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        l_quoteState.setText("Quote Pending");
+        l_quoteState.setText("Quote State");
 
         l_jobState.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        l_jobState.setText("Job Open");
+        l_jobState.setText("Job State");
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -2718,33 +2729,33 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(l_quoteID)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel38)
-                    .addComponent(l_jobID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_jobID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(l_quoteID, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(l_totalQuote)
                     .addComponent(jLabel11)
-                    .addComponent(l_jobTitle))
+                    .addComponent(l_jobTitle)
+                    .addComponent(l_totalQuote, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(l_plannedCost)
-                            .addComponent(jLabel53))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(l_currentCost)))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(l_jobState)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(l_quoteState)))
-                .addGap(18, 18, 18))
+                        .addComponent(l_quoteState))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(l_plannedCost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addComponent(l_currentCost, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -2804,35 +2815,102 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void initComponentsNewJob() {
         sharedInitializations();
         disableAllButJobsTab(true);
+        enableJobCreation(true);
     }
 
-    //initialize GUI components for when you manage a current job
-    private void initComponentsManageJob() {
+    //do the first initial initialization of GUI components for when you manage a current job
+    private void initialLoadComponentsManageJob() {
         sharedInitializations();
-        initializeWorkPage();
+        initComponentsManageJob();
+    }
+
+    //initialize GUI components for when you manage a current job (not the initial one, as they differ in the following way)
+    //the initial loading of components also loads the client combobox fully, which sets the selected client to the first item
+    //this should only happen once, when the page is loaded for the first time, which it does. and is found in sharedInitializations()
+    private void initComponentsManageJob() {
+        disableAllPanels();
+        populateClientInfo();
+        populateJobInfo();
+        initializeJobsPage_Manage();
         initializeQuotePage();
+        initializeWorkPage();
         initializeFinalisePage();
+        String currentJobStatus = getJobActualQuoteStatus();
+        setComboBoxToAcceptedQuote();
+
+    }
+
+    private void setComboBoxToAcceptedQuote() {
+        if (!acceptedQuoteID.equals("")) {
+            quote_allquotes_combo.setSelectedItem(acceptedQuoteID);
+        }
+    }
+
+    private void setClientID() {
+
+        if (!currentJobID.equals("")) {
+
+            try {
+                Statement st = conn.createStatement();
+                String query = "select clientID from jobs where jobID = '" + currentJobID + "'";
+                ResultSet rs = st.executeQuery(query);
+
+                while (rs.next()) {
+                    currentClientID = rs.getString("clientID");
+                    DefiniteCurrentClientID = currentClientID;
+                }
+            } catch (Exception e) {
+                System.out.println("Error in setClientID = " + e);
+            }
+        }
     }
 
     private void sharedInitializations() {
         disableAllPanels();
-        populateClientInfo();
-        populateJobInfo();
         populateClientCombo();
+    }
+
+    private void initializeJobsPage_Manage() {
+        enableJobCreation(false);
+        selectCorrectClientInJobsPage();
+    }
+
+    private void selectCorrectClientInJobsPage() {
+        try {
+            Statement st = conn.createStatement();
+            String query = "select fname,clientID from client where clientID = '" + currentClientID + "'";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                String item = rs.getString("fname") + " " + rs.getString("ClientID");
+                job_cb_selectClient.setSelectedItem(item);
+            }
+        } catch (Exception e) {
+            System.out.println("Error in selectCorrectClientInJobsPage = " + e);
+        }
+    }
+
+    private void enableJobCreation(boolean a) {
+        job_but_createJob.setEnabled(a);
+        job_cb_selectClient.setEnabled(a);
+
+        job_but_changeDetails.setEnabled(!a);
+        job_but_createQuote.setEnabled(!a);
     }
 
     private void initializeQuotePage() {
 
         //Initialize the GUI components used
-        populateStaffCombo();
-        getWorkerRate();
-
         boolean hasQuote = getAllQuotes();
         if (hasQuote) {
             //has at least one quote from the query search
             //only if has quote, do the next couple of methods
 
+            populateStaffCombo();
+            getWorkerRate();
             quote_allquotes_combo.setEnabled(true);
+            quote_allquotes_combo.setSelectedIndex(0);
+            quoteComboBoxItemSelected();
 
             //populate 
             populateMaterials();
@@ -2847,8 +2925,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
             enableQuoteComponents(true);
 
-            //maby set the quote status label here to be what is in the DB ???
-            //by creating a method that reads it from the DB and updates the label text
+            //validate the selected quote status.
+            validateSelectedQuoteStatus();
+
         } else {
             //has no queary result when trying to find a quote for the Job
 
@@ -2856,17 +2935,31 @@ public class GUI_jobStates extends javax.swing.JFrame {
             b.addElement("Please create a New Quote");
             quote_allquotes_combo.setModel(b);
             quote_allquotes_combo.setEnabled(false);
+            selectedQuoteState.setText("");
         }
+
+        //after initializing the page, the job state is verified and updated based on all of the current quotes.
+        updateRealJobQuoteState();
+        updateQuoteLabels();
     }
 
     private void initializeWorkPage() {
-        populateMaterialExpenses();
-        populateOverheadExpenses();
-        populateLabourExpenses();
-        calculateAllExpenses();
-        populateTotalsOnWorkPage();
-        calculateAllProgressions();
-        populateFromQuoteCombos();
+        //the pages past the quote page should be on lockdown if there is no quote accepted
+        //the String value acceptedQuoteID is updated at the end of initializeQuotePage
+        if (!acceptedQuoteID.equals("")) {
+            jobStatesTabPane.setEnabledAt(2, true);
+            jobStatesTabPane.setEnabledAt(3, true);
+            populateMaterialExpenses();
+            populateOverheadExpenses();
+            populateLabourExpenses();
+            calculateAllExpenses();
+            populateTotalsOnWorkPage();
+            calculateAllProgressions();
+            populateFromQuoteCombos();
+        } else {
+            jobStatesTabPane.setEnabledAt(2, false);
+            jobStatesTabPane.setEnabledAt(3, false);
+        }
     }
 
     private void initializeFinalisePage() {
@@ -2908,6 +3001,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void enablePanelJob(boolean a) {
         job_tf_title.setEnabled(a);
+        job_ta_comments.setEnabled(a);
         job_but_done.setEnabled(a);
         job_but_cancel.setEnabled(a);
         job_but_insertAdr.setEnabled(a);
@@ -3057,7 +3151,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     //action performed listeners
-
     private void job_but_createJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createJobActionPerformed
         enablePanelJob(true);
         addOrChange = "add";
@@ -3065,10 +3158,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
         jobStatesTabPane.setSelectedIndex(1);
-        populateMaterials();
-        populateOverheads();
-        populateLabour();
-        populateAllTotals();
+//        populateMaterials();
+//        populateOverheads();
+//        populateLabour();
+//        populateAllTotals();
     }//GEN-LAST:event_job_but_createQuoteActionPerformed
 
     private void job_but_changeDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_changeDetailsActionPerformed
@@ -3077,6 +3170,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_changeDetailsActionPerformed
 
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
+
+        String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
+        currentClientID = selectedClient[1];
+
         if (addOrChange.equals("add")) {
             addNewJob();
             initComponentsManageJob();
@@ -3085,8 +3182,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
             //The Job should be changed
             //write a change Method
             System.out.println("Please write a change job method here");
+            initComponentsManageJob();
         }
-        enablePanelJob(false);
+
     }//GEN-LAST:event_job_but_doneActionPerformed
 
     private void but_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_closeActionPerformed
@@ -3094,11 +3192,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_but_closeActionPerformed
 
     private void job_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_cancelActionPerformed
-        enablePanelJob(false);
+        refreshGUI();
     }//GEN-LAST:event_job_but_cancelActionPerformed
 
     private void quote_mat_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_addActionPerformed
         addOrChange = "add";
+
+        quote_mat_tf_item.setText("");
+        quote_mat_tf_cost.setText("");
+        quote_mat_spin_count.setValue(0);
+
         enablePanelQuoteMat(true);
     }//GEN-LAST:event_quote_mat_but_addActionPerformed
 
@@ -3111,7 +3214,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         if (addOrChange.equals("change")) {
             try {
                 String selectedItem[] = quote_mat_li_materials.getSelectedValue().toString().split("#");
-                String selectedItemCode = selectedItem[1];
+                selectedItemCode = selectedItem[1].toString();
 
                 String sql = "Update quoteitem set QuoteTitle=?, Count_Hours=?, Cost_Rate=? Where QuoteItemCode =?";
                 PreparedStatement statement = conn.prepareStatement(sql);
@@ -3158,6 +3261,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void quote_over_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_addActionPerformed
         addOrChange = "add";
+
+        quote_over_tf_overhead.setText("");
+        quote_over_tf_total.setText("");
+
         enablePanelQuoteOver(true);
     }//GEN-LAST:event_quote_over_but_addActionPerformed
 
@@ -3218,6 +3325,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void quote_labour_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_addActionPerformed
         addOrChange = "add";
+
+        quote_labour_combo_workers.setSelectedIndex(1);
+        quote_labour_spin_hours.setValue(0);
+
         enablePanelQuoteLabour(true);
     }//GEN-LAST:event_quote_labour_but_addActionPerformed
 
@@ -3231,8 +3342,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_labour_but_cancelActionPerformed
 
     private void quote_labour_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_doneActionPerformed
+
         if (addOrChange.equals("add")) {
             try {
+
                 String sql = "Insert into quoteitem(QuoteItemCode,QuoteID,QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
                 Random rand = new Random();
@@ -3274,12 +3387,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
 
-        l_quoteState.setText("Quote Pending");
+        String code = "";
         try {
             String sql = "Insert into quote(QuoteID,JobID,QuoteStatus,MaterialCont,OverheadCont,LabourCont,MaterialCharge,OverheadCharge,LabourCharge) values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             boolean goahead = false;
-            String code = "";
 
             while (goahead == false) {
                 Random rand = new Random();
@@ -3288,7 +3400,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
                 String sql2 = "Select * from quote";
                 Statement st = conn.createStatement();
-                rs = st.executeQuery(sql2);
+                ResultSet rs = st.executeQuery(sql2);
 
                 while (rs.next()) {
                     if (rs.getString("quoteID") != code) {
@@ -3302,12 +3414,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(1, code);
                 statement.setString(2, currentJobID);
                 statement.setString(3, "Quote in Progress");
-                statement.setInt(3, 0);// material contingency
-                statement.setInt(4, 0);//  overhead contingency
-                statement.setInt(5, 0);//   labour contingency
-                statement.setInt(6, 0);// material charge
-                statement.setInt(7, 0);//  overhead charge
-                statement.setInt(8, 0);//   labour charge
+                statement.setInt(4, 0);// material contingency
+                statement.setInt(5, 0);//  overhead contingency
+                statement.setInt(6, 0);//   labour contingency
+                statement.setInt(7, 0);// material charge
+                statement.setInt(8, 0);//  overhead charge
+                statement.setInt(9, 0);//   labour charge
                 statement.executeUpdate();
             }
 
@@ -3315,54 +3427,72 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Problem with adding quote : " + e);
         }
 
-        System.out.println("initializing the quote page...");
         initializeQuotePage();
+        quote_allquotes_combo.setSelectedItem(code);
     }//GEN-LAST:event_quote_but_createActionPerformed
 
     private void quote_but_rejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_rejActionPerformed
-        enableQuoteComponents(false);
-        l_quoteState.setText("Quote Rejected");
-        try {
-            String sql = "update quote set quoteStatus = 'Rejected'  where QuoteID = '" + currentQuoteID + "' ";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "You have rejected quote: " + currentQuoteID);
-        } catch (Exception e) {
-            System.out.println("myerror" + e);
+        //1.reject the current selected quote
+        //2.update the job state. (done inside of initializeQuotePage())
+
+        if (okcancel("Are you sure you want to reject quote: " + currentQuoteID + "?")) {
+            try {
+                String sql = "update quote set quoteStatus = 'Rejected'  where QuoteID = '" + currentQuoteID + "' ";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "You have rejected quote: " + currentQuoteID);
+
+                if (currentQuoteID.equals(acceptedQuoteID)) {
+                    acceptedQuoteID = "";
+                }
+
+            } catch (Exception e) {
+                System.out.println("myerror" + e);
+            }
+
+            initComponentsManageJob();
         }
-
-        initializeQuotePage();
-
     }//GEN-LAST:event_quote_but_rejActionPerformed
 
     private void quote_but_accActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_accActionPerformed
-        enableQuoteComponents(false);
-        l_quoteState.setText("Quote Accepted");
-        try {
-            String sql = "update quote set quoteStatus = 'Accepted'  where QuoteID = '" + currentQuoteID + "' ";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "You have Accepted quote: " + currentQuoteID);
-        } catch (Exception e) {
-            System.out.println("myerror" + e);
-        }
-        try {
-            String sql = "update quote set quoteStatus = 'Rejected' where QuoteID != '" + currentQuoteID + "' AND JobID='"+currentJobID+"' ";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("myerror" + e);
-        }
 
-        try {
-            String sql = "update jobs set quoteState = '" + "Quote Accepted" + "' where JobID = '" + currentJobID + "'";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("myerror at update jobstate : " + e);
+        //1.Reject any other quote that might be accepted
+        //2.accept current quote
+        //2.update the job state. (done inside of initializeQuotePage())
+        //
+        if (okcancel("By accepting this quote (" + currentQuoteID + ")\nAll other accepted quotes for this Job will be rejected")) {
+
+            //get the current status
+            String currentJobStatus = getJobActualQuoteStatus();
+
+            //if the status is accepted (meaning there is already an accepted quote),
+            //then make that accepted quote rejected
+            if (currentJobStatus.equals("Accepted")) {
+                try {
+                    String sql1 = "update quote set quoteStatus = 'Rejected'  where quoteStatus = 'Accepted' and JobID = '" + currentJobID + "'";
+                    PreparedStatement statement1 = conn.prepareStatement(sql1);
+                    statement1.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println("Error in quote_but_accActionPerformed \n Was trying to reject an accepted quote\n error= " + e);
+                }
+            }
+
+            //make the current Quote the accepted one
+            try {
+                String sql2 = "update quote set quoteStatus = 'Accepted'  where QuoteID = '" + currentQuoteID + "'";
+                PreparedStatement statement2 = conn.prepareStatement(sql2);
+                statement2.executeUpdate();
+                acceptedQuoteID = currentQuoteID;
+                JOptionPane.showMessageDialog(this, "You have Accepted quote: " + currentQuoteID);
+            } catch (Exception e) {
+                System.out.println("Error in quote_but_accActionPerformed \n Was trying to accept the current quote\n error= " + e);
+            }
+
+            initComponentsManageJob();
+            populateTotalsOnWorkPage();
+            populateFromQuoteCombos();
+            setComboBoxToAcceptedQuote();
         }
-        populateTotalsOnWorkPage();
-        populateFromQuoteCombos();
     }//GEN-LAST:event_quote_but_accActionPerformed
 
     private void quote_but_jobDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_jobDescActionPerformed
@@ -3513,7 +3643,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_final_but_signOffActionPerformed
 
     private void job_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_insertAdrActionPerformed
-        //GUI_insertAddress addrGUI = new GUI_insertAddress();
+        AddressPane ap = new AddressPane(job_tf_siteLocation);
+        /*//GUI_insertAddress addrGUI = new GUI_insertAddress();
         //addrGUI.setVisible(true);
         String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
@@ -3521,7 +3652,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City") + "#";
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
         createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
-        job_tf_siteLocation.setText(createdAddress);
+        job_tf_siteLocation.setText(createdAddress);*/
     }//GEN-LAST:event_job_but_insertAdrActionPerformed
 
     private void final_but_managePayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_managePayActionPerformed
@@ -3541,31 +3672,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         this.getReceivedFromDB();
         calculateOutstanding();
     }//GEN-LAST:event_final_but_managePayActionPerformed
-
-    private void job_cb_selectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_cb_selectClientActionPerformed
-
-    }//GEN-LAST:event_job_cb_selectClientActionPerformed
-
-    private void job_cb_selectClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_job_cb_selectClientMouseClicked
-
-    }//GEN-LAST:event_job_cb_selectClientMouseClicked
-
-    private void job_but_goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_goActionPerformed
-        initialPopulateClientInfo();
-        populateMaterials();
-        populateOverheads();
-        populateLabour();
-        populateAllTotals();
-
-    }//GEN-LAST:event_job_but_goActionPerformed
-
-    private void jobStatesTabPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobStatesTabPaneMouseClicked
-        populateMaterials();
-        populateOverheads();
-        populateLabour();
-        populateAllTotals();
-
-    }//GEN-LAST:event_jobStatesTabPaneMouseClicked
 
     private void quote_TabPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_TabPaneMouseClicked
     }//GEN-LAST:event_quote_TabPaneMouseClicked
@@ -3639,10 +3745,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, quoteID);
             statement.executeUpdate();
+            System.out.println("The quote " + quoteID + " is now deleted.");
         } catch (Exception e) {
             System.out.println("Problem with deleteing quote : " + e);
         }
-        getAllQuotes();
+        initComponentsManageJob();
     }//GEN-LAST:event_quote_but_deleteActionPerformed
 
     private void quote_spin_cont_matStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_matStateChanged
@@ -3822,7 +3929,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_work_labour_li_labourMouseClicked
 
     private void quote_but_resetChargesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_resetChargesActionPerformed
-        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear the contingency and charge values?\nNOTE: This is Irreversable");
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to clear the contingency and charge values?\nNOTE: This is Ireversable");
         if (confirm == 0) {
             quote_spin_cont_mat.setValue(0);
             quote_spin_cont_over.setValue(0);
@@ -3837,25 +3944,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         itemStateChangedInt++;
         if (itemStateChangedInt == 3) {
-            currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
-
-            //clear the total textfield values
-            clearQuoteFieldValues();
-
-            //set the values
-            populateMaterials();
-            populateOverheads();
-            populateLabour();
-            populateQuoteCharges();
-
-            //calculate the totals
-            populateAllTotals();
-            calculateQuoteCharges();
-            quoteID_l.setText(currentQuoteID);
-
-            //validate the quote status and update the interface accordingly
-            validateQuoteStatus();
-
+            quoteComboBoxItemSelected();
             itemStateChangedInt = 1;
         }
     }//GEN-LAST:event_quote_allquotes_comboItemStateChanged
@@ -3875,6 +3964,53 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void final_rb_labActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_rb_labActionPerformed
         this.sortedExpensesTable("Labour");
     }//GEN-LAST:event_final_rb_labActionPerformed
+
+    private void job_cb_selectClientItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_job_cb_selectClientItemStateChanged
+        itemStateChangedInt++;
+        if (itemStateChangedInt == 3) {
+            String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
+            currentClientID = selectedClient[1];
+            populateClientInfo();
+            itemStateChangedInt = 1;
+        }
+    }//GEN-LAST:event_job_cb_selectClientItemStateChanged
+
+    private void quote_mat_li_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_mat_li_materialsMouseClicked
+
+        //get the item ID
+        String selectedItem[] = quote_mat_li_materials.getSelectedValue().toString().split("#");
+        String selectedItemCode = selectedItem[1].toString();
+
+        //read the data from the table in the Database (using ID)
+        populateFieldsOfSelectedQuoteItem(selectedItemCode, "Material");
+
+    }//GEN-LAST:event_quote_mat_li_materialsMouseClicked
+
+    private void quote_over_li_overheadsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_over_li_overheadsMouseClicked
+
+        //get the item ID
+        String selectedItem[] = quote_over_li_overheads.getSelectedValue().toString().split("#");
+        String selectedItemCode = selectedItem[1].toString();
+
+        //populate the data from the table in the Database (using ID)
+        populateFieldsOfSelectedQuoteItem(selectedItemCode, "Overhead");
+
+    }//GEN-LAST:event_quote_over_li_overheadsMouseClicked
+
+    private void quote_labour_li_labourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quote_labour_li_labourMouseClicked
+
+        //get the item ID
+        String selectedItem[] = quote_labour_li_labour.getSelectedValue().toString().split("#");
+        String selectedItemCode = selectedItem[1].toString();
+
+        //read the data from the table in the Database (using ID)
+        populateFieldsOfSelectedQuoteItem(selectedItemCode, "Labour");
+
+    }//GEN-LAST:event_quote_labour_li_labourMouseClicked
+
+    private void l_quoteIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l_quoteIDMouseClicked
+        quote_allquotes_combo.setSelectedItem(acceptedQuoteID);
+    }//GEN-LAST:event_l_quoteIDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4074,7 +4210,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JButton job_but_createJob;
     private javax.swing.JButton job_but_createQuote;
     private javax.swing.JButton job_but_done;
-    private javax.swing.JButton job_but_go;
     private javax.swing.JButton job_but_insertAdr;
     private javax.swing.JComboBox<String> job_cb_selectClient;
     private javax.swing.JSpinner job_spin_date;
@@ -4153,6 +4288,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTextField quote_tf_final_over;
     private javax.swing.JTextField quote_tf_total;
     private javax.swing.JSpinner rateSpinner;
+    private javax.swing.JLabel selectedQuoteState;
     private javax.swing.JTabbedPane work_TabPane;
     private javax.swing.JButton work_but_finaliseJob;
     private javax.swing.JButton work_labour_but_add;
@@ -4204,6 +4340,46 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_tf_cost_labour.setText("0");
         quote_tf_cost_over.setText("0");
         quote_tf_cost_subtotal.setText("0");
+    }
+
+    private void populateFieldsOfSelectedQuoteItem(String quoteItemCode, String type) {
+
+        //declare variables
+        String title = "";
+        int countHours = 0;
+        int costRate = 0;
+
+        //get the data from the database (using the quoteitemCode)
+        try {
+            Statement st = conn.createStatement();
+            String query = "select * from quoteItem where QuoteItemCode = '" + quoteItemCode + "'";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                title = (rs.getString("QuoteTitle"));
+                countHours = (rs.getInt("Count_Hours"));
+                costRate = (rs.getInt("Cost_Rate"));
+            }
+        } catch (Exception e) {
+            System.out.println("error in populateClientCombo:" + e);
+        }
+
+        //populate the fields accordingly
+        if (type.equals("Material")) {
+            quote_mat_tf_item.setText(title);
+            quote_mat_tf_cost.setText("" + costRate);
+            quote_mat_spin_count.setValue(countHours);
+        }
+
+        if (type.equals("Overhead")) {
+            quote_over_tf_overhead.setText(title);
+            quote_over_tf_total.setText("" + costRate);
+        }
+
+        if (type.equals("Labour")) {
+            quote_labour_combo_workers.setSelectedItem(title);
+            quote_labour_spin_hours.setValue(countHours);
+        }
     }
 
     private void calculateAndCaptureQuoteCharges() {
@@ -4276,7 +4452,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             String query = "select fname,clientID from client";
-            rs = st.executeQuery(query);
+            ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
                 String item = rs.getString("fname") + " " + rs.getString("ClientID");
@@ -4299,29 +4475,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
     }
 
-    private void initialPopulateClientInfo() {
-        try {
-            Statement st = conn.createStatement();
-            String name[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
-            String query = "select * from client where fname = '" + name[0] + "'";
-            rs = st.executeQuery(query);
-
-            while (rs.next()) {
-                l_clientCode.setText(rs.getString("clientID"));
-                l_clientFullname.setText(rs.getString("fname"));
-                l_contactNr.setText(rs.getString("connum"));
-                l_email.setText(rs.getString("email"));
-                l_siteLocation.setText(rs.getString("address"));
-                job_tf_fname.setText(rs.getString("fname"));
-                job_tf_lname.setText(rs.getString("lname"));
-                job_tf_contactNr.setText(rs.getString("connum"));
-                job_tf_email.setText(rs.getString("email"));
-            }
-        } catch (Exception e) {
-            System.out.println("Problem with populateClientsInfo " + e);
-        }
-    }
-
     private String getClientIDForJob() {
         try {
             Statement st = conn.createStatement();
@@ -4341,7 +4494,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             String query = "select * from client where clientID = '" + currentClientID + "'";
-            rs = st.executeQuery(query);
+            ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 l_clientCode.setText(rs.getString("clientID"));
                 l_clientFullname.setText(rs.getString("fname"));
@@ -4368,6 +4521,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
             while (rs.next()) {
                 l_jobID.setText(rs.getString("jobID"));
                 l_jobTitle.setText(rs.getString("jobTitle"));
+                job_tf_title.setText(rs.getString("jobTitle"));
+                job_ta_specification.setText(rs.getString("jobDes"));
+                job_ta_comments.setText(rs.getString("Comments"));
+                job_tf_siteLocation.setText(rs.getString("Address"));
             }
 
         } catch (Exception e) {
@@ -4397,7 +4554,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Problems with populating combo with all the quotes: " + e);
         }
         quote_allquotes_combo.setModel(a);
-        quote_allquotes_combo.setSelectedIndex(0);
         return true;
     }
 
@@ -4558,7 +4714,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         return total;
     }
-    
+
     private double calculateTotals(String typeOfItem, String quoteID) {
         double total = 0;
         try {
@@ -4588,7 +4744,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void populateTotalsOnWorkPage() {
-        
+
         // Planned totals
         double materialIncCont = (calculateTotals("Material", getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
         work_tf_PCost_mat.setText(Double.toString(materialIncCont));
@@ -4763,7 +4919,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         DefaultComboBoxModel a = new DefaultComboBoxModel();
         String item;
         try {
-            String sql = "Select * from quoteItem where quoteID = '" + currentQuoteID + "' AND quoteType = '" + type + "'";
+            String sql = "Select * from quoteItem where quoteID = '" + acceptedQuoteID + "' AND quoteType = '" + type + "'";
             Statement st = conn.createStatement();
             rs = st.executeQuery(sql);
             while (rs.next()) {
@@ -4792,9 +4948,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_labour_spin_hours.setValue(0);
     }
 
-    private int itemStateChangedInt = 1;
-
-    private void validateQuoteStatus() {
+    private void validateSelectedQuoteStatus() {
         try {
             String currentState = "";
             Statement st = conn.createStatement();
@@ -4804,31 +4958,106 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 currentState = rs.getString("QuoteStatus");
             }
 
-            System.out.println("state = " + currentState);
-
             if (currentState.equalsIgnoreCase("Accepted")) {
-
+                enableQuoteComponents(false);
+                quote_but_rej.setEnabled(true);
+                //ultimately, set the combobox to be true sothat you can setill view the quotes,
+                //even if the current one is on lockdown
+                quote_allquotes_combo.setEnabled(true);
+                selectedQuoteState.setText("Quote Accepted");
             }
             if (currentState.equalsIgnoreCase("Rejected")) {
-
+                enableQuoteComponents(false);
+                //ultimately, set the combobox to be true sothat you can setill view the quotes,
+                //even if the current one is on lockdown
+                quote_allquotes_combo.setEnabled(true);
+                selectedQuoteState.setText("Quote Rejected");
             }
             if (currentState.equalsIgnoreCase("Quote in Progress")) {
-
+                enableQuoteComponents(true);
+                selectedQuoteState.setText("Quote I.P.");
             }
+
         } catch (Exception e) {
             System.out.println("problem with validateQuoteStatus :" + e);
         }
     }
 
+    private String getJobActualQuoteStatus() {
+
+        //this method scans through the entire quote list of the current job,
+        //and returns the status of the job compared to all of the quotes
+        //first, assume that all of the quotes are rejected by default.
+        try {
+            String quoteStatus = "";
+            Statement st = conn.createStatement();
+            String query = "select * from quote where jobID = '" + currentJobID + "'";
+            ResultSet rs = st.executeQuery(query);
+
+            //if the current Job has no quotes attached to it.
+            if (!rs.next()) {
+                //exit method with a false, to not even loop through the results (there are none)
+                jobQuoteState = "Quote in Progress";
+                return "Quote in Progress";
+            }
+
+            //loop through results
+            do {
+                quoteStatus = rs.getString("QuoteStatus");
+
+                if (quoteStatus.equalsIgnoreCase("Accepted")) {
+                    //return rejected if the accepted quote was found
+                    acceptedQuoteID = rs.getString("QuoteID");
+                    jobQuoteState = "Quote Accepted";
+                    return "Quote Accepted";
+                }
+
+                if (quoteStatus.equalsIgnoreCase("Quote in Progress")) {
+                    //if at least one quote is in progress, then the job is not rejected
+                    jobQuoteState = "Quote in Progress";
+                    return "Quote in Progress";
+                }
+            } while (rs.next());
+
+        } catch (Exception e) {
+            System.out.println("Problems with validateActualJobQuoteStatus: " + e);
+        }
+        //if it made it to the end, then the scan was complete, and all of the quotes were rejected,
+        //therefore the job is rejected
+        jobQuoteState = "Quote Rejected";
+        return "Quote Rejected";
+    }
+
+    private void updateRealJobQuoteState() {
+        //get the state of the job, relevant to all of the current job quotes
+        String jobStatus = getJobActualQuoteStatus();
+        try {
+
+            //and update the job state
+            String sql = "Update jobs set QuoteState=? Where JobID =?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, jobStatus);
+            statement.setString(2, currentJobID);
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Problem with updateJobQuoteState: " + e);
+        }
+    }
+    
+    private void updateQuoteLabels(){
+        l_quoteID.setText(acceptedQuoteID);
+        l_quoteState.setText(jobQuoteState);
+    }
+
     ///FINALISE PAGE STUFF/////
     private void populateTotalsOnFinalisePage() {
-       
+
         // Planned totals
-        double materialIncCont = (calculateTotals("Material",getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
+        double materialIncCont = (calculateTotals("Material", getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
         final_tf_PCost_mat.setText(Double.toString(materialIncCont));
-        double overheadsIncCont = (calculateTotals("Overheads",getQuoteIDForCurrentJob()) * ((overheadCont + 100) / 100));
+        double overheadsIncCont = (calculateTotals("Overheads", getQuoteIDForCurrentJob()) * ((overheadCont + 100) / 100));
         final_tf_PCost_over.setText(Double.toString(overheadsIncCont));
-        double labourIncCont = calculateTotals("Labour",getQuoteIDForCurrentJob()) * ((labourCont + 100) / 100);
+        double labourIncCont = calculateTotals("Labour", getQuoteIDForCurrentJob()) * ((labourCont + 100) / 100);
         final_tf_PCost_labour.setText(Double.toString(labourIncCont));
         final_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
 
@@ -4878,7 +5107,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         int labourProgression = (int) (Double.parseDouble(final_tf_ACost_labour.getText()) / Double.parseDouble(final_tf_PCost_labour.getText()) * 100);
         final_proBar_primary_labour.setValue(labourProgression);
-        
+
         int allProgression = (int) (Double.parseDouble(final_tf_ACost_total.getText()) / Double.parseDouble(final_tf_PCost_total.getText()) * 100);
         final_proBar_primary_total.setValue(allProgression);
 
@@ -4896,13 +5125,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("problem with populating expenses table " + e);
         }
     }
-    
+
     private void sortedExpensesTable(String category) {
         try {
             Statement st = conn.createStatement();
             //String query = "select * from client";
             //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
-            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense where expensetype = '"+category+"'";
+            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense where expensetype = '" + category + "'";
             rs = st.executeQuery(query);
             final_table_costs.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
@@ -4929,14 +5158,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void getQuoteTotalFromDB() {
         //first we need to get associated quote
-        
-        
+
         double materialIncCont = (calculateTotals("Material", getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
         double overheadsIncCont = (calculateTotals("Overheads", getQuoteIDForCurrentJob()) * ((overheadCont + 100) / 100));
         double labourIncCont = (calculateTotals("Labour", getQuoteIDForCurrentJob()) * ((labourCont + 100) / 100));
         double total = materialIncCont + overheadsIncCont + labourIncCont;
         final_tf_quote.setText(Double.toString(total));
-       
+
     }
 
     private void calculateOutstanding() {
@@ -4949,19 +5177,61 @@ public class GUI_jobStates extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             String a = "Accepted";
-            String query = "select * from quote where jobID = '" + currentJobID + "' AND quotestatus = '"+a+"'";
+            String query = "select * from quote where jobID = '" + currentJobID + "' AND quotestatus = '" + a + "'";
             rs = st.executeQuery(query);
 
             do {
                 if (!rs.next()) {
                     break;
                 }
-                quoteIDToUse =  rs.getString("QuoteID");
+                quoteIDToUse = rs.getString("QuoteID");
             } while (rs.next());
 
         } catch (Exception e) {
             System.out.println("Problem with getting quote data on finalise page" + e);
         }
         return quoteIDToUse;
+    }
+
+    private void quoteComboBoxItemSelected() {
+        //set the currentQuoteID
+        currentQuoteID = quote_allquotes_combo.getSelectedItem().toString();
+
+        //clear the total textfield values
+        clearQuoteFieldValues();
+
+        //set the values based on current quote
+        populateMaterials();
+        populateOverheads();
+        populateLabour();
+        populateQuoteCharges();
+
+        //calculate the totals based on the values set
+        populateAllTotals();
+        calculateQuoteCharges();
+        quoteID_l.setText(currentQuoteID);
+
+        //validate the quote status and update the interface accordingly
+        validateSelectedQuoteStatus();
+    }
+
+    private void refreshGUI() {
+        if (currentJobID.equals("")) {
+            //new job button was pressed
+            initComponentsNewJob();
+
+        } else {
+            //manageJob button was pressed
+            initComponentsManageJob();
+        }
+    }
+
+    private boolean okcancel(String theMessage) {
+        int result = JOptionPane.showConfirmDialog(null, theMessage, "alert", JOptionPane.OK_CANCEL_OPTION);
+        if (result == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

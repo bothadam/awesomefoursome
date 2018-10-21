@@ -12,6 +12,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,6 +31,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     ResultSet rs;
     String editOrAdd = "neither";
     DefaultListModel blankListModel = new DefaultListModel();
+    List<String> clientJobs = new ArrayList<>();
+    private int itemStateChangedInt = 1;
+    private String selectedJobID;
 
     /**
      * Creates new form mainGUI
@@ -128,6 +133,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jobs_but_removeRecord = new javax.swing.JButton();
         jobs_but_newJob = new javax.swing.JButton();
         jobs_but_manageJob = new javax.swing.JButton();
+        jobs_but_refreshTable = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         staff_but_newStaff = new javax.swing.JButton();
         staff_but_manageStaff = new javax.swing.JButton();
@@ -364,8 +370,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(client_but_insertAdr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(client_tf_ID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
+                                .addComponent(client_but_insertAdr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                                .addComponent(client_tf_ID, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(client_tf_address))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,14 +449,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(0, 132, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(client_but_done)
                             .addComponent(client_but_cancel)
                             .addComponent(jLabel37)
                             .addComponent(client_l_clientCode)))
-                    .addComponent(client_but_insertAdr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(client_but_insertAdr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         client_but_manageClient.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -470,6 +475,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         client_li_jobs.setMaximumSize(new java.awt.Dimension(39, 91));
+        client_li_jobs.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                client_li_jobsValueChanged(evt);
+            }
+        });
         jScrollPane8.setViewportView(client_li_jobs);
 
         jLabel14.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -514,10 +524,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(client_but_newClient, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -528,19 +538,20 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                 .addComponent(client_tf_searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(client_but_search)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(client_but_showAll)))
-                        .addGap(13, 13, 13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(client_but_showAll))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
+                                .addGap(20, 20, 20)
                                 .addComponent(jLabel14)
                                 .addGap(48, 48, 48)
                                 .addComponent(client_but_manageJob)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane8)))
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                                .addGap(0, 16, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,12 +572,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addComponent(client_combo_searchVia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         mainTabs.addTab("Clients", jPanel2);
@@ -671,7 +681,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jobs_rb_all)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                                 .addComponent(jobs_rb_open)
                                 .addGap(30, 30, 30)
                                 .addComponent(jobs_rb_QIP)
@@ -807,7 +817,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel11)
@@ -819,11 +829,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     .addComponent(jobs_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jobs_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jobs_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jobs_l_clientCode))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(jobs_l_clientCode)))
         );
 
         jobs_but_removeRecord.setBackground(new java.awt.Color(230, 219, 219));
@@ -854,6 +863,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             }
         });
 
+        jobs_but_refreshTable.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jobs_but_refreshTable.setText("Refresh Table");
+        jobs_but_refreshTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jobs_but_refreshTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jobs_but_refreshTableActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -865,7 +883,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(jobs_but_newJob, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jobs_but_manageJob, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 564, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jobs_but_refreshTable, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addComponent(jobs_but_removeRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
@@ -879,11 +899,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jobs_but_newJob)
                     .addComponent(jobs_but_removeRecord)
-                    .addComponent(jobs_but_manageJob))
+                    .addComponent(jobs_but_manageJob)
+                    .addComponent(jobs_but_refreshTable))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1057,7 +1078,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addGap(0, 212, Short.MAX_VALUE)
+                                .addGap(0, 218, Short.MAX_VALUE)
                                 .addComponent(staff_but_cancel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(staff_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1147,7 +1168,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(staff_but_newStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(staff_but_manageStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 472, Short.MAX_VALUE))
+                        .addGap(0, 765, Short.MAX_VALUE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1162,7 +1183,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         mainTabs.addTab("Staff", jPanel6);
@@ -1517,7 +1538,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(schedule_but_createSchedule)
                         .addGap(185, 185, 185)
                         .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 62, Short.MAX_VALUE))
+                .addGap(0, 72, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1602,9 +1623,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(mainTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(mainTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 643, Short.MAX_VALUE)
         );
 
         pack();
@@ -1814,8 +1833,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Please select a Job to manage");
         }
-
-
     }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
     private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
@@ -1840,8 +1857,12 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_schedule_but_createScheduleActionPerformed
 
     private void client_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageJobActionPerformed
-        String selectedJobID = getSelectedJobID();
-        manageJob(selectedJobID);
+
+        if (!client_li_jobs.isSelectionEmpty()) {
+            manageJob(selectedJobID);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Job to manage");
+        }
     }//GEN-LAST:event_client_but_manageJobActionPerformed
 
     private void client_but_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_searchActionPerformed
@@ -1932,16 +1953,18 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
 
         if (editOrAdd.equals("add")) {
-            String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
+            AddressPane ap = new AddressPane(client_tf_address);
+            /*String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the suburb") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
             createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
-            client_tf_address.setText(createdAddress);
+            client_tf_address.setText(createdAddress);*/
         } else if (editOrAdd.equals("edit")) {
-            GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
-            addrGUI.setVisible(true);
+            /*GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
+            addrGUI.setVisible(true);*/
+            AddressPane ap = new AddressPane(client_tf_address);
         }
 
 
@@ -2056,6 +2079,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jobs_but_removeRecord.setEnabled(true);
 
         populateClientTextFieldsForJob();
+        System.out.println("Selected Job ID = " + selectedJobID);
     }//GEN-LAST:event_jobs_table_jobsMouseClicked
 
     private void staff_but_insertAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_insertAddressActionPerformed
@@ -2089,6 +2113,23 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void jobs_but_removeRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_removeRecordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jobs_but_removeRecordActionPerformed
+
+    private void jobs_but_refreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_refreshTableActionPerformed
+        populateJobTable();
+    }//GEN-LAST:event_jobs_but_refreshTableActionPerformed
+
+    private void client_li_jobsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_client_li_jobsValueChanged
+        itemStateChangedInt++;
+        if (itemStateChangedInt == 3) {
+            if (!clientJobs.isEmpty()) {
+                if (client_li_jobs.getSelectedIndex() > -1) {
+                    selectedJobID = clientJobs.get(client_li_jobs.getSelectedIndex() + 1);
+                    System.out.println("selected Job ID = " + selectedJobID);
+                }
+            }
+            itemStateChangedInt = 1;
+        }
+    }//GEN-LAST:event_client_li_jobsValueChanged
 
     /**
      * @param args the command line arguments
@@ -2217,6 +2258,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton jobs_but_manageJob;
     private javax.swing.JButton jobs_but_newJob;
+    private javax.swing.JButton jobs_but_refreshTable;
     private javax.swing.JButton jobs_but_removeRecord;
     private javax.swing.JLabel jobs_l_clientCode;
     private javax.swing.JRadioButton jobs_rb_QAcc;
@@ -2395,6 +2437,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Problem with populating jobs table:" + e);
         }
+        jobs_rb_all.setSelected(true);
     }
 
     private void populateJobTable(String state) {
@@ -2406,7 +2449,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             } else {
                 query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs where QuoteState = '" + state + "'";
             }
-            
+
             Statement st = conn.createStatement();
             rs = st.executeQuery(query);
             jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
@@ -2430,6 +2473,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private void showJobsForSelectedClient() {
+        clientJobs.clear();
+        clientJobs.add("");
         client_li_jobs.setModel(blankListModel);
         String selectedClientCode = null;
         try {
@@ -2437,16 +2482,18 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             int row = client_table_clients.getSelectedRow();
             selectedClientCode = (client_table_clients.getModel().getValueAt(row, 0).toString());
             String query = "select * from jobs where clientID = '" + selectedClientCode + "'";
-            rs = st.executeQuery(query);
+            ResultSet rs = st.executeQuery(query);
             DefaultListModel tempModel = new DefaultListModel();
-
-            while (rs.next()) {
-                tempModel.addElement(rs.getString("jobtitle"));
-                client_li_jobs.setModel(tempModel);
+            if (rs.next()) {
+                do {
+                    tempModel.addElement(rs.getString("jobtitle"));
+                    clientJobs.add(rs.getString("jobID"));
+                    client_li_jobs.setModel(tempModel);
+                } while (rs.next());
             }
 
         } catch (Exception e) {
-            System.out.println("Problems with showJobForSelectedClient2 : " + e);
+            System.out.println("Problems with showJobsForSelectedClient : " + e);
         }
     }
 
@@ -2519,16 +2566,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             int row = jobs_table_jobs.getSelectedRow();
-            String selectedJobCode = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
-            String query = "select * from jobs where jobID = '" + selectedJobCode + "'";
-            rs = st.executeQuery(query);
+            selectedJobID = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
+            String query = "select * from jobs where jobID = '" + selectedJobID + "'";
+            ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 String myclientCode = rs.getString("ClientID");
 
                 Statement st2 = conn.createStatement();
                 String query2 = "select * from client where clientID = '" + myclientCode + "'";
-                ResultSet rs2;
-                rs2 = st2.executeQuery(query2);
+                ResultSet rs2 = st2.executeQuery(query2);
 
                 while (rs2.next()) {
                     jobs_tf_fname.setText(rs2.getString("fname"));
@@ -2536,9 +2582,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     jobs_tf_nr.setText(rs2.getString("ConNum"));
                     jobs_tf_email.setText(rs2.getString("email"));
                     jobs_l_clientCode.setText(rs2.getString("ClientID"));
-
                 }
-
             }
 
         } catch (Exception e) {
@@ -2660,4 +2704,5 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             System.out.println("Problem with adding staff" + e);
         }
     }
+
 }
