@@ -175,7 +175,7 @@
                                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
-                                              <Component id="job_spin_date" pref="379" max="32767" attributes="0"/>
+                                              <Component id="job_spin_date" pref="461" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
@@ -396,7 +396,7 @@
                               <Component id="job_tf_fname" min="-2" pref="188" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="108" max="32767" attributes="0"/>
+                          <EmptySpace pref="180" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="job_tf_lname" min="-2" pref="188" max="-2" attributes="0"/>
                               <Component id="jLabel49" min="-2" max="-2" attributes="0"/>
@@ -1158,7 +1158,7 @@
                                       <Component id="quote_mat_tf_item" alignment="0" max="32767" attributes="0"/>
                                       <Component id="quote_mat_tf_cost" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="122" max="32767" attributes="0"/>
+                                  <EmptySpace pref="177" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1375,7 +1375,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="125" max="32767" attributes="0"/>
+                                  <EmptySpace pref="191" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="quote_over_but_cancel" min="-2" max="-2" attributes="0"/>
@@ -1616,7 +1616,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="133" max="32767" attributes="0"/>
+                                  <EmptySpace pref="199" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="quote_labour_but_cancel" min="-2" max="-2" attributes="0"/>
@@ -2545,22 +2545,18 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="work_mat_spin_count" min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="work_mat_but_cancel" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="work_mat_but_done" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="work_mat_tf_item" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="work_mat_tf_cost" max="32767" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="117" max="32767" attributes="0"/>
+                                          <Component id="work_mat_spin_count" min="-2" pref="60" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="work_mat_but_cancel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="work_mat_but_done" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jComboBox1" max="32767" attributes="0"/>
+                                      <Component id="work_combox_mat" max="32767" attributes="0"/>
+                                      <Component id="work_mat_tf_item" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="work_mat_tf_cost" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2568,7 +2564,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="work_combox_mat" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="work_mat_tf_item" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2644,7 +2640,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="work_mat_tf_cost">
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox1">
+                        <Component class="javax.swing.JComboBox" name="work_combox_mat">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="14" style="0"/>
@@ -2659,7 +2655,7 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_combox_matActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -2789,15 +2785,15 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="112" max="32767" attributes="0"/>
+                                  <EmptySpace pref="111" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel100" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Component id="work_over_tf_cost" min="-2" pref="230" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
                                               <Component id="work_over_but_cancel" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="work_over_but_done" min="-2" max="-2" attributes="0"/>
@@ -2807,12 +2803,12 @@
                                           <Component id="jLabel99" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jComboBox2" pref="230" max="32767" attributes="0"/>
-                                              <Component id="work_over_tf_overhead" max="32767" attributes="0"/>
+                                              <Component id="work_combox_over" max="32767" attributes="0"/>
+                                              <Component id="work_over_tf_overhead" min="-2" pref="230" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2820,7 +2816,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="work_combox_over" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel99" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2884,7 +2880,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="work_over_tf_cost">
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox2">
+                        <Component class="javax.swing.JComboBox" name="work_combox_over">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="14" style="0"/>
@@ -2899,7 +2895,7 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox2ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_combox_overActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -2986,8 +2982,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="work_labour_but_add" pref="107" max="32767" attributes="0"/>
-                                  <Component id="jButton1" max="32767" attributes="0"/>
-                                  <Component id="jButton2" max="32767" attributes="0"/>
+                                  <Component id="work_labour_but_change" max="32767" attributes="0"/>
+                                  <Component id="work_labour_but_remove" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel33" max="32767" attributes="0"/>
@@ -3003,9 +2999,9 @@
                                   <Group type="102" attributes="0">
                                       <Component id="work_labour_but_add" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="work_labour_but_change" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="work_labour_but_remove" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane13" pref="0" max="32767" attributes="0"/>
@@ -3059,31 +3055,33 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                                  <EmptySpace pref="77" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel101" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel102" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBox3" min="-2" pref="271" max="-2" attributes="0"/>
-                                      <Component id="work_over_tf_labour" alignment="0" min="-2" pref="202" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="work_labour_spin_hours" min="-2" pref="83" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                          <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="rateSpinner" min="-2" pref="63" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="work_labour_but_cancel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="work_labour_but_done" min="-2" pref="67" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jLabel101" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel102" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="work_labour_spin_hours" min="-2" pref="83" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="94" max="32767" attributes="0"/>
+                                                  <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="rateSpinner" min="-2" pref="63" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="work_combox_lab" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="work_labour_tf_labour" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="67" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="82" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3091,13 +3089,13 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="work_combox_lab" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel101" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="work_over_tf_labour" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="work_labour_tf_labour" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="work_labour_spin_hours" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -3106,8 +3104,8 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="work_labour_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="work_labour_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -3144,7 +3142,7 @@
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox3">
+                        <Component class="javax.swing.JComboBox" name="work_combox_lab">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Tahoma" size="14" style="0"/>
@@ -3159,22 +3157,25 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_combox_labActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="work_over_tf_labour">
+                        <Component class="javax.swing.JTextField" name="work_labour_tf_labour">
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton3">
+                        <Component class="javax.swing.JButton" name="work_labour_but_cancel">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Cancel"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_labour_but_cancelActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton4">
+                        <Component class="javax.swing.JButton" name="work_labour_but_done">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Done"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_labour_but_doneActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JSpinner" name="rateSpinner">
@@ -3192,7 +3193,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_labour_but_addActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="work_labour_but_change">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
@@ -3200,10 +3201,10 @@
                         <Property name="text" type="java.lang.String" value="Change"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_labour_but_changeActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="work_labour_but_remove">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
@@ -3211,7 +3212,7 @@
                         <Property name="text" type="java.lang.String" value="Remove"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="work_labour_but_removeActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -3272,7 +3273,7 @@
                               <Component id="jLabel139" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="final_tf_outst" min="-2" pref="156" max="-2" attributes="0"/>
-                              <EmptySpace pref="113" max="32767" attributes="0"/>
+                              <EmptySpace pref="170" max="32767" attributes="0"/>
                               <Component id="final_but_managePay" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="final_but_signOff" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -3645,7 +3646,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="final_proBar_primary_mat" alignment="0" pref="303" max="32767" attributes="0"/>
+                                      <Component id="final_proBar_primary_mat" alignment="0" pref="362" max="32767" attributes="0"/>
                                       <Component id="final_proBar_primary_over" alignment="0" max="32767" attributes="0"/>
                                       <Component id="final_proBar_primary_labour" alignment="0" max="32767" attributes="0"/>
                                       <Component id="final_proBar_primary_total" alignment="0" max="32767" attributes="0"/>

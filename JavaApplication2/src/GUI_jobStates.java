@@ -258,7 +258,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_spin_count = new javax.swing.JSpinner();
         work_mat_but_cancel = new javax.swing.JButton();
         work_mat_tf_cost = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
+        work_combox_mat = new javax.swing.JComboBox();
         jScrollPane6 = new javax.swing.JScrollPane();
         work_mat_li_materials = new javax.swing.JList<>();
         work_mat_but_change = new javax.swing.JButton();
@@ -272,7 +272,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_over_but_done = new javax.swing.JButton();
         work_over_but_cancel = new javax.swing.JButton();
         work_over_tf_cost = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
+        work_combox_over = new javax.swing.JComboBox();
         jScrollPane12 = new javax.swing.JScrollPane();
         work_over_li_overheads = new javax.swing.JList<>();
         work_over_but_change = new javax.swing.JButton();
@@ -286,14 +286,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel102 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
         work_labour_spin_hours = new javax.swing.JSpinner();
-        jComboBox3 = new javax.swing.JComboBox();
-        work_over_tf_labour = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        work_combox_lab = new javax.swing.JComboBox();
+        work_labour_tf_labour = new javax.swing.JTextField();
+        work_labour_but_cancel = new javax.swing.JButton();
+        work_labour_but_done = new javax.swing.JButton();
         rateSpinner = new javax.swing.JSpinner();
         work_labour_but_add = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        work_labour_but_change = new javax.swing.JButton();
+        work_labour_but_remove = new javax.swing.JButton();
         jLabel95 = new javax.swing.JLabel();
         work_but_finaliseJob = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -463,7 +463,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                                     .addGroup(jPanel13Layout.createSequentialGroup()
                                         .addComponent(jLabel19)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(job_spin_date, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)))
+                                    .addComponent(job_spin_date, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)))
                             .addComponent(jScrollPane3)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel13Layout.createSequentialGroup()
@@ -558,7 +558,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(job_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(job_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel49))
@@ -988,7 +988,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(quote_mat_but_done))
                     .addComponent(quote_mat_tf_item)
                     .addComponent(quote_mat_tf_cost))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1109,7 +1109,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel37Layout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
+                .addContainerGap(191, Short.MAX_VALUE)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addComponent(quote_over_but_cancel)
@@ -1260,7 +1260,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel39Layout.setHorizontalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
+                .addContainerGap(199, Short.MAX_VALUE)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel39Layout.createSequentialGroup()
                         .addComponent(quote_labour_but_cancel)
@@ -1777,11 +1777,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        work_combox_mat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_combox_mat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        work_combox_mat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                work_combox_matActionPerformed(evt);
             }
         });
 
@@ -1799,24 +1799,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel28Layout.createSequentialGroup()
-                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
-                                .addComponent(work_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(work_mat_but_cancel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(work_mat_but_done))
-                            .addComponent(work_mat_tf_item)
-                            .addComponent(work_mat_tf_cost))
-                        .addGap(0, 117, Short.MAX_VALUE))
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(work_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(work_mat_but_cancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(work_mat_but_done)
+                        .addGap(0, 84, Short.MAX_VALUE))
+                    .addComponent(work_combox_mat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_mat_tf_item)
+                    .addComponent(work_mat_tf_cost))
+                .addGap(98, 98, 98))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(work_combox_mat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(work_mat_tf_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1930,11 +1928,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        work_combox_over.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_combox_over.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        work_combox_over.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                work_combox_overActionPerformed(evt);
             }
         });
 
@@ -1943,7 +1941,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel30Layout.setHorizontalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
-                .addContainerGap(112, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel30Layout.createSequentialGroup()
@@ -1958,15 +1956,15 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(jLabel99)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox2, 0, 230, Short.MAX_VALUE)
-                            .addComponent(work_over_tf_overhead))))
-                .addGap(22, 22, 22))
+                            .addComponent(work_combox_over, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(work_over_tf_overhead, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(89, 89, 89))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(work_combox_over, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel99)
@@ -2080,20 +2078,25 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_labour_spin_hours.setEnabled(false);
 
-        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        work_combox_lab.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_combox_lab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        work_combox_lab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                work_combox_labActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Cancel");
-
-        jButton4.setText("Done");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        work_labour_but_cancel.setText("Cancel");
+        work_labour_but_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                work_labour_but_cancelActionPerformed(evt);
+            }
+        });
+
+        work_labour_but_done.setText("Done");
+        work_labour_but_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                work_labour_but_doneActionPerformed(evt);
             }
         });
 
@@ -2102,38 +2105,38 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel33Layout.setHorizontalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel101)
-                    .addComponent(jLabel102))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(work_over_tf_labour, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel33Layout.createSequentialGroup()
-                        .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel59)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
-            .addGroup(jPanel33Layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(work_labour_but_cancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(work_labour_but_done, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel33Layout.createSequentialGroup()
+                        .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel101)
+                            .addComponent(jLabel102))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel33Layout.createSequentialGroup()
+                                .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                                .addComponent(jLabel59)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(work_combox_lab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(work_labour_tf_labour))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(work_combox_lab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel101)
-                    .addComponent(work_over_tf_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(work_labour_tf_labour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(work_labour_spin_hours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel59)
@@ -2141,8 +2144,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(rateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(work_labour_but_cancel)
+                    .addComponent(work_labour_but_done))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2154,19 +2157,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Change");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        work_labour_but_change.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_labour_but_change.setText("Change");
+        work_labour_but_change.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                work_labour_but_changeActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Remove");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        work_labour_but_remove.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        work_labour_but_remove.setText("Remove");
+        work_labour_but_remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                work_labour_but_removeActionPerformed(evt);
             }
         });
 
@@ -2180,8 +2183,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(work_labour_but_add, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(work_labour_but_change, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(work_labour_but_remove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -2194,9 +2197,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addGroup(jPanel31Layout.createSequentialGroup()
                         .addComponent(work_labour_but_add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(work_labour_but_change)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(work_labour_but_remove)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2507,7 +2510,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(final_proBar_primary_mat, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                            .addComponent(final_proBar_primary_mat, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                             .addComponent(final_proBar_primary_over, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(final_proBar_primary_labour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(final_proBar_primary_total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2623,7 +2626,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(jLabel139)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(final_tf_outst, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                         .addComponent(final_but_managePay))
                     .addComponent(final_but_signOff, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -3053,6 +3056,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         enablePanelQuoteOver(false);
         enablePanelWorkMat(false);
         enablePanelWorkOver(false);
+        enablePanelWorkLabour(false);
         enableQuoteComponents(false);
     }
 
@@ -3197,6 +3201,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_tf_item.setEnabled(a);
         work_mat_tf_cost.setEnabled(a);
         work_mat_spin_count.setEnabled(a);
+        work_combox_mat.setEnabled(a);
+        
         work_mat_but_done.setEnabled(a);
         work_mat_but_cancel.setEnabled(a);
     }
@@ -3210,9 +3216,27 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         work_over_tf_cost.setEnabled(a);
         work_over_tf_overhead.setEnabled(a);
+        work_combox_over.setEnabled(a);
 
         work_over_but_done.setEnabled(a);
         work_over_but_cancel.setEnabled(a);
+    }
+
+    private void enablePanelWorkLabour(boolean a) {
+        enablePanelWorkMain(a);
+        
+        work_labour_but_add.setEnabled(!a);
+        work_labour_but_change.setEnabled(!a);
+        work_labour_but_remove.setEnabled(!a);
+        work_labour_li_labour.setEnabled(!a);
+
+        work_labour_tf_labour.setEnabled(a);
+        work_labour_spin_hours.setEnabled(a);
+        rateSpinner.setEnabled(a);
+        work_combox_lab.setEnabled(a);
+        
+        work_labour_but_done.setEnabled(a);
+        work_labour_but_cancel.setEnabled(a);
     }
 
     //other methods
@@ -3627,12 +3651,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
         addOrChange = "x";
 
-        //calculate the actual costs
-        populateMaterialExpenses();
-        calculateAllExpenses();
+        refreshWorkData();
 
-        //populate the bars
-        populateAllBars();
         enablePanelWorkMat(false);
     }//GEN-LAST:event_work_mat_but_doneActionPerformed
 
@@ -3653,11 +3673,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void work_labour_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_labour_but_addActionPerformed
         addOrChange = "add";
-//        GUI_jobLog jobLogsGUI = new GUI_jobLog();
-        //  jobLogsGUI.setVisible(true);
         populateLabourExpenses();
-        work_over_tf_labour.setEnabled(true);
-        work_labour_spin_hours.setEnabled(true);
+        enablePanelWorkLabour(true);
 
     }//GEN-LAST:event_work_labour_but_addActionPerformed
 
@@ -3700,10 +3717,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         }
         addOrChange = "x";
-        populateOverheadExpenses();
-        calculateAllExpenses();
-        //populate the bars
-        populateAllBars();
+        refreshWorkData();
         enablePanelWorkOver(false);
     }//GEN-LAST:event_work_over_but_doneActionPerformed
 
@@ -3853,38 +3867,34 @@ public class GUI_jobStates extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Problem with deleteing Material : " + e);
         }
-        calculateAllExpenses();
-        populateTotalsOnWorkPage();
-        //populate the bars
-        populateAllBars();
-        populateMaterialExpenses();
 
+        refreshWorkData();
     }//GEN-LAST:event_work_mat_but_removeActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        String item[] = (jComboBox1.getSelectedItem().toString()).split("_");
+    private void work_combox_matActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_combox_matActionPerformed
+        String item[] = (work_combox_mat.getSelectedItem().toString()).split("_");
         work_mat_tf_item.setText(item[0]);
         String costWithRand[] = item[1].split("R");
         work_mat_tf_cost.setText(costWithRand[1]);
         String quantityWithDesc[] = item[2].split(":");
         work_mat_spin_count.setValue(Integer.parseInt(quantityWithDesc[1]));
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_work_combox_matActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        String item[] = (jComboBox2.getSelectedItem().toString()).split("_");
+    private void work_combox_overActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_combox_overActionPerformed
+        String item[] = (work_combox_over.getSelectedItem().toString()).split("_");
         work_over_tf_overhead.setText(item[0]);
         String costWithRand[] = item[1].split("R");
         work_over_tf_cost.setText(costWithRand[1]);
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_work_combox_overActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        String item[] = (jComboBox3.getSelectedItem().toString()).split("_");
-        work_over_tf_labour.setText(item[0] + " " + item[1]);
+    private void work_combox_labActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_combox_labActionPerformed
+        String item[] = (work_combox_lab.getSelectedItem().toString()).split("_");
+        work_labour_tf_labour.setText(item[0] + " " + item[1]);
         String costWithRand[] = item[2].split("R");
         rateSpinner.setValue(Integer.parseInt(costWithRand[1]));
         String quantityWithDesc[] = item[3].split(":");
         work_labour_spin_hours.setValue(Integer.parseInt(quantityWithDesc[1]));
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_work_combox_labActionPerformed
 
     private void work_over_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_removeActionPerformed
         String quoteItemCode[] = work_over_li_overheads.getSelectedValue().toString().split("#");
@@ -3896,21 +3906,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Problem with deleteing overhead on work page : " + e);
         }
-        calculateAllExpenses();
-        populateTotalsOnWorkPage();
-        //populate the bars
-        populateAllBars();
-        populateOverheadExpenses();
+
+        refreshWorkData();
     }//GEN-LAST:event_work_over_but_removeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void work_labour_but_changeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_labour_but_changeActionPerformed
         addOrChange = "change";
         populateLabourExpenses();
-        work_over_tf_labour.setEnabled(true);
-        work_labour_spin_hours.setEnabled(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        enablePanelWorkLabour(true);
+    }//GEN-LAST:event_work_labour_but_changeActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void work_labour_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_labour_but_removeActionPerformed
         String quoteItemCode[] = work_labour_li_labour.getSelectedValue().toString().split("#");
         try {
             String sql = "Delete from WorkingExpense where WorkingExpenseID = ?";
@@ -3920,21 +3926,15 @@ public class GUI_jobStates extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Problem with deleteing labour on work page : " + e);
         }
-        calculateAllExpenses();
-        populateTotalsOnWorkPage();
-        //populate the bars
-        populateAllBars();
-        populateLabourExpenses();
+        refreshWorkData();
+    }//GEN-LAST:event_work_labour_but_removeActionPerformed
 
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void work_labour_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_labour_but_doneActionPerformed
         if (addOrChange.equals("change")) {
             try {
                 String sql = "Update WorkingExpense set ExpenseTitle=?, Count_Hours=?, Cost_Rate=? where WorkingExpenseID = ?";
                 PreparedStatement statement = conn.prepareStatement(sql);
-                statement.setString(1, work_over_tf_labour.getText().toString());
+                statement.setString(1, work_labour_tf_labour.getText().toString());
                 statement.setInt(2, Integer.parseInt(work_labour_spin_hours.getValue().toString()));
 
                 statement.setInt(3, Integer.parseInt(rateSpinner.getValue().toString()));
@@ -3954,7 +3954,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 Random rand = new Random();
                 statement.setInt(1, rand.nextInt(100000));
                 statement.setString(2, currentJobID);
-                statement.setString(3, work_over_tf_labour.getText());
+                statement.setString(3, work_labour_tf_labour.getText());
                 statement.setString(4, "Labour");
                 statement.setInt(5, Integer.parseInt(work_labour_spin_hours.getValue().toString()));
                 statement.setInt(6, Integer.parseInt(rateSpinner.getValue().toString()));
@@ -3964,16 +3964,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 System.out.println("currentjobID " + work_mat_tf_cost.getText().toString());
             }
         }
+
+        //calculate the actual costs
         addOrChange = "x";
-        populateLabourExpenses();
-        calculateAllExpenses();
-        //populate the bars
-        populateAllBars();
-        enablePanelWorkOver(false);
-        work_over_tf_labour.setEnabled(false);
-        work_labour_spin_hours.setEnabled(false);
-        rateSpinner.setEnabled(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        refreshWorkData();
+        enablePanelWorkLabour(false);
+    }//GEN-LAST:event_work_labour_but_doneActionPerformed
 
     private void work_mat_li_materialsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_work_mat_li_materialsMouseClicked
         String item[] = work_mat_li_materials.getSelectedValue().split("_");
@@ -3995,7 +3991,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         String item[] = work_labour_li_labour.getSelectedValue().split("_");
         String cost[] = item[0].split("R");
         rateSpinner.setValue(Integer.parseInt(cost[1]));
-        work_over_tf_labour.setText(item[1]);
+        work_labour_tf_labour.setText(item[1]);
         work_labour_spin_hours.setValue(Integer.parseInt(item[2]));
     }//GEN-LAST:event_work_labour_li_labourMouseClicked
 
@@ -4087,11 +4083,15 @@ public class GUI_jobStates extends javax.swing.JFrame {
         int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to finalise the job now? ", "Warning", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(rootPane, "This Job is now closed");
-        }else if(result == JOptionPane.NO_OPTION) {
+        } else if (result == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(rootPane, "This Job is still open");
         }
 
     }//GEN-LAST:event_job_but_finzaliseJobActionPerformed
+
+    private void work_labour_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_labour_but_cancelActionPerformed
+        enablePanelWorkLabour(false);
+    }//GEN-LAST:event_work_labour_but_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4162,13 +4162,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JTextField final_tf_outst;
     private javax.swing.JTextField final_tf_quote;
     private javax.swing.JTextField final_tf_rec;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -4377,9 +4370,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel warningTotal;
     private javax.swing.JTabbedPane work_TabPane;
     private javax.swing.JButton work_but_finaliseJob;
+    private javax.swing.JComboBox work_combox_lab;
+    private javax.swing.JComboBox work_combox_mat;
+    private javax.swing.JComboBox work_combox_over;
     private javax.swing.JButton work_labour_but_add;
+    private javax.swing.JButton work_labour_but_cancel;
+    private javax.swing.JButton work_labour_but_change;
+    private javax.swing.JButton work_labour_but_done;
+    private javax.swing.JButton work_labour_but_remove;
     private javax.swing.JList<String> work_labour_li_labour;
     private javax.swing.JSpinner work_labour_spin_hours;
+    private javax.swing.JTextField work_labour_tf_labour;
     private javax.swing.JButton work_mat_but_add;
     private javax.swing.JButton work_mat_but_cancel;
     private javax.swing.JButton work_mat_but_change;
@@ -4396,7 +4397,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JButton work_over_but_remove;
     private javax.swing.JList<String> work_over_li_overheads;
     private javax.swing.JTextField work_over_tf_cost;
-    private javax.swing.JTextField work_over_tf_labour;
     private javax.swing.JTextField work_over_tf_overhead;
     private javax.swing.JProgressBar work_proBar_primary_labour;
     private javax.swing.JProgressBar work_proBar_primary_mat;
@@ -4847,12 +4847,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_tf_PCost_labour.setText(Double.toString(labourIncCont));
         work_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
 
-        System.out.println("--------");
-        System.out.println("materialCharge = " + materialCharge);
-        System.out.println("overheadCharge = " + overheadCharge);
-        System.out.println("labourCharge = " + labourCharge);
-        System.out.println("--------");
-
         // Total on Quote so it includes charges
         double materialIncCharges = materialIncCont * ((materialCharge + 100) / 100);
         work_tf_Quote_mat.setText(Double.toString(materialIncCharges));
@@ -4968,9 +4962,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void populateFromQuoteCombos() {
-        jComboBox1.setModel(populateCombo("Material"));
-        jComboBox2.setModel(populateCombo("Overheads"));
-        jComboBox3.setModel(populateCombo("Labour"));
+        work_combox_mat.setModel(populateCombo("Material"));
+        work_combox_over.setModel(populateCombo("Overheads"));
+        work_combox_lab.setModel(populateCombo("Labour"));
     }
 
     private DefaultComboBoxModel populateCombo(String type) {
@@ -5371,14 +5365,32 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void populateJobState() {
         try {
             Statement st = conn.createStatement();
-            String query = "select QuoteStatus from Quote where QuoteID = '" + acceptedQuoteID + "'";
+            String query = "select QuoteState from Jobs where JobID = '" + currentJobID + "'";
             rs = st.executeQuery(query);
             while (rs.next()) {
-                String selectedQuoteStatus = rs.getString("QuoteStatus");
-                l_jobState.setText(selectedQuoteStatus);
+                String jobState = rs.getString("QuoteState");
+                l_jobState.setText(jobState);
             }
         } catch (Exception e) {
             System.out.println("problem with populating labour expenses :" + e);
         }
+    }
+
+    private void refreshWorkData() {
+
+        populateMaterialExpenses();
+        populateOverheadExpenses();
+        populateLabourExpenses();
+
+        //calculate actualCost
+        calculateAllExpenses();
+        populateTotalsOnWorkPage();
+
+        //populate the bars
+        populateAllBars();
+
+        //populate the quote labels
+        populateQuoteLabels();
+
     }
 }
