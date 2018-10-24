@@ -299,7 +299,7 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="client_tf_nr" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                      <Component id="client_tf_lname" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -334,7 +334,7 @@
                                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                                           <Component id="client_tf_fname" min="-2" pref="222" max="-2" attributes="0"/>
                                                           <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="client_tf_lname" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                                          <Component id="client_tf_nr" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -395,12 +395,12 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="client_tf_lname" min="-2" max="-2" attributes="0"/>
+                                          <Component id="client_tf_nr" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="client_tf_nr" min="-2" max="-2" attributes="0"/>
+                                          <Component id="client_tf_lname" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -526,7 +526,7 @@
                     <Property name="text" type="java.lang.String" value="Email Address"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="client_tf_nr">
+                <Component class="javax.swing.JTextField" name="client_tf_lname">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
@@ -539,7 +539,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Contact No."/>
+                    <Property name="text" type="java.lang.String" value="Last Name"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="client_tf_fname">
@@ -558,7 +558,7 @@
                     <Property name="text" type="java.lang.String" value="First Name"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="client_tf_lname">
+                <Component class="javax.swing.JTextField" name="client_tf_nr">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
@@ -571,7 +571,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Last Name"/>
+                    <Property name="text" type="java.lang.String" value="Contact no."/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator2">
@@ -739,8 +739,6 @@
                               <Component id="jobs_but_manageJob" min="-2" pref="161" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jobs_but_refreshTable" min="-2" pref="161" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="jobs_but_removeRecord" min="-2" pref="185" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanel7" alignment="1" max="32767" attributes="0"/>
                           <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
@@ -756,7 +754,6 @@
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jobs_but_newJob" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jobs_but_removeRecord" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jobs_but_manageJob" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jobs_but_refreshTable" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1090,7 +1087,7 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <Component id="jobs_tf_email" min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="86" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1207,23 +1204,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jobs_but_removeRecord">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="db" green="db" red="e6" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Verdana" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Remove Record"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jobs_but_removeRecordActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="jobs_but_newJob">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

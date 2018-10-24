@@ -52,7 +52,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         blankListModel = (DefaultListModel) client_li_jobs.getModel();
 
         jobs_but_manageJob.setEnabled(false);
-        jobs_but_removeRecord.setEnabled(false);
+        //jobs_but_removeRecord.setEnabled(false);
     }
 
     /**
@@ -85,11 +85,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         client_tf_email = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        client_tf_nr = new javax.swing.JTextField();
+        client_tf_lname = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         client_tf_fname = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        client_tf_lname = new javax.swing.JTextField();
+        client_tf_nr = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel29 = new javax.swing.JLabel();
@@ -130,7 +130,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jobs_tf_nr = new javax.swing.JTextField();
         jobs_tf_email = new javax.swing.JTextField();
         jobs_l_clientCode = new javax.swing.JLabel();
-        jobs_but_removeRecord = new javax.swing.JButton();
         jobs_but_newJob = new javax.swing.JButton();
         jobs_but_manageJob = new javax.swing.JButton();
         jobs_but_refreshTable = new javax.swing.JButton();
@@ -324,11 +323,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel31.setText("Email Address");
 
-        client_tf_nr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        client_tf_nr.setEnabled(false);
+        client_tf_lname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_lname.setEnabled(false);
 
         jLabel32.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel32.setText("Contact No.");
+        jLabel32.setText("Last Name");
 
         client_tf_fname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         client_tf_fname.setEnabled(false);
@@ -336,11 +335,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel12.setText("First Name");
 
-        client_tf_lname.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        client_tf_lname.setEnabled(false);
+        client_tf_nr.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        client_tf_nr.setEnabled(false);
 
         jLabel28.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel28.setText("Last Name");
+        jLabel28.setText("Contact no.");
 
         jLabel29.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel29.setText("Mandatory To Quote");
@@ -362,7 +361,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32)
-                            .addComponent(client_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(client_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel30)
@@ -391,7 +390,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                                 .addComponent(jLabel12)
                                                 .addComponent(client_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jLabel28)
-                                                .addComponent(client_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(client_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel9Layout.createSequentialGroup()
                                                 .addGap(36, 36, 36)
@@ -437,11 +436,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel28)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(client_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(client_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel32)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(client_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(client_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel31)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -812,7 +811,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jobs_tf_email, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -834,16 +833,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jobs_l_clientCode)))
         );
-
-        jobs_but_removeRecord.setBackground(new java.awt.Color(230, 219, 219));
-        jobs_but_removeRecord.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jobs_but_removeRecord.setText("Remove Record");
-        jobs_but_removeRecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jobs_but_removeRecord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jobs_but_removeRecordActionPerformed(evt);
-            }
-        });
 
         jobs_but_newJob.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jobs_but_newJob.setText("New Job");
@@ -884,9 +873,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jobs_but_manageJob, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jobs_but_refreshTable, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jobs_but_removeRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jobs_but_refreshTable, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -898,7 +885,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jobs_but_newJob)
-                    .addComponent(jobs_but_removeRecord)
                     .addComponent(jobs_but_manageJob)
                     .addComponent(jobs_but_refreshTable))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1714,8 +1700,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_address.setEnabled(a);
         client_tf_email.setEnabled(a);
         client_tf_fname.setEnabled(a);
-        client_tf_lname.setEnabled(a);
         client_tf_nr.setEnabled(a);
+        client_tf_lname.setEnabled(a);
         //As per user testing
         //Place a ! infrount of a to enable it if needed
         client_but_manageClient.setEnabled(a);
@@ -1786,8 +1772,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_address.setText("");
         client_tf_email.setText("");
         client_tf_fname.setText("");
-        client_tf_lname.setText("");
         client_tf_nr.setText("");
+        client_tf_lname.setText("");
     }
 
     private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
@@ -1985,6 +1971,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_staff_table_staffMouseClicked
 
     private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
+
         //As per user testing
         //Will only enable if a client has been selected
         client_but_manageClient.setEnabled(true);
@@ -2076,7 +2063,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jobs_but_manageJob.setEnabled(true);
         //As per user testing
         //Will only enable if a job has been selected
-        jobs_but_removeRecord.setEnabled(true);
+        //jobs_but_removeRecord.setEnabled(true);
 
         populateClientTextFieldsForJob();
         System.out.println("Selected Job ID = " + selectedJobID);
@@ -2109,10 +2096,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         //Disable edit clients button while adding a client
         client_but_manageClient.setEnabled(false);
     }//GEN-LAST:event_client_but_newClientMouseClicked
-
-    private void jobs_but_removeRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_removeRecordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jobs_but_removeRecordActionPerformed
 
     private void jobs_but_refreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_refreshTableActionPerformed
         populateJobTable();
@@ -2259,7 +2242,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JButton jobs_but_manageJob;
     private javax.swing.JButton jobs_but_newJob;
     private javax.swing.JButton jobs_but_refreshTable;
-    private javax.swing.JButton jobs_but_removeRecord;
     private javax.swing.JLabel jobs_l_clientCode;
     private javax.swing.JRadioButton jobs_rb_QAcc;
     private javax.swing.JRadioButton jobs_rb_QIP;
