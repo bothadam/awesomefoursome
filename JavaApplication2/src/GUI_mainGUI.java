@@ -164,50 +164,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_but_remove = new javax.swing.JButton();
         jLabel50 = new javax.swing.JLabel();
         staff_spin_rate = new javax.swing.JSpinner();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        schedule_table_shcedules = new javax.swing.JTable();
-        jLabel13 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        schedule_list_openJobs = new javax.swing.JList<>();
-        jPanel5 = new javax.swing.JPanel();
-        scheduling_dateSpinner = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        scheduling_timeSpinner = new javax.swing.JSpinner();
-        jLabel18 = new javax.swing.JLabel();
-        scheduling_hoursSpinner = new javax.swing.JSpinner();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        schedule_list_dates = new javax.swing.JList<>();
-        schedule_but_add = new javax.swing.JButton();
-        schedule_but_remove = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        schedule_but_accept = new javax.swing.JButton();
-        schedule_but_cancel = new javax.swing.JButton();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        schedule_l_jobID = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        schedule_list_scheduledDates = new javax.swing.JList<>();
-        schedule_but_removeSchedule = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        schedule_list_workers = new javax.swing.JList<>();
-        jLabel24 = new javax.swing.JLabel();
-        schedule_but_manageSchedule = new javax.swing.JButton();
-        schedule_l_scheduleCode = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        schedule_but_plus = new javax.swing.JButton();
-        schedule_but_minus = new javax.swing.JButton();
-        schedule_combo_selectWorker = new javax.swing.JComboBox<>();
-        schedule_but_viewClash = new javax.swing.JButton();
-        schedule_but_createSchedule = new javax.swing.JButton();
-        jLabel39 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menu_user = new javax.swing.JMenu();
         menu_user_login = new javax.swing.JMenuItem();
@@ -364,14 +320,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                             .addComponent(client_tf_lname, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel30)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(client_but_insertAdr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                                .addComponent(client_tf_ID, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(client_tf_address))
+                            .addComponent(client_tf_address, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel30)
+                                    .addComponent(jLabel34)
+                                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(client_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(client_but_insertAdr, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel9Layout.createSequentialGroup()
@@ -414,11 +372,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(jLabel30)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(client_tf_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(client_tf_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -427,13 +385,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(client_tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel28)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(client_tf_nr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -573,7 +531,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1174,398 +1132,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         mainTabs.addTab("Staff", jPanel6);
 
-        jPanel8.setEnabled(false);
-
-        schedule_table_shcedules.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"J0001", "Install New Fence", "James", "jk001abc1", "12 Jan 2018", "15 Jan 2018", "Yes"},
-                {"J0002", "Install Water Tank", "Simon", "sl001abc1", "15 Jan 2018", "17 Jan 2018", "Yes"},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Job Code", "Job Title", "Client Name", "Schedule Code", "Starting Date", "Finishing Date", "Clashing Dates"
-            }
-        ));
-        jScrollPane1.setViewportView(schedule_table_shcedules);
-
-        jLabel13.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel13.setText("Scheduled Jobs");
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        schedule_list_openJobs.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(schedule_list_openJobs);
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        scheduling_dateSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"12 January 2018"}));
-        scheduling_dateSpinner.setEnabled(false);
-
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel2.setText("Date");
-
-        jLabel17.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel17.setText("Time");
-
-        scheduling_timeSpinner.setModel(new javax.swing.SpinnerListModel(new String[] {"08:30 AM"}));
-        scheduling_timeSpinner.setEnabled(false);
-
-        jLabel18.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel18.setText("Hours");
-
-        scheduling_hoursSpinner.setModel(new javax.swing.SpinnerNumberModel(4, null, null, 1));
-        scheduling_hoursSpinner.setEnabled(false);
-
-        schedule_list_dates.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        schedule_list_dates.setEnabled(false);
-        jScrollPane5.setViewportView(schedule_list_dates);
-
-        schedule_but_add.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_add.setText("Add");
-        schedule_but_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_add.setEnabled(false);
-        schedule_but_add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_addActionPerformed(evt);
-            }
-        });
-
-        schedule_but_remove.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_remove.setText("Remove");
-        schedule_but_remove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_remove.setEnabled(false);
-        schedule_but_remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_removeActionPerformed(evt);
-            }
-        });
-
-        jLabel19.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel19.setText("Working Days");
-
-        jLabel20.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel20.setText("Working Hours");
-
-        jLabel21.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel21.setText("17");
-
-        jLabel22.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel22.setText("4");
-
-        schedule_but_accept.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_accept.setText("Accept");
-        schedule_but_accept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_accept.setEnabled(false);
-        schedule_but_accept.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_acceptActionPerformed(evt);
-            }
-        });
-
-        schedule_but_cancel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_cancel.setText("Cancel");
-        schedule_but_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_cancel.setEnabled(false);
-        schedule_but_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_cancelActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(schedule_but_remove)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(schedule_but_add))
-                    .addComponent(scheduling_timeSpinner)
-                    .addComponent(scheduling_dateSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                    .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel22)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(schedule_but_cancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(schedule_but_accept)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel19)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel22)
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_dateSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(scheduling_timeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17))
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel18)
-                                    .addComponent(scheduling_hoursSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(schedule_but_accept)
-                                    .addComponent(schedule_but_cancel)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(schedule_but_remove)
-                                    .addComponent(schedule_but_add))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jScrollPane5))
-                .addContainerGap())
-        );
-
-        jLabel35.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel35.setText("Selected Job:");
-
-        jLabel36.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel36.setText("(Job ID)");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel35)
-                            .addComponent(jLabel36))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        jLabel15.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel15.setText("Selected Job:");
-
-        schedule_l_jobID.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_l_jobID.setText("(Job ID)");
-
-        schedule_list_scheduledDates.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "12 January_08:30 AM (4)", "13 January_08:00 AM (3)", "14 January_09:00 AM (5)", "15 January_08:00 AM (5)" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(schedule_list_scheduledDates);
-
-        schedule_but_removeSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_removeSchedule.setText("Remove Schedule");
-        schedule_but_removeSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_removeSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_removeScheduleActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel23.setText("Scheduled Dates");
-
-        schedule_list_workers.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Adam", "Thomas", "Steven", "Andrew" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane6.setViewportView(schedule_list_workers);
-
-        jLabel24.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel24.setText("Scheduled Workers");
-
-        schedule_but_manageSchedule.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_manageSchedule.setText("Manage Schedule");
-        schedule_but_manageSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_manageSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_manageScheduleActionPerformed(evt);
-            }
-        });
-
-        schedule_l_scheduleCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_l_scheduleCode.setText("(Schedule ID )");
-
-        jLabel26.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel26.setText("Selected Schedule:");
-
-        schedule_but_plus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_plus.setText("+");
-
-        schedule_but_minus.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_minus.setText("-");
-
-        schedule_combo_selectWorker.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_combo_selectWorker.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Adriaan", "Pieter" }));
-
-        schedule_but_viewClash.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        schedule_but_viewClash.setText("View Clash");
-        schedule_but_viewClash.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_viewClash.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_viewClashActionPerformed(evt);
-            }
-        });
-
-        schedule_but_createSchedule.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        schedule_but_createSchedule.setText("Create a Schedule");
-        schedule_but_createSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        schedule_but_createSchedule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                schedule_but_createScheduleActionPerformed(evt);
-            }
-        });
-
-        jLabel39.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        jLabel39.setText("LOS MY UIT");
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel8Layout.createSequentialGroup()
-                                    .addGap(11, 11, 11)
-                                    .addComponent(jLabel13)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(schedule_but_viewClash))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                                    .addComponent(jLabel15)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(schedule_l_jobID, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(46, 46, 46)
-                                    .addComponent(jLabel26)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(schedule_l_scheduleCode)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                                    .addComponent(schedule_but_removeSchedule)))
-                            .addGap(21, 21, 21)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                    .addComponent(schedule_combo_selectWorker, 0, 137, Short.MAX_VALUE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(schedule_but_minus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(schedule_but_plus, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane6)
-                                .addComponent(jLabel23)
-                                .addComponent(jLabel24)
-                                .addComponent(schedule_but_manageSchedule)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(schedule_but_createSchedule)
-                        .addGap(185, 185, 185)
-                        .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 72, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(schedule_but_createSchedule)
-                    .addComponent(jLabel39))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel23)
-                    .addComponent(schedule_but_viewClash))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(schedule_but_manageSchedule)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel24)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(schedule_l_jobID)
-                    .addComponent(schedule_but_removeSchedule)
-                    .addComponent(jLabel26)
-                    .addComponent(schedule_l_scheduleCode)
-                    .addComponent(schedule_combo_selectWorker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(schedule_but_minus)
-                    .addComponent(schedule_but_plus))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        mainTabs.addTab("Scheduling", jPanel8);
-
         menuBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         menu_user.setText("User");
@@ -1609,7 +1175,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 643, Short.MAX_VALUE)
+            .addComponent(mainTabs)
         );
 
         pack();
@@ -1663,33 +1229,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private void disablePanels() {
-        enablePanel_Schedule(false);
         enablePanel_Client(false);
         enablePanel_Staff(false);
-        //disable scheduling panel
-        mainTabs.setEnabledAt(3, false);
-    }
-
-    private void enablePanel_Schedule(boolean a) {
-        schedule_but_add.setEnabled(a);
-        schedule_but_remove.setEnabled(a);
-        schedule_but_accept.setEnabled(a);
-        schedule_but_cancel.setEnabled(a);
-        scheduling_dateSpinner.setEnabled(a);
-        scheduling_timeSpinner.setEnabled(a);
-        scheduling_hoursSpinner.setEnabled(a);
-        schedule_list_dates.setEnabled(a);
-
-        schedule_combo_selectWorker.setEnabled(!a);
-        schedule_but_minus.setEnabled(!a);
-        schedule_but_plus.setEnabled(!a);
-        schedule_but_manageSchedule.setEnabled(!a);
-        schedule_but_removeSchedule.setEnabled(!a);
-        schedule_list_openJobs.setEnabled(!a);
-        schedule_list_scheduledDates.setEnabled(!a);
-        schedule_list_workers.setEnabled(!a);
-        schedule_but_createSchedule.setEnabled(!a);
-        schedule_table_shcedules.setEnabled(!a);
     }
 
     private void enablePanel_Client(boolean a) {
@@ -1776,123 +1317,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_tf_lname.setText("");
     }
 
-    private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
-        String newJobID = generateNewJobID();
-        GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
-        jobStatesGUI.setVisible(true);
-    }//GEN-LAST:event_jobs_but_newJobActionPerformed
-
-    private void schedule_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_addActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_schedule_but_addActionPerformed
-
-    private void schedule_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_removeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_schedule_but_removeActionPerformed
-
-    private void schedule_but_acceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_acceptActionPerformed
-        enablePanel_Schedule(false);
-    }//GEN-LAST:event_schedule_but_acceptActionPerformed
-
-    private void schedule_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_cancelActionPerformed
-        enablePanel_Schedule(false);
-    }//GEN-LAST:event_schedule_but_cancelActionPerformed
-
-    private void schedule_but_removeScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_removeScheduleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_schedule_but_removeScheduleActionPerformed
-
-    private void schedule_but_manageScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_manageScheduleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_schedule_but_manageScheduleActionPerformed
-
-    private void schedule_but_viewClashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_viewClashActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_schedule_but_viewClashActionPerformed
-
-    private void jobs_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_manageJobActionPerformed
-        String selectedJobID = getSelectedJobID();
-        if (!selectedJobID.equals("")) {
-            int row = jobs_table_jobs.getSelectedRow();
-            selectedJobID = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
-            manageJob(selectedJobID);
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a Job to manage");
-        }
-    }//GEN-LAST:event_jobs_but_manageJobActionPerformed
-
-    private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
-        enablePanel_Client(true);
-        clearPanel_Client();
-        client_but_showAll.setEnabled(false);
-        editOrAdd = "add";
-        System.out.println(editOrAdd);
-
-    }//GEN-LAST:event_client_but_newClientActionPerformed
-
-    private void client_but_manageClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageClientActionPerformed
-        enablePanel_Client(true);
-        //As per user testing
-        //Will only enable if a client has been selected
-        client_but_showAll.setEnabled(false);
-        editOrAdd = "edit";
-    }//GEN-LAST:event_client_but_manageClientActionPerformed
-
-    private void schedule_but_createScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_schedule_but_createScheduleActionPerformed
-        enablePanel_Schedule(true);
-    }//GEN-LAST:event_schedule_but_createScheduleActionPerformed
-
-    private void client_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageJobActionPerformed
-
-        if (!client_li_jobs.isSelectionEmpty()) {
-            manageJob(selectedJobID);
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a Job to manage");
-        }
-    }//GEN-LAST:event_client_but_manageJobActionPerformed
-
-    private void client_but_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_searchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_client_but_searchActionPerformed
-
-    private void staff_but_newStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_newStaffActionPerformed
-        clearPanel_Staff();
-        enablePanel_Staff(true);
-        editOrAdd = "add";
-        staff_but_insertAddress.setText("Add Billing Address");
-    }//GEN-LAST:event_staff_but_newStaffActionPerformed
-
-   private void staff_but_manageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_manageStaffActionPerformed
-       editOrAdd = "edit";
-       enablePanel_Staff(true);
-       staff_but_insertAddress.setText("Edit Billing Address");
-    }//GEN-LAST:event_staff_but_manageStaffActionPerformed
-
-    private void client_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_cancelActionPerformed
-        enablePanel_Client(false);
-        client_but_showAll.setEnabled(true);
-        clearPanel_Client();
-    }//GEN-LAST:event_client_but_cancelActionPerformed
-
-    private void client_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_doneActionPerformed
-        System.out.println("yes" + editOrAdd);
-
-        if (editOrAdd.equals("add")) {
-            System.out.println("helloooo");
-
-            addClient();
-            editOrAdd = "";
-        } else if (editOrAdd.equals("edit")) {
-            editClient();
-            editOrAdd = "";
-        }
-
-        client_but_showAll.setEnabled(true);
-        enablePanel_Client(false);
-        clearPanel_Client();
-        populateClientTable();
-    }//GEN-LAST:event_client_but_doneActionPerformed
-
     private void menu_file_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_file_saveActionPerformed
         doSave();
     }//GEN-LAST:event_menu_file_saveActionPerformed
@@ -1900,6 +1324,36 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private void menu_file_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_file_closeActionPerformed
         doClose();
     }//GEN-LAST:event_menu_file_closeActionPerformed
+
+    private void staff_tf_skillsetInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_staff_tf_skillsetInputFocusGained
+        staff_tf_skillsetInput.setText("");
+    }//GEN-LAST:event_staff_tf_skillsetInputFocusGained
+
+    private void staff_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_removeActionPerformed
+
+        int[] selectedSkills = staff_list_skillset.getSelectedIndices();
+        DefaultListModel allSkills = (DefaultListModel) staff_list_skillset.getModel();
+        if (selectedSkills.length > 0) {
+            for (int i = 0; i < selectedSkills.length; i++) {
+                allSkills.remove(selectedSkills[i]);
+            }
+            staff_list_skillset.setModel(allSkills);
+        }
+    }//GEN-LAST:event_staff_but_removeActionPerformed
+
+    private void staff_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_addActionPerformed
+        String input = staff_tf_skillsetInput.getText();
+        if (isValidString(input)) {
+            DefaultListModel skillset = (DefaultListModel) staff_list_skillset.getModel();
+            skillset.addElement(input);
+            staff_list_skillset.setModel(skillset);
+            staff_tf_skillsetInput.setText("");
+        }
+    }//GEN-LAST:event_staff_but_addActionPerformed
+
+    private void staff_but_insertAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_insertAddressActionPerformed
+        AddressPane ap = new AddressPane(staff_tf_address);
+    }//GEN-LAST:event_staff_but_insertAddressActionPerformed
 
     private void staff_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_cancelActionPerformed
         enablePanel_Staff(false);
@@ -1919,56 +1373,223 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         populateStaffTable();
     }//GEN-LAST:event_staff_but_doneActionPerformed
 
-     private void staff_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_removeActionPerformed
+    private void staff_table_staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staff_table_staffMouseClicked
+        populateStaffTextfields();
+        staff_but_manageStaff.setEnabled(staff_table_staff.getSelectedRow() > -1);
+    }//GEN-LAST:event_staff_table_staffMouseClicked
 
-         int[] selectedSkills = staff_list_skillset.getSelectedIndices();
-         DefaultListModel allSkills = (DefaultListModel) staff_list_skillset.getModel();
-         if (selectedSkills.length > 0) {
-             for (int i = 0; i < selectedSkills.length; i++) {
-                 allSkills.remove(selectedSkills[i]);
-             }
-             staff_list_skillset.setModel(allSkills);
-         }
+    private void staff_but_manageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_manageStaffActionPerformed
+        editOrAdd = "edit";
+        enablePanel_Staff(true);
+        staff_but_insertAddress.setText("Edit Billing Address");
+    }//GEN-LAST:event_staff_but_manageStaffActionPerformed
 
-    }//GEN-LAST:event_staff_but_removeActionPerformed
+    private void staff_but_newStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_newStaffActionPerformed
+        clearPanel_Staff();
+        enablePanel_Staff(true);
+        editOrAdd = "add";
+        staff_but_insertAddress.setText("Add Billing Address");
+    }//GEN-LAST:event_staff_but_newStaffActionPerformed
 
-    private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
+    private void jobs_but_refreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_refreshTableActionPerformed
+        populateJobTable();
+    }//GEN-LAST:event_jobs_but_refreshTableActionPerformed
 
-    }//GEN-LAST:event_client_but_doneMouseClicked
-
-    private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
-
-        if (editOrAdd.equals("add")) {
-            AddressPane ap = new AddressPane(client_tf_address);
-            /*String createdAddress = JOptionPane.showInputDialog("Please enter the house/street number") + "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the street") + "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of the suburb") + "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the name of City") + "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the postcode/area code") + "#";
-            createdAddress = createdAddress + JOptionPane.showInputDialog("Please enter the type of residency (for example apartment)") + "#";
-            client_tf_address.setText(createdAddress);*/
-        } else if (editOrAdd.equals("edit")) {
-            /*GUI_insertAddress addrGUI = new GUI_insertAddress(client_l_clientCode.getText());
-            addrGUI.setVisible(true);*/
-            AddressPane ap = new AddressPane(client_tf_address);
+    private void jobs_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_manageJobActionPerformed
+        String selectedJobID = getSelectedJobID();
+        if (!selectedJobID.equals("")) {
+            int row = jobs_table_jobs.getSelectedRow();
+            selectedJobID = (jobs_table_jobs.getModel().getValueAt(row, 0).toString());
+            manageJob(selectedJobID);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Job to manage");
         }
+    }//GEN-LAST:event_jobs_but_manageJobActionPerformed
 
+    private void jobs_but_newJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_newJobActionPerformed
+        String newJobID = generateNewJobID();
+        GUI_jobStates jobStatesGUI = new GUI_jobStates(newJobID);
+        jobStatesGUI.setVisible(true);
+    }//GEN-LAST:event_jobs_but_newJobActionPerformed
 
-    }//GEN-LAST:event_client_but_insertAdrActionPerformed
+    private void jobs_table_jobsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobs_table_jobsMouseClicked
+        //As per user testing
+        //Will only enable if a job has been selected
+        jobs_but_manageJob.setEnabled(true);
+        //As per user testing
+        //Will only enable if a job has been selected
+        //jobs_but_removeRecord.setEnabled(true);
 
-    private void client_but_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_searchMouseClicked
-        searchClient();
-    }//GEN-LAST:event_client_but_searchMouseClicked
+        populateClientTextFieldsForJob();
+    }//GEN-LAST:event_jobs_table_jobsMouseClicked
+
+    private void jobs_rb_closedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_closedActionPerformed
+        if (jobs_rb_closed.isSelected()) {
+            populateJobTable("Closed");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_closedActionPerformed
+
+    private void jobs_rb_pRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_pRecActionPerformed
+        if (jobs_rb_pRec.isSelected()) {
+            populateJobTable("Payment Received");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_pRecActionPerformed
+
+    private void jobs_rb_pPendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_pPendActionPerformed
+        if (jobs_rb_pPend.isSelected()) {
+            populateJobTable("Payment Pending");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_pPendActionPerformed
+
+    private void jobs_rb_WIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_WIPActionPerformed
+        if (jobs_rb_WIP.isSelected()) {
+            populateJobTable("Work in Progress");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_WIPActionPerformed
+
+    private void jobs_rb_QRejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QRejActionPerformed
+        if (jobs_rb_QRej.isSelected()) {
+            populateJobTable("Quote Rejected");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_QRejActionPerformed
+
+    private void jobs_rb_QAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QAccActionPerformed
+        if (jobs_rb_QAcc.isSelected()) {
+            populateJobTable("Quote Accepted");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_QAccActionPerformed
+
+    private void jobs_rb_QIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QIPActionPerformed
+        if (jobs_rb_QIP.isSelected()) {
+            populateJobTable("Quote in Progress");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_QIPActionPerformed
+
+    private void jobs_rb_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_openActionPerformed
+        if (jobs_rb_open.isSelected()) {
+            populateJobTable("Open");
+        } else {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_openActionPerformed
+
+    private void jobs_rb_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_allActionPerformed
+        if (jobs_rb_all.isSelected()) {
+            populateJobTable();
+        }
+    }//GEN-LAST:event_jobs_rb_allActionPerformed
 
     private void client_but_showAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_showAllActionPerformed
         populateClientTable();
     }//GEN-LAST:event_client_but_showAllActionPerformed
 
-    private void staff_table_staffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_staff_table_staffMouseClicked
-        populateStaffTextfields();
-        staff_but_manageStaff.setEnabled(staff_table_staff.getSelectedRow() > -1);
+    private void client_but_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_client_but_searchActionPerformed
 
-    }//GEN-LAST:event_staff_table_staffMouseClicked
+    private void client_but_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_searchMouseClicked
+        searchClient();
+    }//GEN-LAST:event_client_but_searchMouseClicked
+
+    private void client_but_manageJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageJobActionPerformed
+
+        if (!client_li_jobs.isSelectionEmpty() && (client_li_jobs.getSelectedValue().equals("No Jobs") == false) && (client_li_jobs.getSelectedValue().equals("No selected client") == false)) {
+
+            manageJob(selectedJobID);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a Job to manage");
+        }
+    }//GEN-LAST:event_client_but_manageJobActionPerformed
+
+    private void client_li_jobsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_client_li_jobsValueChanged
+        itemStateChangedInt++;
+        if (itemStateChangedInt == 3) {
+            if (!clientJobs.isEmpty()) {
+                if (clientJobs.get(0).equals("No Jobs") || clientJobs.get(0).equals("No client selected")) {
+
+                }
+                if (client_li_jobs.getSelectedIndex() > -1) {
+                    selectedJobID = clientJobs.get(client_li_jobs.getSelectedIndex() + 1);
+                }
+            }
+            itemStateChangedInt = 1;
+        }
+    }//GEN-LAST:event_client_li_jobsValueChanged
+
+    private void client_but_manageClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_manageClientActionPerformed
+        enablePanel_Client(true);
+        //As per user testing
+        //Will only enable if a client has been selected
+        client_but_showAll.setEnabled(false);
+        editOrAdd = "edit";
+    }//GEN-LAST:event_client_but_manageClientActionPerformed
+
+    private void client_but_insertAdrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_insertAdrActionPerformed
+
+        if (editOrAdd.equals("add")) {
+            AddressPane ap = new AddressPane(client_tf_address);
+        } else if (editOrAdd.equals("edit")) {
+            AddressPane ap = new AddressPane(client_tf_address);
+        }
+
+    }//GEN-LAST:event_client_but_insertAdrActionPerformed
+
+    private void client_tf_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_tf_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_client_tf_IDActionPerformed
+
+    private void client_but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_cancelActionPerformed
+        enablePanel_Client(false);
+        client_but_showAll.setEnabled(true);
+        clearPanel_Client();
+    }//GEN-LAST:event_client_but_cancelActionPerformed
+
+    private void client_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_doneActionPerformed
+        if (editOrAdd.equals("add")) {
+            addClient();
+            editOrAdd = "";
+        } else if (editOrAdd.equals("edit")) {
+            editClient();
+            editOrAdd = "";
+        }
+
+        client_but_showAll.setEnabled(true);
+        enablePanel_Client(false);
+        clearPanel_Client();
+        populateClientTable();
+    }//GEN-LAST:event_client_but_doneActionPerformed
+
+    private void client_but_doneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_doneMouseClicked
+
+    }//GEN-LAST:event_client_but_doneMouseClicked
+
+    private void client_but_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_but_newClientActionPerformed
+        enablePanel_Client(true);
+        clearPanel_Client();
+        client_but_showAll.setEnabled(false);
+        editOrAdd = "add";
+        System.out.println(editOrAdd);
+    }//GEN-LAST:event_client_but_newClientActionPerformed
+
+    private void client_but_newClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_newClientMouseClicked
+        //As per user testing
+        //Disable edit clients button while adding a client
+        client_but_manageClient.setEnabled(false);
+    }//GEN-LAST:event_client_but_newClientMouseClicked
 
     private void client_table_clientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_table_clientsMouseClicked
 
@@ -1984,135 +1605,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         showJobsForSelectedClient();
         populateClientTextfields();
-
     }//GEN-LAST:event_client_table_clientsMouseClicked
-
-    private void jobs_rb_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_allActionPerformed
-        if (jobs_rb_all.isSelected()) {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_allActionPerformed
-
-    private void jobs_rb_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_openActionPerformed
-        if (jobs_rb_open.isSelected()) {
-            populateJobTable("Open");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_openActionPerformed
-
-    private void jobs_rb_QIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QIPActionPerformed
-        if (jobs_rb_QIP.isSelected()) {
-            populateJobTable("Quote in Progress");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_QIPActionPerformed
-
-    private void jobs_rb_QAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QAccActionPerformed
-        if (jobs_rb_QAcc.isSelected()) {
-            populateJobTable("Quote Accepted");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_QAccActionPerformed
-
-    private void jobs_rb_QRejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_QRejActionPerformed
-        if (jobs_rb_QRej.isSelected()) {
-            populateJobTable("Quote Rejected");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_QRejActionPerformed
-
-    private void jobs_rb_WIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_WIPActionPerformed
-        if (jobs_rb_WIP.isSelected()) {
-            populateJobTable("Work in Progress");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_WIPActionPerformed
-
-    private void jobs_rb_pPendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_pPendActionPerformed
-        if (jobs_rb_pPend.isSelected()) {
-            populateJobTable("Payment Pending");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_pPendActionPerformed
-
-    private void jobs_rb_pRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_pRecActionPerformed
-        if (jobs_rb_pRec.isSelected()) {
-            populateJobTable("Payment Received");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_pRecActionPerformed
-
-    private void jobs_rb_closedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_rb_closedActionPerformed
-        if (jobs_rb_closed.isSelected()) {
-            populateJobTable("Closed");
-        } else {
-            populateJobTable();
-        }
-    }//GEN-LAST:event_jobs_rb_closedActionPerformed
-
-    private void jobs_table_jobsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jobs_table_jobsMouseClicked
-        //As per user testing
-        //Will only enable if a job has been selected
-        jobs_but_manageJob.setEnabled(true);
-        //As per user testing
-        //Will only enable if a job has been selected
-        //jobs_but_removeRecord.setEnabled(true);
-
-        populateClientTextFieldsForJob();
-        System.out.println("Selected Job ID = " + selectedJobID);
-    }//GEN-LAST:event_jobs_table_jobsMouseClicked
-
-    private void staff_but_insertAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_insertAddressActionPerformed
-        AddressPane ap = new AddressPane(staff_tf_address);
-    }//GEN-LAST:event_staff_but_insertAddressActionPerformed
-
-	private void staff_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staff_but_addActionPerformed
-            String input = staff_tf_skillsetInput.getText();
-            if (isValidString(input)) {
-                DefaultListModel skillset = (DefaultListModel) staff_list_skillset.getModel();
-                skillset.addElement(input);
-                staff_list_skillset.setModel(skillset);
-                staff_tf_skillsetInput.setText("");
-            }
-    }//GEN-LAST:event_staff_but_addActionPerformed
-
-    private void staff_tf_skillsetInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_staff_tf_skillsetInputFocusGained
-        staff_tf_skillsetInput.setText("");
-    }//GEN-LAST:event_staff_tf_skillsetInputFocusGained
-
-    private void client_tf_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_client_tf_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_client_tf_IDActionPerformed
-
-    private void client_but_newClientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_client_but_newClientMouseClicked
-        //As per user testing 
-        //Disable edit clients button while adding a client
-        client_but_manageClient.setEnabled(false);
-    }//GEN-LAST:event_client_but_newClientMouseClicked
-
-    private void jobs_but_refreshTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobs_but_refreshTableActionPerformed
-        populateJobTable();
-    }//GEN-LAST:event_jobs_but_refreshTableActionPerformed
-
-    private void client_li_jobsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_client_li_jobsValueChanged
-        itemStateChangedInt++;
-        if (itemStateChangedInt == 3) {
-            if (!clientJobs.isEmpty()) {
-                if (client_li_jobs.getSelectedIndex() > -1) {
-                    selectedJobID = clientJobs.get(client_li_jobs.getSelectedIndex() + 1);
-                    System.out.println("selected Job ID = " + selectedJobID);
-                }
-            }
-            itemStateChangedInt = 1;
-        }
-    }//GEN-LAST:event_client_li_jobsValueChanged
 
     /**
      * @param args the command line arguments
@@ -2177,19 +1670,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
@@ -2197,10 +1678,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -2220,19 +1698,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
@@ -2265,27 +1735,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     private javax.swing.JMenu menu_user;
     private javax.swing.JMenuItem menu_user_login;
     private javax.swing.JMenuItem menu_user_logout;
-    private javax.swing.JButton schedule_but_accept;
-    private javax.swing.JButton schedule_but_add;
-    private javax.swing.JButton schedule_but_cancel;
-    private javax.swing.JButton schedule_but_createSchedule;
-    private javax.swing.JButton schedule_but_manageSchedule;
-    private javax.swing.JButton schedule_but_minus;
-    private javax.swing.JButton schedule_but_plus;
-    private javax.swing.JButton schedule_but_remove;
-    private javax.swing.JButton schedule_but_removeSchedule;
-    private javax.swing.JButton schedule_but_viewClash;
-    private javax.swing.JComboBox<String> schedule_combo_selectWorker;
-    private javax.swing.JLabel schedule_l_jobID;
-    private javax.swing.JLabel schedule_l_scheduleCode;
-    private javax.swing.JList<String> schedule_list_dates;
-    private javax.swing.JList<String> schedule_list_openJobs;
-    private javax.swing.JList<String> schedule_list_scheduledDates;
-    private javax.swing.JList<String> schedule_list_workers;
-    private javax.swing.JTable schedule_table_shcedules;
-    private javax.swing.JSpinner scheduling_dateSpinner;
-    private javax.swing.JSpinner scheduling_hoursSpinner;
-    private javax.swing.JSpinner scheduling_timeSpinner;
     private javax.swing.JButton staff_but_add;
     private javax.swing.JButton staff_but_cancel;
     private javax.swing.JButton staff_but_done;
@@ -2348,10 +1797,14 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 Statement st = conn.createStatement();
                 rs = st.executeQuery(sql2);
 
-                while (rs.next()) {
-                    if (rs.getString("clientID") != code) {
-                        goahead = true;
-                    }
+                if (rs.next()) {
+                    do {
+                        if (rs.getString("clientID") != code) {
+                            goahead = true;
+                        }
+                    } while (rs.next());
+                } else {
+                    goahead = true;
                 }
             }
 
@@ -2365,13 +1818,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 statement.setString(7, "not inserted");
 
                 if (client_tf_ID.getText().length() > 0) {
-                    System.out.println("ID inserted");
                     statement.setString(6, client_tf_ID.getText().toString());
                 }
 
                 if (client_tf_address.getText().length() > 0) {
                     statement.setString(7, client_tf_address.getText().toString());
-                    System.out.println("address inputted");
                 }
                 statement.executeUpdate();
                 populateClientTable();
@@ -2412,7 +1863,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             //String query = "select * from jobs";
-            String query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs";
+            String query = "select jobid as Job_ID,jobtitle as Job_Title,jobState as Status from jobs";
             rs = st.executeQuery(query);
             jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -2426,10 +1877,13 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             String query = "";
             //check to see of it refers to the job state or the quote state
-            if (state.equals("Open") || state.equals("Closed")) {
-                query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs where JobState = '" + state + "'";
+            if (state.equals("Quote in Progress") || state.equals("Quote Accepted") || state.equals("Quote Rejected")) {
+                query = "select jobid as Job_ID,jobtitle as Job_Title,quoteState as Status from jobs where QuoteState = '" + state + "'";
+            } else if (state.equals("Open")) {
+                query = "select jobid as Job_ID,jobtitle as Job_Title,jobState as Status from jobs where jobState != 'Closed'";
             } else {
-                query = "select jobid as Job_ID,jobtitle as Job_Title,quotestate as Status from jobs where QuoteState = '" + state + "'";
+                System.out.println("This should happen, and the job state is = " + state);
+                query = "select jobid as Job_ID,jobtitle as Job_Title,jobState as Status from jobs where jobState = '" + state + "'";
             }
 
             Statement st = conn.createStatement();
@@ -2472,6 +1926,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                     clientJobs.add(rs.getString("jobID"));
                     client_li_jobs.setModel(tempModel);
                 } while (rs.next());
+            } else {
+
+                tempModel.addElement("No Jobs");
+                client_li_jobs.setModel(tempModel);
+                clientJobs.add("No Jobs");
             }
 
         } catch (Exception e) {
@@ -2600,7 +2059,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void editStaff() {
         try {
-            System.out.println("start");
 
             String sql = "update Staff set FName = ? ,LName = ?,ID = ?,ConNum = ?,Email = ?, Rate = ?,SkillSet = ?, Address = ? WHERE StaffID = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
