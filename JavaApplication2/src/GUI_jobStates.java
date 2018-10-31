@@ -121,7 +121,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_tf_email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         job_but_changeDetails = new javax.swing.JButton();
-        job_cb_selectClient = new javax.swing.JComboBox<>();
+        job_cb_selectClient = new javax.swing.JComboBox<String>();
         job_but_finzaliseJob = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -169,7 +169,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_mat_but_cancel = new javax.swing.JButton();
         quote_mat_tf_cost = new javax.swing.JTextField();
         jScrollPane14 = new javax.swing.JScrollPane();
-        quote_mat_li_materials = new javax.swing.JList<>();
+        quote_mat_li_materials = new javax.swing.JList<String>();
         quote_mat_but_change = new javax.swing.JButton();
         quote_mat_but_add = new javax.swing.JButton();
         quote_mat_but_remove = new javax.swing.JButton();
@@ -182,19 +182,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_over_but_cancel = new javax.swing.JButton();
         quote_over_tf_total = new javax.swing.JTextField();
         jScrollPane15 = new javax.swing.JScrollPane();
-        quote_over_li_overheads = new javax.swing.JList<>();
+        quote_over_li_overheads = new javax.swing.JList<String>();
         quote_over_but_change = new javax.swing.JButton();
         quote_over_but_add = new javax.swing.JButton();
         quote_over_but_remove = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        quote_labour_li_labour = new javax.swing.JList<>();
+        quote_labour_li_labour = new javax.swing.JList<String>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
         quote_labour_but_done = new javax.swing.JButton();
         quote_labour_but_cancel = new javax.swing.JButton();
-        quote_labour_combo_workers = new javax.swing.JComboBox<>();
+        quote_labour_combo_workers = new javax.swing.JComboBox<String>();
         jLabel60 = new javax.swing.JLabel();
         quote_labour_l_rate = new javax.swing.JLabel();
         quote_labour_spin_hours = new javax.swing.JSpinner();
@@ -262,7 +262,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_tf_cost = new javax.swing.JTextField();
         work_combox_mat = new javax.swing.JComboBox();
         jScrollPane6 = new javax.swing.JScrollPane();
-        work_mat_li_materials = new javax.swing.JList<>();
+        work_mat_li_materials = new javax.swing.JList<String>();
         work_mat_but_change = new javax.swing.JButton();
         work_mat_but_add = new javax.swing.JButton();
         work_mat_but_remove = new javax.swing.JButton();
@@ -276,13 +276,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_over_tf_cost = new javax.swing.JTextField();
         work_combox_over = new javax.swing.JComboBox();
         jScrollPane12 = new javax.swing.JScrollPane();
-        work_over_li_overheads = new javax.swing.JList<>();
+        work_over_li_overheads = new javax.swing.JList<String>();
         work_over_but_change = new javax.swing.JButton();
         work_over_but_add = new javax.swing.JButton();
         work_over_but_remove = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        work_labour_li_labour = new javax.swing.JList<>();
+        work_labour_li_labour = new javax.swing.JList<String>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -606,7 +606,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         job_cb_selectClient.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
         job_cb_selectClient.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 job_cb_selectClientItemStateChanged(evt);
@@ -675,21 +675,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel64.setText("Materials:");
 
-        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_matStateChanged(evt);
             }
         });
 
-        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_overStateChanged(evt);
             }
         });
 
-        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_labourStateChanged(evt);
@@ -702,21 +702,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_tf_cost_labour.setEditable(false);
 
-        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_matStateChanged(evt);
             }
         });
 
-        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_overStateChanged(evt);
             }
         });
 
-        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_labourStateChanged(evt);
@@ -1243,7 +1243,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
         quote_labour_combo_workers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_labour_combo_workersActionPerformed(evt);
@@ -1843,10 +1843,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_mat_li_materials.setModel(new javax.swing.AbstractListModel<String>() {
+        work_mat_li_materials.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_mat_li_materials.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -1991,10 +1991,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_over_li_overheads.setModel(new javax.swing.AbstractListModel<String>() {
+        work_over_li_overheads.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_over_li_overheads.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -2063,10 +2063,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_TabPane.addTab("Overheads", jPanel29);
 
         work_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
+        work_labour_li_labour.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_labour_li_labour.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -2587,7 +2587,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addComponent(final_warningMat)
                         .addGap(5, 5, 5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2609,7 +2608,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                                 .addComponent(final_warningOver)
                                 .addGap(3, 3, 3)))
                         .addGap(3, 3, 3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2629,7 +2627,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                             .addGroup(jPanel32Layout.createSequentialGroup()
                                 .addComponent(final_warningLab)
                                 .addGap(3, 3, 3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2786,6 +2783,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
         l_jobTitle.setText("-");
 
         jLabel27.setText("Current Cost:");
+
+        l_currentCost.setText("00.00");
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, final_tf_ACost_total, org.jdesktop.beansbinding.ELProperty.create("${text}"), l_currentCost, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -4589,35 +4588,55 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void calculateQuoteCharges() {
         DecimalFormat df = new DecimalFormat("#.##");
+        
         double matCost = Double.parseDouble(quote_tf_cost_mat.getText().toString());
         double chargingM = Double.parseDouble(quote_tf_cost_mat.getText().toString()) / 100 * Double.parseDouble(quote_spin_charge_mat.getValue().toString());
         double contM = Double.parseDouble(quote_spin_cont_mat.getValue().toString()) * matCost / 100;
-        quote_tf_chFee_mat.setText(df.format(chargingM));
-        double finalM = chargingM + matCost + contM;
-        quote_tf_final_mat.setText(df.format(finalM));
+        
+        //EDIT: Charge amount = Cost * (1 + (Contingency / 100)) * (Charge / 100)
+        double chargeAmountM = Double.parseDouble(quote_tf_cost_mat.getText()) + (1 + (Double.parseDouble(quote_spin_cont_mat.getValue().toString()) / 100)) * (Double.parseDouble(quote_spin_charge_mat.getValue().toString()) / 100);
+        quote_tf_chFee_mat.setText(df.format(chargeAmountM));
+        
+        //double finalM = chargingM + matCost + contM;
+        
+        //EDIT: Final Price = Cost * (1 + (Contingency / 100)) * (1 + (Charge / 100))
+        double finalPriceM = Double.parseDouble(quote_tf_cost_mat.getText()) * (1 + (Double.parseDouble(quote_spin_cont_mat.getValue().toString()) / 100)) * (1 + (Double.parseDouble(quote_spin_charge_mat.getValue().toString()) / 100));
+        quote_tf_final_mat.setText(df.format(finalPriceM));
 
         double overCost = Double.parseDouble(quote_tf_cost_over.getText().toString());
         double chargingO = Double.parseDouble(quote_tf_cost_over.getText().toString()) / 100 * Double.parseDouble(quote_spin_charge_over.getValue().toString());
         double contO = Double.parseDouble(quote_spin_cont_over.getValue().toString()) * overCost / 100;
-        quote_tf_chFee_over.setText(Double.toString(chargingO));
-        double finalO = overCost + chargingO + contO;
-        quote_tf_final_over.setText(df.format(finalO));
+        
+        //EDIT: Charge amount = Cost * (1 + (Contingency / 100)) * (Charge / 100)
+        double chargeAmountO = Double.parseDouble(quote_tf_cost_over.getText()) + (1 + (Double.parseDouble(quote_spin_cont_over.getValue().toString()) / 100)) * (Double.parseDouble(quote_spin_charge_over.getValue().toString()) / 100);
+        quote_tf_chFee_over.setText(df.format(chargeAmountO));
+        
+        
+        //double finalO = overCost + chargingO + contO;
+        
+        //EDIT: Final Price = Cost * (1 + (Contingency / 100)) * (1 + (Charge / 100))
+        double finalPriceO = Double.parseDouble(quote_tf_cost_over.getText()) * (1 + (Double.parseDouble(quote_spin_cont_over.getValue().toString()) / 100)) * (1 + (Double.parseDouble(quote_spin_charge_over.getValue().toString()) / 100));
+        quote_tf_final_over.setText(df.format(finalPriceO));
 
         double labourCost = Double.parseDouble(quote_tf_cost_labour.getText().toString());
         double chargingL = Double.parseDouble(quote_tf_cost_labour.getText().toString()) / 100 * Double.parseDouble(quote_spin_charge_labour.getValue().toString());
         double contL = Double.parseDouble(quote_spin_cont_labour.getValue().toString()) * labourCost / 100;
-        quote_tf_chFee_labour.setText(df.format(chargingL));
-        double finalL = labourCost + chargingL + contL;
-        quote_tf_final_labour.setText(df.format(finalL));
+        
+        //EDIT: Charge amount = Cost * (1 + (Contingency / 100)) * (Charge / 100)
+        double chargeAmountL = Double.parseDouble(quote_tf_cost_labour.getText()) + (1 + (Double.parseDouble(quote_spin_cont_labour.getValue().toString()) / 100)) * (Double.parseDouble(quote_spin_charge_labour.getValue().toString()) / 100);
+        quote_tf_chFee_labour.setText(df.format(chargeAmountL));
+        
+        //double finalL = labourCost + chargingL + contL;
+        
+        //EDIT: Final Price = Cost * (1 + (Contingency / 100)) * (1 + (Charge / 100))
+        double finalPriceL = Double.parseDouble(quote_tf_cost_labour.getText()) * (1 + (Double.parseDouble(quote_spin_cont_labour.getValue().toString()) / 100)) * (1 + (Double.parseDouble(quote_spin_charge_labour.getValue().toString()) / 100));
+        quote_tf_final_labour.setText(df.format(finalPriceL));
 
-//        double finalCost = finalM + finalO + finalL;
-//        quote_tf_total.setText(df.format(finalCost));
-//        String finalCharges = df.format((chargingM + chargingO + chargingL));
-//        quote_tf_finalCharges.setText(finalCharges);
-        double finalCharges = (chargingM + contM) + (chargingO + contO) + (chargingL + contL);
+        double finalCharges = chargingM + chargingO + chargingL;
         quote_tf_finalCharges.setText(df.format(finalCharges));
 
-        double finalCost = finalM + finalO + finalL;
+        //double finalCost = finalPriceM + finalPriceO + finalPriceL;
+        double finalCost = Double.parseDouble(quote_tf_final_mat.getText()) + Double.parseDouble(quote_tf_final_over.getText()) + Double.parseDouble(quote_tf_final_labour.getText());
         quote_tf_total.setText(df.format(finalCost));
     }
 
@@ -4941,26 +4960,26 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void populateTotalsOnWorkPage() {
-
+        DecimalFormat df = new DecimalFormat("#.##");
         getContingenciesAndCharges(acceptedQuoteID);
 
         // Planned totals
         double materialIncCont = (calculateTotals("Material", acceptedQuoteID) * ((materialCont + 100) / 100));
-        work_tf_PCost_mat.setText(Double.toString(materialIncCont));
+        work_tf_PCost_mat.setText(df.format(materialIncCont));
         double overheadsIncCont = (calculateTotals("Overheads", acceptedQuoteID) * ((overheadCont + 100) / 100));
-        work_tf_PCost_over.setText(Double.toString(overheadsIncCont));
+        work_tf_PCost_over.setText(df.format(overheadsIncCont));
         double labourIncCont = calculateTotals("Labour", acceptedQuoteID) * ((labourCont + 100) / 100);
-        work_tf_PCost_labour.setText(Double.toString(labourIncCont));
-        work_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
+        work_tf_PCost_labour.setText(df.format(labourIncCont));
+        work_tf_PCost_total.setText(df.format(materialIncCont + overheadsIncCont + labourIncCont));
 
         // Total on Quote so it includes charges
         double materialIncCharges = materialIncCont * ((materialCharge + 100) / 100);
-        work_tf_Quote_mat.setText(Double.toString(materialIncCharges));
+        work_tf_Quote_mat.setText(df.format(materialIncCharges));
         double overheadIncCharges = overheadsIncCont * ((overheadCharge + 100) / 100);
-        work_tf_Quote_over.setText(Double.toString(overheadIncCharges));
+        work_tf_Quote_over.setText(df.format(overheadIncCharges));
         double labourIncCharges = labourIncCont * ((labourCharge + 100) / 100);
-        work_tf_Quote_labour.setText(Double.toString(labourIncCharges));
-        work_tf_Quote_total.setText(Double.toString(materialIncCharges + overheadIncCharges + labourIncCharges));
+        work_tf_Quote_labour.setText(df.format(labourIncCharges));
+        work_tf_Quote_total.setText(df.format(materialIncCharges + overheadIncCharges + labourIncCharges));
     }
 
     private void setStatesFields(String state) {
@@ -5245,30 +5264,31 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     ///FINALISE PAGE STUFF/////
     private void populateTotalsOnFinalisePage() {
-
+        DecimalFormat df = new DecimalFormat("#.##");
         // Planned totals
         double materialIncCont = (calculateTotals("Material", getQuoteIDForCurrentJob()) * ((materialCont + 100) / 100));
-        final_tf_PCost_mat.setText(Double.toString(materialIncCont));
+        final_tf_PCost_mat.setText(df.format(materialIncCont));
         double overheadsIncCont = (calculateTotals("Overheads", getQuoteIDForCurrentJob()) * ((overheadCont + 100) / 100));
-        final_tf_PCost_over.setText(Double.toString(overheadsIncCont));
+        final_tf_PCost_over.setText(df.format(overheadsIncCont));
         double labourIncCont = calculateTotals("Labour", getQuoteIDForCurrentJob()) * ((labourCont + 100) / 100);
-        final_tf_PCost_labour.setText(Double.toString(labourIncCont));
-        final_tf_PCost_total.setText(Double.toString(materialIncCont + overheadsIncCont + labourIncCont));
+        final_tf_PCost_labour.setText(df.format(labourIncCont));
+        final_tf_PCost_total.setText(df.format(materialIncCont + overheadsIncCont + labourIncCont));
 
         // Total on Quote so it includes charges
         double materialIncCharges = materialIncCont * ((materialCharge + 100) / 100);
-        final_tf_Quote_mat.setText(Double.toString(materialIncCharges));
+        final_tf_Quote_mat.setText(df.format(materialIncCharges));
         double overheadIncCharges = overheadsIncCont * ((overheadCharge + 100) / 100);
-        final_tf_Quote_over.setText(Double.toString(overheadIncCharges));
+        final_tf_Quote_over.setText(df.format(overheadIncCharges));
         double labourIncCharges = labourIncCont * ((labourCharge + 100) / 100);
-        final_tf_Quote_labour.setText(Double.toString(labourIncCharges));
-        final_tf_Quote_total.setText(Double.toString(materialIncCharges + overheadIncCharges + labourIncCharges));
+        final_tf_Quote_labour.setText(df.format(labourIncCharges));
+        final_tf_Quote_total.setText(df.format(materialIncCharges + overheadIncCharges + labourIncCharges));
     }
 
     private void calculateAllExpensesOnFinalise() {
-        final_tf_ACost_mat.setText(Double.toString(populateExpenseOnFinalise("Material")));
-        final_tf_ACost_over.setText(Double.toString(populateExpenseOnFinalise("Overheads")));
-        final_tf_ACost_labour.setText(Double.toString(populateExpenseOnFinalise("Labour")));
+        DecimalFormat df = new DecimalFormat("#.##");
+        final_tf_ACost_mat.setText(df.format(populateExpenseOnFinalise("Material")));
+        final_tf_ACost_over.setText(df.format(populateExpenseOnFinalise("Overheads")));
+        final_tf_ACost_labour.setText(df.format(populateExpenseOnFinalise("Labour")));
         double subtotal = Double.parseDouble(final_tf_ACost_mat.getText()) + Double.parseDouble(final_tf_ACost_over.getText()) + Double.parseDouble(final_tf_ACost_labour.getText());
         final_tf_ACost_total.setText(Double.toString(subtotal));
     }
@@ -5552,10 +5572,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
             double plannedCostOver = getContingency(Double.parseDouble(quote_tf_cost_over.getText()), Double.parseDouble(quote_spin_cont_over.getValue().toString()));
             double plannedCostLab = getContingency(Double.parseDouble(quote_tf_cost_labour.getText()), Double.parseDouble(quote_spin_cont_labour.getValue().toString()));
             l_plannedCost.setText((plannedCostMat + plannedCostOver + plannedCostLab) + "");
+            
+            l_currentCost.setText((work_tf_ACost_total.getText().toString()));
 
         }else{
             l_plannedCost.setText("00.00");
             l_totalQuote.setText("00.00");
+            l_currentCost.setText("00.00");
         }
 
     }
