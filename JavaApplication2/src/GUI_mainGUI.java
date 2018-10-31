@@ -98,11 +98,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_but_manageClient = new javax.swing.JButton();
         client_tf_searchInput = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        client_li_jobs = new javax.swing.JList<>();
+        client_li_jobs = new javax.swing.JList<String>();
         jLabel14 = new javax.swing.JLabel();
         client_but_manageJob = new javax.swing.JButton();
         client_but_search = new javax.swing.JButton();
-        client_combo_searchVia = new javax.swing.JComboBox<>();
+        client_combo_searchVia = new javax.swing.JComboBox<String>();
         client_but_showAll = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -155,7 +155,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         staff_l_staffCode = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        staff_list_skillset = new javax.swing.JList<>();
+        staff_list_skillset = new javax.swing.JList<String>();
         jLabel46 = new javax.swing.JLabel();
         staff_tf_fname = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
@@ -426,10 +426,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         client_tf_searchInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        client_li_jobs.setModel(new javax.swing.AbstractListModel<String>() {
+        client_li_jobs.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         client_li_jobs.setMaximumSize(new java.awt.Dimension(39, 91));
         client_li_jobs.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -466,7 +466,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         });
 
         client_combo_searchVia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Surname", "ID" }));
+        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Surname", "ID" }));
 
         client_but_showAll.setText("Show All");
         client_but_showAll.addActionListener(new java.awt.event.ActionListener() {
@@ -950,10 +950,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_l_staffCode.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         staff_l_staffCode.setText("(Code)");
 
-        staff_list_skillset.setModel(new javax.swing.AbstractListModel<String>() {
+        staff_list_skillset.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         jScrollPane10.setViewportView(staff_list_skillset);
 
