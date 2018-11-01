@@ -1,6 +1,10 @@
 
+import com.itextpdf.text.pdf.AcroFields;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 import java.awt.Color;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.Date;
 
@@ -10,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -213,6 +218,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         quote_allquotes_combo = new javax.swing.JComboBox();
         selectedQuoteState = new javax.swing.JLabel();
+        bill_add = new javax.swing.JButton();
+        b_tf = new javax.swing.JTextField();
+        pdf = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
@@ -1055,6 +1063,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(quote_mat_but_change, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1186,6 +1195,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(quote_over_but_add, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1335,6 +1345,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(quote_labour_but_add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1413,6 +1424,24 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         selectedQuoteState.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
 
+        bill_add.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        bill_add.setText("bill add");
+        bill_add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bill_addActionPerformed(evt);
+            }
+        });
+
+        b_tf.setEditable(false);
+
+        pdf.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        pdf.setText("PDF ");
+        pdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pdfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -1431,11 +1460,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(pdf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(526, 526, 526))
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(quote_but_create)
                         .addGap(18, 18, 18)
                         .addComponent(quote_but_jobDesc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
+=======
+                        .addComponent(bill_add)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(b_tf, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+>>>>>>> RyanWorking
                         .addComponent(selectedQuoteState, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(quote_allquotes_combo, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1457,6 +1496,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                     .addComponent(quote_but_acc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(quote_but_rej, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(quote_but_create, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1474,6 +1514,32 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(jLabel32)
                     .addComponent(jLabel33)
                     .addComponent(jLabel34))
+=======
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(quote_but_acc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                            .addComponent(quote_but_rej, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(quote_but_create, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(quote_but_delete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(quote_allquotes_combo)
+                                .addComponent(quote_but_jobDesc))
+                            .addComponent(selectedQuoteState, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bill_add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(b_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(quote_TabPane, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(quoteID_l)
+                        .addComponent(jLabel32)
+                        .addComponent(jLabel33))
+                    .addComponent(pdf, javax.swing.GroupLayout.Alignment.TRAILING))
+>>>>>>> RyanWorking
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
@@ -2740,6 +2806,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         l_clientFullname.setText("-");
 
         jLabel7.setText("Client Name");
+        jLabel7.setText("Client Full Name");
 
         jLabel8.setText("Client Number");
 
@@ -3022,10 +3089,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             String query = "select fname,clientID from client where clientID = '" + currentClientID + "'";
+            String query = "select fname,lname,clientID from client where clientID = '" + currentClientID + "'";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
                 String item = rs.getString("fname") + " " + rs.getString("ClientID");
+                String item = rs.getString("fname") + " " + rs.getString("lname") + " " + rs.getString("ClientID");
                 job_cb_selectClient.setSelectedItem(item);
             }
         } catch (Exception e) {
@@ -3337,6 +3406,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
         currentClientID = selectedClient[1];
+        currentClientID = selectedClient[2];
 
         if (addOrChange.equals("add")) {
             addNewJob();
@@ -3385,6 +3455,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(1, quote_mat_tf_item.getText().toString());
                 statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
                 statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
+                statement.setDouble(3, Double.parseDouble(quote_mat_tf_cost.getText().toString()));
                 statement.setString(4, selectedItemCode);
                 statement.executeUpdate();
             } catch (Exception e) {
@@ -3452,12 +3523,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
             try {
                 String sql = "Insert into quoteitem(QuoteID, QuoteTitle, QuoteType, Count_Hours, Cost_Rate) values(?,?,?,?,?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
+<<<<<<< HEAD
 
                 statement.setString(1, currentQuoteID);
                 statement.setString(2, quote_over_tf_overhead.getText());
                 statement.setString(3, "Overheads");
                 statement.setInt(4, 1);
                 statement.setInt(5, Integer.parseInt(quote_over_tf_total.getText().toString()));
+=======
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentQuoteID);
+                statement.setString(3, quote_over_tf_overhead.getText());
+                statement.setString(4, "Overheads");
+                statement.setInt(5, 1);
+                statement.setDouble(6, Double.parseDouble(quote_over_tf_total.getText()));
+>>>>>>> RyanWorking
                 statement.executeUpdate();
 
             } catch (Exception e) {
@@ -3474,6 +3555,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(1, quote_over_tf_overhead.getText());
                 statement.setInt(2, 1);
                 statement.setInt(3, Integer.parseInt(quote_over_tf_total.getText().toString()));
+                statement.setDouble(3, Double.parseDouble(quote_over_tf_total.getText()));
                 statement.setString(4, selectedItemCode);
                 statement.executeUpdate();
 
@@ -3744,6 +3826,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(1, work_mat_tf_item.getText().toString());
                 statement.setInt(2, Integer.parseInt(work_mat_spin_count.getModel().getValue().toString()));
                 statement.setInt(3, Integer.parseInt(work_mat_tf_cost.getText()));
+                statement.setDouble(3, Double.parseDouble(work_mat_tf_cost.getText()));
                 String id[] = work_mat_li_materials.getSelectedValue().split("#");
                 statement.setInt(4, Integer.parseInt(id[1]));
 
@@ -3757,12 +3840,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
             try {
                 String sql = "Insert into WorkingExpense(jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
+<<<<<<< HEAD
                 
                 statement.setString(1, currentJobID);
                 statement.setString(2, work_mat_tf_item.getText());
                 statement.setString(3, "Material");
                 statement.setDouble(4, Double.parseDouble(work_mat_spin_count.getValue().toString()));
                 statement.setDouble(5, Double.parseDouble(work_mat_tf_cost.getText()));
+=======
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentJobID);
+                statement.setString(3, work_mat_tf_item.getText());
+                statement.setString(4, "Material");
+                statement.setInt(5, Integer.parseInt(work_mat_spin_count.getValue().toString()));
+                statement.setDouble(6, Double.parseDouble(work_mat_tf_cost.getText().toString()));
+>>>>>>> RyanWorking
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Material : " + e);
@@ -3815,8 +3908,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 String sql = "Update WorkingExpense set ExpenseTitle=?, Count_Hours=?, Cost_Rate=? where WorkingExpenseID = ?";
                 PreparedStatement statement = conn.prepareStatement(sql);
                 statement.setString(1, work_over_tf_overhead.getText().toString());
+                statement.setString(1, work_over_tf_overhead.getText());
                 statement.setInt(2, 1);
                 statement.setInt(3, Integer.parseInt(work_over_tf_cost.getText()));
+                statement.setDouble(3, Double.parseDouble(work_over_tf_cost.getText()));
                 String id[] = work_over_li_overheads.getSelectedValue().split("#");
                 statement.setInt(4, Integer.parseInt(id[1]));
 
@@ -3830,12 +3925,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
             try {
                 String sql = "Insert into WorkingExpense(jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
+<<<<<<< HEAD
 
                 statement.setString(1, currentJobID);
                 statement.setString(2, work_over_tf_overhead.getText());
                 statement.setString(3, "Overheads");
                 statement.setInt(4, 1);
                 statement.setInt(5, Integer.parseInt(work_over_tf_cost.getText().toString()));
+=======
+                Random rand = new Random();
+                statement.setInt(1, rand.nextInt(100000));
+                statement.setString(2, currentJobID);
+                statement.setString(3, work_over_tf_overhead.getText());
+                statement.setString(4, "Overheads");
+                statement.setInt(5, 1);
+                statement.setDouble(6, Double.parseDouble(work_over_tf_cost.getText()));
+>>>>>>> RyanWorking
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Material : " + e);
@@ -4149,7 +4254,9 @@ public class GUI_jobStates extends javax.swing.JFrame {
         itemStateChangedInt++;
         if (itemStateChangedInt == 3) {
             String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
-            currentClientID = selectedClient[1];
+            int size = selectedClient.length;
+            
+            currentClientID = selectedClient[size - 1];
             populateClientInfo();
             itemStateChangedInt = 1;
         }
@@ -4240,6 +4347,15 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     }//GEN-LAST:event_work_labour_li_labourValueChanged
 
+    private void bill_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bill_addActionPerformed
+        getClientBillingAddress();
+    }//GEN-LAST:event_bill_addActionPerformed
+
+    private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
+        printPdf();
+
+    }//GEN-LAST:event_pdfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -4277,6 +4393,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField b_tf;
+    private javax.swing.JButton bill_add;
     private javax.swing.JButton but_close;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton final_but_managePay;
@@ -4459,6 +4577,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel l_quoteState;
     private javax.swing.JLabel l_siteLocation;
     private javax.swing.JLabel l_totalQuote;
+    private javax.swing.JButton pdf;
     private javax.swing.JLabel quoteID_l;
     private javax.swing.JTabbedPane quote_TabPane;
     private javax.swing.JComboBox quote_allquotes_combo;
@@ -4710,10 +4829,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         try {
             Statement st = conn.createStatement();
             String query = "select fname,clientID from client";
+            String query = "select fname,lname,clientID from client";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
                 String item = rs.getString("fname") + " " + rs.getString("ClientID");
+                String item = rs.getString("fname") + " " + rs.getString("lname") + " " + rs.getString("ClientID");
                 job_cb_selectClient.addItem(item);
             }
         } catch (Exception e) {
@@ -4748,14 +4869,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
         return "no client found";
     }
 
+    String populateQuoteBillingAddrClientID = "";
     private void populateClientInfo() {
         try {
             Statement st = conn.createStatement();
             String query = "select * from client where clientID = '" + currentClientID + "'";
             ResultSet rs = st.executeQuery(query);
+            populateQuoteBillingAddrClientID = currentClientID;
             while (rs.next()) {
                 l_clientCode.setText(rs.getString("clientID"));
                 l_clientFullname.setText(rs.getString("fname"));
+                l_clientFullname.setText(rs.getString("fname") + rs.getString("lname"));
                 l_contactNr.setText(rs.getString("connum"));
                 l_email.setText(rs.getString("email"));
                 l_siteLocation.setText(rs.getString("address"));
@@ -5274,7 +5398,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void updateJobLabelsAndStatus() {
+<<<<<<< HEAD
         if (!currentJobID.equals("")) {
+=======
+            l_plannedCost.setText("00.00");
+            l_totalQuote.setText("00.00");
+            l_currentCost.setText("00.00");
+        
+        //update the quote status of the job in the DB
+        updateRealJobQuoteState();
+>>>>>>> RyanWorking
 
             //update the quote status of the job in the DB
             updateRealJobQuoteState();
@@ -5635,6 +5768,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private double getContingency(double cost, double cont) {
         return (cost + (cost * (cont / 100)));
     }
+<<<<<<< HEAD
 
     private boolean clientMandatoryDetails() {
         try {
@@ -5732,5 +5866,70 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Error in copyQuoteRecord\ntrying to select from db = " + e);
         }
 
+=======
+    
+    private void getClientBillingAddress(){
+        System.out.println("populateQuoteBillingAddrClientID" + populateQuoteBillingAddrClientID);
+        try {
+            Statement st = conn.createStatement();
+            String query = "Select Address from Client where ClientID = '" + populateQuoteBillingAddrClientID + "'";
+            rs = st.executeQuery(query);
+            while (rs.next() == true) {
+                b_tf.setText(rs.getString("Address"));
+                System.out.println((rs.getString("Address")));
+            }
+        } catch (Exception e) {
+            System.out.println("problem with getClientBillingAddress " + e);
+        }
+    }
+    
+    private void printPdf() {                                          
+        try {
+            File dir = new File ("Quotes/" + l_jobID.getText() + "/");
+            if (!dir.exists())  {
+                dir.mkdirs();
+            }
+            PdfReader reader = new PdfReader("quote.pdf");
+            PdfStamper stamper = new PdfStamper(reader, new FileOutputStream("Quotes/" + l_jobID.getText() + "/" + quoteID_l.getText() + ".pdf"));
+            AcroFields form = stamper.getAcroFields();
+            java.util.Date today = new java.util.Date();
+            String pattern = "dd-MM-yyyy";
+            SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+            String date = formatter.format(today);
+            String[] data = l_siteLocation.getText().split("\\#");
+            String address1 = data[0] + ", " + data[1] + ", " + data[2];
+            String address2 = data[3] + ", " + data[4] + ", " + data[5];
+            
+            String[] data2 = populateQuoteBillingAddrClientID.split("\\#");
+            String address3 = data[0] + ", " + data[1] + ", " + data[2];
+            String address4 = data[3] + ", " + data[4] + ", " + data[5];
+            
+            form.setField("quoteID", quoteID_l.getText());
+            form.setField("quoteDate", date);
+            form.setField("clientID", l_clientCode.getText());
+            form.setField("clientName", l_clientFullname.getText());
+            form.setField("clientTel", l_contactNr.getText());
+            form.setField("clientEmail", l_email.getText());
+            form.setField("clientAddress1", address1);
+            form.setField("clientAddress2", address2);
+            form.setField("jobID", l_jobID.getText());
+            form.setField("jobDesc", l_jobTitle.getText());
+            form.setField("jobAddress1", address3);
+            form.setField("jobAddress2", address4);
+            form.setField("materialsCost", "R " + quote_tf_final_mat.getText());
+            form.setField("labourCost", "R " + quote_tf_final_labour.getText());
+            form.setField("overheadsCost", "R " + quote_tf_final_over.getText());
+            form.setField("totalCost", "R " + quote_tf_total.getText());
+            
+            stamper.setFormFlattening(true);
+            stamper.close();
+            reader.close();
+            
+            JOptionPane.showMessageDialog(this, "Quote successfully printed");
+            
+        } catch (Exception e)   {
+            e.printStackTrace();
+        }
+>>>>>>> RyanWorking
     }
 }

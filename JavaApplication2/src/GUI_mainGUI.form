@@ -420,7 +420,7 @@
                                       <Component id="client_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="client_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="client_l_clientCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="client_l_clientCode" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="client_but_insertAdr" max="32767" attributes="0"/>
@@ -600,7 +600,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="(Code)"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -1114,7 +1113,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jobs_l_clientCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jobs_l_clientCode" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1126,7 +1125,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Client"/>
+                    <Property name="text" type="java.lang.String" value="Client code:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
@@ -1202,7 +1201,6 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="(client Code Here)"/>
                   </Properties>
                 </Component>
               </SubComponents>
