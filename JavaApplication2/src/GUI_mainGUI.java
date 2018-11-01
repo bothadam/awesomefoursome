@@ -2073,37 +2073,8 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void addStaff() {
         try {
-<<<<<<< HEAD
 
-            boolean goahead = false;
-            String code = "";
-
-            while (goahead == false) {
-                Random rand = new Random();
-                code = Integer.toString(rand.nextInt(100000));
-                code = "S" + code;
-
-                String sql2 = "Select * from Staff";
-                Statement st = conn.createStatement();
-                rs = st.executeQuery(sql2);
-
-                if (rs.next()) {
-                    do {
-                        if (!rs.getString("StaffID").equals(code) && !rs.getString("ID").equals(staff_tf_ID.getText())) {
-                            goahead = true;
-                        } else {
-                            JOptionPane.showMessageDialog(rootPane, "Staff ID and/or Code already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-                        }
-                    } while (rs.next());
-                }else{
-                    goahead = true;
-                }
-            }
-
-            String sql = "Insert into Staff(StaffID,FName,LName,ID,ConNum,Email,Rate,SkillSet,Address) values(?,?,?,?,?,?,?,?,?)";
-=======
             String sql = "Insert into Staff(FName,LName,ID,ConNum,Email,Rate,SkillSet,Address) values(?,?,?,?,?,?,?,?)";
->>>>>>> dreyerWorking
             PreparedStatement statement = conn.prepareStatement(sql);
 
             statement.setString(1, staff_tf_fname.getText());
