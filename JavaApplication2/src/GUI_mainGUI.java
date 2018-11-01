@@ -2109,12 +2109,16 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 Statement st = conn.createStatement();
                 rs = st.executeQuery(sql2);
 
-                while (rs.next()) {
-                    if (!rs.getString("StaffID").equals(code) && !rs.getString("ID").equals(staff_tf_ID.getText())) {
-                        goahead = true;
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "Staff ID and/or Code already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
+                if (rs.next()) {
+                    do {
+                        if (!rs.getString("StaffID").equals(code) && !rs.getString("ID").equals(staff_tf_ID.getText())) {
+                            goahead = true;
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "Staff ID and/or Code already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } while (rs.next());
+                }else{
+                    goahead = true;
                 }
             }
 
