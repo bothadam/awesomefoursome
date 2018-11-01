@@ -1781,50 +1781,26 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void addClient() {
         try {
-            String sql = "Insert into client(ClientID,FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?,?)";
+            String sql = "Insert into client(FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            boolean goahead = false;
-            String code = "";
 
-            while (goahead == false) {
-                Random rand = new Random();
-                code = Integer.toString(rand.nextInt(100000));
-                code = "C" + code;
+            statement.setString(1, client_tf_fname.getText());
+            statement.setString(2, client_tf_lname.getText());
+            statement.setString(3, client_tf_nr.getText());
+            statement.setString(4, client_tf_email.getText());
+            statement.setString(5, "not inserted");
+            statement.setString(6, "not inserted");
 
-                String sql2 = "Select * from client";
-                Statement st = conn.createStatement();
-                rs = st.executeQuery(sql2);
-
-                if (rs.next()) {
-                    do {
-                        if (rs.getString("clientID") != code) {
-                            goahead = true;
-                        }
-                    } while (rs.next());
-                } else {
-                    goahead = true;
-                }
+            if (client_tf_ID.getText().length() > 0) {
+                statement.setString(5, client_tf_ID.getText().toString());
             }
 
-            if (goahead == true) {
-                statement.setString(1, code);
-                statement.setString(2, client_tf_fname.getText());
-                statement.setString(3, client_tf_lname.getText());
-                statement.setString(4, client_tf_nr.getText());
-                statement.setString(5, client_tf_email.getText());
-                statement.setString(6, "not inserted");
-                statement.setString(7, "not inserted");
-
-                if (client_tf_ID.getText().length() > 0) {
-                    statement.setString(6, client_tf_ID.getText().toString());
-                }
-
-                if (client_tf_address.getText().length() > 0) {
-                    statement.setString(7, client_tf_address.getText().toString());
-                }
-                statement.executeUpdate();
-                populateClientTable();
+            if (client_tf_address.getText().length() > 0) {
+                statement.setString(6, client_tf_address.getText().toString());
             }
+            statement.executeUpdate();
+            populateClientTable();
+            
 
         } catch (Exception e) {
             System.out.println("Problem with adding client" + e);
@@ -1899,7 +1875,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             String query = "select StaffID, FName as Name, LName as Surname, ConNum as Contact, Rate from Staff";
             rs = st.executeQuery(query);
             staff_table_staff.setModel(DbUtils.resultSetToTableModel(rs));
-
         } catch (Exception e) {
             System.out.println("problem with populateStaffTable :" + e);
         }
