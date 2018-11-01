@@ -3398,7 +3398,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 statement.setString(2, quote_mat_tf_item.getText());
                 statement.setString(3, "Material");
                 statement.setInt(4, Integer.parseInt(quote_mat_spin_count.getValue().toString()));
-                statement.setInt(5, Integer.parseInt(quote_mat_tf_cost.getText().toString()));
+                statement.setInt(5, Integer.parseInt(quote_mat_tf_cost.getText()));
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Material : " + e);
@@ -3494,7 +3494,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void quote_labour_but_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_addActionPerformed
         addOrChange = "add";
 
-        quote_labour_combo_workers.setSelectedIndex(1);
         quote_labour_spin_hours.setValue(0);
 
         enablePanelQuoteLabour(true);
@@ -3559,24 +3558,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
         if (okcancel("By creating a new quote, the job state will revert to 'Quoting'\nand the current accepted quote will be rejected")) {
 
-            //set button object values
-            Object[] options1 = {"Cancel", "New"};
-            Object[] options2 = {"Cancel", "New", "Copy"};
+            Object[] options = {"Copy", "New", "Cancel"};
             //create combobox
             JComboBox quotes = new JComboBox();
             //create the result int for the panel
             int createQuotePopup;
-            
-            if (quote_allquotes_combo.getItemAt(0).equals("Please create a New Quote") || quote_allquotes_combo.getItemCount() < 1) {
 
-                createQuotePopup = JOptionPane.showOptionDialog(this,
-                        "Create a new Quote",
-                        "Create a quote",
-                        JOptionPane.YES_NO_CANCEL_OPTION,
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,//do not use a custom Icon
-                        options1,//the titles of buttons
-                        options1[0]);//default button title
+            if (quote_allquotes_combo.getItemAt(0).equals("Please create a New Quote") || quote_allquotes_combo.getItemCount() < 1) {
+                createQuotePopup = 1;
             } else {
 
                 for (int i = 0; i < quote_allquotes_combo.getItemCount(); i++) {
@@ -3588,11 +3577,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         JOptionPane.YES_NO_CANCEL_OPTION,
                         JOptionPane.QUESTION_MESSAGE,
                         null,//do not use a custom Icon
-                        options2,//the titles of buttons
-                        options2[1]);//default button title
+                        options,//the titles of buttons
+                        options[1]);//default button title
             }
 
-            if (createQuotePopup == 2) {//copy
+            if (createQuotePopup == 0) {//copy
 
                 //reject the accepted quotes.
                 //if the status is accepted (meaning there is already an accepted quote),
@@ -3766,19 +3755,17 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateAllTotals();
         } else if (addOrChange.equals("add")) {
             try {
-                String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                String sql = "Insert into WorkingExpense(jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
-                Random rand = new Random();
-                statement.setInt(1, rand.nextInt(100000));
-                statement.setString(2, currentJobID);
-                statement.setString(3, work_mat_tf_item.getText());
-                statement.setString(4, "Material");
-                statement.setInt(5, Integer.parseInt(work_mat_spin_count.getValue().toString()));
-                statement.setInt(6, Integer.parseInt(work_mat_tf_cost.getText().toString()));
+                
+                statement.setString(1, currentJobID);
+                statement.setString(2, work_mat_tf_item.getText());
+                statement.setString(3, "Material");
+                statement.setDouble(4, Double.parseDouble(work_mat_spin_count.getValue().toString()));
+                statement.setDouble(5, Double.parseDouble(work_mat_tf_cost.getText()));
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Material : " + e);
-                System.out.println("currentjobID " + work_mat_tf_cost.getText().toString());
             }
         }
         addOrChange = "x";
@@ -3841,15 +3828,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateAllTotals();
         } else if (addOrChange.equals("add")) {
             try {
-                String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                String sql = "Insert into WorkingExpense(jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
-                Random rand = new Random();
-                statement.setInt(1, rand.nextInt(100000));
-                statement.setString(2, currentJobID);
-                statement.setString(3, work_over_tf_overhead.getText());
-                statement.setString(4, "Overheads");
-                statement.setInt(5, 1);
-                statement.setInt(6, Integer.parseInt(work_over_tf_cost.getText().toString()));
+
+                statement.setString(1, currentJobID);
+                statement.setString(2, work_over_tf_overhead.getText());
+                statement.setString(3, "Overheads");
+                statement.setInt(4, 1);
+                statement.setInt(5, Integer.parseInt(work_over_tf_cost.getText().toString()));
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Material : " + e);
@@ -4102,15 +4088,14 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateAllTotals();
         } else if (addOrChange.equals("add")) {
             try {
-                String sql = "Insert into WorkingExpense(WorkingExpenseID, jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?,?)";
+                String sql = "Insert into WorkingExpense(jobID,ExpenseTitle, ExpenseType, Count_Hours, Cost_Rate) values(?,?,?,?,?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
-                Random rand = new Random();
-                statement.setInt(1, rand.nextInt(100000));
-                statement.setString(2, currentJobID);
-                statement.setString(3, work_labour_tf_labour.getText());
-                statement.setString(4, "Labour");
-                statement.setInt(5, Integer.parseInt(work_labour_spin_hours.getValue().toString()));
-                statement.setInt(6, Integer.parseInt(rateSpinner.getValue().toString()));
+
+                statement.setString(1, currentJobID);
+                statement.setString(2, work_labour_tf_labour.getText());
+                statement.setString(3, "Labour");
+                statement.setInt(4, Integer.parseInt(work_labour_spin_hours.getValue().toString()));
+                statement.setInt(5, Integer.parseInt(rateSpinner.getValue().toString()));
                 statement.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Problem with adding quoteItem Labour : " + e);
@@ -4832,51 +4817,34 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void addNewJob() {
         try {
-            String sql = "Insert into jobs(jobID,ClientID,JobTitle,JobDes,JobStartDate,Comments,JobState,QuoteState,Address) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "Insert into jobs(ClientID,JobTitle,JobDes,JobStartDate,Comments,JobState,QuoteState,Address) values(?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            boolean goahead = false;
-            String jobCode = "";
-
-            while (goahead == false) {
-                Random rand = new Random();
-                jobCode = Integer.toString(rand.nextInt(100000));
-                jobCode = "J" + jobCode;
-
-                String sql2 = "Select * from jobs";
-                Statement st = conn.createStatement();
-                rs = st.executeQuery(sql2);
-
-                if (rs.next()) {
-                    do {
-                        if (rs.getString("jobID") != jobCode) {
-                            goahead = true;
-                        }
-                    } while (rs.next());
-                } else {
-                    goahead = true;
-                }
-
-            }
-
-            statement.setString(1, jobCode);
             String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
-            statement.setString(2, selectedClient[1]);
-            statement.setString(3, job_tf_title.getText());
-            statement.setString(4, job_ta_specification.getText());
+            statement.setString(1, selectedClient[1]);
+            statement.setString(2, job_tf_title.getText());
+            statement.setString(3, job_ta_specification.getText());
 
             String[] dateSplit = job_spin_date.getModel().getValue().toString().split(" ");
             String[] timeSplit = dateSplit[3].split(":");
 
-            statement.setString(5, job_spin_date.getModel().getValue().toString());
+            statement.setString(4, job_spin_date.getModel().getValue().toString());
 
-            statement.setString(6, job_ta_comments.getText());
-            statement.setString(7, "Quoting");
-            statement.setString(8, "Quote in Progress");
-            statement.setString(9, job_tf_siteLocation.getText());
+            statement.setString(5, job_ta_comments.getText());
+            statement.setString(6, "Quoting");
+            statement.setString(7, "Quote in Progress");
+            statement.setString(8, job_tf_siteLocation.getText());
 
             statement.executeUpdate();
-            currentJobID = jobCode;
+
+            Statement st = conn.createStatement();
+            String query = "select JobID from Jobs";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                currentJobID = rs.getString("JobID");
+                System.out.println("the current created jobID = " + currentJobID);
+            }
 
         } catch (Exception e) {
             System.out.println("Problem with adding new job : " + e);
@@ -5130,20 +5098,22 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void getContingenciesAndCharges(String id) {
-        try {
-            String sql = "Select * from quote where quoteID = '" + id + "'";
-            Statement st = conn.createStatement();
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                materialCont = Double.parseDouble(rs.getString("materialCont"));
-                labourCont = Double.parseDouble(rs.getString("labourCont"));
-                overheadCont = Double.parseDouble(rs.getString("overheadCont"));
-                materialCharge = Double.parseDouble(rs.getString("materialCharge"));
-                labourCharge = Double.parseDouble(rs.getString("labourCharge"));
-                overheadCharge = Double.parseDouble(rs.getString("overheadCharge"));
+        if (!id.equals("")) {
+            try {
+                String sql = "Select * from quote where quoteID = '" + Integer.parseInt(id) + "'";
+                Statement st = conn.createStatement();
+                rs = st.executeQuery(sql);
+                if (rs.next()) {
+                    materialCont = Double.parseDouble(rs.getString("materialCont"));
+                    labourCont = Double.parseDouble(rs.getString("labourCont"));
+                    overheadCont = Double.parseDouble(rs.getString("overheadCont"));
+                    materialCharge = Double.parseDouble(rs.getString("materialCharge"));
+                    labourCharge = Double.parseDouble(rs.getString("labourCharge"));
+                    overheadCharge = Double.parseDouble(rs.getString("overheadCharge"));
+                }
+            } catch (Exception e) {
+                System.out.println("Problem with getContingenciesAndCharges = " + e);
             }
-        } catch (Exception e) {
-            System.out.println("Problem with getContingenciesAndCharges = " + e);
         }
     }
 
@@ -5226,7 +5196,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         try {
             String quoteStatus = "";
             Statement st = conn.createStatement();
-            String query = "select * from jobs where jobID = '" + currentJobID + "'";
+            String query = "select * from jobs where jobID = " + Integer.parseInt(currentJobID) + "";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
@@ -5286,40 +5256,45 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void updateRealJobQuoteState() {
-        //get the state of the job, relevant to all of the current job quotes
-        String quoteStatus = getJobActualQuoteStatus();
-        try {
+        if (!currentJobID.equals("")) {
 
-            //and update the job state
-            String sql = "Update jobs set QuoteState=? Where JobID =?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, quoteStatus);
-            statement.setString(2, currentJobID);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with updateJobQuoteState: " + e);
+            //get the state of the job, relevant to all of the current job quotes
+            String quoteStatus = getJobActualQuoteStatus();
+            try {
+                //and update the job state
+                String sql = "Update jobs set QuoteState=? Where JobID =?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, quoteStatus);
+                statement.setInt(2, Integer.parseInt(currentJobID));
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with updateJobQuoteState: " + e);
+            }
         }
     }
 
     private void updateJobLabelsAndStatus() {
-        //update the quote status of the job in the DB
-        updateRealJobQuoteState();
+        if (!currentJobID.equals("")) {
 
-        //set the job state label
-        getJobStatus();
+            //update the quote status of the job in the DB
+            updateRealJobQuoteState();
 
-        //set the quote state label
-        l_quoteState.setText(jobQuoteState);
+            //set the job state label
+            getJobStatus();
 
-        //set the quoteIDLabel
-        l_quoteID.setText(acceptedQuoteID);
+            //set the quote state label
+            l_quoteState.setText(jobQuoteState);
 
-        if (!acceptedQuoteID.equals("")) {
-            jobStatesTabPane.setEnabledAt(2, true);
-            jobStatesTabPane.setEnabledAt(3, true);
-        } else {
-            jobStatesTabPane.setEnabledAt(2, false);
-            jobStatesTabPane.setEnabledAt(3, false);
+            //set the quoteIDLabel
+            l_quoteID.setText(acceptedQuoteID);
+
+            if (!acceptedQuoteID.equals("")) {
+                jobStatesTabPane.setEnabledAt(2, true);
+                jobStatesTabPane.setEnabledAt(3, true);
+            } else {
+                jobStatesTabPane.setEnabledAt(2, false);
+                jobStatesTabPane.setEnabledAt(3, false);
+            }
         }
     }
 
@@ -5692,46 +5667,34 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private String createQuote() {
         String code = "";
         try {
-            String sql = "Insert into quote(QuoteID,JobID,QuoteStatus,MaterialCont,OverheadCont,LabourCont,MaterialCharge,OverheadCharge,LabourCharge) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "Insert into quote(JobID,QuoteStatus,MaterialCont,OverheadCont,LabourCont,MaterialCharge,OverheadCharge,LabourCharge) values(?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            boolean goahead = false;
 
-            while (goahead == false) {
-                Random rand = new Random();
-                code = Integer.toString(rand.nextInt(100000));
-                code = "Q" + code;
+            statement.setString(1, currentJobID);
+            statement.setString(2, "Quote in Progress");
+            statement.setInt(3, 0);// material contingency
+            statement.setInt(4, 0);//  overhead contingency
+            statement.setInt(5, 0);//   labour contingency
+            statement.setInt(6, 0);// material charge
+            statement.setInt(7, 0);//  overhead charge
+            statement.setInt(8, 0);//   labour charge
+            statement.executeUpdate();
 
-                String sql2 = "Select * from quote";
-                Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery(sql2);
+            
+            Statement st = conn.createStatement();
+            String query = "select JobID from Jobs";
+            ResultSet rs = st.executeQuery(query);
 
-                if (rs.next()) {
-                    do {
-                        if (rs.getString("quoteID") != code) {
-                            goahead = true;
-                        }
-                    } while (rs.next());
-                } else {
-                    goahead = true;
-                }
+            while (rs.next()) {
+                code = rs.getString("JobID");
+                System.out.println("the current created jobID = " + code);
             }
-
-            if (goahead == true) {
-                statement.setString(1, code);
-                statement.setString(2, currentJobID);
-                statement.setString(3, "Quote in Progress");
-                statement.setInt(4, 0);// material contingency
-                statement.setInt(5, 0);//  overhead contingency
-                statement.setInt(6, 0);//   labour contingency
-                statement.setInt(7, 0);// material charge
-                statement.setInt(8, 0);//  overhead charge
-                statement.setInt(9, 0);//   labour charge
-                statement.executeUpdate();
-            }
-
+            
         } catch (Exception e) {
             System.out.println("Problem with createQuote: " + e);
         }
+        
+        
         return code;
     }
 
