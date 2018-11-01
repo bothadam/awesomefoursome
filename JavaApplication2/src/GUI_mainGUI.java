@@ -1214,9 +1214,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private boolean isValidString(String a) {
-        //do test to see if string is valid
-
-        return true;
         return !a.equals("");
     }
 
@@ -1784,20 +1781,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void addClient() {
         try {
-            String sql = "Insert into client(ClientID,FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?,?)";
             String sql = "Insert into client(FName,LName,ConNum,Email,ID,Address) values(?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            boolean goahead = false;
-            String code = "";
 
-            while (goahead == false) {
-                Random rand = new Random();
-                code = Integer.toString(rand.nextInt(100000));
-                code = "C" + code;
-
-                String sql2 = "Select * from client";
-                Statement st = conn.createStatement();
-                rs = st.executeQuery(sql2);
             statement.setString(1, client_tf_fname.getText());
             statement.setString(2, client_tf_lname.getText());
             statement.setString(3, client_tf_nr.getText());
@@ -1805,37 +1791,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             statement.setString(5, "not inserted");
             statement.setString(6, "not inserted");
 
-                if (rs.next()) {
-                    do {
-                        if (rs.getString("clientID") != code) {
-                            goahead = true;
-                        }
-                    } while (rs.next());
-                } else {
-                    goahead = true;
-                }
             if (client_tf_ID.getText().length() > 0) {
                 statement.setString(5, client_tf_ID.getText().toString());
             }
 
-            if (goahead == true) {
-                statement.setString(1, code);
-                statement.setString(2, client_tf_fname.getText());
-                statement.setString(3, client_tf_lname.getText());
-                statement.setString(4, client_tf_nr.getText());
-                statement.setString(5, client_tf_email.getText());
-                statement.setString(6, "not inserted");
-                statement.setString(7, "not inserted");
-
-                if (client_tf_ID.getText().length() > 0) {
-                    statement.setString(6, client_tf_ID.getText().toString());
-                }
-
-                if (client_tf_address.getText().length() > 0) {
-                    statement.setString(7, client_tf_address.getText().toString());
-                }
-                statement.executeUpdate();
-                populateClientTable();
             if (client_tf_address.getText().length() > 0) {
                 statement.setString(6, client_tf_address.getText().toString());
             }
@@ -1916,7 +1875,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             String query = "select StaffID, FName as Name, LName as Surname, ConNum as Contact, Rate from Staff";
             rs = st.executeQuery(query);
             staff_table_staff.setModel(DbUtils.resultSetToTableModel(rs));
-
         } catch (Exception e) {
             System.out.println("problem with populateStaffTable :" + e);
         }
@@ -2062,13 +2020,9 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 staff_tf_nr.setText(rs.getString("ConNum"));
                 staff_tf_email.setText(rs.getString("Email"));
                 staff_spin_rate.getModel().setValue(rs.getDouble("Rate"));
-                DefaultListModel a = new DefaultListModel();
-                a.addElement(rs.getString("SkillSet"));
-                staff_list_skillset.setModel(a);
                 skills = rs.getString("SkillSet");
                 staff_tf_address.setText(rs.getString("Address"));
             }
-
             String[] skillsArray = skills.split(",");
             DefaultListModel a = new DefaultListModel();
             for (String skill : skillsArray) {
@@ -2152,23 +2106,6 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 >>>>>>> dreyerWorking
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            if (goahead) {
-                statement.setString(1, code);
-                statement.setString(2, staff_tf_fname.getText());
-                statement.setString(3, staff_tf_lname.getText());
-                statement.setString(4, staff_tf_ID.getText());
-                statement.setString(5, staff_tf_nr.getText());
-                statement.setString(6, staff_tf_email.getText());
-                statement.setString(7, staff_spin_rate.getModel().getValue().toString());
-                String skillset = "";
-                for (int i = 0; i < staff_list_skillset.getModel().getSize(); i++) {
-                    skillset = staff_list_skillset.getModel().getElementAt(i) + "," + skillset;
-                }
-                statement.setString(8, skillset);
-                statement.setString(9, staff_tf_address.getText());
-
-                statement.executeUpdate();
-                populateStaffTable();
             statement.setString(1, staff_tf_fname.getText());
             statement.setString(2, staff_tf_lname.getText());
             statement.setString(3, staff_tf_ID.getText());
