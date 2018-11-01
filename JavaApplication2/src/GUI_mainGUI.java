@@ -1214,9 +1214,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
     }
 
     private boolean isValidString(String a) {
-        //do test to see if string is valid
-
-        return true;
+        return !a.equals("");
     }
 
     private void doSave() {
@@ -2037,6 +2035,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             int row = staff_table_staff.getSelectedRow();
             String selectedStaffCode = (staff_table_staff.getModel().getValueAt(row, 0).toString());
             String query = "select * from Staff where StaffID = '" + selectedStaffCode + "'";
+            String skills = "";
             rs = st.executeQuery(query);
             while (rs.next()) {
                 staff_l_staffCode.setText(rs.getString("staffID"));
@@ -2046,12 +2045,15 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 staff_tf_nr.setText(rs.getString("ConNum"));
                 staff_tf_email.setText(rs.getString("Email"));
                 staff_spin_rate.getModel().setValue(rs.getDouble("Rate"));
-                DefaultListModel a = new DefaultListModel();
-                a.addElement(rs.getString("SkillSet"));
-                staff_list_skillset.setModel(a);
+                skills = rs.getString("SkillSet");
                 staff_tf_address.setText(rs.getString("Address"));
             }
-
+            String[] skillsArray = skills.split(",");
+            DefaultListModel a = new DefaultListModel();
+            for (String skill : skillsArray) {
+                a.addElement(skill);
+            }
+            staff_list_skillset.setModel(a);
         } catch (Exception e) {
             System.out.println("Problem with populateStaffTextfields" + e);
         }
@@ -2096,50 +2098,24 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
     private void addStaff() {
         try {
-
-            boolean goahead = false;
-            String code = "";
-
-            while (goahead == false) {
-                Random rand = new Random();
-                code = Integer.toString(rand.nextInt(100000));
-                code = "S" + code;
-
-                String sql2 = "Select * from Staff";
-                Statement st = conn.createStatement();
-                rs = st.executeQuery(sql2);
-
-                while (rs.next()) {
-                    if (!rs.getString("StaffID").equals(code) && !rs.getString("ID").equals(staff_tf_ID.getText())) {
-                        goahead = true;
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "Staff ID and/or Code already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            }
-
-            String sql = "Insert into Staff(StaffID,FName,LName,ID,ConNum,Email,Rate,SkillSet,Address) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "Insert into Staff(FName,LName,ID,ConNum,Email,Rate,SkillSet,Address) values(?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            if (goahead) {
-                statement.setString(1, code);
-                statement.setString(2, staff_tf_fname.getText());
-                statement.setString(3, staff_tf_lname.getText());
-                statement.setString(4, staff_tf_ID.getText());
-                statement.setString(5, staff_tf_nr.getText());
-                statement.setString(6, staff_tf_email.getText());
-                statement.setString(7, staff_spin_rate.getModel().getValue().toString());
-                String skillset = "";
-                for (int i = 0; i < staff_list_skillset.getModel().getSize(); i++) {
-                    skillset = staff_list_skillset.getModel().getElementAt(i) + "," + skillset;
-                }
-                statement.setString(8, skillset);
-                statement.setString(9, staff_tf_address.getText());
-
-                statement.executeUpdate();
-                populateStaffTable();
+            statement.setString(1, staff_tf_fname.getText());
+            statement.setString(2, staff_tf_lname.getText());
+            statement.setString(3, staff_tf_ID.getText());
+            statement.setString(4, staff_tf_nr.getText());
+            statement.setString(5, staff_tf_email.getText());
+            statement.setString(6, staff_spin_rate.getModel().getValue().toString());
+            String skillset = "";
+            for (int i = 0; i < staff_list_skillset.getModel().getSize(); i++) {
+                skillset = staff_list_skillset.getModel().getElementAt(i) + "," + skillset;
             }
+            statement.setString(7, skillset);
+            statement.setString(8, staff_tf_address.getText());
 
+            statement.executeUpdate();
+            populateStaffTable();
         } catch (Exception e) {
             System.out.println("Problem with adding staff" + e);
         }
