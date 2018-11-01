@@ -208,14 +208,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_labour_but_remove = new javax.swing.JButton();
         quote_labour_but_change = new javax.swing.JButton();
         quote_labour_but_add = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
         quoteID_l = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         quote_but_acc = new javax.swing.JButton();
         quote_but_rej = new javax.swing.JButton();
         quote_but_delete = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         quote_allquotes_combo = new javax.swing.JComboBox();
         selectedQuoteState = new javax.swing.JLabel();
         bill_add = new javax.swing.JButton();
@@ -1062,7 +1060,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1194,7 +1191,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1344,7 +1340,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1372,9 +1367,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         quote_TabPane.addTab("Labour", jPanel38);
-
-        jLabel24.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel24.setText("(Quote Date Here)");
 
         quoteID_l.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         quoteID_l.setText("(Quote ID Here)");
@@ -1410,9 +1402,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel33.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel33.setText("ID:");
-
-        jLabel34.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel34.setText("Date:");
 
         quote_allquotes_combo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         quote_allquotes_combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -1455,11 +1444,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addComponent(jLabel33)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(quoteID_l, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(40, 40, 40)
                         .addComponent(pdf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(526, 526, 526))
@@ -1494,7 +1478,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 <<<<<<< HEAD
                     .addComponent(quote_but_acc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2805,7 +2788,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         l_clientFullname.setText("-");
 
-        jLabel7.setText("Client Name");
         jLabel7.setText("Client Full Name");
 
         jLabel8.setText("Client Number");
@@ -3088,12 +3070,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void selectCorrectClientInJobsPage() {
         try {
             Statement st = conn.createStatement();
-            String query = "select fname,clientID from client where clientID = '" + currentClientID + "'";
             String query = "select fname,lname,clientID from client where clientID = '" + currentClientID + "'";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                String item = rs.getString("fname") + " " + rs.getString("ClientID");
                 String item = rs.getString("fname") + " " + rs.getString("lname") + " " + rs.getString("ClientID");
                 job_cb_selectClient.setSelectedItem(item);
             }
@@ -3405,7 +3385,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
 
         String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
-        currentClientID = selectedClient[1];
         currentClientID = selectedClient[2];
 
         if (addOrChange.equals("add")) {
@@ -3454,7 +3433,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 PreparedStatement statement = conn.prepareStatement(sql);
                 statement.setString(1, quote_mat_tf_item.getText().toString());
                 statement.setInt(2, Integer.parseInt(quote_mat_spin_count.getModel().getValue().toString()));
-                statement.setInt(3, Integer.parseInt(quote_mat_tf_cost.getText()));
                 statement.setDouble(3, Double.parseDouble(quote_mat_tf_cost.getText().toString()));
                 statement.setString(4, selectedItemCode);
                 statement.executeUpdate();
@@ -3554,7 +3532,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 PreparedStatement statement = conn.prepareStatement(sql);
                 statement.setString(1, quote_over_tf_overhead.getText());
                 statement.setInt(2, 1);
-                statement.setInt(3, Integer.parseInt(quote_over_tf_total.getText().toString()));
                 statement.setDouble(3, Double.parseDouble(quote_over_tf_total.getText()));
                 statement.setString(4, selectedItemCode);
                 statement.executeUpdate();
@@ -3825,7 +3802,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 PreparedStatement statement = conn.prepareStatement(sql);
                 statement.setString(1, work_mat_tf_item.getText().toString());
                 statement.setInt(2, Integer.parseInt(work_mat_spin_count.getModel().getValue().toString()));
-                statement.setInt(3, Integer.parseInt(work_mat_tf_cost.getText()));
                 statement.setDouble(3, Double.parseDouble(work_mat_tf_cost.getText()));
                 String id[] = work_mat_li_materials.getSelectedValue().split("#");
                 statement.setInt(4, Integer.parseInt(id[1]));
@@ -3907,10 +3883,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
             try {
                 String sql = "Update WorkingExpense set ExpenseTitle=?, Count_Hours=?, Cost_Rate=? where WorkingExpenseID = ?";
                 PreparedStatement statement = conn.prepareStatement(sql);
-                statement.setString(1, work_over_tf_overhead.getText().toString());
                 statement.setString(1, work_over_tf_overhead.getText());
                 statement.setInt(2, 1);
-                statement.setInt(3, Integer.parseInt(work_over_tf_cost.getText()));
                 statement.setDouble(3, Double.parseDouble(work_over_tf_cost.getText()));
                 String id[] = work_over_li_overheads.getSelectedValue().split("#");
                 statement.setInt(4, Integer.parseInt(id[1]));
@@ -4461,14 +4435,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel49;
@@ -4828,12 +4800,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         try {
             Statement st = conn.createStatement();
-            String query = "select fname,clientID from client";
             String query = "select fname,lname,clientID from client";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {
-                String item = rs.getString("fname") + " " + rs.getString("ClientID");
                 String item = rs.getString("fname") + " " + rs.getString("lname") + " " + rs.getString("ClientID");
                 job_cb_selectClient.addItem(item);
             }
@@ -4868,7 +4838,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
         }
         return "no client found";
     }
-
     String populateQuoteBillingAddrClientID = "";
     private void populateClientInfo() {
         try {
@@ -4878,7 +4847,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
             populateQuoteBillingAddrClientID = currentClientID;
             while (rs.next()) {
                 l_clientCode.setText(rs.getString("clientID"));
-                l_clientFullname.setText(rs.getString("fname"));
                 l_clientFullname.setText(rs.getString("fname") + rs.getString("lname"));
                 l_contactNr.setText(rs.getString("connum"));
                 l_email.setText(rs.getString("email"));
