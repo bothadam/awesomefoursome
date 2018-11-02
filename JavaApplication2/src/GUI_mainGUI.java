@@ -1851,12 +1851,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         try {
             String query = "";
             //check to see of it refers to the job state or the quote state
-            if (state.equals("Quote in Progress") || state.equals("Quote Accepted") || state.equals("Quote Rejected")) {
+            if (state.equals("Quote in Progress") || state.equals("Quote Accepted") || state.equals("Quote Rejected")|| state.equals("Payment Pending")|| state.equals("Payment Received")) {
                 query = "select jobid as Job_ID,jobtitle as Job_Title,quoteState as Status from jobs where QuoteState = '" + state + "'";
             } else if (state.equals("Open")) {
                 query = "select jobid as Job_ID,jobtitle as Job_Title,jobState as Status from jobs where jobState != 'Closed'";
             } else {
-                System.out.println("This should happen, and the job state is = " + state);
                 query = "select jobid as Job_ID,jobtitle as Job_Title,jobState as Status from jobs where jobState = '" + state + "'";
             }
 
@@ -1865,7 +1864,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             jobs_table_jobs.setModel(DbUtils.resultSetToTableModel(rs));
 
         } catch (Exception e) {
-            System.out.println("error with open quote radio button" + e);
+            System.out.println("error with populateJobTable" + e);
         }
     }
 
