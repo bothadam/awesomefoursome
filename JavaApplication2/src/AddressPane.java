@@ -30,7 +30,7 @@ public class AddressPane extends JFrame implements ActionListener, FocusListener
     final private int CMPNTGAP = 4;
     private JButton ok_btn, cancel_btn,clear_btn;
     private JTextField address = null;
-    final static String DELIMETER = "#";
+    final static String DELIMETER = ",";
     private boolean allowEmpty = false;
     
     /**

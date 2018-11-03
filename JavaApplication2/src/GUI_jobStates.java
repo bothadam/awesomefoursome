@@ -82,6 +82,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             selectCorrectClientInJobsPage();
         }
         updateJobLabelsAndStatus();
+        l_currentCost.setText("00.00");
     }
 
     private GUI_jobStates() {
@@ -130,7 +131,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         job_tf_email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         job_but_changeDetails = new javax.swing.JButton();
-        job_cb_selectClient = new javax.swing.JComboBox<>();
+        job_cb_selectClient = new javax.swing.JComboBox<String>();
         job_but_finzaliseJob = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -182,7 +183,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_mat_but_cancel = new javax.swing.JButton();
         quote_mat_tf_cost = new javax.swing.JTextField();
         jScrollPane14 = new javax.swing.JScrollPane();
-        quote_mat_li_materials = new javax.swing.JList<>();
+        quote_mat_li_materials = new javax.swing.JList<String>();
         quote_mat_but_change = new javax.swing.JButton();
         quote_mat_but_add = new javax.swing.JButton();
         quote_mat_but_remove = new javax.swing.JButton();
@@ -195,19 +196,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
         quote_over_but_cancel = new javax.swing.JButton();
         quote_over_tf_total = new javax.swing.JTextField();
         jScrollPane15 = new javax.swing.JScrollPane();
-        quote_over_li_overheads = new javax.swing.JList<>();
+        quote_over_li_overheads = new javax.swing.JList<String>();
         quote_over_but_change = new javax.swing.JButton();
         quote_over_but_add = new javax.swing.JButton();
         quote_over_but_remove = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        quote_labour_li_labour = new javax.swing.JList<>();
+        quote_labour_li_labour = new javax.swing.JList<String>();
         jPanel39 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         jLabel120 = new javax.swing.JLabel();
         quote_labour_but_done = new javax.swing.JButton();
         quote_labour_but_cancel = new javax.swing.JButton();
-        quote_labour_combo_workers = new javax.swing.JComboBox<>();
+        quote_labour_combo_workers = new javax.swing.JComboBox<String>();
         jLabel60 = new javax.swing.JLabel();
         quote_labour_l_rate = new javax.swing.JLabel();
         quote_labour_spin_hours = new javax.swing.JSpinner();
@@ -273,7 +274,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_mat_tf_cost = new javax.swing.JTextField();
         work_combox_mat = new javax.swing.JComboBox();
         jScrollPane6 = new javax.swing.JScrollPane();
-        work_mat_li_materials = new javax.swing.JList<>();
+        work_mat_li_materials = new javax.swing.JList<String>();
         work_mat_but_change = new javax.swing.JButton();
         work_mat_but_add = new javax.swing.JButton();
         work_mat_but_remove = new javax.swing.JButton();
@@ -287,13 +288,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_over_tf_cost = new javax.swing.JTextField();
         work_combox_over = new javax.swing.JComboBox();
         jScrollPane12 = new javax.swing.JScrollPane();
-        work_over_li_overheads = new javax.swing.JList<>();
+        work_over_li_overheads = new javax.swing.JList<String>();
         work_over_but_change = new javax.swing.JButton();
         work_over_but_add = new javax.swing.JButton();
         work_over_but_remove = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        work_labour_li_labour = new javax.swing.JList<>();
+        work_labour_li_labour = new javax.swing.JList<String>();
         jPanel33 = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
@@ -614,7 +615,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         job_cb_selectClient.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
+        job_cb_selectClient.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Client", "Johan Botha", "James Kotze" }));
         job_cb_selectClient.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 job_cb_selectClientItemStateChanged(evt);
@@ -683,21 +684,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel64.setText("Materials:");
 
-        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_matStateChanged(evt);
             }
         });
 
-        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_overStateChanged(evt);
             }
         });
 
-        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_cont_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_cont_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_cont_labourStateChanged(evt);
@@ -710,21 +711,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_tf_cost_labour.setEditable(false);
 
-        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_mat.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_mat.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_matStateChanged(evt);
             }
         });
 
-        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_over.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_over.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_overStateChanged(evt);
             }
         });
 
-        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        quote_spin_charge_labour.setModel(new javax.swing.SpinnerNumberModel(Double.valueOf(0.0d), Double.valueOf(0.0d), null, Double.valueOf(1.0d)));
         quote_spin_charge_labour.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 quote_spin_charge_labourStateChanged(evt);
@@ -1261,7 +1262,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             }
         });
 
-        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
+        quote_labour_combo_workers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select Worker", "Stefan", "Andre", "Simeon", "Kobus" }));
         quote_labour_combo_workers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_labour_combo_workersActionPerformed(evt);
@@ -1848,10 +1849,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_mat_li_materials.setModel(new javax.swing.AbstractListModel<String>() {
+        work_mat_li_materials.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "12_Screws (30)", "10_2x4 Pinewood (100)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_mat_li_materials.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -1996,10 +1997,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         );
 
         work_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_over_li_overheads.setModel(new javax.swing.AbstractListModel<String>() {
+        work_over_li_overheads.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Petrol (200)", "Safeguard of Materials on site (300)", "Trailer Hire (400)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_over_li_overheads.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -2068,10 +2069,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
         work_TabPane.addTab("Overheads", jPanel29);
 
         work_labour_li_labour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        work_labour_li_labour.setModel(new javax.swing.AbstractListModel<String>() {
+        work_labour_li_labour.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Stefan (20) x (R100) = (R2000)", "Andre (40) x (R100) = (R4000)", "Simeon (40) x (R 50) = (R2000)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         work_labour_li_labour.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -2241,7 +2242,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 1008, Short.MAX_VALUE)
+                    .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -2277,6 +2278,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 "Type", "Title", "Count/Hours", "Cost/Rate", "Final Cost"
             }
         ));
+        final_table_costs.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(final_table_costs);
 
         buttonGroup1.add(final_rb_all);
@@ -2426,7 +2428,6 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         final_tf_ACost_total.setEditable(false);
         final_tf_ACost_total.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        final_tf_ACost_total.setText("0");
 
         final_tf_Quote_total.setEditable(false);
         final_tf_Quote_total.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -2775,6 +2776,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         jLabel27.setText("Current Cost:");
 
+        l_currentCost.setText("00.00");
+
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, final_tf_ACost_total, org.jdesktop.beansbinding.ELProperty.create("${text}"), l_currentCost, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
@@ -2864,7 +2867,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel27)
                         .addComponent(l_currentCost, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -2912,7 +2915,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(but_close)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         bindingGroup.bind();
@@ -4014,19 +4018,21 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_work_mat_but_removeActionPerformed
 
     private void work_combox_matActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_combox_matActionPerformed
+        DecimalFormat df = new DecimalFormat("#.##");
         String item[] = (work_combox_mat.getSelectedItem().toString()).split("_");
         work_mat_tf_item.setText(item[0]);
         String costWithRand[] = item[1].split("R");
-        work_mat_tf_cost.setText(costWithRand[1]);
+        work_mat_tf_cost.setText(df.format(costWithRand[1]));
         String quantityWithDesc[] = item[2].split(":");
         work_mat_spin_count.setValue(Integer.parseInt(quantityWithDesc[1]));
     }//GEN-LAST:event_work_combox_matActionPerformed
 
     private void work_combox_overActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_combox_overActionPerformed
+        DecimalFormat df = new DecimalFormat("#.##");
         String item[] = (work_combox_over.getSelectedItem().toString()).split("_");
         work_over_tf_overhead.setText(item[0]);
         String costWithRand[] = item[1].split("R");
-        work_over_tf_cost.setText(costWithRand[1]);
+        work_over_tf_cost.setText(df.format(costWithRand[1]));
     }//GEN-LAST:event_work_combox_overActionPerformed
 
     private void work_combox_labActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_combox_labActionPerformed
@@ -4808,7 +4814,16 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 String query = "select * from jobs where jobID = '" + currentJobID + "'";
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
-                    l_siteLocation.setText(rs.getString("address"));
+                    String gettingSiteLocation[] = rs.getString("address").toString().split("#");
+                    l_siteLocation.setText(
+                                            gettingSiteLocation[0] + ", "
+                                            + gettingSiteLocation[1] + ", "
+                                            + gettingSiteLocation[2] + ", "
+                                            + gettingSiteLocation[3] + ", "
+                                            + gettingSiteLocation[4] + ", "
+                                            + gettingSiteLocation[5]
+                                           );
+                    
                 }
             } catch (Exception e) {
                 System.out.println("Problem with populateClientsInfo \ntrying to set the address text" + e);
@@ -5415,6 +5430,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void populateExpensesTable() {
+        DecimalFormat df = new DecimalFormat("#.##");
         try {
             Statement st = conn.createStatement();
             //String query = "select * from client";

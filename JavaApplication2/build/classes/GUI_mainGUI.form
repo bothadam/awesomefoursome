@@ -106,7 +106,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="mainTabs" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainTabs" alignment="0" pref="655" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -205,10 +205,11 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane7" pref="0" max="32767" attributes="0"/>
-                          <Component id="jScrollPane8" pref="348" max="32767" attributes="0"/>
+                          <Component id="jScrollPane8" pref="329" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -294,73 +295,65 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="client_tf_address" alignment="0" pref="516" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel33" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="jSeparator3" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
+                                      <Component id="client_tf_ID" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
+                                      <Component id="client_but_insertAdr" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="client_tf_lname" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="client_tf_address" alignment="0" pref="558" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel33" min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Component id="jSeparator3" alignment="0" min="-2" pref="377" max="-2" attributes="0"/>
-                                              <Component id="client_tf_ID" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
-                                              <Component id="client_but_insertAdr" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="320" pref="320" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="320" pref="320" max="-2" attributes="0"/>
+                                                  <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="client_l_clientCode" max="32767" attributes="0"/>
                                               </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="client_tf_fname" min="-2" pref="222" max="-2" attributes="0"/>
+                                                  <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="client_tf_nr" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="client_l_clientCode" max="32767" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="client_tf_fname" min="-2" pref="222" max="-2" attributes="0"/>
-                                                          <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="client_tf_nr" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
+                                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                              <Component id="client_tf_email" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
-                                                      <Group type="102" alignment="1" attributes="0">
-                                                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                                          <Component id="client_but_cancel" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="client_but_done" min="-2" pref="75" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="jLabel31" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="client_tf_email" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                                      <Component id="jLabel32" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="client_tf_lname" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
                                                   </Group>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                                  <Component id="client_but_cancel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="client_but_done" min="-2" pref="75" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <Component id="jSeparator2" alignment="0" min="-2" pref="486" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="jSeparator2" alignment="0" min="-2" pref="486" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
@@ -389,9 +382,19 @@
                                   <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                          <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="client_tf_lname" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="client_tf_email" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace pref="11" max="32767" attributes="0"/>
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="client_tf_fname" min="-2" max="-2" attributes="0"/>
@@ -400,30 +403,21 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="client_tf_nr" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="client_tf_lname" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="client_tf_email" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="12" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="client_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="client_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="client_l_clientCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="client_but_done" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="client_but_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="client_l_clientCode" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="client_but_insertAdr" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="client_but_insertAdr" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
