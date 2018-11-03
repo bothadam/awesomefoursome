@@ -643,7 +643,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
@@ -654,7 +654,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="quote_tf_cost_labour" alignment="0" pref="132" max="32767" attributes="0"/>
+                                  <Component id="quote_tf_cost_labour" alignment="0" pref="133" max="32767" attributes="0"/>
                                   <Component id="quote_tf_cost_over" alignment="0" max="32767" attributes="0"/>
                                   <Component id="quote_tf_cost_mat" alignment="0" max="32767" attributes="0"/>
                                   <Component id="quote_tf_cost_subtotal" max="32767" attributes="0"/>
@@ -670,41 +670,44 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="quote_but_resetCharges" max="32767" attributes="0"/>
                               <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
-                              <Component id="quote_tf_costCont_mat" alignment="0" max="32767" attributes="0"/>
+                              <Component id="quote_tf_costCont_mat" alignment="0" pref="175" max="32767" attributes="0"/>
                               <Component id="quote_tf_costCont_over" alignment="0" max="32767" attributes="0"/>
                               <Component id="quote_tf_costCont_labour" alignment="0" max="32767" attributes="0"/>
-                              <Component id="quote_but_chargeContingency" alignment="1" max="32767" attributes="0"/>
+                              <Component id="quote_tf_costCont_subtotal" alignment="0" max="32767" attributes="0"/>
+                              <Component id="quote_but_resetCharges" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="quote_spin_charge_over" min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="quote_spin_charge_labour" min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="quote_spin_charge_mat" alignment="1" min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Component id="jLabel77" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
-                                      <Component id="quote_tf_chFee_mat" max="32767" attributes="0"/>
-                                      <Component id="quote_tf_chFee_over" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="quote_tf_chFee_labour" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                                      <Component id="jLabel82" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                                  <Component id="jLabel81" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                  <Component id="quote_tf_finalCharges" min="-2" pref="112" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="quote_spin_charge_over" min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="quote_spin_charge_labour" min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="quote_spin_charge_mat" alignment="1" min="-2" pref="54" max="-2" attributes="0"/>
+                                              <Component id="jLabel77" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
+                                              <Component id="quote_tf_chFee_mat" max="32767" attributes="0"/>
+                                              <Component id="quote_tf_chFee_over" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="quote_tf_chFee_labour" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="quote_but_chargeContingency" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel79" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="quote_tf_finalCharges" alignment="1" max="32767" attributes="0"/>
                                   <Component id="quote_tf_final_labour" alignment="1" max="32767" attributes="0"/>
                                   <Component id="quote_tf_final_over" alignment="1" max="32767" attributes="0"/>
                                   <Component id="quote_tf_final_mat" alignment="1" max="32767" attributes="0"/>
@@ -720,96 +723,90 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="quote_spin_charge_over" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_tf_chFee_over" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_tf_final_over" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="quote_spin_charge_labour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_tf_chFee_labour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_tf_final_labour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel79" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel78" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="quote_tf_final_mat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_tf_chFee_mat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_spin_charge_mat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="quote_tf_finalCharges" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel82" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="quote_but_chargeContingency" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel81" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="quote_tf_total" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="quote_but_resetCharges" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_spin_charge_over" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_chFee_over" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_final_over" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="quote_spin_charge_labour" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_chFee_labour" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_final_labour" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="quote_tf_costCont_mat" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
-                                                  <Component id="quote_tf_costCont_over" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="quote_tf_costCont_labour" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="quote_tf_cost_mat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_spin_cont_mat" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="quote_tf_cost_over" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_spin_cont_over" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="quote_tf_cost_labour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quote_spin_cont_labour" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel79" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel78" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="quote_tf_cost_subtotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel83" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_final_mat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_chFee_mat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_spin_charge_mat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="quote_tf_costCont_mat" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="quote_tf_costCont_over" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="quote_tf_costCont_labour" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel80" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="quote_tf_cost_mat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="quote_spin_cont_mat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="quote_tf_cost_over" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="quote_spin_cont_over" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="quote_tf_cost_labour" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="quote_spin_cont_labour" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="quote_tf_finalCharges" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_tf_total" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="quote_but_chargeContingency" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quote_but_resetCharges" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="quote_tf_cost_subtotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel83" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="quote_tf_costCont_subtotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -974,25 +971,12 @@
                     <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel81">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="14" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Total"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JTextField" name="quote_tf_total">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel82">
-                  <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="12" style="0"/>
+                      <Font name="Tahoma" size="16" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Final Charges:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel83">
@@ -1060,6 +1044,11 @@
                       <Font name="Verdana" size="12" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="%"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="quote_tf_costCont_subtotal">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
               </SubComponents>
