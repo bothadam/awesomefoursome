@@ -1559,7 +1559,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             addClient();
             editOrAdd = "";   
         } else if (editOrAdd.equals("edit")) {
-            addClient();
+            editClient();
             editOrAdd = "";   
         }
         client_but_showAll.setEnabled(true);
