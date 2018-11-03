@@ -943,7 +943,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         quote_but_jobDesc.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        quote_but_jobDesc.setText("Job Description");
+        quote_but_jobDesc.setText("Job Specifications");
         quote_but_jobDesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_but_jobDescActionPerformed(evt);
@@ -1035,7 +1035,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                     .addComponent(quote_mat_but_done)
                     .addComponent(quote_mat_spin_count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(quote_mat_but_cancel))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         quote_mat_li_materials.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -1167,7 +1167,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(quote_over_but_done)
                     .addComponent(quote_over_but_cancel))
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
 
         quote_over_li_overheads.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -2639,10 +2639,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(final_tf_Quote_total)
+                            .addComponent(final_tf_PCost_total)
                             .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(final_tf_ACost_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel105)
-                                .addComponent(final_tf_PCost_total)))))
+                                .addComponent(jLabel105)))))
                 .addContainerGap())
         );
 
@@ -2939,6 +2939,47 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void initialLoadComponentsManageJob() {
         sharedInitializations();
         initComponentsManageJob();
+
+        //disable the components if the job status is closed 
+        ifClosedStateDisableGUI();
+    }
+
+    private void ifClosedStateDisableGUI() {
+        if (jobState.equalsIgnoreCase("Closed")) {
+            enableQuoteComponents(false);
+
+            //job pane
+            job_but_changeDetails.setEnabled(false);
+            job_but_finzaliseJob.setEnabled(false);
+            job_but_createQuote.setEnabled(false);
+
+            //quote page
+            quote_but_create.setEnabled(false);
+            quote_but_print.setEnabled(false);
+            quote_but_rej.setEnabled(false);
+            quote_but_acc.setEnabled(false);
+            quote_allquotes_combo.setEnabled(true);
+
+            //work page
+            work_but_finaliseJob.setEnabled(false);
+            work_mat_but_add.setEnabled(false);
+            work_mat_but_change.setEnabled(false);
+            work_mat_but_remove.setEnabled(false);
+            work_over_but_add.setEnabled(false);
+            work_over_but_change.setEnabled(false);
+            work_over_but_remove.setEnabled(false);
+            work_labour_but_add.setEnabled(false);
+            work_labour_but_change.setEnabled(false);
+            work_labour_but_remove.setEnabled(false);
+
+            //finalize page
+            final_but_signOff.setEnabled(false);
+            final_but_managePay.setEnabled(false);
+
+            //main components
+            but_close.setEnabled(true);
+
+        }
     }
 
     //initialize GUI components for when you manage a current job (not the initial one, as they differ in the following way)
@@ -5168,40 +5209,43 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }
 
     private void validateSelectedQuoteStatus() {
-        try {
-            String currentState = "";
-            Statement st = conn.createStatement();
-            String query = "select * from Quote where QuoteID = '" + currentQuoteID + "'";
-            rs = st.executeQuery(query);
-            if (rs.next()) {
-                currentState = rs.getString("QuoteStatus");
-            }
+        if (!jobState.equalsIgnoreCase("Closed")) {
 
-            if (currentState.equalsIgnoreCase("Accepted")) {
-                enableQuoteComponents(false);
-                quote_but_rej.setEnabled(true);
-                //ultimately, set the print button and combobox to be true sothat you can setill view the quotes,
-                //even if the current one is on lockdown
-                quote_allquotes_combo.setEnabled(true);
-                quote_but_print.setEnabled(true);
-                selectedQuoteState.setText("Quote Accepted");
-            }
-            if (currentState.equalsIgnoreCase("Rejected")) {
-                enableQuoteComponents(false);
-                quote_but_print.setEnabled(false);
-                //ultimately, set the combobox to be true sothat you can setill view the quotes,
-                //even if the current one is on lockdown
-                quote_allquotes_combo.setEnabled(true);
-                selectedQuoteState.setText("Quote Rejected");
-            }
-            if (currentState.equalsIgnoreCase("Quote in Progress")) {
-                enableQuoteComponents(true);
+            try {
+                String currentState = "";
+                Statement st = conn.createStatement();
+                String query = "select * from Quote where QuoteID = '" + currentQuoteID + "'";
+                rs = st.executeQuery(query);
+                if (rs.next()) {
+                    currentState = rs.getString("QuoteStatus");
+                }
 
-                selectedQuoteState.setText("Quote I.P.");
-            }
+                if (currentState.equalsIgnoreCase("Accepted")) {
+                    enableQuoteComponents(false);
+                    quote_but_rej.setEnabled(true);
+                    //ultimately, set the print button and combobox to be true sothat you can setill view the quotes,
+                    //even if the current one is on lockdown
+                    quote_allquotes_combo.setEnabled(true);
+                    quote_but_print.setEnabled(true);
+                    selectedQuoteState.setText("Quote Accepted");
+                }
+                if (currentState.equalsIgnoreCase("Rejected")) {
+                    enableQuoteComponents(false);
+                    quote_but_print.setEnabled(false);
+                    //ultimately, set the combobox to be true sothat you can setill view the quotes,
+                    //even if the current one is on lockdown
+                    quote_allquotes_combo.setEnabled(true);
+                    selectedQuoteState.setText("Quote Rejected");
+                }
+                if (currentState.equalsIgnoreCase("Quote in Progress")) {
+                    enableQuoteComponents(true);
 
-        } catch (Exception e) {
-            System.out.println("problem with validateQuoteStatus :" + e);
+                    selectedQuoteState.setText("Quote I.P.");
+                }
+
+            } catch (Exception e) {
+                System.out.println("problem with validateQuoteStatus :" + e);
+            }
         }
     }
 
