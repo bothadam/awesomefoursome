@@ -949,7 +949,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         staff_l_staffCode.setText("(Code)");
 
         staff_list_skillset.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = {/* "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" */};
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -1173,7 +1173,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabs, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+            .addComponent(mainTabs)
         );
 
         pack();
@@ -2018,7 +2018,14 @@ public class GUI_mainGUI extends javax.swing.JFrame {
                 staff_tf_email.setText(rs.getString("Email"));
                 staff_spin_rate.getModel().setValue(rs.getInt("Rate"));
                 skills = rs.getString("SkillSet");
-                staff_tf_address.setText(rs.getString("Address"));
+                //staff_tf_address.setText(rs.getString("Address"));
+                //Ryans crazy moments
+                String address[] = rs.getString("Address").split("#");
+                if (address.length == 6) {
+                    staff_tf_address.setText(address[0] + ", " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4] + ", " + address[5] );
+                } else {
+                    staff_tf_address.setText(rs.getString("Address"));
+                }
             }
             String[] skillsArray = skills.split(",");
             DefaultListModel a = new DefaultListModel();

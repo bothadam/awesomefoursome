@@ -4033,7 +4033,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         String item[] = (work_combox_mat.getSelectedItem().toString()).split("_");
         work_mat_tf_item.setText(item[0]);
         String costWithRand[] = item[1].split("R");
-        work_mat_tf_cost.setText(df.format(costWithRand[1]));
+        work_mat_tf_cost.setText((costWithRand[1]));
         String quantityWithDesc[] = item[2].split(":");
         work_mat_spin_count.setValue(Integer.parseInt(quantityWithDesc[1]));
     }//GEN-LAST:event_work_combox_matActionPerformed
@@ -4860,7 +4860,14 @@ String gettingSiteLocation[];
                 job_tf_title.setText(rs.getString("jobTitle"));
                 job_ta_specification.setText(rs.getString("jobDes"));
                 job_ta_comments.setText(rs.getString("Comments"));
-                job_tf_siteLocation.setText(rs.getString("Address"));
+                //job_tf_siteLocation.setText(rs.getString("Address"));
+                //Ryans crazy moments
+                String address[] = rs.getString("Address").split("#");
+                if (address.length == 6) {
+                    job_tf_siteLocation.setText(address[0] + ", " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4] + ", " + address[5] );
+                } else {
+                    job_tf_siteLocation.setText(rs.getString("Address"));
+                }
             }
 
         } catch (Exception e) {
