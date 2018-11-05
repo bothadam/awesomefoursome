@@ -1,9 +1,17 @@
+
+import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import net.proteanit.sql.DbUtils;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author james
@@ -13,6 +21,22 @@ public class GUI_managePayment extends javax.swing.JFrame {
     /**
      * Creates new form GUI_managePayment
      */
+    Connection conn;
+    Statement st;
+    ResultSet rs;
+
+    String receievedJobID =  "";
+    String pulledJobID = "";
+    
+    public GUI_managePayment(String jobID) {
+        initComponents();
+        connection();
+        receievedJobID = jobID;
+        System.out.println("receievedJobID = " + receievedJobID);
+        System.out.println("Called");
+        populatePaymentTable();
+    }
+
     public GUI_managePayment() {
         initComponents();
     }
@@ -27,43 +51,77 @@ public class GUI_managePayment extends javax.swing.JFrame {
     private void initComponents() {
 
         but_done = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        recievedAmount_tf = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         but_cancel = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        comments_tf = new javax.swing.JTextField();
+        payment_spin_date = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        but_done.setText("Done");
+        but_done.setText("Accept");
         but_done.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but_doneActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Recieved Amount:");
+        jLabel1.setText("Received amount:");
 
-        but_cancel.setText("Cancel");
+        but_cancel.setText("Close");
         but_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but_cancelActionPerformed(evt);
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Received_amount", "Date_received", "Comments"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setText("Date received:");
+
+        jLabel3.setText("Comments:");
+
+        payment_spin_date.setModel(new javax.swing.SpinnerDateModel());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 230, Short.MAX_VALUE)
-                        .addComponent(but_cancel)
+                        .addGap(18, 18, 18)
+                        .addComponent(recievedAmount_tf)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(payment_spin_date, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comments_tf, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(but_cancel)
+                        .addGap(18, 18, 18)
                         .addComponent(but_done)))
                 .addContainerGap())
         );
@@ -71,14 +129,22 @@ public class GUI_managePayment extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(recievedAmount_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(payment_spin_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comments_tf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(but_done)
-                    .addComponent(but_cancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(but_cancel)
+                    .addComponent(but_done))
+                .addContainerGap())
         );
 
         pack();
@@ -89,7 +155,7 @@ public class GUI_managePayment extends javax.swing.JFrame {
     }//GEN-LAST:event_but_cancelActionPerformed
 
     private void but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_doneActionPerformed
-        this.dispose();
+        insertIntoDatabase();
     }//GEN-LAST:event_but_doneActionPerformed
 
     /**
@@ -130,7 +196,73 @@ public class GUI_managePayment extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton but_cancel;
     private javax.swing.JButton but_done;
+    private javax.swing.JTextField comments_tf;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JSpinner payment_spin_date;
+    private javax.swing.JTextField recievedAmount_tf;
     // End of variables declaration//GEN-END:variables
+
+//    private void getJobID(){
+//        try {
+//            Statement st = conn.createStatement();
+//
+//            //DB variables not sure about 
+//            String query = "SELECT JobID FROM Payment WHERE JobID = '" + receievedJobID + "'";
+//            rs = st.executeQuery(query);
+//            while (rs.next()) {
+//                pulledJobID =  rs.getString("JobID");
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("error " + e);
+//        }
+//    }
+    private void connection() {
+        try {
+            String filename = new File("afordableDB.accdb").getAbsolutePath();
+            //conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/adamb/Desktop");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Program Files/afordableDB.accdb");
+        } catch (Exception e) {
+            System.out.println("Database connection error" + e);
+        }
+    }
+/// WHERE JobID = '" + receievedJobID + "
+    public void populatePaymentTable() {
+        try {
+            Statement st = conn.createStatement();
+
+            //DB variables not sure about 
+            String query = "SELECT PaidAmount AS Amount_received, DateReceived AS Date_received, Comments AS Comments FROM  Payment  WHERE JobID = '" + receievedJobID + "'";
+            rs = st.executeQuery(query);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            System.out.println("error " + e);
+        }
+    }
+
+    private void insertIntoDatabase() {
+        try {
+           
+            String sql = "INSERT INTO Payment(JobID,PaidAmount,DateReceived,Comments) VALUES (?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            statement.setString(1, receievedJobID);
+            statement.setString(2, recievedAmount_tf.getText());
+            
+            String[] dateSplit = payment_spin_date.getModel().getValue().toString().split(" ");            
+            
+            statement.setString(3, payment_spin_date.getModel().getValue().toString());
+            statement.setString(4, comments_tf.getText());
+            populatePaymentTable();
+
+        } catch (Exception e) {
+            System.out.println("Problem with insertIntoDatabase" + e);
+            e.printStackTrace();
+        }
+    }
 }

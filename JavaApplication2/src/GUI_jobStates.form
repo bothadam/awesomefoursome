@@ -120,13 +120,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="job_cb_selectClient" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="job_but_createJob" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="job_but_changeDetails" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="job_but_createQuote" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="job_but_finzaliseJob" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="job_cb_selectClient" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="job_but_createJob" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="job_but_changeDetails" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -4309,7 +4311,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_plannedCost">
               <Properties>
-                <Property name="text" type="java.lang.String" value="00.00"/>
+                <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel53">
@@ -4334,7 +4336,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="l_totalQuote">
               <Properties>
-                <Property name="text" type="java.lang.String" value="00.00"/>
+                <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="l_quoteState">

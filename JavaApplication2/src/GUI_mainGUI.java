@@ -98,11 +98,11 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         client_but_manageClient = new javax.swing.JButton();
         client_tf_searchInput = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        client_li_jobs = new javax.swing.JList<>();
+        client_li_jobs = new javax.swing.JList<String>();
         jLabel14 = new javax.swing.JLabel();
         client_but_manageJob = new javax.swing.JButton();
         client_but_search = new javax.swing.JButton();
-        client_combo_searchVia = new javax.swing.JComboBox<>();
+        client_combo_searchVia = new javax.swing.JComboBox<String>();
         client_but_showAll = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -172,9 +172,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         jMenuBar2.add(jMenu6);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1024, 745));
         setMinimumSize(new java.awt.Dimension(1024, 745));
-        setPreferredSize(new java.awt.Dimension(1024, 745));
         setResizable(false);
         setSize(new java.awt.Dimension(1024, 745));
 
@@ -415,10 +413,10 @@ public class GUI_mainGUI extends javax.swing.JFrame {
 
         client_tf_searchInput.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        client_li_jobs.setModel(new javax.swing.AbstractListModel<String>() {
+        client_li_jobs.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
         client_li_jobs.setMaximumSize(new java.awt.Dimension(39, 91));
         client_li_jobs.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -455,7 +453,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
         });
 
         client_combo_searchVia.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "Surname", "ID" }));
+        client_combo_searchVia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "Surname", "ID" }));
 
         client_but_showAll.setText("Show All");
         client_but_showAll.addActionListener(new java.awt.event.ActionListener() {
