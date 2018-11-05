@@ -511,7 +511,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel18)
                 .addGap(2, 2, 2)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
@@ -623,7 +623,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         });
 
         job_but_finzaliseJob.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        job_but_finzaliseJob.setText("Finalise");
+        job_but_finzaliseJob.setText("Cancel Job");
         job_but_finzaliseJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 job_but_finzaliseJobActionPerformed(evt);
@@ -637,36 +637,35 @@ public class GUI_jobStates extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(job_but_createJob, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(job_but_changeDetails)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(job_but_finzaliseJob)
-                        .addGap(18, 18, 18)
-                        .addComponent(job_but_createQuote)))
-                .addContainerGap())
+                            .addGap(27, 27, 27)
+                            .addComponent(job_but_createJob, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(job_but_changeDetails)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(job_but_finzaliseJob)
+                            .addGap(18, 18, 18)
+                            .addComponent(job_but_createQuote))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(job_cb_selectClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(job_but_createJob)
                     .addComponent(job_but_changeDetails)
-                    .addComponent(job_but_createQuote)
-                    .addComponent(job_but_finzaliseJob))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(job_but_createQuote)
+                        .addComponent(job_but_finzaliseJob)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -782,7 +781,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         quote_tf_costCont_labour.setEditable(false);
 
-        quote_but_chargeContingency.setText("Charge Contingency");
+        quote_but_chargeContingency.setText("Charging Cost");
         quote_but_chargeContingency.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quote_but_chargeContingencyActionPerformed(evt);
@@ -3194,6 +3193,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void enablePanelQuoteMat(boolean a) {
         enableQuoteComponents(!a);
+        //category panel
+        quote_TabPane.setEnabledAt(0, !a);
+        quote_TabPane.setEnabledAt(1, !a);
+        quote_TabPane.setEnabledAt(2, !a);
+        quote_but_print.setEnabled(!a);
 
         //create new quote button
         quote_but_create.setEnabled(!a);
@@ -3209,6 +3213,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void enablePanelQuoteOver(boolean a) {
         enableQuoteComponents(!a);
 
+        //category panel
+        quote_TabPane.setEnabledAt(0, !a);
+        quote_TabPane.setEnabledAt(1, !a);
+        quote_TabPane.setEnabledAt(2, !a);
+
+        quote_but_print.setEnabled(!a);
+
         //create new quote button
         quote_but_create.setEnabled(!a);
 
@@ -3223,6 +3234,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         //create new quote button
         quote_but_create.setEnabled(!a);
+
+        quote_but_print.setEnabled(!a);
+
+        //category panel
+        quote_TabPane.setEnabledAt(0, !a);
+        quote_TabPane.setEnabledAt(1, !a);
+        quote_TabPane.setEnabledAt(2, !a);
 
         quote_labour_spin_hours.setEnabled(a);
         quote_labour_combo_workers.setEnabled(a);
@@ -3333,11 +3351,11 @@ public class GUI_jobStates extends javax.swing.JFrame {
         System.out.println("currentClientID " + currentClientID);
         if (currentClientID == null) {
             JOptionPane.showMessageDialog(null, "Please select a client before creating a quote.");
-        }else{
+        } else {
             enablePanelJob(true);
-            addOrChange = "add";           
+            addOrChange = "add";
         }
-        
+
     }//GEN-LAST:event_job_but_createJobActionPerformed
 
     private void job_but_createQuoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_createQuoteActionPerformed
@@ -3356,7 +3374,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void job_but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_doneActionPerformed
         //Ryans crazy moments
         boolean result = validateJobsTextFields();
-        
+
         if (result) {
             String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
             currentClientID = selectedClient[2];
@@ -3369,10 +3387,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 editJobDetails(currentJobID);
                 initComponentsManageJob();
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please input all fields");
         }
-        
+
 
     }//GEN-LAST:event_job_but_doneActionPerformed
 
@@ -3581,17 +3599,19 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_labour_but_doneActionPerformed
 
     private void quote_but_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_createActionPerformed
-        if (okcancel("By creating a new quote, the job state will revert to 'Quoting'\nand the current accepted quote will be rejected")) {
 
-            Object[] options = {"Copy", "New", "Cancel"};
-            //create combobox
-            JComboBox quotes = new JComboBox();
-            //create the result int for the panel
-            int createQuotePopup;
+        Object[] options = {"Copy", "New", "Cancel"};
+        //create combobox
+        JComboBox quotes = new JComboBox();
+        //create the result int for the panel
+        //0 = copy
+        //1 = new
+        int createQuotePopup = 1;
 
-            if (quote_allquotes_combo.getItemAt(0).equals("Please create a New Quote") || quote_allquotes_combo.getItemCount() < 1) {
-                createQuotePopup = 1;
-            } else {
+        if (quote_allquotes_combo.getItemAt(0).equals("Please create a New Quote") || quote_allquotes_combo.getItemCount() < 1) {
+            createQuotePopup = 1;
+        } else {
+            if (okcancel("By creating a new quote, the job state will revert to 'Quoting'\nand the current accepted quote will be rejected")) {
 
                 for (int i = 0; i < quote_allquotes_combo.getItemCount(); i++) {
                     quotes.addItem(quote_allquotes_combo.getItemAt(i));
@@ -3605,67 +3625,68 @@ public class GUI_jobStates extends javax.swing.JFrame {
                         options,//the titles of buttons
                         options[1]);//default button title
             }
-
-            if (createQuotePopup == 0) {//copy
-                //reject the accepted quotes.
-                //if the status is accepted (meaning there is already an accepted quote),
-                //then make all quotes rejected
-                if (getJobActualQuoteStatus().equals("Quote Accepted")) {
-                    try {
-                        String sql1 = "update quote set quoteStatus = 'Rejected'  where quoteStatus = 'Accepted' and JobID = '" + currentJobID + "'";
-                        PreparedStatement statement1 = conn.prepareStatement(sql1);
-                        statement1.executeUpdate();
-                    } catch (Exception e) {
-                        System.out.println("Error in quote_but_createActionPerformed \n Was trying to reject an accepted quote\n error= " + e);
-                    }
-                    acceptedQuoteID = "";
-                }
-
-                String QuoteIDtoCopy = quotes.getSelectedItem().toString();
-
-                //create new quote
-                String newQuoteID = createQuote();
-
-                //copy new quote based on QuoteIDtoCopy
-                copyQuoteRecord(newQuoteID, QuoteIDtoCopy);
-
-                System.out.println("setting the job state to 'Quoting' in the database");
-                setJobState("Quoting");
-
-                updateJobLabelsAndStatus();
-
-                initializeQuotePage();
-                quote_allquotes_combo.setSelectedItem(newQuoteID);
-            }
-            if (createQuotePopup == 1) {//new
-
-                //reject the accepted quotes.
-                //if the status is accepted (meaning there is already an accepted quote),
-                //then make all quotes rejected
-                if (getJobActualQuoteStatus().equals("Quote Accepted")) {
-                    try {
-                        String sql1 = "update quote set quoteStatus = 'Rejected'  where quoteStatus = 'Accepted' and JobID = '" + currentJobID + "'";
-                        PreparedStatement statement1 = conn.prepareStatement(sql1);
-                        statement1.executeUpdate();
-                    } catch (Exception e) {
-                        System.out.println("Error in quote_but_createActionPerformed \n Was trying to reject an accepted quote\n error= " + e);
-                    }
-                    acceptedQuoteID = "";
-                }
-
-                //create new quote
-                String code = createQuote();
-
-                System.out.println("setting the job state to 'Quoting' in the database");
-                setJobState("Quoting");
-
-                updateJobLabelsAndStatus();
-
-                initializeQuotePage();
-                quote_allquotes_combo.setSelectedItem(code);
-            }
-
         }
+
+        if (createQuotePopup == 0) {//copy
+            //reject the accepted quotes.
+            //if the status is accepted (meaning there is already an accepted quote),
+            //then make all quotes rejected
+            if (getJobActualQuoteStatus().equals("Quote Accepted")) {
+                try {
+                    String sql1 = "update quote set quoteStatus = 'Rejected'  where quoteStatus = 'Accepted' and JobID = '" + currentJobID + "'";
+                    PreparedStatement statement1 = conn.prepareStatement(sql1);
+                    statement1.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println("Error in quote_but_createActionPerformed \n Was trying to reject an accepted quote\n error= " + e);
+                }
+                acceptedQuoteID = "";
+            }
+
+            String QuoteIDtoCopy = quotes.getSelectedItem().toString();
+
+            //create new quote
+            String newQuoteID = createQuote();
+
+            //copy new quote based on QuoteIDtoCopy
+            copyQuoteRecord(newQuoteID, QuoteIDtoCopy);
+
+            System.out.println("setting the job state to 'Quoting' in the database");
+            setJobState("Quoting");
+
+            updateJobLabelsAndStatus();
+
+            initializeQuotePage();
+            quote_allquotes_combo.setSelectedItem(newQuoteID);
+        }
+        if (createQuotePopup == 1) {//new
+
+            //reject the accepted quotes.
+            //if the status is accepted (meaning there is already an accepted quote),
+            //then make all quotes rejected
+            if (getJobActualQuoteStatus().equals("Quote Accepted")) {
+                try {
+                    String sql1 = "update quote set quoteStatus = 'Rejected'  where quoteStatus = 'Accepted' and JobID = '" + currentJobID + "'";
+                    PreparedStatement statement1 = conn.prepareStatement(sql1);
+                    statement1.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println("Error in quote_but_createActionPerformed \n Was trying to reject an accepted quote\n error= " + e);
+                }
+                acceptedQuoteID = "";
+            }
+
+            //create new quote
+            String code = createQuote();
+
+            System.out.println("setting the job state to 'Quoting' in the database");
+            setJobState("Quoting");
+
+            updateJobLabelsAndStatus();
+
+            initializeQuotePage();
+            quote_allquotes_combo.setSelectedItem(code);
+        }
+
+
     }//GEN-LAST:event_quote_but_createActionPerformed
 
     private void quote_but_rejActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_rejActionPerformed
@@ -3878,7 +3899,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_work_but_finaliseJobActionPerformed
 
     private void final_but_signOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_signOffActionPerformed
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the job? ", "Warning", JOptionPane.YES_NO_OPTION);
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to sign off the job? ", "Warning", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
             try {
                 String sql = "Update Jobs set jobState=? where jobID = ?";
@@ -3937,57 +3958,75 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_quote_mat_but_doneMouseClicked
 
     private void quote_mat_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_removeActionPerformed
-        String selectedItem[] = quote_mat_li_materials.getSelectedValue().toString().split("#");
-        String selectedItemCode = selectedItem[1];
+        if (!quote_mat_li_materials.isSelectionEmpty()) {
+            addOrChange = "change";
+            enablePanelQuoteLabour(true);
 
-        try {
-            String sql = "Delete from quoteitem where QuoteItemCode = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, selectedItemCode);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with deleteing Material : " + e);
+            String selectedItem[] = quote_mat_li_materials.getSelectedValue().toString().split("#");
+            String selectedItemCode = selectedItem[1];
+
+            try {
+                String sql = "Delete from quoteitem where QuoteItemCode = ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, selectedItemCode);
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with deleteing Material : " + e);
+            }
+            populateMaterials();
+            populateAllTotals();
+            calculateQuoteCharges(chargeMode);
+            clearQuoteItemInsertionFields();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a material to remove");
         }
-        populateMaterials();
-        populateAllTotals();
-        calculateQuoteCharges(chargeMode);
-        clearQuoteItemInsertionFields();
     }//GEN-LAST:event_quote_mat_but_removeActionPerformed
 
     private void quote_over_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_over_but_removeActionPerformed
-        String selectedItem[] = quote_over_li_overheads.getSelectedValue().toString().split("#");
-        String selectedItemCode = selectedItem[1];
+        if (!quote_over_li_overheads.isSelectionEmpty()) {
+            String selectedItem[] = quote_over_li_overheads.getSelectedValue().toString().split("#");
+            String selectedItemCode = selectedItem[1];
 
-        try {
-            String sql = "Delete from quoteitem where QuoteItemCode = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, selectedItemCode);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with deleteing Overhead : " + e);
+            try {
+                String sql = "Delete from quoteitem where QuoteItemCode = ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, selectedItemCode);
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with deleteing Overhead : " + e);
+            }
+            populateOverheads();
+            populateAllTotals();
+            calculateQuoteCharges(chargeMode);
+            clearQuoteItemInsertionFields();
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select an overhead to remove");
         }
-        populateOverheads();
-        populateAllTotals();
-        calculateQuoteCharges(chargeMode);
-        clearQuoteItemInsertionFields();
     }//GEN-LAST:event_quote_over_but_removeActionPerformed
 
     private void quote_labour_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_labour_but_removeActionPerformed
-        String selectedItem[] = quote_labour_li_labour.getSelectedValue().toString().split("#");
-        String selectedItemCode = selectedItem[1];
 
-        try {
-            String sql = "Delete from quoteitem where QuoteItemCode = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, selectedItemCode);
-            statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Problem with deleteing Labour : " + e);
+        if (!quote_labour_li_labour.isSelectionEmpty()) {
+
+            String selectedItem[] = quote_labour_li_labour.getSelectedValue().toString().split("#");
+            String selectedItemCode = selectedItem[1];
+
+            try {
+                String sql = "Delete from quoteitem where QuoteItemCode = ?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, selectedItemCode);
+                statement.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Problem with deleteing Labour : " + e);
+            }
+            populateLabour();
+            populateAllTotals();
+            calculateQuoteCharges(chargeMode);
+            clearQuoteItemInsertionFields();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a worker to remove");
         }
-        populateLabour();
-        populateAllTotals();
-        calculateQuoteCharges(chargeMode);
-        clearQuoteItemInsertionFields();
     }//GEN-LAST:event_quote_labour_but_removeActionPerformed
 
     private void quote_spin_cont_matStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_quote_spin_cont_matStateChanged
@@ -4184,7 +4223,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_l_quoteIDMouseClicked
 
     private void job_but_finzaliseJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_job_but_finzaliseJobActionPerformed
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the job? ", "Warning", JOptionPane.YES_NO_OPTION);
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel the job? ", "Warning", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
             try {
                 String sql = "Update Jobs set jobState=? where jobID = ?";
@@ -4283,8 +4322,10 @@ public class GUI_jobStates extends javax.swing.JFrame {
     private void quote_but_chargeContingencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_but_chargeContingencyActionPerformed
         if (quote_but_chargeContingency.isSelected()) {
             chargeMode = "With Contingency";
+            quote_but_chargeContingency.setText("Charging Contingency");
         } else {
             chargeMode = "Without Contingency";
+            quote_but_chargeContingency.setText("Charging Cost");
         }
         calculateQuoteCharges(chargeMode);
     }//GEN-LAST:event_quote_but_chargeContingencyActionPerformed
@@ -4782,7 +4823,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             System.out.println("Database connection error" + e);
         }
     }
-String gettingSiteLocation[];
+    String gettingSiteLocation[];
 
     private String getClientIDForJob() {
         try {
@@ -4839,7 +4880,7 @@ String gettingSiteLocation[];
 //                                            + gettingSiteLocation[4] 
 //                                            + gettingSiteLocation[5] 
 //                                           );
-                    
+
                 }
             } catch (Exception e) {
                 System.out.println("Problem with populateClientsInfo \ntrying to set the address text" + e);
@@ -4864,7 +4905,7 @@ String gettingSiteLocation[];
                 //Ryans crazy moments
                 String address[] = rs.getString("Address").split("#");
                 if (address.length == 6) {
-                    job_tf_siteLocation.setText(address[0] + ", " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4] + ", " + address[5] );
+                    job_tf_siteLocation.setText(address[0] + ", " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4] + ", " + address[5]);
                 } else {
                     job_tf_siteLocation.setText(rs.getString("Address"));
                 }
@@ -5705,7 +5746,7 @@ String gettingSiteLocation[];
     private void updateQuoteLabels(String status) {
         if (status.equals("A Quote Is Accepted")) {
             l_totalQuote.setText(quote_tf_total.getText());
-            
+
             //EDIT
             l_plannedCost.setText(quote_tf_costCont_subtotal.getText());
             l_currentCost.setText((work_tf_ACost_total.getText().toString()));
@@ -5958,9 +5999,9 @@ String gettingSiteLocation[];
         boolean result = true;
         if (job_tf_title.getText().trim().isEmpty()) {
             result = false;
-        }else if(job_ta_specification.getText().trim().isEmpty()) {
+        } else if (job_ta_specification.getText().trim().isEmpty()) {
             result = false;
-        }else if(job_ta_comments.getText().trim().isEmpty()) {
+        } else if (job_ta_comments.getText().trim().isEmpty()) {
             result = false;
         }
         return result;
