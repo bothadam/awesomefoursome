@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
 /*
@@ -24,14 +26,18 @@ public class GUI_managePayment extends javax.swing.JFrame {
     Connection conn;
     Statement st;
     ResultSet rs;
+    GUI_jobStates jobStatesGUI;
 
-    String receievedJobID =  "";
+    String receievedJobID = "";
     String pulledJobID = "";
-    
-    public GUI_managePayment(String jobID) {
+    double TotRecieved = 0.0;
+
+    public GUI_managePayment(String jobID, GUI_jobStates jobStatesGUIPassed) {
         initComponents();
         connection();
         receievedJobID = jobID;
+        jobStatesGUI = jobStatesGUIPassed;
+        jobStatesGUI.dispose();
         System.out.println("receievedJobID = " + receievedJobID);
         System.out.println("Called");
         populatePaymentTable();
@@ -72,7 +78,7 @@ public class GUI_managePayment extends javax.swing.JFrame {
 
         jLabel1.setText("Received amount:");
 
-        but_cancel.setText("Close");
+        but_cancel.setText("Done");
         but_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 but_cancelActionPerformed(evt);
@@ -151,11 +157,27 @@ public class GUI_managePayment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void but_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_cancelActionPerformed
+
+        instantiateNewGUI();
         this.dispose();
     }//GEN-LAST:event_but_cancelActionPerformed
 
     private void but_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_but_doneActionPerformed
         insertIntoDatabase();
+        populatePaymentTable();
+        
+
+//                try{
+//            Statement st = conn.createStatement();
+//            String query = "SELECT SUM (PaidAmount) FROM Payments WHERE JobID = '" + currentJobID + "'";
+//            rs = st.executeQuery(query);
+//            if (rs.next() ) {
+//                    final_tf_rec.setText(Double.toString(rs.getDouble("PaidAmount")));
+//            }
+//        }catch(Exception e){
+//            
+//        }
+//TotRecieved = TotRecieved + Integer.parseInt(recievedAmount_tf.getText());
     }//GEN-LAST:event_but_doneActionPerformed
 
     /**
@@ -223,15 +245,15 @@ public class GUI_managePayment extends javax.swing.JFrame {
 //    }
     private void connection() {
         try {
-            String filename = new File("afordableDB.accdb").getAbsolutePath();
-            //conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/adamb/Desktop");
-            conn = DriverManager.getConnection("jdbc:ucanaccess://C:/Program Files/afordableDB.accdb");
+            conn = DriverManager.getConnection("jdbc:ucanaccess://afordableDB.accdb");
         } catch (Exception e) {
             System.out.println("Database connection error" + e);
         }
     }
 /// WHERE JobID = '" + receievedJobID + "
+
     public void populatePaymentTable() {
+        System.out.println("populatePaymentTable ");
         try {
             Statement st = conn.createStatement();
 
@@ -246,23 +268,38 @@ public class GUI_managePayment extends javax.swing.JFrame {
     }
 
     private void insertIntoDatabase() {
+        DecimalFormat df = new DecimalFormat("##.##");
+        System.out.println("Click");
+        Double paidAmount = Double.parseDouble((recievedAmount_tf.getText()));
+        Double.parseDouble(df.format(paidAmount));
         try {
-           
-            String sql = "INSERT INTO Payment(JobID,PaidAmount,DateReceived,Comments) VALUES (?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            
-            statement.setString(1, receievedJobID);
-            statement.setString(2, recievedAmount_tf.getText());
-            
-            String[] dateSplit = payment_spin_date.getModel().getValue().toString().split(" ");            
-            
-            statement.setString(3, payment_spin_date.getModel().getValue().toString());
-            statement.setString(4, comments_tf.getText());
-            populatePaymentTable();
+            if (paidAmount != null || paidAmount != 0) {
+                try {
+                    String sql = "Insert into Payment(JobID, PaidAmount, DateReceived, Comments) values(?,?,?,?)";
+                    PreparedStatement statement = conn.prepareStatement(sql);
+                    statement.setString(1, this.receievedJobID);
+                    statement.setString(2, df.format(paidAmount));
 
+                    String[] dateSplit = payment_spin_date.getModel().getValue().toString().split(" ");
+                    statement.setString(3, payment_spin_date.getModel().getValue().toString());
+
+                    statement.setString(4, comments_tf.getText());
+                    statement.executeUpdate();
+                    populatePaymentTable();
+                } catch (Exception e) {
+                    System.out.println("Problem with adding a payment" + e);
+                };
+            }
         } catch (Exception e) {
             System.out.println("Problem with insertIntoDatabase" + e);
             e.printStackTrace();
         }
+
+    }
+
+    private void instantiateNewGUI() {
+
+        GUI_jobStates newJobStatesGUI = new GUI_jobStates(receievedJobID, 3);
+        newJobStatesGUI.setVisible(true);
     }
 }
