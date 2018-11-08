@@ -1918,7 +1918,7 @@ public class GUI_mainGUI extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
                 String myclientCode = rs.getString("ClientID");
-
+                System.out.println("Selected Client Code = " + myclientCode);
                 Statement st2 = conn.createStatement();
                 String query2 = "select * from client where clientID = '" + myclientCode + "'";
                 ResultSet rs2 = st2.executeQuery(query2);

@@ -54,13 +54,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
     double overheadCharge;
 
     int tabIndex = 0;
-    
+
     String selectedItemCode = "";
     String selectedItem[] = new String[10];
 
     public GUI_jobStates(String jobIDReceived, int tabIndexReceived) {
         this.tabIndex = tabIndexReceived;
-        
+
         //make DB connection
         connection();
 
@@ -86,7 +86,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             selectCorrectClientInJobsPage();
         }
         updateJobLabelsAndStatus();
-        
+
     }
 
     private GUI_jobStates() {
@@ -2929,7 +2929,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         //disable the components if the job status is closed 
         ifClosedStateDisableGUI();
-        
+
         jobStatesTabPane.setSelectedIndex(tabIndex);
     }
 
@@ -3372,7 +3372,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
         if (result) {
             String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
-            currentClientID = selectedClient[2];
+            currentClientID = selectedClient[selectedClient.length - 1];
+            System.out.println("currentClientID = " + currentClientID);
 
             if (addOrChange.equals("add")) {
                 addNewJob();
@@ -3749,7 +3750,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 setJobState("Work in Progress");
 
                 updateJobLabelsAndStatus();
-                
+
                 l_totalQuote.setText("00.00");
                 l_plannedCost.setText("00.00");
                 l_currentCost.setText("00.00");
@@ -3922,14 +3923,13 @@ public class GUI_jobStates extends javax.swing.JFrame {
     }//GEN-LAST:event_job_but_insertAdrActionPerformed
 
     private void final_but_managePayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_final_but_managePayActionPerformed
-        try{
+        try {
             GUI_managePayment mp = new GUI_managePayment(currentJobID, this);
             mp.setVisible(true);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Error opening the manage payments gui" + e);
         }
 
-        
 //        //GUI_managePayment payGUI = new GUI_managePayment();
 //        // payGUI.setVisible(true);
 //        Double paidAmount = 0.0;
@@ -3968,8 +3968,8 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void quote_mat_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quote_mat_but_removeActionPerformed
         if (!quote_mat_li_materials.isSelectionEmpty()) {
-            addOrChange = "change";
-            enablePanelQuoteLabour(true);
+//            addOrChange = "change";
+//            enablePanelQuoteLabour(true);
 
             String selectedItem[] = quote_mat_li_materials.getSelectedValue().toString().split("#");
             String selectedItemCode = selectedItem[1];
@@ -4064,6 +4064,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void work_mat_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_mat_but_removeActionPerformed
         String quoteItemCode[] = work_mat_li_materials.getSelectedValue().toString().split("#");
+        System.out.println("code === " + quoteItemCode[1]);
         try {
             String sql = "Delete from WorkingExpense where WorkingExpenseID = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -4106,6 +4107,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void work_over_but_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_work_over_but_removeActionPerformed
         String quoteItemCode[] = work_over_li_overheads.getSelectedValue().toString().split("#");
+        System.out.println("code === " + quoteItemCode[1]);
         try {
             String sql = "Delete from WorkingExpense where WorkingExpenseID = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -4872,12 +4874,12 @@ public class GUI_jobStates extends javax.swing.JFrame {
                 String query = "select * from jobs where jobID = '" + currentJobID + "'";
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
-                     String address[] = rs.getString("address").split("#");
-                if (address.length == 6) {
-                    l_siteLocation.setText(address[0] + ", " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4] + ", " + address[5] );
-                } else {
-                    l_siteLocation.setText(rs.getString("address"));
-                }
+                    String address[] = rs.getString("address").split("#");
+                    if (address.length == 6) {
+                        l_siteLocation.setText(address[0] + ", " + address[1] + ", " + address[2] + ", " + address[3] + ", " + address[4] + ", " + address[5]);
+                    } else {
+                        l_siteLocation.setText(rs.getString("address"));
+                    }
                     //l_siteLocation.setText(rs.getString("Address"));
                     //Ryans crazy moments
 //                    gettingSiteLocation = rs.getString("address").split("#");
@@ -4958,7 +4960,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             PreparedStatement statement = conn.prepareStatement(sql);
 
             String selectedClient[] = job_cb_selectClient.getSelectedItem().toString().split(" ");
-            statement.setString(1, selectedClient[2]);
+            statement.setString(1, selectedClient[selectedClient.length - 1]);
             statement.setString(2, job_tf_title.getText());
             statement.setString(3, job_ta_specification.getText());
 
@@ -5515,7 +5517,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             Statement st = conn.createStatement();
             //String query = "select * from client";
             //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
-            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense Where JobID = '"+currentJobID+"'";
+            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense Where JobID = '" + currentJobID + "'";
             rs = st.executeQuery(query);
             final_table_costs.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
@@ -5528,7 +5530,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
             Statement st = conn.createStatement();
             //String query = "select * from client";
             //String query = "Select clientID as Client_Code,fname as Name,lname as Surname,connum as Contact_Number,email from client";
-            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense where expensetype = '" + category + "' AND JobID = '"+ currentJobID+"'";
+            String query = "Select ExpenseTitle, ExpenseType, count_hours, cost_rate from WorkingExpense where expensetype = '" + category + "' AND JobID = '" + currentJobID + "'";
             rs = st.executeQuery(query);
             final_table_costs.setModel(DbUtils.resultSetToTableModel(rs));
         } catch (Exception e) {
@@ -5566,7 +5568,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
 
     private void calculateOutstanding() {
         DecimalFormat df = new DecimalFormat("##.##");
-        
+
         double diff = Double.parseDouble(final_tf_quote.getText()) - Double.parseDouble(final_tf_rec.getText());
         final_tf_outst.setText(df.format((diff)));
     }
@@ -5741,7 +5743,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         calculateAllExpenses();
         populateTotalsOnWorkPage();
 
-         //--------------------------------finalize page
+        //--------------------------------finalize page
         calculateAllExpensesOnFinalise();
         populateTotalsOnFinalisePage();
         populateExpensesTable();
@@ -5753,14 +5755,7 @@ public class GUI_jobStates extends javax.swing.JFrame {
         populateAllBars();
 
         //populate the quote labels
-        System.out.println("Flag 1");
-
-        System.out.println("l_currentCost = " + Double.parseDouble(l_currentCost.getText()));
-        System.out.println("l_totalQuote = " + Double.parseDouble(l_totalQuote.getText()));
         updateJobLabelsAndStatus();
-        
-       
-
     }
 
     private void updateQuoteLabels(String status) {

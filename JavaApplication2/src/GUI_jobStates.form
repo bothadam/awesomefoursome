@@ -70,7 +70,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel8" max="32767" attributes="0"/>
-                  <Component id="jPanel15" pref="156" max="32767" attributes="0"/>
+                  <Component id="jPanel15" pref="193" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -1142,7 +1142,7 @@
                                   </Group>
                                   <Component id="jPanel35" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="35" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1386,7 +1386,7 @@
                                   </Group>
                                   <Component id="jPanel37" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="35" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -4227,7 +4227,7 @@
                           <Component id="l_jobTitle" max="32767" attributes="0"/>
                       </Group>
                       <Component id="l_quoteState" min="-2" pref="167" max="-2" attributes="0"/>
-                      <Component id="l_jobState" alignment="0" pref="168" max="32767" attributes="0"/>
+                      <Component id="l_jobState" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
